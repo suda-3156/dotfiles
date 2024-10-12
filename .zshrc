@@ -1,77 +1,3 @@
-#################################  HISTORY  #################################
-# history
-HISTFILE=$HOME/.zsh_history     # 履歴を保存するファイル
-HISTSIZE=100000                 # メモリ上に保存する履歴のサイズ
-SAVEHIST=1000000                # 上述のファイルに保存する履歴のサイズ
-
-# share .zshhistory
-setopt inc_append_history       # 実行時に履歴をファイルに追加していく
-setopt share_history            # 履歴を他のシェルとリアルタイム共有する
-
-setopt hist_ignore_all_dups     # ヒストリーに重複を表示しない
-setopt hist_save_no_dups        # 重複するコマンドが保存されるとき、古い方を削除する。
-setopt extended_history         # コマンドのタイムスタンプをHISTFILEに記録する
-setopt hist_expire_dups_first   # HISTFILEのサイズがHISTSIZEを超える場合は、最初に重複を削除します
-
-#################################  COMPLEMENT  #################################
-# enable completion
-autoload -Uz colors; colors
-
-# Tabで選択できるように
-zstyle ':completion:*:default' menu select=2
-
-# 補完候補をそのまま→小文字を大文字→大文字を小文字に変更
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
-
-### 補完方法毎にグループ化する。
-zstyle ':completion:*' format '%B%F{blue}%d%f%b'
-zstyle ':completion:*' group-name ''
-
-### 補完侯補をメニューから選択する。
-### select=2: 補完候補を一覧から選択する。補完候補が2つ以上なければすぐに補完する。
-zstyle ':completion:*:default' menu select=2
-
-# ファイル補完候補に色を付ける
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-# ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
-setopt auto_param_slash
-
-# カッコを自動補完
-setopt auto_param_keys
-
-# ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
-setopt mark_dirs
-
-# 補完キー連打で順に補完候補を自動で補完
-setopt auto_menu
-
-#################################  OTHERS  #################################
-# disable ctrl+s, ctrl+q
-setopt no_flow_control
-
-# automatically change directory when dir name is typed
-setopt auto_cd
-
-# コマンドラインでも # 以降をコメントと見なす
-setopt interactive_comments
-
-# コマンドラインの引数で --prefix=/usr などの = 以降でも補完できる
-setopt magic_equal_subst
-
-# 語の途中でもカーソル位置で補完
-setopt complete_in_word
-
-# 日本語ファイル名を表示可能にする
-setopt print_eight_bit
-
-# コマンドを途中まで入力後、historyから絞り込み
-autoload -Uz history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
-
 ######################## Added by Zinit's installer ########################
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
@@ -95,16 +21,10 @@ zinit light-mode for \
 
 ######################## End of Zinit's installer chunk #####################
 
-# Load the pure theme, with zsh-async library that's bundled with it.
-zinit ice pick"async.zsh" src"pure.zsh"
-zinit light sindresorhus/pure
+SCRIPT_DIR=$HOME/dotfiles
 
-
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-zinit light zdharma/history-search-multi-word
-zinit light mollifier/anyframe
+source $SCRIPT_DIR/zsh/plugins.zsh
+source $SCRIPT_DIR/zsh/config.zsh
 
 # peco 
 bindkey '^xb' anyframe-widget-cdr
