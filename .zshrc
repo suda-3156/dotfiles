@@ -33,13 +33,20 @@ add-zsh-hook chpwd chpwd_recent_dirs
 bindkey '^xr' anyframe-widget-execute-history
 bindkey '^x^b' anyframe-widget-checkout-git-branch
 
-#python no path
+# python no path
 export PATH=$PATH:/Users/kyaka3/Library/Python/3.9/bin
 
-## aliases
+# aliases
 alias g='git' 
 alias doco='docker compose'
 alias e='exit'
 alias ga='git add .'
 alias gs='git status'
 alias gc='(){git commit -m $1}'
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# .zprofileから移行. homebrewのコマンドをシェルで正しく使えるようにする. 問題があれば、.zprofileに戻す.
+eval "$(/opt/homebrew/bin/brew shellenv)"
