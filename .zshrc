@@ -44,6 +44,9 @@ alias ga='git add .'
 alias gs='git status'
 alias gc='(){git commit -m $1}'
 
+# 使い方間違ってると思うので直す.
+alias py='python3'
+
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
