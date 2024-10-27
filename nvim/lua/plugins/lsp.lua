@@ -22,7 +22,7 @@ return { -- LSP Configuration & Plugins
             winblend = 0, -- Background color opacity in the notification window
           },
         },
-     },
+      },
     },
   },
   config = function()
@@ -109,7 +109,7 @@ return { -- LSP Configuration & Plugins
     local servers = {
       html = { filetypes = { 'html', 'twig', 'hbs' } },
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-      tsserver = {},
+      -- tsserver = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes { ...},

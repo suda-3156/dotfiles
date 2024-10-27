@@ -28,4 +28,5 @@ require('lazy').setup {
   require 'plugins.hlchunck',
   require 'plugins.lazygit',
   require 'plugins.debug',
+  require 'plugins.noice',
 }
