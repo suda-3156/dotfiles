@@ -21,35 +21,11 @@ zinit light-mode for \
 
 ######################## End of Zinit's installer chunk #####################
 
-SCRIPT_DIR=$HOME/dotfiles
+# dotfilesの読み込み設定.
+SCRIPT_DIR=$HOME/dotfiles/zsh
 
-source $SCRIPT_DIR/zsh/plugins.zsh
-source $SCRIPT_DIR/zsh/config.zsh
+source $SCRIPT_DIR/plugins.zsh
+source $SCRIPT_DIR/config.zsh
+source $SCRIPT_DIR/aliases.zsh
+source $SCRIPT_DIR/paths.zsh
 
-# peco 
-bindkey '^xb' anyframe-widget-cdr
-autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-add-zsh-hook chpwd chpwd_recent_dirs
-bindkey '^xr' anyframe-widget-execute-history
-bindkey '^x^b' anyframe-widget-checkout-git-branch
-
-# python no path
-export PATH=$PATH:/Users/kyaka3/Library/Python/3.9/bin
-
-# aliases
-alias g='git' 
-alias doco='docker compose'
-alias e='exit'
-alias ga='git add .'
-alias gs='git status'
-alias gc='(){git commit -m $1}'
-
-# 使い方間違ってると思うので直す.
-alias py='python3'
-
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# .zprofileから移行. homebrewのコマンドをシェルで正しく使えるようにする. 問題があれば、.zprofileに戻す.
-eval "$(/opt/homebrew/bin/brew shellenv)"
