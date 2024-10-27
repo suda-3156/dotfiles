@@ -19,4 +19,6 @@ ln -sfnv ${PWD}/zsh/.zshrc ${HOME}
 # tmux
 ln -sfnv ${PWD}/tmux/.tmux.conf ${HOME}
 
+# obsidian
+# ln -sfnv ${PWD}/obsidian/.obsidian.vimrc ${HOME}/Notes/KnowledgeBase
 echo "Done."
