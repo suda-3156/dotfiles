@@ -35,3 +35,8 @@ apply = ["defer"]
 [plugins.git-open]
 github = "paulirish/git-open"
 apply = ["defer"]
+
+[plugins.dotfiles-sync]
+local = "~/dotfiles/zsh/sync"
+use = ["*.zsh"]
+apply = ['source']
