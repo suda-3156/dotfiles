@@ -46,3 +46,6 @@ inline = 'eval "$(zoxide init zsh --hook prompt )"'
 
 [plugins.brew]
 inline = 'eval $(/opt/homebrew/bin/brew shellenv)'
+
+[plugins.mise]
+inline = 'eval "$(/opt/homebrew/bin//mise activate zsh)"'
