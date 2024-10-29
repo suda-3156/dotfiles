@@ -36,5 +36,10 @@ return {
     end
 
     vim.keymap.set('n', '<leader>bg', toggle_transparency, { noremap = true, silent = true })
+
+    -- notifyに文句を言われるので.
+    require('notify').setup {
+      background_colour = '#000000',
+    }
   end,
 }

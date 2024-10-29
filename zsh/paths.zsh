@@ -8,3 +8,8 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # .zprofileから移行. homebrewのコマンドをシェルで正しく使えるようにする.問題があれば、.zprofileに戻す.
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# valta??
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+# これは必要なのか???
