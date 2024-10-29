@@ -12,6 +12,10 @@ apply = ["source"]
 PATH = 'export PATH="$PATH:{{ dir }}"'
 defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 
+[plugins.pure]
+github = "sindresorhus/pure"
+use = ["async.zsh", "pure.zsh"]
+
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 apply = ["defer"]
@@ -26,6 +30,7 @@ apply = ["defer"]
 
 [plugins.zsh-abbr]
 github = "olets/zsh-abbr"
+apply = ["defer"]
 
 [plugins.git-open]
 github = "paulirish/git-open"

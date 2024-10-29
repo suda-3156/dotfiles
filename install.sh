@@ -14,7 +14,7 @@ ln -sfnv ${PWD}/nvim ${HOME}/.config
 ln -sfnv ${PWD}/zsh/.zshrc ${HOME}
 
 # sheldon
-ln -sfnv ${PWD}/zsh/package.toml ${HOME}/.config/sheldon
+ln -sfnv ${PWD}/zsh/plugins.toml ${HOME}/.config/sheldon
 
 # tmux
 ln -sfnv ${PWD}/tmux/.tmux.conf ${HOME}
