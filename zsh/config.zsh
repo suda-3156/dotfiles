@@ -4,7 +4,6 @@ HISTFILE=$HOME/.zsh_history     # 履歴を保存するファイル
 HISTSIZE=100000                 # メモリ上に保存する履歴のサイズ
 SAVEHIST=1000000                # 上述のファイルに保存する履歴のサイズ
 
-# share .zshhistory
 setopt inc_append_history       # 実行時に履歴をファイルに追加していく
 setopt share_history            # 履歴を他のシェルとリアルタイム共有する
 
@@ -14,6 +13,7 @@ setopt extended_history         # コマンドのタイムスタンプをHISTFIL
 setopt hist_expire_dups_first   # HISTFILEのサイズがHISTSIZEを超える場合は、最初に重複を削除します
 
 #################################  COMPLEMENT  #################################
+
 # enable completion
 autoload -Uz colors; colors
 
@@ -23,12 +23,12 @@ zstyle ':completion:*:default' menu select=2
 # 補完候補をそのまま→小文字を大文字→大文字を小文字に変更
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 
-### 補完方法毎にグループ化する。
+# 補完方法毎にグループ化する。
 zstyle ':completion:*' format '%B%F{blue}%d%f%b'
 zstyle ':completion:*' group-name ''
 
-### 補完侯補をメニューから選択する。
-### select=2: 補完候補を一覧から選択する。補完候補が2つ以上なければすぐに補完する。
+# 補完侯補をメニューから選択する。
+# select=2: 補完候補を一覧から選択する。補完候補が2つ以上なければすぐに補完する。
 zstyle ':completion:*:default' menu select=2
 
 # ファイル補完候補に色を付ける
@@ -46,12 +46,8 @@ setopt mark_dirs
 # 補完キー連打で順に補完候補を自動で補完
 setopt auto_menu
 
-#################################  OTHERS  #################################
 # disable ctrl+s, ctrl+q
 setopt no_flow_control
-
-# automatically change directory when dir name is typed
-setopt auto_cd
 
 # コマンドラインでも # 以降をコメントと見なす
 setopt interactive_comments
@@ -80,4 +76,11 @@ function jump_to_middle() {
 zle -N jump_to_middle
 bindkey "^j" jump_to_middle
 
-
+## fzf
+function fzf-select-history() {
+    BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+zle -N fzf-select-history
+bindkey '^r' fzf-select-history

@@ -10,7 +10,7 @@ alias e='exit'
 alias py='python3'
 alias pip='pip3'
 
-alias v='nvim'
+alias v='nvim .'
 
 alias lsa='ls -a'
 

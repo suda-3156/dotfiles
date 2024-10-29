@@ -7,14 +7,14 @@ CURRENT_DIR=$(pwd)
 
 echo "Create dotfile links."
 
-# gitの設定ファイルのシンボリックリンク
-# ln -sfnv ${PWD}/.gitconfig ${HOME}
-
 # neovim
 ln -sfnv ${PWD}/nvim ${HOME}/.config
 
 # zshrc
 ln -sfnv ${PWD}/zsh/.zshrc ${HOME}
+
+# sheldon
+ln -sfnv ${PWD}/zsh/package.toml ${HOME}/.config/sheldon
 
 # tmux
 ln -sfnv ${PWD}/tmux/.tmux.conf ${HOME}
