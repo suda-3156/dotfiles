@@ -47,5 +47,5 @@ inline = 'eval "$(zoxide init zsh --hook prompt )"'
 [plugins.mise]
 inline = 'eval "$(/opt/homebrew/bin//mise activate zsh)"'
 
-[plugins.enhancd]
-github = "b4b4r07/enhancd"
+# [plugins.enhancd]
+# github = "b4b4r07/enhancd"
