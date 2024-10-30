@@ -19,3 +19,5 @@ alias t='tmux'
 alias mc='(){mkdir $1 && cd $1}'
 
 alias lg='lazygit'
+
+alias c='clear'
