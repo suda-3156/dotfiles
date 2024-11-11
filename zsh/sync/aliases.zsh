@@ -21,3 +21,5 @@ alias mc='(){mkdir $1 && cd $1}'
 alias lg='lazygit'
 
 alias c='clear'
+
+alias mv='(){mv -i $1 $2}'
