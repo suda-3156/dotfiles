@@ -4,7 +4,7 @@ alias ga='git add .'
 alias gs='git status'
 alias gc='(){git commit -m $1}'
 
-alias doco='docker compsoe'
+alias doco='docker compose'
 alias e='exit'
 
 alias py='python3'

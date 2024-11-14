@@ -29,4 +29,5 @@ require('lazy').setup {
   require 'plugins.lazygit',
   require 'plugins.debug',
   require 'plugins.noice',
+  require 'plugins.close-buffers',
 }
