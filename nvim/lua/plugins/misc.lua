@@ -4,10 +4,10 @@ return {
     -- tmux & split window navigation
     'christoomey/vim-tmux-navigator',
   },
-  {
-    -- autoclose tags
-    'windwp/nvim-ts-autotag',
-  },
+  -- {
+  --   -- autoclose tags
+  --   'windwp/nvim-ts-autotag',
+  -- },
   {
     -- detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',

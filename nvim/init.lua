@@ -30,4 +30,5 @@ require('lazy').setup {
   require 'plugins.debug',
   require 'plugins.noice',
   require 'plugins.close-buffers',
+  require 'plugins.nvim-ts-autotag',
 }
