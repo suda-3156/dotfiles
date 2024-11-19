@@ -25,10 +25,11 @@ require('lazy').setup {
   -- require 'plugins.alpha',
   require 'plugins.misc',
   require 'plugins.comment',
-  require 'plugins.hlchunck',
+  require 'plugins.hlchunk',
   require 'plugins.lazygit',
   require 'plugins.debug',
   require 'plugins.noice',
   require 'plugins.close-buffers',
   require 'plugins.nvim-ts-autotag',
+  require 'plugins.copilot',
 }
