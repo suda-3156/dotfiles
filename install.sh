@@ -16,6 +16,9 @@ ln -sfnv ${PWD}/zsh/.zshrc ${HOME}
 # sheldon
 ln -sfnv ${PWD}/zsh/plugins.toml ${HOME}/.config/sheldon
 
+# starship
+ln -sfnv ${PWD}/zsh/starship.toml ${HOME}/.config
+
 # tmux
 ln -sfnv ${PWD}/tmux/.tmux.conf ${HOME}
 

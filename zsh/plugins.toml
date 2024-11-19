@@ -12,9 +12,9 @@ apply = ["source"]
 PATH = 'export PATH="$PATH:{{ dir }}"'
 defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 
-[plugins.pure]
-github = "sindresorhus/pure"
-use = ["async.zsh", "pure.zsh"]
+# [plugins.pure]
+# github = "sindresorhus/pure"
+# use = ["async.zsh", "pure.zsh"]
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
@@ -49,3 +49,6 @@ inline = 'eval "$(/opt/homebrew/bin//mise activate zsh)"'
 
 # [plugins.enhancd]
 # github = "b4b4r07/enhancd"
+
+[plugins.starship]
+inline = 'eval "$(starship init zsh)"'
