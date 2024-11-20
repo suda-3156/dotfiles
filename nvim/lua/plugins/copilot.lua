@@ -13,7 +13,7 @@ return {
     event = 'InsertEnter',
     config = function()
       require('copilot').setup {
-        suggestion = { enabled = true },
+        suggestion = { enabled = false },
         panel = { enabled = false },
         -- copilot_node_commnad = 'node',
       }
@@ -34,10 +34,10 @@ return {
     'CopilotC-Nvim/CopilotChat.nvim',
     branch = 'canary',
     dependencies = {
-      { 'github/copilot.vim' },    -- or zbirenbaum/copilot.lua
+      { 'github/copilot.vim' }, -- or zbirenbaum/copilot.lua
       { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
     },
-    build = 'make tiktoken',       -- Only on MacOS or Linux
+    build = 'make tiktoken', -- Only on MacOS or Linux
     opts = {
       -- See Configuration section for options
     },
