@@ -5,6 +5,9 @@ return {
   --   config = function()
   --     vim.g.copilot_no_tab_map = true
   --     vim.api.nvim_set_keymap('i', '<C-f>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
+  --     require('copilot').setup({
+  --       suggestion = { enabled = false }
+  --     })
   --   end,
   -- },
   {
@@ -15,29 +18,30 @@ return {
       require('copilot').setup {
         suggestion = { enabled = false },
         panel = { enabled = false },
-        -- copilot_node_commnad = 'node',
+        copilot_node_commnad = 'node',
       }
     end,
   },
-  {
-    'zbirenbaum/copilot-cmp',
-    config = function()
-      require('copilot_cmp').setup()
-      -- require('cmp').setup {
-      --   sources = {
-      --     { name = 'copilot', group_index = 2 },
-      --   },
-      -- }
-    end,
-  },
+  -- {
+  --   'zbirenbaum/copilot-cmp',
+  --   config = function()
+  --     require('copilot_cmp').setup()
+  --     -- require('cmp').setup {
+  --     --   sources = {
+  --     --     { name = 'copilot', group_index = 2 },
+  --     --   },
+  --     -- }
+  --   end,
+  -- },
   {
     'CopilotC-Nvim/CopilotChat.nvim',
     branch = 'canary',
     dependencies = {
-      { 'github/copilot.vim' }, -- or zbirenbaum/copilot.lua
+      -- { 'github/copilot.vim' },    -- or zbirenbaum/copilot.lua
+      { 'zbirenbaum/copilot.lua' },
       { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
     },
-    build = 'make tiktoken', -- Only on MacOS or Linux
+    build = 'make tiktoken',       -- Only on MacOS or Linux
     opts = {
       -- See Configuration section for options
     },

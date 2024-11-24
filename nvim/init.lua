@@ -32,5 +32,5 @@ require('lazy').setup {
   require 'plugins.close-buffers',
   require 'plugins.nvim-ts-autotag',
   require 'plugins.copilot',
-  require 'plugins.colorthemes.catppuccin',
+  require 'plugins.colorthemes.nord',
 }
