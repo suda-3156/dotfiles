@@ -42,7 +42,8 @@ use = ["*.zsh"]
 apply = ['source']
 
 [plugins.zoxide]
-inline = 'eval "$(zoxide init zsh --hook prompt )"'
+inline = 'eval "$(zoxide init zsh)"'
+# inline = 'eval "$(zoxide init zsh --hook prompt )"'
 
 [plugins.mise]
 inline = 'eval "$(/opt/homebrew/bin//mise activate zsh)"'
