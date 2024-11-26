@@ -3,6 +3,7 @@ return {
   config = function()
     require('ayu').setup {
       mirage = true,
+      terminal = true,
       overrides = {
         Normal = { bg = 'None' },
         ColorColumn = { bg = 'None' },

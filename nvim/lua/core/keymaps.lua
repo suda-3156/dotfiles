@@ -103,9 +103,9 @@ vim.keymap.set('n', '<leader>do', function()
   diagnostics_active = not diagnostics_active
 
   if diagnostics_active then
-    vim.diagnostic.enable(0)
+    vim.diagnostic.enable(false)
   else
-    vim.diagnostic.disable(0)
+    vim.diagnostic.enable(true)
   end
 end)
 
@@ -118,3 +118,23 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- Save and load session
 vim.keymap.set('n', '<leader>ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>sl', ':source .session.vim<CR>', { noremap = true, silent = false })
+
+-- Open terminal
+vim.keymap.set('n', '<leader>ot', function ()
+  vim.cmd('belowright new')
+  vim.cmd('terminal')
+end, { silent = true, noremap = true })
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
+
+vim.api.nvim_create_autocmd('TermOpen', {
+  pattern = '*',
+  command = 'startinsert',
+})
+
+vim.api.nvim_create_autocmd('TermOpen', {
+  pattern = '*',  -- すべてのターミナルバッファに適用
+  callback = function()
+    vim.opt_local.relativenumber = false  -- 相対行番号を非表示
+    vim.opt_local.number = false          -- 絶対行番号を非表示
+  end,
+})

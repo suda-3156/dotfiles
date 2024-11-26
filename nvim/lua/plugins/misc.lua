@@ -4,10 +4,6 @@ return {
     -- tmux & split window navigation
     'christoomey/vim-tmux-navigator',
   },
-  -- {
-  --   -- autoclose tags
-  --   'windwp/nvim-ts-autotag',
-  -- },
   {
     -- detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
@@ -60,11 +56,15 @@ return {
     end,
   },
   -- {
-  --   'ray-x/lsp_signature.nvim',
-  --   event = 'VeryLazy',
-  --   opts = {},
-  --   config = function(_, opts)
-  --     require('lsp_signature').setup(opts)
-  --   end,
+  --   'stevearc/dressing.nvim',
+  --   config = function ()
+  --     require('dressing').setup()
+  --   end
   -- },
+  -- {
+  --   'tami5/lspsaga.nvim',
+  --   config = function ()
+  --     require('lspsaga').setup()
+  --   end
+  -- }
 }
