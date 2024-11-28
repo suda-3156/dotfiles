@@ -42,7 +42,7 @@ use = ["*.zsh"]
 apply = ['source']
 
 [plugins.zoxide]
-inline = 'eval "$(zoxide init zsh)"'
+inline = 'eval "$(zoxide init --cmd cd zsh)"'
 # inline = 'eval "$(zoxide init zsh --hook prompt )"'
 
 [plugins.mise]

@@ -51,3 +51,9 @@
 - gpgme (?)
 - harfbuzz (font関係???)
 - mkcert (開発環境をssl化)
+
+# brew以外気づき次第
+
+## npm
+
+- prettierd
