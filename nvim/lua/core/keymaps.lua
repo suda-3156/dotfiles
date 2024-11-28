@@ -138,3 +138,12 @@ vim.api.nvim_create_autocmd('TermOpen', {
     vim.opt_local.number = false          -- 絶対行番号を非表示
   end,
 })
+
+vim.keymap.set('n', 'Y', 'y$', opts)
+vim.keymap.set('n', 'X', '"_D', opts)
+vim.keymap.set('n', 'i<space>', 'iW', opts)
+vim.keymap.set('v', 'i<space>', 'iW', opts)
+vim.keymap.set('n', 'U', '<C-r>', opts)
+vim.keymap.set('n', 'M', '%', opts)
+vim.keymap.set('n', '<Space>g', '<Cmd>copy-1<CR>', opts)
+vim.keymap.set('n', '<Space>G', '<Cmd>copy.<CR>', opts)
