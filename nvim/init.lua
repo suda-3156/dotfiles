@@ -35,5 +35,7 @@ require('lazy').setup {
   require 'plugins.colorthemes.nord',
   require 'plugins.surround',
   -- require 'plugins.coc',
-  require 'plugins.barbecue'
+  require 'plugins.barbecue',
+  require 'plugins.diffview',
+  require 'plugins.toggleterm',
 }

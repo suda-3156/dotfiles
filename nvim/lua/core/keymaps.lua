@@ -120,10 +120,10 @@ vim.keymap.set('n', '<leader>ss', ':mksession! .session.vim<CR>', { noremap = tr
 vim.keymap.set('n', '<leader>sl', ':source .session.vim<CR>', { noremap = true, silent = false })
 
 -- Open terminal
-vim.keymap.set('n', '<leader>ot', function ()
-  vim.cmd('belowright new')
-  vim.cmd('terminal')
-end, { silent = true, noremap = true })
+-- vim.keymap.set('n', '<leader>ot', function ()
+--   vim.cmd('belowright new')
+--   vim.cmd('terminal')
+-- end, { silent = true, noremap = true })
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
 
 vim.api.nvim_create_autocmd('TermOpen', {
