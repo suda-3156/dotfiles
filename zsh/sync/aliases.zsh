@@ -26,6 +26,8 @@ alias v='sh -c "
 # 一行だけの置換なら、(変数名)/(置換前)/(置換後)
 # head -n 1 (表示する, -nで表示行数を指定)
 
+alias vi="nvim"
+
 alias lsa='ls -a'
 
 alias t='tmux'
