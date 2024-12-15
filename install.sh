@@ -22,6 +22,9 @@ ln -sfnv ${PWD}/zsh/starship.toml ${HOME}/.config
 # tmux
 ln -sfnv ${PWD}/tmux/.tmux.conf ${HOME}
 
+# wezterm
+ln -sfnv ${PWD}/wezterm ${HOME}/.config
+
 # obsidian
 # ln -sfnv ${PWD}/obsidian/.obsidian.vimrc ${HOME}/Notes/KnowledgeBase
 echo "Done."

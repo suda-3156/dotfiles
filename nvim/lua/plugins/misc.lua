@@ -3,7 +3,6 @@ return {
   {
     -- tmux & split window navigation
     'christoomey/vim-tmux-navigator',
-    lazy = true,
   },
   {
     -- detect tabstop and shiftwidth automatically
