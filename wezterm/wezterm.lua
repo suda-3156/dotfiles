@@ -4,7 +4,9 @@ config = wezterm.config_builder()
 
 config = {
   automatically_reload_config = true,
-  enable_tab_bar = false,
+  -- enable_tab_bar = false,
+  hide_tab_bar_if_only_one_tab = true,
+  use_ime = true,
   window_close_confirmation = "NeverPrompt",
   window_decorations = "RESIZE",
   default_cursor_style = "BlinkingBar",
@@ -21,12 +23,24 @@ config = {
       opacity = 0.8,
     },
   },
-  window_padding = {
-    left = 3,
-    right = 3,
-    top = 5,
-    bottom = 0,
+  window_frame = {
+    inactive_titlebar_bg = "none",
+    active_titlebar_bg = "none",
   },
+  show_new_tab_button_in_tab_bar = false,
+  show_close_tab_button_in_tabs = false,
+  colors = {
+    tab_bar = {
+      inactive_tab_edge = "none",
+    },
+  },
+  enabe_scroll_bar = false,
+  -- window_padding = {
+  --   left = 5,
+  --   right = 5,
+  --   top = 0,
+  --   bottom = 0,
+  -- },
   adjust_window_size_when_changing_font_size = false,
   macos_window_background_blur = 30,
   launch_menu = {},
