@@ -38,4 +38,5 @@ require('lazy').setup {
   require 'plugins.scrollbar',
   require 'plugins.trouble',
   require 'plugins.oil',
+  require 'plugins.dashboard',
 }
