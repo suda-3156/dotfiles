@@ -1,6 +1,6 @@
 -- Set leader key
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = ','
+vim.g.maplocalleader = ','
 
 -- For conciseness
 local opts = { noremap = true, silent = true }
@@ -117,3 +117,9 @@ vim.keymap.set('n', 'U', '<C-r>', opts)
 vim.keymap.set('n', 'M', '%', opts)
 vim.keymap.set({ 'n', 'v' }, '<A-S-k>', '<Cmd>copy-1<CR>', opts)
 vim.keymap.set({ 'n', 'v' }, '<A-S-j>', '<Cmd>copy.<CR>', opts)
+
+vim.keymap.set({ 'n', 'v' }, '<Space>l', '$', opts)
+vim.keymap.set({ 'n', 'v' }, '<Space>h', '^', opts)
+
+vim.keymap.set('n', '<Space>o', 'o<Esc>', opts)
+vim.keymap.set('n', '<Space>O', 'O<Esc>', opts)
