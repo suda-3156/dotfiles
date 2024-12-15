@@ -25,6 +25,7 @@ return { -- LSP Configuration & Plugins
       },
     },
   },
+
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
@@ -244,5 +245,50 @@ return { -- LSP Configuration & Plugins
         end,
       },
     }
+
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, {
+        -- virtual_text = {
+        --   format = function (diagnostic)
+        --     return string.format("%s (%s: %s)", diagnostic.message, diagnostic.source, diagnostic.code)
+        --   end
+        -- }
+        virtual_text = false,
+        underline = true,
+        float = true,
+      }
+    )
+    vim.diagnostic.config({ severity_sort = true })
+
+    local diagnostic_hover_augroup_name = "lspconfig-diagnostic"
+    vim.opt.updatetime = 500
+    vim.api.nvim_create_augroup(diagnostic_hover_augroup_name, { clear = true })
+    vim.api.nvim_create_autocmd("CursorHold", {
+      group = diagnostic_hover_augroup_name,
+      callback = function()
+        local opts = {
+          focusable = false,
+          close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+          border = 'rounded',
+          source = 'always',
+          prefix = ' ',
+          scope = 'cursor',
+        }
+        vim.diagnostic.open_float(nil, opts)
+      end
+    })
+
+    -- vim.api.nvim_create_autocmd("LspAttach", {
+    --   callback = function(args)
+    --     -- ここに `textDocument/hover` で表示させたくないファイルタイプを指定する
+    --     if args.filetype == 'NvimTree' or args.filetype == 'NeogitCommitMessage' then
+    --       return
+    --     end
+    --     --    vim.cmd [[autocmd CursorHold,CursorHoldI * silent lua vim.lsp.buf.hover()]]
+    --     vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+    --     vim.cmd [[autocmd CursorHold,CursorHoldI * silent lua vim.lsp.buf.hover()]]
+    --   end,
+    -- })
+
   end,
 }

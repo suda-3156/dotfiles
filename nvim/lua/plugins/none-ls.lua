@@ -29,12 +29,14 @@ return {
       diagnostics.checkmake,
       formatting.prettierd,
       formatting.shfmt.with { args = { '-i', '4' } },
-      formatting.terraform_fmt,
+      -- formatting.terraform_fmt,
       require('none-ls.formatting.ruff').with { extra_args = { '--extend-select', 'I' } },
       require 'none-ls.formatting.ruff_format',
     }
 
-    null_ls.setup({
+    null_ls.setup()
+    null_ls.register({
+      diagnostics_format= "#{m} (#{s}: #{c})",
       sources = sources,
       on_attach = function(client, bufnr)
         if client.supports_method('textDocument/formatting') then
@@ -49,6 +51,7 @@ return {
         end
       end,
     })
+
 
     -- vim.api.nvim_create_autocmd({ 'CursorHold' }, {
     --   pattern = { '*' },

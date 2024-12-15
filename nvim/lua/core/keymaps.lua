@@ -1,5 +1,3 @@
--- Keymaps for better default experience
-
 -- Set leader key
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -20,9 +18,6 @@ vim.keymap.set('n', '<Esc>', ':noh<CR>', opts)
 -- save file
 vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', opts)
 
--- save file without auto-formatting
-vim.keymap.set('n', '<leader>sn', '<cmd>noautocmd w <CR>', opts)
-
 -- quit file
 vim.keymap.set('n', '<C-q>', '<cmd> q <CR>', opts)
 
@@ -33,7 +28,7 @@ vim.keymap.set('n', 'x', '"_x', opts)
 vim.keymap.set('n', '<C-d>', '<C-d>zz', opts)
 vim.keymap.set('n', '<C-u>', '<C-u>zz', opts)
 
--- Find and center
+-- Find and center /での検索時に真ん中に来るようにしている
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
@@ -49,10 +44,6 @@ vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts)
 vim.keymap.set('n', '<leader>x', ':Bdelete!<CR>', opts) -- close buffer
 vim.keymap.set('n', '<leader>b', '<cmd> enew <CR>', opts) -- new buffer
 
--- Increment/decrement numbers
-vim.keymap.set('n', '<leader>+', '<C-a>', opts) -- increment
-vim.keymap.set('n', '<leader>-', '<C-x>', opts) -- decrement
-
 -- Window management
 vim.keymap.set('n', '<leader>v', '<C-w>v', opts) -- split window vertically
 vim.keymap.set('n', '<leader>h', '<C-w>s', opts) -- split window horizontally
@@ -66,10 +57,11 @@ vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts)
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
 
 -- Tabs
-vim.keymap.set('n', '<leader>to', ':tabnew<CR>', opts) -- open new tab
-vim.keymap.set('n', '<leader>tx', ':tabclose<CR>', opts) -- close current tab
-vim.keymap.set('n', '<leader>tn', ':tabn<CR>', opts) --  go to next tab
-vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts) --  go to previous tab
+-- 他のtab関連の設定は，close-buffers.lua
+-- vim.keymap.set('n', '<leader>to', ':tabnew<CR>', opts) -- open new tab
+vim.keymap.set('n', '<leader>tt', ':tabclose<CR>', opts) -- close current tab
+-- vim.keymap.set('n', '<leader>tn', ':tabn<CR>', opts) --  go to next tab
+-- vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts) --  go to previous tab
 
 -- Toggle line wrapping
 vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts)
@@ -82,9 +74,9 @@ vim.keymap.set('i', 'kj', '<ESC>', opts)
 vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
 
--- Move text up and down
-vim.keymap.set('v', '<A-j>', ':m .+1<CR>==', opts)
-vim.keymap.set('v', '<A-k>', ':m .-2<CR>==', opts)
+-- Move text up and down Option keyで反応しない
+vim.keymap.set({ 'n', 'v' }, '<A-j>', ':m .+1<CR>==', opts)
+vim.keymap.set({ 'n' ,'v' }, '<A-k>', ':m .-2<CR>==', opts)
 
 -- Keep last yanked when pasting
 vim.keymap.set('v', 'p', '"_dP', opts)
@@ -119,31 +111,9 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('n', '<leader>ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>sl', ':source .session.vim<CR>', { noremap = true, silent = false })
 
--- Open terminal
--- vim.keymap.set('n', '<leader>ot', function ()
---   vim.cmd('belowright new')
---   vim.cmd('terminal')
--- end, { silent = true, noremap = true })
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
-
-vim.api.nvim_create_autocmd('TermOpen', {
-  pattern = '*',
-  command = 'startinsert',
-})
-
-vim.api.nvim_create_autocmd('TermOpen', {
-  pattern = '*',  -- すべてのターミナルバッファに適用
-  callback = function()
-    vim.opt_local.relativenumber = false  -- 相対行番号を非表示
-    vim.opt_local.number = false          -- 絶対行番号を非表示
-  end,
-})
-
 vim.keymap.set('n', 'Y', 'y$', opts)
 vim.keymap.set('n', 'X', '"_D', opts)
-vim.keymap.set('n', 'i<space>', 'iW', opts)
-vim.keymap.set('v', 'i<space>', 'iW', opts)
 vim.keymap.set('n', 'U', '<C-r>', opts)
 vim.keymap.set('n', 'M', '%', opts)
-vim.keymap.set('n', '<Space>g', '<Cmd>copy-1<CR>', opts)
-vim.keymap.set('n', '<Space>G', '<Cmd>copy.<CR>', opts)
+vim.keymap.set({ 'n', 'v' }, '<A-S-k>', '<Cmd>copy-1<CR>', opts)
+vim.keymap.set({ 'n', 'v' }, '<A-S-j>', '<Cmd>copy.<CR>', opts)

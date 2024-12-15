@@ -1,6 +1,6 @@
 require 'core.options'
 require 'core.keymaps'
-require 'core.snippets'
+-- require 'core.snippets'
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -22,7 +22,7 @@ require('lazy').setup {
   require 'plugins.autocompletion',
   require 'plugins.none-ls',
   require 'plugins.gitsigns',
-  -- require 'plugins.alpha',
+  -- -- require 'plugins.alpha',
   require 'plugins.misc',
   require 'plugins.comment',
   require 'plugins.hlchunk',
@@ -34,8 +34,8 @@ require('lazy').setup {
   require 'plugins.copilot',
   require 'plugins.colorthemes.nord',
   require 'plugins.surround',
-  -- require 'plugins.coc',
+  -- -- require 'plugins.coc',
   require 'plugins.barbecue',
-  require 'plugins.diffview',
-  require 'plugins.toggleterm',
+  -- require 'plugins.diffview',
+  -- require 'plugins.toggleterm',
 }
