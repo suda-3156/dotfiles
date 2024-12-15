@@ -37,4 +37,5 @@ require('lazy').setup {
   require 'plugins.diffview',
   require 'plugins.scrollbar',
   require 'plugins.trouble',
+  require 'plugins.oil',
 }
