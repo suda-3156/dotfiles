@@ -3,22 +3,27 @@ return {
   {
     -- tmux & split window navigation
     'christoomey/vim-tmux-navigator',
+    lazy = true,
   },
   {
     -- detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
+    lazy = true,
   },
   {
     -- Powerful Git integration for Vim
     'tpope/vim-fugitive',
+    lazy = true,
   },
   {
     -- GitHub integration for vim-fugitive
     'tpope/vim-rhubarb',
+    lazy = true,
   },
   {
     -- Hints keybinds
     'folke/which-key.nvim',
+    event = 'VeryLazy',
     opts = {
       -- win = {
       --   border = {
@@ -51,20 +56,13 @@ return {
   {
     -- high-performance color highlighter
     'norcalli/nvim-colorizer.lua',
+    event = 'VeryLazy',
     config = function()
       require('colorizer').setup()
     end,
   },
-  -- {
-  --   'stevearc/dressing.nvim',
-  --   config = function ()
-  --     require('dressing').setup()
-  --   end
-  -- },
-  -- {
-  --   'tami5/lspsaga.nvim',
-  --   config = function ()
-  --     require('lspsaga').setup()
-  --   end
-  -- }
+  {
+    'nvim-tree/nvim-web-devicons',
+    lazy = true,
+  },
 }

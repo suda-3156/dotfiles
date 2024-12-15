@@ -1,5 +1,8 @@
 return {
   'kazhala/close-buffers.nvim',
+  keys = {
+    '<leader>to', '<leader>tt', '<leader>ta'
+  },
   config = function()
     require('close_buffers').setup {
       preserve_window_layout = { 'this' },

@@ -1,5 +1,6 @@
 return {
   "petertriho/nvim-scrollbar",
+  event = "VeryLazy",
   -- event = { "BufNewFile", "BufReadPre" },
   dependencies = {
     "kevinhwang91/nvim-hlslens",

@@ -1,5 +1,13 @@
 return {
   'sindrets/diffview.nvim',
+  keys = {
+    '<leader>hd',
+    '<leader>hc',
+    '<leader>co',
+    '<leader>ct',
+    '<leader>cb',
+    '<leader>ca',
+  }
 }
 
 --- <leader>hd	コンフリクト解消画面の表示
