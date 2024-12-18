@@ -1,6 +1,7 @@
 return {
   'windwp/nvim-ts-autotag',
-  event = 'InsertEnter',
+  -- ft = { '.tsx', '.jsx' },
+  event = { 'BufReadPre', 'BufNewFile' },
   require('nvim-ts-autotag').setup {
     opts = {
       -- Defaults

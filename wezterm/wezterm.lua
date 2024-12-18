@@ -28,19 +28,20 @@ config = {
     active_titlebar_bg = "none",
   },
   show_new_tab_button_in_tab_bar = false,
-  show_close_tab_button_in_tabs = false,
+  -- only nightly 2024/12/16
+  -- show_close_tab_button_in_tabs = false,
   colors = {
     tab_bar = {
       inactive_tab_edge = "none",
     },
   },
-  enabe_scroll_bar = false,
-  -- window_padding = {
-  --   left = 5,
-  --   right = 5,
-  --   top = 0,
-  --   bottom = 0,
-  -- },
+  enable_scroll_bar = false,
+  window_padding = {
+    left = 8,
+    right = 8,
+    top = 2,
+    bottom = 2,
+  },
   adjust_window_size_when_changing_font_size = false,
   macos_window_background_blur = 30,
   launch_menu = {},

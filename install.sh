@@ -25,6 +25,9 @@ ln -sfnv ${PWD}/tmux/.tmux.conf ${HOME}
 # wezterm
 ln -sfnv ${PWD}/wezterm ${HOME}/.config
 
+# karabiner elements
+ln -sfnv ${PWD}/karabiner/complex_modifications ${HOME}/.config/karabiner/assets
+
 # obsidian
 # ln -sfnv ${PWD}/obsidian/.obsidian.vimrc ${HOME}/Notes/KnowledgeBase
 echo "Done."
