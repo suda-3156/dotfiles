@@ -15,11 +15,6 @@
               "modifiers": ["left_command", "left_control", "left_option"]
             }
           ],
-          "to_if_alone": [
-            {
-              "key_code": "escape"
-            }
-          ],
           "type": "basic"
         },
         {
@@ -209,7 +204,50 @@
           "type": "basic"
         }
       ]
-
+    },
+    {
+      "description": "fn + ; => command + ;",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "semicolon",
+            "modifiers": {
+              "mandatory": ["fn"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "semicolon",
+              "modifiers": ["left_command"]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "fn + Hyper => escape",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "fn",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "escape"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
     }
   ]
 }
