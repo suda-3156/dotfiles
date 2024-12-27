@@ -55,18 +55,6 @@
     {
       "description": "Mac OSX: disable cmd + h to prevent minimising an application window",
       "manipulators": [
-        {
-          "from": {
-            "key_code": "h",
-            "modifiers": { "mandatory": ["command"] }
-          },
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "Mac OSX: disable cmd + h to prevent minimising an application window",
-      "manipulators": [
           {
             "from": {
               "key_code": "h",
@@ -199,6 +187,51 @@
           "to": [
             {
               "key_code": "delete_or_backspace"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Hyper + u,i => ()",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "u",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "9",
+              "modifiers": ["left_shift"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "i",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "0",
+              "modifiers": ["left_shift"]
             }
           ],
           "type": "basic"

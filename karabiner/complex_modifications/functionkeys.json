@@ -62,28 +62,28 @@
         },
         {
           "from": {
-            "key_code": "z",
+            "key_code": "o",
             "modifiers": {
               "mandatory": [ "fn" ]
             }
           },
           "to": [
             {
-              "key_code": "fn7"
+              "key_code": "f7"
             }
           ],
           "type": "basic"
         },
         {
           "from": {
-            "key_code": "m",
+            "key_code": "p",
             "modifiers": {
               "mandatory": [ "fn" ]
             }
           },
           "to": [
             {
-              "key_code": "fn8"
+              "key_code": "f8"
             }
           ],
           "type": "basic"
