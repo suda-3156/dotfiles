@@ -40,7 +40,11 @@ return {
       pickers = {
         find_files = {
           file_ignore_patterns = { 'node_modules', '.git', '.venv' },
+          -- find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' },
           hidden = true,
+          -- additional_args = function(_)
+          --   return { '--hidden' }
+          -- end,
         },
         buffers = {
           initial_mode = 'normal',

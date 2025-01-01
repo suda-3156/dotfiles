@@ -15,9 +15,9 @@ return {
     -- list of formatters & linters for mason to install
     require('mason-null-ls').setup({
       ensure_installed = {
-        -- 'checkmake',
+        'checkmake',
         'prettier', -- ts/js formatter
-        -- 'stylua',   -- lua formatter
+        'stylua',   -- lua formatter
         'eslint_d', -- ts/js linter
         'shfmt',
         'ruff',
@@ -28,21 +28,38 @@ return {
 
     local sources = {
       -- diagnostics.checkmake,
-      formatting.prettierd.with({ filetypes = { 'html', 'json', 'yaml', 'markdown'}}),
+      formatting.prettierd.with({ filetypes = { 'html', 'json', 'yaml', 'tsx', 'jsx', 'ts', 'js', 'markdown'}}),
       formatting.shfmt.with { args = { '-i', '4' } },
       -- formatting.terraform_fmt,
       require('none-ls.formatting.ruff').with { extra_args = { '--extend-select', 'I' } },
       require 'none-ls.formatting.ruff_format',
     }
 
-    null_ls.setup()
-    null_ls.register({
-      diagnostics_format= "#{m} (#{s}: #{c})",
-      sources = sources,
+    -- null_ls.setup()
+    -- null_ls.register({
+    --   diagnostics_format= "#{m} (#{s}: #{c})",
+    --   sources = sources,
+    --   on_attach = function(client, bufnr)
+    --     if client.supports_method('textDocument/formatting') then
+    --       vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+    --       vim.api.nvim_create_autocmd('BufWritePre', {
+    --         group = augroup,
+    --         buffer = bufnr,
+    --         callback = function()
+    --           vim.lsp.buf.format({ async = false })
+    --         end,
+    --       })
+    --     end
+    --   end,
+    -- })
+    null_ls.setup({
+      sources = {
+        null_ls.builtins.formatting.prettier,
+      },
       on_attach = function(client, bufnr)
-        if client.supports_method('textDocument/formatting') then
-          vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
-          vim.api.nvim_create_autocmd('BufWritePre', {
+        if client.supports_method("textDocument/formatting") then
+          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+          vim.api.nvim_create_autocmd("BufWritePre", {
             group = augroup,
             buffer = bufnr,
             callback = function()
@@ -52,7 +69,6 @@ return {
         end
       end,
     })
-
 
     -- vim.api.nvim_create_autocmd({ 'CursorHold' }, {
     --   pattern = { '*' },

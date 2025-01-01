@@ -22,17 +22,17 @@ return {
       }
     end,
   },
-  -- {
-  --   'zbirenbaum/copilot-cmp',
-  --   config = function()
-  --     require('copilot_cmp').setup()
-  --     -- require('cmp').setup {
-  --     --   sources = {
-  --     --     { name = 'copilot', group_index = 2 },
-  --     --   },
-  --     -- }
-  --   end,
-  -- },
+  {
+    'zbirenbaum/copilot-cmp',
+    config = function()
+      require('copilot_cmp').setup()
+      -- require('cmp').setup {
+      --   sources = {
+      --     { name = 'copilot', group_index = 2 },
+      --   },
+      -- }
+    end,
+  },
   {
     'CopilotC-Nvim/CopilotChat.nvim',
     -- branch = 'main',
