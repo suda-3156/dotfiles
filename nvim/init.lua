@@ -36,7 +36,7 @@ require('lazy').setup {
   require 'plugins.noice',
   require 'plugins.close-buffers',
   require 'plugins.nvim-ts-autotag',
-  require 'plugins.copilot',
+  -- require 'plugins.copilot',
   require 'plugins.colorthemes.nord',
   require 'plugins.surround',
   require 'plugins.barbecue',
