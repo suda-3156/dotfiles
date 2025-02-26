@@ -40,4 +40,4 @@ alias c='clear'
 
 # alias mv='(){mv -i $1 $2}'
 
-
+alias ta='t a'
