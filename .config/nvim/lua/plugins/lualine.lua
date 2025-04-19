@@ -1,7 +1,7 @@
 -- Set lualine as statusline
 return {
   'nvim-lualine/lualine.nvim',
-  event = { "InsertEnter", "BufReadPre", "BufNewFile"},
+  event = { "BufReadPre", "BufNewFile"},
   config = function()
     -- Adapted from: https://github.com/nvim-lualine/lualine.nvim/blob/master/lua/lualine/themes/onedark.lua
     local colors = {

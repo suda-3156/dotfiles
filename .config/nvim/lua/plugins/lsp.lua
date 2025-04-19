@@ -105,7 +105,7 @@ return { -- LSP Configuration & Plugins
     })
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+    -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
     -- Enable the following language servers
     local servers = {
@@ -269,7 +269,7 @@ return { -- LSP Configuration & Plugins
       callback = function()
         local opts = {
           focusable = false,
-          close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+          close_events = { "BufLeave", "CursorMoved", "FocusLost" },
           border = 'rounded',
           source = 'always',
           prefix = ' ',
