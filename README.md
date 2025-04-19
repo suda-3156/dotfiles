@@ -6,4 +6,5 @@
 - nvim-ts-autotag
 - nvim install
 - zsh chsh -s /usr/bin/zsh
-- local ssh ( for temporal use )
+- local ssh ( for temporal use ) ??
+- installer no options wo tukuru
