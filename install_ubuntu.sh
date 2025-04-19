@@ -32,5 +32,5 @@ chmod +x "$INSTALLER_DIR/$OS/install_zsh.sh"
 source "$INSTALLER_DIR/$OS/install_zsh.sh"
 
 # Optional
-# chmod +x "$INSTALLER_DIR/$OS/install_tmux.sh"
-# source "$INSTALLER_DIR/$OS/install_tmux.sh"
+chmod +x "$INSTALLER_DIR/$OS/install_tmux.sh"
+source "$INSTALLER_DIR/$OS/install_tmux.sh"
