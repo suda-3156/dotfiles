@@ -14,3 +14,7 @@
 !*.zsh*
 !starship.toml
 !plugins.toml
+!*.lua
+!*.json
+!*.vim
+!.stylua.toml
