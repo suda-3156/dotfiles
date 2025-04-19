@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-LOG_LEVEL="DEBUG"
+LOG_LEVEL="INFO"
 
 log() {
     local level="$1"
