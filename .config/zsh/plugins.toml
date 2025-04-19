@@ -1,0 +1,36 @@
+# `sheldon` configuration file
+
+shell = "zsh"
+
+[plugins]
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+apply = ["source"]
+
+[templates]
+PATH = 'export PATH="$PATH:{{ dir }}"'
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+apply = ["defer"]
+
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+apply = ["defer"]
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+apply = ["defer"]
+
+[plugins.dotfiles-sync]
+local = "~/dotfiles/.config/zsh/sync"
+use = ["*.zsh"]
+apply = ['source']
+
+[plugins.zoxide]
+inline = 'eval "$(zoxide init --cmd cd zsh)"'
+
+[plugins.starship]
+inline = 'eval "$(starship init zsh)"'

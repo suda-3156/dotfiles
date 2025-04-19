@@ -1,0 +1,16 @@
+*
+!*/
+
+!.gitignore
+!compose.yml
+!Dockerfile
+!install_ubuntu.sh
+
+!*.sh
+!.config/*
+!*_shared*
+
+!.tmux.conf
+!*.zsh*
+!starship.toml
+!plugins.toml
