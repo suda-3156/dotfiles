@@ -1,6 +1,6 @@
 return {
   'akinsho/bufferline.nvim',
-  event = { "InsertEnter", "BufReadPre", "BufNewFile"},
+  event = { "BufReadPre", "BufNewFile"},
   dependencies = {
     'moll/vim-bbye',
     -- 'nvim-tree/nvim-web-devicons',

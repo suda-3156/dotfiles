@@ -13,7 +13,6 @@ return {
   {
     'zbirenbaum/copilot.lua',
     cmd = 'Copilot',
-    event = 'InsertEnter',
     config = function()
       require('copilot').setup {
         suggestion = { enabled = false },
@@ -36,7 +35,6 @@ return {
   {
     'CopilotC-Nvim/CopilotChat.nvim',
     -- branch = 'main',
-    event = 'InsertEnter',
     dependencies = {
       -- { 'github/copilot.vim' },    -- or zbirenbaum/copilot.lua
       { 'zbirenbaum/copilot.lua' },

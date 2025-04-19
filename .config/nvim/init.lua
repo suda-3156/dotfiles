@@ -18,22 +18,22 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup {
+require('lazy').setup ({
   require 'plugins.neo-tree',
   require 'plugins.bufferline',
   require 'plugins.lualine',
   require 'plugins.treesitter',
   require 'plugins.telescope',
-  -- require 'plugins.lsp',
-  -- require 'plugins.autocompletion',
-  -- require 'plugins.none-ls',
-  -- require 'plugins.gitsigns',
-  -- require 'plugins.misc',
+  require 'plugins.lsp',
+  require 'plugins.autocompletion',
+  require 'plugins.none-ls',
+  require 'plugins.gitsigns',
+  require 'plugins.misc',
   require 'plugins.comment',
   require 'plugins.hlchunk',
   -- require 'plugins.lazygit',
   -- require 'plugins.debug',
-  -- require 'plugins.noice',
+  require 'plugins.noice',
   require 'plugins.close-buffers',
   -- require 'plugins.nvim-ts-autotag',
   -- require 'plugins.copilot',
@@ -42,7 +42,8 @@ require('lazy').setup {
   require 'plugins.barbecue',
   -- require 'plugins.diffview',
   require 'plugins.scrollbar',
-  -- require 'plugins.trouble',
+  require 'plugins.trouble',
   require 'plugins.oil',
   require 'plugins.dashboard',
-}
+})
+

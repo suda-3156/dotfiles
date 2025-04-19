@@ -2,7 +2,7 @@ return {
   'windwp/nvim-ts-autotag',
   -- ft = { '.tsx', '.jsx' },
   event = { 'BufReadPre', 'BufNewFile' },
-  require('nvim-ts-autotag').setup {
+  require('nvim-ts-autotag').setup ({
     opts = {
       -- Defaults
       enable_close = true, -- Auto close tags
@@ -17,5 +17,5 @@ return {
         enable_close = false,
       },
     },
-  },
+  })
 }
