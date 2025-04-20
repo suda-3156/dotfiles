@@ -31,6 +31,12 @@ source "$INSTALLER_DIR/$OS/install_cargo.sh"
 chmod +x "$INSTALLER_DIR/$OS/install_zsh.sh"
 source "$INSTALLER_DIR/$OS/install_zsh.sh"
 
+chmod +x "$INSTALLER_DIR/$OS/install_vim.sh"
+source "$INSTALLER_DIR/$OS/install_vim.sh"
+
+chmod +x "$INSTALLER_DIR/$OS/install_nvim.sh"
+source "$INSTALLER_DIR/$OS/install_nvim.sh"
+
 # Optional
 chmod +x "$INSTALLER_DIR/$OS/install_tmux.sh"
 source "$INSTALLER_DIR/$OS/install_tmux.sh"
