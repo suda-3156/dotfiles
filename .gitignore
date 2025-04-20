@@ -18,3 +18,4 @@
 !*.json
 !*.vim
 !.stylua.toml
+!.vimrc
