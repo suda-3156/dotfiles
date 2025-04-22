@@ -1,3 +1,4 @@
+# ホワイトリスト化
 *
 !*/
 
@@ -19,3 +20,12 @@
 !*.vim
 !.stylua.toml
 !.vimrc
+!Brewfile
+!*.md
+
+# 保険
+*secret*
+*.env*
+*credential*
+*.pem
+*.key

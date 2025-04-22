@@ -6,7 +6,9 @@
 
 set -eu
 
-source "$(dirname "${BASH_SOURCE[0]}")/../utils.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/log.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/install.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/check.sh"
 
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 CONFIG_DIR="$SCRIPT_DIR/../../.config"
