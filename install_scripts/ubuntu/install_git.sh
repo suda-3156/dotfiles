@@ -2,18 +2,32 @@
 
 set -eu
 
-source $(dirname "${BASH_SOURCE[0]}")/../utils.sh
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/log.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/install.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/check.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/symlink.sh"
 
-SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-CONFIG_DIR="$SCRIPT_DIR/../../.config"
+PJROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 
 log "INFO" "Starting Git installation..."
 
-check_install "git"
-log "INFO" "Git installed: $(git --version)"
+check_installed is_installed "git"
+if [[ $is_installed -eq 0 ]]; then
+    log "INFO" "Git is not installed. Installing Git..."
 
-create_symlink "${CONFIG_DIR}/git" "$HOME/.config/git"
-git config --global include.path "$HOME/.config/git/config_shared" 2>&1 | while IFS= read -r line; do
-    log "DEBUG" "$line"
-done
+    apt_install "git"
+    if [[ $? -eq 0 ]]; then
+        log "INFO" "Git installed successfully."
+    else
+        log "ERROR" "Failed to install Git."
+        exit 1
+    fi
+else
+    log "INFO" "Git is already installed."
+fi
+
+create_symlink "${PJROOT_DIR}/.config/git" "$HOME/.config/git"
+
+realtime_log "git config --global include.path $HOME/.config/git/config_shared"
+
 log "INFO" "Git configuration set up successfully."

@@ -2,7 +2,9 @@
 
 set -eu
 
-source $(dirname "${BASH_SOURCE[0]}")/../utils.sh
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/log.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/install.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/check.sh"
 
 log "INFO" "Installing misc packages on Ubuntu"
 
@@ -17,8 +19,17 @@ packages=(
 )
 
 for package in "${packages[@]}"; do
-    if ! check_install "$package"; then
-        log "ERROR" "Failed to install $package"
+    check_installed is_installed "$package"
+    if [[ ! $is_installed -eq 0 ]]; then
+        log "INFO" "$package is already installed. Skipping installation."
+        continue
+    fi
+
+    apt_install "$package"
+    if [[ $? -eq 0 ]]; then
+        log "INFO" "$package installed successfully."
+    else
+        log "ERROR" "Failed to install $package."
         exit 1
     fi
 done

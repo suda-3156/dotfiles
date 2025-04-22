@@ -2,17 +2,12 @@
 
 set -eu
 
-source "$(dirname "${BASH_SOURCE[0]}")/../utils.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/log.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/install.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/check.sh"
 
-function _install () {
-    if command -v "cargo" &> /dev/null; then
-        log "INFO" "cargo is already installed. Skipping installation."
-        return 0
-    fi
-
-    curl https://sh.rustup.rs -sSf | sh -s -- -y 2>&1 | while IFS= read -r line; do
-        log "DEBUG" "$line"
-    done
+function install_cargo () {
+    realtime_log "curl https://sh.rustup.rs -sSf | sh -s -- -y"
     if [[ ${PIPESTATUS[0]} -eq 0 ]]; then
         log "INFO" "Successfully installed package: cargo"
     else
@@ -23,6 +18,7 @@ function _install () {
         log "ERROR" "Failed to source cargo environment."
         exit 1
     fi
+
     PS1=""  # 一時的に定義
     source ~/.bashrc
 
@@ -38,24 +34,33 @@ function install_misc() {
     )
 
     for package in "${packages[@]}"; do
-        if command -v "$package" &> /dev/null; then
+        check_installed is_installed "$package"
+        if [[ ! $is_installed -eq 0 ]]; then
             log "INFO" "$package is already installed. Skipping installation."
+            continue
+        fi
+
+        log "INFO" "$package is not installed. Installing..."
+        cargo_install "$package"
+        if [[ $? -eq 0 ]]; then
+            log "INFO" "$package installed successfully."
         else
-            cargo install "$package" 2>&1 | while IFS= read -r line; do
-                log "DEBUG" "$line"
-            done
-            if [[ ${PIPESTATUS[0]} -eq 0 ]]; then
-                log "INFO" "Successfully installed package: $package"
-            else
-                log "ERROR" "Failed to install package: $package"
-            fi
+            log "ERROR" "Failed to install $package."
+            exit 1
         fi
     done
-
-    log "INFO" "Rust packages installation completed successfully."
 }
 
 log "INFO" "Starting Rust installation..."
-update
-_install
+
+check_installed is_installed_cargo "cargo"
+if [[ $is_installed_cargo -eq 0 ]]; then
+    log "INFO" "cargo is not installed. Installing..."
+    install_cargo
+else
+    log "INFO" "cargo is already installed. Skipping installation."
+fi
+
 install_misc
+
+log "INFO" "Rust packages installation completed successfully."
