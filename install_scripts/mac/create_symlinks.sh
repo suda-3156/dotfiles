@@ -25,7 +25,7 @@ create_symlink "$PJROOT_DIR/.config/tmux/.tmux.conf" "$HOME/.tmux.conf"
 create_symlink "$PJROOT_DIR/.config/vim/.vimrc" "$HOME/.vimrc"
 
 # zsh
-create_symlink "$PJROOT_DIR/.config/zsh/.zshrc" "$HOME/.zshrc"
+create_symlink "$PJROOT_DIR/.config/zsh/.zshrc_mac" "$HOME/.zshrc"
 create_symlink "$PJROOT_DIR/.config/zsh/.zshenv" "$HOME/.zshenv"
 mkdir -p "$HOME/.config/sheldon"
 create_symlink "$PJROOT_DIR/.config/zsh/plugins.toml" "$HOME/.config/sheldon/plugins.toml"

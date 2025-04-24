@@ -53,7 +53,7 @@ else
     fi
 fi
 
-create_symlink "$PJROOT_DIR/.config/zsh/.zshrc" "$HOME/.zshrc"
+create_symlink "$PJROOT_DIR/.config/zsh/.zshrc_ubuntu" "$HOME/.zshrc"
 create_symlink "$PJROOT_DIR/.config/zsh/.zshenv" "$HOME/.zshenv"
 
 check_installed cargo_installed "cargo"
