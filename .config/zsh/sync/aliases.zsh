@@ -1,22 +1,15 @@
-alias g='git'
-alias ga='git add .'
-alias gs='git status'
-alias gc='(){git commit -m $1}'
+abbr -S ll='ls -l' >> /dev/null
+abbr -S la='ls -la' >> /dev/null
+abbr -S c='clear' >> /dev/null
+abbr -S t='tmux' >> /dev/null
+abbr -S g='git' >> /dev/null
+abbr -S gcm='git commit -m' >> /dev/null
+abbr -S gst='git status' >> /dev/null
+abbr -S ga='git add' >> /dev/null
+abbr -S e='exit' >> /dev/null
+abbr -S doco='docker compose' >> /dev/null
+abbr -S v='nvim' >> /dev/null
+abbr -S py='python' >> /dev/null
+abbr -S lg='lazygit' >> /dev/null
 
-alias doco='docker compose'
-alias e='exit'
-
-alias py='python3'
-alias pip='pip3'
-
-alias v="nvim"
-
-alias lsa='ls -a'
-
-alias t='tmux'
-
-alias mc='(){mkdir $1 && cd $1}'
-
-alias lg='lazygit'
-
-alias c='clear'
+alias ls='ls --color=auto'
