@@ -2,12 +2,11 @@
 
 ## TODO
 
-- vim
 - nvim-ts-autotag
 - nvim install
-- zsh chsh -s /usr/bin/zsh
+- zsh chsh -s /usr/bin/zsh ??
 - local ssh ( for temporal use ) ??
-- installer no options wo tukuru
+- macの場合のみ、source .cargoをしない様にする
 
 ## fonts
 
@@ -15,5 +14,5 @@
 
 ## memo
 
-- `brew install bash` -> 色々して bash のバージョンアップ
-- `plugins.toml`の path のところ、`dots`と`dotfiles`
+- `brew install bash` 
+

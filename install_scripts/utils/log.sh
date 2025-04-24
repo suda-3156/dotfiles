@@ -19,7 +19,7 @@
 
 set -eu
 
-LOG_LEVEL="DEBUG"
+LOG_LEVEL="INFO"
 
 SOURCE_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
