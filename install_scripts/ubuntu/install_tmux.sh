@@ -2,15 +2,27 @@
 
 set -eu
 
-source $(dirname "${BASH_SOURCE[0]}")/../utils.sh
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/log.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/install.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/check.sh"
 
-SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-CONFIG_DIR="$SCRIPT_DIR/../../.config"
+PJROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 
 log "INFO" "Starting Tmux installation..."
 
-check_install "tmux"
-log "INFO" "Tmux installed: $(tmux -V)"
+check_installed tmux_insatlled "tmux"
+if [[ $tmux_insatlled -eq 1 ]]; then
+    log "INFO" "Tmux is already installed."
+else
+    log "INFO" "Tmux is not installed. Installing Tmux..."
+    apt_install "tmux"
+    if [[ $? -eq 0 ]]; then
+        log "INFO" "Tmux installed successfully."
+    else
+        log "ERROR" "Failed to install Tmux."
+        exit 1
+    fi
+fi
 
-create_symlink "${CONFIG_DIR}/tmux/.tmux.conf" "$HOME/.tmux.conf"
+create_symlink "$PJROOT_DIR/.config/tmux/.tmux.conf" "$HOME/.tmux.conf"
 log "INFO" "Tmux configuration set up successfully."

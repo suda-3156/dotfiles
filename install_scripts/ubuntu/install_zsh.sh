@@ -10,16 +10,10 @@ source "$(dirname "${BASH_SOURCE[0]}")/../utils/log.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/../utils/install.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/../utils/check.sh"
 
-SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-CONFIG_DIR="$SCRIPT_DIR/../../.config"
+PJROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 
-function install_with_cargo() {
-    log "INFO" "Installing Rust packages..."
-
-    if ! source "$HOME/.cargo/env"; then
-        log "ERROR" "Failed to source cargo environment."
-        exit 1
-    fi
+function install_misc() {
+    log "INFO" "Installing Rust packages required for zsh ..."
 
     packages=(
         sheldon
@@ -28,38 +22,57 @@ function install_with_cargo() {
     )
 
     for package in "${packages[@]}"; do
-        if command -v "$package" &> /dev/null; then
+        check_installed is_installed "$package"
+        if [[ ! $is_installed -eq 0 ]]; then
             log "INFO" "$package is already installed. Skipping installation."
+            continue
+        fi
+
+        log "INFO" "$package is not installed. Installing..."
+        cargo_install "$package"
+        if [[ $? -eq 0 ]]; then
+            log "INFO" "$package installed successfully."
         else
-            cargo install "$package" 2>&1 | while IFS= read -r line; do
-                log "DEBUG" "$line"
-            done
-            if [[ ${PIPESTATUS[0]} -eq 0 ]]; then
-                log "INFO" "Successfully installed package: $package"
-            else
-                log "ERROR" "Failed to install package: $package"
-                exit 1
-            fi
+            log "ERROR" "Failed to install $package."
+            exit 1
         fi
     done
-
-    log "INFO" "Rust packages installation completed successfully."
 }
 
-check_install "zsh"
-
-create_symlink "$CONFIG_DIR/zsh/.zshrc" "$HOME/.zshrc"
-
-install_with_cargo
-
-# use zsh as default shell
-if ! grep -q "$(which zsh)" /etc/shells; then
-    log "INFO" "Adding zsh to /etc/shells..."
-    log "INFO" "$(which zsh)" | sudo tee -a /etc/shells
+check_installed zsh_installed "zsh"
+if [[ $zsh_installed -eq 1 ]]; then
+    log "INFO" "zsh is already installed."
 else
-    log "INFO" "zsh is already in /etc/shells."
+    log "INFO" "zsh is not installed. Installing zsh..."
+    apt_install "zsh"
+    if [[ $? -eq 0 ]]; then
+        log "INFO" "zsh installed successfully."
+    else
+        log "ERROR" "Failed to install zsh."
+        exit 1
+    fi
 fi
 
+create_symlink "$PJROOT_DIR/.config/zsh/.zshrc" "$HOME/.zshrc"
+
+check_installed cargo_installed "cargo"
+if [[ $cargo_installed -eq 1 ]]; then
+    log "INFO" "cargo is already installed."
+else
+    log "ERROR" "Execute install_cargo.sh to install cargo."
+    exit 1
+fi
+
+install_misc
+
+# use zsh as default shell
+# if ! grep -q "$(which zsh)" /etc/shells; then
+#     log "INFO" "Adding zsh to /etc/shells..."
+#     log "INFO" "$(which zsh)" | sudo tee -a /etc/shells
+# else
+#     log "INFO" "zsh is already in /etc/shells."
+# fi
+
 mkdir -p "$HOME/.config/sheldon"
-create_symlink "$CONFIG_DIR/zsh/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
-create_symlink "$CONFIG_DIR/zsh/starship.toml" "$HOME/.config/starship.toml"
+create_symlink "$PJROOT_DIR/.config/zsh/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
+create_symlink "$PJROOT_DIR/.config/zsh/starship.toml" "$HOME/.config/starship.toml"

@@ -16,3 +16,4 @@
 ## memo
 
 - `brew install bash` -> 色々して bash のバージョンアップ
+- `plugins.toml`の path のところ、`dots`と`dotfiles`

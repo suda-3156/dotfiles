@@ -1,5 +1,5 @@
 # PATH
-source "$HOME/.cargo/env"
+# source "$HOME/.cargo/env" # .zshrcの中で読み込むため
 
 # nvm
 export NVM_DIR="$HOME/.nvm"

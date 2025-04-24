@@ -2,22 +2,36 @@
 
 set -eu
 
-source "$(dirname "${BASH_SOURCE[0]}")/../utils.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/log.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/install.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/../utils/check.sh"
 
-SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-CONFIG_DIR="$SCRIPT_DIR/../../.config"
+PJROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 
 log "INFO" "Starting Vim installation..."
 
-check_install "vim"
-log "INFO" "Vim installed: $(vim --version)"
+log "INFO" "Setting non-interactive mode for apt-get..."
+export DEBIAN_FRONTEND=noninteractive
+
+check_installed vim_installed "vim"
+if [[ $vim_installed -eq 1 ]]; then
+    log "INFO" "Vim is already installed."
+else
+    log "INFO" "Vim is not installed. Installing Vim..."
+    apt_install "vim"
+    if [[ $? -eq 0 ]]; then
+        log "INFO" "Vim installed successfully."
+    else
+        log "ERROR" "Failed to install Vim."
+        exit 1
+    fi
+fi
+
+create_symlink "$PJROOT_DIR/.config/vim/.vimrc" "$HOME/.vimrc"
 
 update-alternatives --set editor /usr/bin/vim.basic
 if [[ $? -eq 0 ]]; then
     log "INFO" "Successfully set Vim as the default editor."
 else
-    log "ERROR" "Failed to set Vim as the default editor."
-    exit 1
+    log "WORN" "Failed to set Vim as the default editor."
 fi
-
-create_symlink "$CONFIG_DIR/vim" "$HOME/.config/vim"
