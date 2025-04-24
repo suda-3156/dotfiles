@@ -1,4 +1,3 @@
-# brew用のscript必要
-export PATH="$HOME/.local/bin:$PATH"
-source "$HOME/.cargo/env"
+eval $(/opt/homebrew/bin/brew shellenv)
+# source "$HOME/.cargo/env"
 eval "$(sheldon source)"
