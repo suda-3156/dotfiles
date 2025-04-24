@@ -25,7 +25,7 @@ github = "zsh-users/zsh-completions"
 apply = ["defer"]
 
 [plugins.dotfiles-sync]
-local = "~/dots/.config/zsh/sync"
+local = "~/dotfiles/.config/zsh/sync"
 use = ["*.zsh"]
 apply = ['source']
 
