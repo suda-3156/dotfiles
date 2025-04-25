@@ -41,6 +41,9 @@ abbr -S tt='tmux a -t' >> /dev/null
 abbr -S tn='tmux new -s' >> /dev/null
 abbr -S tl='tmux ls' >> /dev/null
 
+abbr -S ghcr='gh repo create % --private --add-readme -c' >> /dev/null
+abbr -S ghmrr='gh repo create % --private --push -s .' >> /dev/null
+
 alias ls='ls --color=auto'
 
 alias mv='mv -i'
