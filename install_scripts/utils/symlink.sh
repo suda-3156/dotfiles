@@ -22,6 +22,10 @@ function create_symlink() {
     if [[ -e "$link_name" ]]; then
         log "INFO" "Backing up existing $link_name to $link_name.bak.$(date +%Y%m%d%H%M%S)"
         mv "$link_name" "$link_name.bak.$(date +%Y%m%d%H%M%S)"
+        if [[ ! $? -eq 0 ]]; then
+          log "ERROR" "Failed to move existing link: $link_name"
+          return 1
+        fi
     fi
 
     # Ensure the target directory exists
