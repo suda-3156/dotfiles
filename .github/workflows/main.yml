@@ -36,5 +36,5 @@ jobs:
 
       - name: Setup Dotfiles
         run: |
-          chmod +x ./install.sh
-          ./install.sh
+          sudo chmod +x ./install.sh
+          sudo ./install.sh
