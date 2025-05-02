@@ -53,7 +53,7 @@ else
     fi
 fi
 
-create_symlink "$PJ_ROOT_DIR/.config/zsh/.zshrc_ubuntu" "$HOME/.zshrc"
+create_symlink "$PJ_ROOT_DIR/.config/zsh/.ubuntu.zshrc" "$HOME/.zshrc"
 create_symlink "$PJ_ROOT_DIR/.config/zsh/.zshenv" "$HOME/.zshenv"
 
 check_installed cargo_installed "cargo"

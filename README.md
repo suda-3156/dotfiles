@@ -3,8 +3,6 @@
 ## TODO
 
 - mac defaults command (`settings.sh`)
-- github workflow
-- update `install.sh` for macOS and Ubuntu
 
 - nvim-ts-autotag
 - nvim install for Ubuntu
