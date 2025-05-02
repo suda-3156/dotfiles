@@ -10,6 +10,7 @@
 - nvim install for Ubuntu
 - zsh chsh -s /usr/bin/zsh ??
 - ssh?
+- colorize log
 
 ## Fonts
 
@@ -32,6 +33,7 @@ I didn’t install these apps using Homebrew this time, but I will next time.
 - Obsidian
 - AppCleaner
 - KeyboardCleanTool
-- discord
-- postman
-- firefox
+- Discord
+- Postman
+- Firefox
+- Clipy

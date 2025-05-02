@@ -2,9 +2,9 @@
 
 set -eu
 
-source "$(dirname "${BASH_SOURCE[0]}")/../utils/log.sh"
-source "$(dirname "${BASH_SOURCE[0]}")/../utils/install.sh"
-source "$(dirname "${BASH_SOURCE[0]}")/../utils/check.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/utils/log.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/utils/install.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/utils/check.sh"
 
 log "INFO" "Installing misc packages on Ubuntu"
 

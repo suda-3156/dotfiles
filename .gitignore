@@ -24,6 +24,7 @@
 !*.md
 !.profile
 !extensions
+!.github/**/*
 
 # Black list
 *secret*

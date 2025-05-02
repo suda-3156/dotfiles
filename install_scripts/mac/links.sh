@@ -1,16 +1,28 @@
 #!/usr/bin/env bash
 
-# Note: Requires Bash 4 or newer, as the log function relies on associative arrays.
-
 set -eu
 
-echo $BASH_VERSION | grep -qE '^[4-9]\.' || {
-    echo "This script requires Bash 4 or newer."
-    exit 1
+log() {
+    local level="$1"
+    local message="$2"
+    echo "[$level] $message"
 }
 
-source "$(dirname "${BASH_SOURCE[0]}")/../utils/log.sh"
-source "$(dirname "${BASH_SOURCE[0]}")/../utils/symlink.sh"
+function create_symlink() {
+    local target="$1"
+    local link_name="$2"
+
+    if [[ -L "$link_name" || -e "$link_name" ]]; then
+        log "INFO" "Backing up existing symlink or file: $link_name"
+        mv "$link_name" "$link_name.bak.$(date +%Y%m%d%H%M%S)"
+    fi
+
+    if [[ ! -d "$(dirname "$link_name")" ]]; then
+        mkdir -p "$(dirname "$link_name")"
+    fi
+
+    ln -s "$target" "$link_name"
+}
 
 PJ_ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
@@ -23,7 +35,10 @@ log "INFO" "Starting symlink creation for macOS..."
 
 # git config 
 create_symlink "$PJ_ROOT_DIR/.config/git" "$HOME/.config/git"
-realtime_log "git config --global include.path $HOME/.config/git/config_shared"
+if [[ command -v git &> /dev/null ]]; then
+    git config --global include.path $HOME/.config/git/config_shared
+    log "INFO" "Git config updated to include shared config."
+fi
 
 # nvim
 create_symlink "$PJ_ROOT_DIR/.config/nvim" "$HOME/.config/nvim"
