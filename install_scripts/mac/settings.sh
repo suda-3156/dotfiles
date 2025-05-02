@@ -14,6 +14,8 @@ if [[ "$(uname)" != "Darwin" ]] ; then
     exit 1
 fi
 
+echo "Not yet implemented"
+
 # # Show bluetooth in the menu bar
 # defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -bool true
 

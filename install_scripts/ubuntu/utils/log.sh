@@ -23,7 +23,7 @@ LOG_LEVEL="INFO"
 
 SOURCE_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
-LOG_OUT="$SOURCE_DIR/../../stdout.log"
+LOG_OUT="$SOURCE_DIR/../../../stdout.log"
 # LOG_ERR=./stderr.log
 
 # exec 1> >(

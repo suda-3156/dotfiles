@@ -6,4 +6,4 @@ COPY . ./dotfiles
 
 RUN apt update
 
-RUN chmod +x ./dotfiles/install_ubuntu.sh
+RUN chmod +x ./dotfiles/install.sh

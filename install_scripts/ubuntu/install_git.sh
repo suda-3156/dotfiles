@@ -2,10 +2,10 @@
 
 set -eu
 
-source "$(dirname "${BASH_SOURCE[0]}")/../utils/log.sh"
-source "$(dirname "${BASH_SOURCE[0]}")/../utils/install.sh"
-source "$(dirname "${BASH_SOURCE[0]}")/../utils/check.sh"
-source "$(dirname "${BASH_SOURCE[0]}")/../utils/symlink.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/utils/log.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/utils/install.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/utils/check.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/utils/symlink.sh"
 
 PJ_ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 

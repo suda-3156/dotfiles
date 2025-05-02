@@ -2,9 +2,9 @@
 
 set -eu
 
-source "$(dirname "${BASH_SOURCE[0]}")/../utils/log.sh"
-source "$(dirname "${BASH_SOURCE[0]}")/../utils/install.sh"
-source "$(dirname "${BASH_SOURCE[0]}")/../utils/check.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/utils/log.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/utils/install.sh"
+source "$(dirname "${BASH_SOURCE[0]}")/utils/check.sh"
 
 function install_cargo () {
     realtime_log "curl https://sh.rustup.rs -sSf | sh -s -- -y"

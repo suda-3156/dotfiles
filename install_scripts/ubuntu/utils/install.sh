@@ -15,9 +15,7 @@ function apt_install() {
     fi
 
     realtime_log "apt-get install -y $package"
-    if [[ ${PIPESTATUS[0]} -eq 0 ]]; then
-        log "INFO" "$package installed successfully."
-    else
+    if [[ ! ${PIPESTATUS[0]} -eq 0 ]]; then
         log "ERROR" "Failed to install $package."
         return 1
     fi
@@ -34,9 +32,7 @@ function cargo_install() {
     fi
 
     realtime_log "cargo install $package"
-    if [[ ${PIPESTATUS[0]} -eq 0 ]]; then
-        log "INFO" "$package installed successfully."
-    else
+    if [[ !${PIPESTATUS[0]} -eq 0 ]]; then
         log "ERROR" "Failed to install $package."
         return 1
     fi

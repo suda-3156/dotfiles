@@ -152,6 +152,17 @@
   },
   "python.analysis.typeCheckingMode": "basic",
   "isort.args": ["--profile", "black"],
+  "[yaml]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced"
+  },
+  "[tex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "files.autoSave": "off"
+  },
 
   // ---------- copilot ----------
   "github.copilot.enable": {
