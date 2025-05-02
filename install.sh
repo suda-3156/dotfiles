@@ -5,11 +5,11 @@ INSTALLER_DIR="$(pwd)/install_scripts/"
 
 function setup_macOS() {
     echo "Setting up macOS..."
-    source "$INSTALLER_DIR/mac/init.sh"
+    source "$INSTALLER_DIR/macos/init.sh"
 
-    source "$INSTALLER_DIR/mac/links.sh"
+    source "$INSTALLER_DIR/macos/links.sh"
 
-    source "$INSTALLER_DIR/mac/settings.sh"
+    source "$INSTALLER_DIR/macos/settings.sh"
 }
 
 function setup_ubuntu() {

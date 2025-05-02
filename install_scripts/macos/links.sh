@@ -35,7 +35,7 @@ log "INFO" "Starting symlink creation for macOS..."
 
 # git config 
 create_symlink "$PJ_ROOT_DIR/.config/git" "$HOME/.config/git"
-if [[ command -v git &> /dev/null ]]; then
+if command -v git &> /dev/null; then
     git config --global include.path $HOME/.config/git/config_shared
     log "INFO" "Git config updated to include shared config."
 fi
@@ -50,7 +50,7 @@ create_symlink "$PJ_ROOT_DIR/.config/tmux/.tmux.conf" "$HOME/.tmux.conf"
 create_symlink "$PJ_ROOT_DIR/.config/vim/.vimrc" "$HOME/.vimrc"
 
 # zsh
-create_symlink "$PJ_ROOT_DIR/.config/zsh/.zshrc_mac" "$HOME/.zshrc"
+create_symlink "$PJ_ROOT_DIR/.config/zsh/.macos.zshrc" "$HOME/.zshrc"
 create_symlink "$PJ_ROOT_DIR/.config/zsh/.zshenv" "$HOME/.zshenv"
 mkdir -p "$HOME/.config/sheldon"
 create_symlink "$PJ_ROOT_DIR/.config/zsh/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
