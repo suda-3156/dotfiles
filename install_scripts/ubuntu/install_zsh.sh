@@ -10,7 +10,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/../utils/log.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/../utils/install.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/../utils/check.sh"
 
-PJROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
+PJ_ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 
 function install_misc() {
     log "INFO" "Installing Rust packages required for zsh ..."
@@ -53,8 +53,8 @@ else
     fi
 fi
 
-create_symlink "$PJROOT_DIR/.config/zsh/.zshrc_ubuntu" "$HOME/.zshrc"
-create_symlink "$PJROOT_DIR/.config/zsh/.zshenv" "$HOME/.zshenv"
+create_symlink "$PJ_ROOT_DIR/.config/zsh/.zshrc_ubuntu" "$HOME/.zshrc"
+create_symlink "$PJ_ROOT_DIR/.config/zsh/.zshenv" "$HOME/.zshenv"
 
 check_installed cargo_installed "cargo"
 if [[ $cargo_installed -eq 1 ]]; then
@@ -66,6 +66,7 @@ fi
 
 install_misc
 
+# TODO: 
 # use zsh as default shell
 # if ! grep -q "$(which zsh)" /etc/shells; then
 #     log "INFO" "Adding zsh to /etc/shells..."
@@ -75,5 +76,5 @@ install_misc
 # fi
 
 mkdir -p "$HOME/.config/sheldon"
-create_symlink "$PJROOT_DIR/.config/zsh/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
-create_symlink "$PJROOT_DIR/.config/zsh/starship.toml" "$HOME/.config/starship.toml"
+create_symlink "$PJ_ROOT_DIR/.config/zsh/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
+create_symlink "$PJ_ROOT_DIR/.config/zsh/starship.toml" "$HOME/.config/starship.toml"

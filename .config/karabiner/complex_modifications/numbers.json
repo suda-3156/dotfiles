@@ -1,5 +1,5 @@
 {
-  "title": "numbers",
+  "title": "Number keys",
   "rules": [
     {
       "description": "fn + wersdfxcv => 1 ~ 0 / jkl => `-=",
@@ -7,7 +7,7 @@
         {
           "from": {
             "key_code": "w",
-            "modifiers": { "mandatory": [ "fn" ], "optional": [ "shift" ] }
+            "modifiers": { "mandatory": ["fn"], "optional": ["shift"] }
           },
           "to": [
             {
@@ -19,7 +19,7 @@
         {
           "from": {
             "key_code": "e",
-            "modifiers": { "mandatory": [ "fn" ], "optional": [ "shift" ] }
+            "modifiers": { "mandatory": ["fn"], "optional": ["shift"] }
           },
           "to": [
             {
@@ -31,7 +31,7 @@
         {
           "from": {
             "key_code": "r",
-            "modifiers": { "mandatory": [ "fn" ], "optional": [ "shift" ] }
+            "modifiers": { "mandatory": ["fn"], "optional": ["shift"] }
           },
           "to": [
             {
@@ -43,7 +43,7 @@
         {
           "from": {
             "key_code": "s",
-            "modifiers": { "mandatory": [ "fn" ], "optional": [ "shift" ] }
+            "modifiers": { "mandatory": ["fn"], "optional": ["shift"] }
           },
           "to": [
             {
@@ -55,7 +55,7 @@
         {
           "from": {
             "key_code": "d",
-            "modifiers": { "mandatory": [ "fn" ], "optional": [ "shift" ] }
+            "modifiers": { "mandatory": ["fn"], "optional": ["shift"] }
           },
           "to": [
             {
@@ -67,7 +67,7 @@
         {
           "from": {
             "key_code": "f",
-            "modifiers": { "mandatory": [ "fn" ], "optional": [ "shift" ] }
+            "modifiers": { "mandatory": ["fn"], "optional": ["shift"] }
           },
           "to": [
             {
@@ -79,7 +79,7 @@
         {
           "from": {
             "key_code": "x",
-            "modifiers": { "mandatory": [ "fn" ], "optional": [ "shift" ] }
+            "modifiers": { "mandatory": ["fn"], "optional": ["shift"] }
           },
           "to": [
             {
@@ -91,7 +91,7 @@
         {
           "from": {
             "key_code": "c",
-            "modifiers": { "mandatory": [ "fn" ], "optional": [ "shift" ] }
+            "modifiers": { "mandatory": ["fn"], "optional": ["shift"] }
           },
           "to": [
             {
@@ -103,7 +103,7 @@
         {
           "from": {
             "key_code": "v",
-            "modifiers": { "mandatory": [ "fn" ], "optional": [ "shift" ] }
+            "modifiers": { "mandatory": ["fn"], "optional": ["shift"] }
           },
           "to": [
             {
@@ -115,7 +115,7 @@
         {
           "from": {
             "key_code": "spacebar",
-            "modifiers": { "mandatory": [ "fn" ], "optional": [ "shift" ] }
+            "modifiers": { "mandatory": ["fn"], "optional": ["shift"] }
           },
           "to": [
             {
@@ -127,7 +127,7 @@
         {
           "from": {
             "key_code": "j",
-            "modifiers": { "mandatory": [ "fn" ], "optional": [ "shift" ] }
+            "modifiers": { "mandatory": ["fn"], "optional": ["shift"] }
           },
           "to": [
             {
@@ -139,7 +139,7 @@
         {
           "from": {
             "key_code": "k",
-            "modifiers": { "mandatory": [ "fn" ], "optional": [ "shift" ] }
+            "modifiers": { "mandatory": ["fn"], "optional": ["shift"] }
           },
           "to": [
             {
@@ -151,7 +151,7 @@
         {
           "from": {
             "key_code": "l",
-            "modifiers": { "mandatory": [ "fn" ], "optional": [ "shift" ] }
+            "modifiers": { "mandatory": ["fn"], "optional": ["shift"] }
           },
           "to": [
             {

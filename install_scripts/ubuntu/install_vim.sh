@@ -6,7 +6,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/../utils/log.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/../utils/install.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/../utils/check.sh"
 
-PJROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
+PJ_ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 
 log "INFO" "Starting Vim installation..."
 
@@ -27,11 +27,12 @@ else
     fi
 fi
 
-create_symlink "$PJROOT_DIR/.config/vim/.vimrc" "$HOME/.vimrc"
+create_symlink "$PJ_ROOT_DIR/.config/vim/.vimrc" "$HOME/.vimrc"
 
-update-alternatives --set editor /usr/bin/vim.basic
-if [[ $? -eq 0 ]]; then
-    log "INFO" "Successfully set Vim as the default editor."
-else
-    log "WORN" "Failed to set Vim as the default editor."
-fi
+# TODO:
+# update-alternatives --set editor /usr/bin/vim.basic
+# if [[ $? -eq 0 ]]; then
+#     log "INFO" "Successfully set Vim as the default editor."
+# else
+#     log "WARN" "Failed to set Vim as the default editor."
+# fi

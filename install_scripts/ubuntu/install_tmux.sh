@@ -6,7 +6,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/../utils/log.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/../utils/install.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/../utils/check.sh"
 
-PJROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
+PJ_ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 
 log "INFO" "Starting Tmux installation..."
 
@@ -24,5 +24,5 @@ else
     fi
 fi
 
-create_symlink "$PJROOT_DIR/.config/tmux/.tmux.conf" "$HOME/.tmux.conf"
+create_symlink "$PJ_ROOT_DIR/.config/tmux/.tmux.conf" "$HOME/.tmux.conf"
 log "INFO" "Tmux configuration set up successfully."
