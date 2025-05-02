@@ -4,11 +4,6 @@
 
 set -eu
 
-echo $BASH_VERSION | grep -qE '^[4-9]\.' || {
-    echo "This script requires Bash 4 or newer."
-    exit 1
-}
-
 if [[ "$(uname)" != "Darwin" ]] ; then
     log "ERROR" "This script is intended to be run on macOS only."
     exit 1

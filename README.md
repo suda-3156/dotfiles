@@ -3,6 +3,7 @@
 ## TODO
 
 - mac defaults command (`settings.sh`)
+- vscode extension install script
 
 - nvim-ts-autotag
 - nvim install for Ubuntu
