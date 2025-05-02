@@ -2,17 +2,36 @@
 
 ## TODO
 
-- nvim-ts-autotag
-- nvim install
-- zsh chsh -s /usr/bin/zsh ??
-- local ssh ( for temporal use ) ??
-- macの場合のみ、source .cargoをしない様にする
+- mac defaults command (`settings.sh`)
+- github workflow
+- update `install.sh` for macOS and Ubuntu
 
-## fonts
+- nvim-ts-autotag
+- nvim install for Ubuntu
+- zsh chsh -s /usr/bin/zsh ??
+- ssh?
+
+## Fonts
 
 - [Moralerspace](https://github.com/yuru7/moralerspace)
 
-## memo
+## Note
 
-- `brew install bash` 
+These configurations need to be installed individually by executing each `setup.sh` script.
 
+- VSCode
+- Karabiner Elements
+
+## Homebrew
+
+I didn’t install these apps using Homebrew this time, but I will next time.
+
+- Raycast
+- Docker
+- VSCode
+- Obsidian
+- AppCleaner
+- KeyboardCleanTool
+- discord
+- postman
+- firefox

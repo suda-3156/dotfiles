@@ -6,7 +6,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/../utils/log.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/../utils/install.sh"
 source "$(dirname "${BASH_SOURCE[0]}")/../utils/check.sh"
 
-PJROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
+PJ_ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 
 check_installed nvim_installed "luarocks"
 if [[ $nvim_installed -eq 1 ]]; then
@@ -36,6 +36,6 @@ else
     fi
 fi
 
-create_symlink "$PJROOT_DIR/.config/nvim" "$HOME/.config/nvim"
+create_symlink "$PJ_ROOT_DIR/.config/nvim" "$HOME/.config/nvim"
 
 log "WARN" "Need to install nvim manually"

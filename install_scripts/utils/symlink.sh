@@ -8,8 +8,8 @@
 #   create_symlink target link_name
 # Example:
 #   source "$(dirname $0)/symlink.sh"
-#   PJROOT_DIR=$(cd "$(dirname $0)/../.." && pwd)
-#   create_symlink "$PJROOT_DIR/.config/brew" "$HOME/dots/brew"
+#   PJ_ROOT_DIR=$(cd "$(dirname $0)/../.." && pwd)
+#   create_symlink "$PJ_ROOT_DIR/.config/brew" "$HOME/dots/brew"
 
 set -eu
 

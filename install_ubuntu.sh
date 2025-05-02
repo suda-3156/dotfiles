@@ -14,7 +14,6 @@ if [[ ! -d "$INSTALLER_DIR" ]]; then
 fi
 
 source "$INSTALLER_DIR/utils/up.sh"
-update
 upgrade
 
 # Install

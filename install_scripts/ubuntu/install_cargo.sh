@@ -19,8 +19,12 @@ function install_cargo () {
         exit 1
     fi
 
-    PS1=""  # 一時的に定義
+    PS1=""  # To avoid "PS1: unbound variable" error
     source ~/.bashrc
+    if [[ $? -ne 0 ]]; then
+        log "ERROR" "Failed to source .bashrc."
+        exit 1
+    fi
 
     log "INFO" "Rust installation completed successfully. $(cargo --version)"
 }

@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# update, upgrade
-# WIP
-
 set -eu
 
 source "$(dirname "${BASH_SOURCE[0]}")/log.sh"
