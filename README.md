@@ -36,3 +36,10 @@ I didn’t install these apps using Homebrew this time, but I will next time.
 - Postman
 - Firefox
 - Clipy
+
+## TODO
+
+- git configurations
+- ssh
+    - github?
+
