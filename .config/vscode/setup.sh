@@ -30,3 +30,15 @@ else
     echo "ERROR: Failed to create symlink: $PJ_ROOT_DIR/.config/vscode/settings.json -> $LINK_PATH/settings.json"
     exit 1
 fi
+
+# Install Extensions
+if [ "$(which "code")" != "" ]; then
+  echo "INFO: Installing extensions to vscode..."
+  cat < "$PJ_ROOT_DIR/.config/vscode/extensions" | while read -r line
+  do
+    code --install-extension "$line"
+  done
+else
+  echo "ERROR: Code command not found"
+fi
+
