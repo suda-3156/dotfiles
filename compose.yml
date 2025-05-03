@@ -1,0 +1,10 @@
+services:
+  ubuntu:
+    container_name: dotfiles_ubuntu
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/root/dotfiles
