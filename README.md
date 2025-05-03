@@ -9,7 +9,6 @@
 - nvim install for Ubuntu
 - zsh chsh -s /usr/bin/zsh ??
 - ssh?
-- colorize log
 
 ## Fonts
 
