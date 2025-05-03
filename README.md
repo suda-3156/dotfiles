@@ -3,11 +3,7 @@
 ## TODO
 
 - mac defaults command (`settings.sh`)
-- vscode extension install script
 
-- nvim-ts-autotag
-- nvim install for Ubuntu
-- zsh chsh -s /usr/bin/zsh ??
 - ssh?
 
 ## Fonts
@@ -41,4 +37,10 @@ I didn’t install these apps using Homebrew this time, but I will next time.
 - git configurations
 - ssh
     - github?
+
+### Ubuntu
+
+When installing on Ubuntu, you need to install Neovim manually because there are several ways to do so. See below.
+
+[Neovim Install.md](https://github.com/neovim/neovim/blob/master/INSTALL.md#linux)
 
