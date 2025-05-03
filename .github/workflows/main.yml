@@ -35,7 +35,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Dotfiles
-        run: |
-          sudo chmod +x ./install.sh
-          sudo ./install.sh
+      # - name: Setup Dotfiles
+      #   run: |
+      #     sudo chmod +x ./install.sh
+      #     sudo ./install.sh
+
+      - name: Setup docker buildx
+        uses: docker/setup-buildx-action@v3
+      
+      - name: Build docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile
+          push: false
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
