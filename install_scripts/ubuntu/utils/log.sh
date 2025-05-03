@@ -42,9 +42,21 @@ function log() {
     local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
 
     declare -A levels=(["DEBUG"]=10 ["INFO"]=20 ["WARN"]=30 ["ERROR"]=40)
-    
+    declare -A colors=(
+        ["DEBUG"]="\033[0;37m"   # Gray
+        ["INFO"]="\033[0;34m"    # Blue
+        ["WARN"]="\033[0;33m"    # Yellow
+        ["ERROR"]="\033[0;31m"   # Red
+    )
+    local reset="\033[0m"
+
     if [[ ${levels[$level]} -ge ${levels[$LOG_LEVEL]} ]]; then
-        echo "$timestamp [$level] $message" | tee -a $LOG_OUT
+        local colored_level="${colors[$level]}[$level]${reset}"
+        local colored_log="$timestamp $colored_level $message"
+        local plain_log="$timestamp [$level] $message"
+
+        echo -e "$colored_log"   # 色付きでコンソール出力
+        echo "$plain_log" >> "$LOG_OUT"  # 色なしでファイル出力
     fi
 }
 
