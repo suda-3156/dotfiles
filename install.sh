@@ -9,7 +9,8 @@ function setup_macOS() {
 
     source "$INSTALLER_DIR/macos/links.sh"
 
-    source "$INSTALLER_DIR/macos/settings.sh"
+    echo "TODO: if you want, execute ininstall_scripts/macos/settings.sh manually"
+    # source "$INSTALLER_DIR/macos/settings.sh"
 }
 
 function setup_ubuntu() {
