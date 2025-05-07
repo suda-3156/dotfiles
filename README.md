@@ -1,11 +1,5 @@
 # dotfiles
 
-## TODO
-
-- mac defaults command (`settings.sh`)
-
-- ssh?
-
 ## Fonts
 
 - [Moralerspace](https://github.com/yuru7/moralerspace)
