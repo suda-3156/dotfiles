@@ -34,5 +34,3 @@ cask "dbeaver-community"
 cask "google-cloud-sdk"
 cask "iterm2"
 cask "mactex-no-gui"
-cask "the-unarchiver"
-
