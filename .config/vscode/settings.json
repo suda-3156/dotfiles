@@ -180,7 +180,7 @@
   "notebook.output.fontSize": 14,
 
   // ---------- explorer and editor ----------
-  "workbench.colorTheme": "Nord",
+  "workbench.colorTheme": "GitHub Light Default",
   "workbench.tree.indent": 15,
   "workbench.iconTheme": "material-icon-theme",
 
