@@ -148,13 +148,11 @@ defaults write -g com.apple.trackpad.scaling 3
 # Mouse speed
 defaults write -g com.apple.mouse.scaling 0.5
 
-# TODO:
 # Decrease keyboard initial delay
-# defaults write -g InitialKeyRepeat -int 15
+defaults write -g InitialKeyRepeat -int 15
 
-# TODO:
 # Decrease keyboard repeat rate
-# defaults write -g KeyRepeat -int 6
+defaults write -g KeyRepeat -int 7
 
 # Use the Fn key as a standard function key
 defaults write -g com.apple.keyboard.fnState -bool true
