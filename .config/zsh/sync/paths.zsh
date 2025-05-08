@@ -8,3 +8,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # pyenv
 eval "$(pyenv init --path)"
+
+# go
+export PATH="$PATH:$(go env GOPATH)/bin"
