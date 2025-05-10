@@ -4,6 +4,13 @@
 
 - [Moralerspace](https://github.com/yuru7/moralerspace)
 
+```sh
+curl -LO https://github.com/yuru7/moralerspace/releases/download/v1.1.0/MoralerspaceHWNF_v1.1.0.zip # check the latest release
+unzip MoralerspaceHWNF_v1.1.0.zip
+mv MoralerspaceHWNF_v1.1.0 ~/.fonts
+fc-cache -fv
+```
+
 ## Note
 
 These configurations need to be installed individually by executing each `setup.sh` script.
