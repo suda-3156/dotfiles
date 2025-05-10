@@ -11,7 +11,7 @@ $python\
 $character"""
 
 [directory]
-style = "bright-blue"
+style = "blue"
 
 [character]
 success_symbol = "[❯](purple)"
@@ -44,5 +44,3 @@ style = "yellow"
 [python]
 format = "[$virtualenv]($style) "
 style = "bright-black"
-
-
