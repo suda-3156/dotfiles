@@ -11,6 +11,12 @@ mv MoralerspaceHWNF_v1.1.0 ~/.fonts
 fc-cache -fv
 ```
 
+I prefer the `Terminus` font in console mode.
+
+```sh
+sudo dpkg-reconfigure console-setup
+```
+
 ## Note
 
 These configurations need to be installed individually by executing each `setup.sh` script.
