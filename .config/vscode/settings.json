@@ -180,7 +180,7 @@
   "notebook.output.fontSize": 14,
 
   // ---------- explorer and editor ----------
-  "workbench.colorTheme": "Nord",
+  "workbench.colorTheme": "Night Owl Light (No Italics)",
   "workbench.tree.indent": 15,
   "workbench.iconTheme": "material-icon-theme",
 
