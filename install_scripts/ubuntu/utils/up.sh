@@ -6,7 +6,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/log.sh"
 
 update() {
     log "INFO" "Starting apt update"
-    apt-get update 2>&1 | while IFS= read -r line; do
+    sudo apt-get update 2>&1 | while IFS= read -r line; do
         log "DEBUG" "$line"
     done
     if [[ ${PIPESTATUS[0]} -eq 0 ]]; then
@@ -19,7 +19,7 @@ update() {
 upgrade() {
     log "INFO" "Starting apt upgrade"
     update
-    apt-get upgrade -y 2>&1 | while IFS= read -r line; do
+    sudo apt-get upgrade -y 2>&1 | while IFS= read -r line; do
         log "DEBUG" "$line"
     done
     if [[ ${PIPESTATUS[0]} -eq 0 ]]; then

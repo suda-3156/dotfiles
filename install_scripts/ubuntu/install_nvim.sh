@@ -8,13 +8,6 @@ source "$(dirname "${BASH_SOURCE[0]}")/utils/check.sh"
 
 PJ_ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 
-# sudo で実行される場合、$HOMEは/rootになるため、$SUDO_USERを使ってユーザーのHOMEを取得する
-if [[ -n "${SUDO_USER:-}" ]]; then
-    USER_HOME=$(eval echo "~$SUDO_USER")
-else
-    USER_HOME="$HOME"
-fi
-
 check_installed nvim_installed "luarocks"
 if [[ $nvim_installed -eq 1 ]]; then
     log "INFO" "Luarocks is already installed."
@@ -43,6 +36,6 @@ else
     fi
 fi
 
-create_symlink "$PJ_ROOT_DIR/.config/nvim" "$USER_HOME/.config/nvim"
+create_symlink "$PJ_ROOT_DIR/.config/nvim" "$HOME/.config/nvim"
 
 log "WARN" "Need to install nvim manually"

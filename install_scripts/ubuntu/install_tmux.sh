@@ -8,13 +8,6 @@ source "$(dirname "${BASH_SOURCE[0]}")/utils/check.sh"
 
 PJ_ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 
-# sudo で実行される場合、$HOMEは/rootになるため、$SUDO_USERを使ってユーザーのHOMEを取得する
-if [[ -n "${SUDO_USER:-}" ]]; then
-    USER_HOME=$(eval echo "~$SUDO_USER")
-else
-    USER_HOME="$HOME"
-fi
-
 log "INFO" "Starting Tmux installation..."
 
 check_installed tmux_insatlled "tmux"
@@ -31,5 +24,5 @@ else
     fi
 fi
 
-create_symlink "$PJ_ROOT_DIR/.config/tmux/.tmux.conf" "$USER_HOME/.tmux.conf"
+create_symlink "$PJ_ROOT_DIR/.config/tmux/.tmux.conf" "$HOME/.tmux.conf"
 log "INFO" "Tmux configuration set up successfully."

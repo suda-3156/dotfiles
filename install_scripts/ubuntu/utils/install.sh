@@ -14,7 +14,7 @@ function apt_install() {
         return 1
     fi
 
-    realtime_log "apt-get install -y $package"
+    realtime_log "sudo apt-get install -y $package"
     if [[ ! ${PIPESTATUS[0]} -eq 0 ]]; then
         log "ERROR" "Failed to install $package."
         return 1

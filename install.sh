@@ -14,6 +14,8 @@ function setup_macOS() {
 }
 
 function setup_ubuntu() {
+    sudo -v
+
     echo "Setting up Ubuntu..."
     source "$INSTALLER_DIR/ubuntu/utils/up.sh"
     upgrade
