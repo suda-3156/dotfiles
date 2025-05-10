@@ -12,6 +12,13 @@ source "$(dirname "${BASH_SOURCE[0]}")/utils/check.sh"
 
 PJ_ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 
+# sudo で実行される場合、$HOMEは/rootになるため、$SUDO_USERを使ってユーザーのHOMEを取得する
+if [[ -n "${SUDO_USER:-}" ]]; then
+    USER_HOME=$(eval echo "~$SUDO_USER")
+else
+    USER_HOME="$HOME"
+fi
+
 function install_misc() {
     log "INFO" "Installing Rust packages required for zsh ..."
 
@@ -53,8 +60,8 @@ else
     fi
 fi
 
-create_symlink "$PJ_ROOT_DIR/.config/zsh/.ubuntu.zshrc" "$HOME/.zshrc"
-create_symlink "$PJ_ROOT_DIR/.config/zsh/.zshenv" "$HOME/.zshenv"
+create_symlink "$PJ_ROOT_DIR/.config/zsh/.ubuntu.zshrc" "$USER_HOME/.zshrc"
+create_symlink "$PJ_ROOT_DIR/.config/zsh/.zshenv" "$USER_HOME/.zshenv"
 
 check_installed cargo_installed "cargo"
 if [[ $cargo_installed -eq 1 ]]; then
@@ -76,5 +83,5 @@ install_misc
 # fi
 
 mkdir -p "$HOME/.config/sheldon"
-create_symlink "$PJ_ROOT_DIR/.config/zsh/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
-create_symlink "$PJ_ROOT_DIR/.config/zsh/starship.toml" "$HOME/.config/starship.toml"
+create_symlink "$PJ_ROOT_DIR/.config/zsh/plugins.toml" "$USER_HOME/.config/sheldon/plugins.toml"
+create_symlink "$PJ_ROOT_DIR/.config/zsh/starship.toml" "$USER_HOME/.config/starship.toml"
