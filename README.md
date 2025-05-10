@@ -43,7 +43,7 @@ I didn’t install these apps using Homebrew this time, but I will next time.
 
 - git configurations
 - ssh
-    - github?
+  - github?
 
 ### Ubuntu
 
@@ -51,3 +51,9 @@ When installing on Ubuntu, you need to install Neovim manually because there are
 
 [Neovim Install.md](https://github.com/neovim/neovim/blob/master/INSTALL.md#linux)
 
+If you're in console mode or haven't installed a Nerd Font, you can use the Plain Text Symbols preset with Starship:
+
+```sh
+cd ~/dotfiles/.config/zsh
+starship preset plain-text-symbols -o ./starship.toml
+```
