@@ -41,9 +41,14 @@ I didn’t install these apps using Homebrew this time, but I will next time.
 
 ## TODO
 
-- git configurations
-- ssh
-  - github?
+- git config
+
+```sh
+git config --global user.name <Username>
+git config --global user.email <Mail address> 
+```
+
+- ssh connection to github
 
 ### Ubuntu
 
@@ -57,3 +62,4 @@ If you're in console mode or haven't installed a Nerd Font, you can use the Plai
 cd ~/dotfiles/.config/zsh
 starship preset plain-text-symbols -o ./starship.toml
 ```
+
