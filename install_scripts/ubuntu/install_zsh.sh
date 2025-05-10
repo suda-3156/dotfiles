@@ -66,14 +66,8 @@ fi
 
 install_misc
 
-# TODO: 
 # use zsh as default shell
-# if ! grep -q "$(which zsh)" /etc/shells; then
-#     log "INFO" "Adding zsh to /etc/shells..."
-#     log "INFO" "$(which zsh)" | sudo tee -a /etc/shells
-# else
-#     log "INFO" "zsh is already in /etc/shells."
-# fi
+chsh -s $(which zsh)
 
 mkdir -p "$HOME/.config/sheldon"
 create_symlink "$PJ_ROOT_DIR/.config/zsh/plugins.toml" "$HOME/.config/sheldon/plugins.toml"

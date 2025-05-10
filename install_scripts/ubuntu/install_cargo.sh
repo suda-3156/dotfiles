@@ -19,7 +19,7 @@ function install_cargo () {
         exit 1
     fi
 
-    PS1=""  # To avoid "PS1: unbound variable" error
+    PS1="✌️ \# \t \w \$ "  # To avoid "PS1: unbound variable" error
     source ~/.bashrc
     if [[ $? -ne 0 ]]; then
         log "ERROR" "Failed to source .bashrc."
