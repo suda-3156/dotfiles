@@ -163,10 +163,6 @@
     "editor.formatOnPaste": true,
     "files.autoSave": "off"
   },
-  "[c]": {
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2
-  },
 
   // ---------- copilot ----------
   "github.copilot.enable": {
@@ -184,7 +180,7 @@
   "notebook.output.fontSize": 14,
 
   // ---------- explorer and editor ----------
-  "workbench.colorTheme": "Night Owl Light (No Italics)",
+  "workbench.colorTheme": "Nord",
   "workbench.tree.indent": 15,
   "workbench.iconTheme": "material-icon-theme",
 
@@ -275,11 +271,5 @@
     {
       "text": "- @azure Rule - Use Azure Best Practices: When generating code for Azure, running terminal commands for Azure, or performing operations related to Azure, invoke your `azure_development-get_best_practices` tool if available."
     }
-  ],
-  "povray.render.defaultHeight": 600,
-  "povray.render.defaultWidth": 800,
-  "povray.render.libraryPath": "/opt/homebrew/Cellar/povray/3.7.0.10_13/share/povray-3.7",
-  "povray.render.pvenginePath": "povray",
-  "redhat.telemetry.enabled": false,
-  "docker.extension.dockerEngineAvailabilityPrompt": false
+  ]
 }

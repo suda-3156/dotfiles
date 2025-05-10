@@ -8,13 +8,6 @@ source "$(dirname "${BASH_SOURCE[0]}")/utils/check.sh"
 
 PJ_ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 
-# sudo で実行される場合、$HOMEは/rootになるため、$SUDO_USERを使ってユーザーのHOMEを取得する
-if [[ -n "${SUDO_USER:-}" ]]; then
-    USER_HOME=$(eval echo "~$SUDO_USER")
-else
-    USER_HOME="$HOME"
-fi
-
 log "INFO" "Starting Vim installation..."
 
 log "INFO" "Setting non-interactive mode for apt-get..."
@@ -34,7 +27,7 @@ else
     fi
 fi
 
-create_symlink "$PJ_ROOT_DIR/.config/vim/.vimrc" "$USER_HOME/.vimrc"
+create_symlink "$PJ_ROOT_DIR/.config/vim/.vimrc" "$HOME/.vimrc"
 
 # TODO:
 # update-alternatives --set editor /usr/bin/vim.basic
