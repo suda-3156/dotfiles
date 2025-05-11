@@ -1,5 +1,7 @@
 # dotfiles
 
+For my own use.
+
 ## Fonts
 
 - [Moralerspace](https://github.com/yuru7/moralerspace)
