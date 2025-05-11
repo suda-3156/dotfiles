@@ -14,13 +14,13 @@ function install_cargo () {
         log "ERROR" "Failed to install package: cargo"
     fi
 
-    if ! . "$HOME/.cargo/env"; then
+    if ! source "$HOME/.cargo/env"; then
         log "ERROR" "Failed to source cargo environment."
         exit 1
     fi
 
-    PS1="✌️ \# \t \w \$ "  # To avoid "PS1: unbound variable" error
-    source ~/.bashrc
+    PS1=""  # To avoid "PS1: unbound variable" error
+    source "$HOME/.bashrc"
     if [[ $? -ne 0 ]]; then
         log "ERROR" "Failed to source .bashrc."
         exit 1

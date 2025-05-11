@@ -8,7 +8,6 @@ WORKDIR /root
 COPY . ./dotfiles
 
 RUN chmod +x ./dotfiles/install.sh
-# CMD ["bash", "-c", "cd dotfiles && ./install.sh"]
 RUN bash -c "cd dotfiles && ./install.sh"
 
 # Check if installation was successful
@@ -16,5 +15,7 @@ RUN which tmux
 RUN which zsh
 RUN which git
 RUN which curl
+RUN which vim
 
 CMD ["echo", "Setup process finished successfully!"]
+

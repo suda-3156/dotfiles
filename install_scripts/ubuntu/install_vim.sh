@@ -11,7 +11,6 @@ PJ_ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 log "INFO" "Starting Vim installation..."
 
 log "INFO" "Setting non-interactive mode for apt-get..."
-export DEBIAN_FRONTEND=noninteractive
 
 check_installed vim_installed "vim"
 if [[ $vim_installed -eq 1 ]]; then
