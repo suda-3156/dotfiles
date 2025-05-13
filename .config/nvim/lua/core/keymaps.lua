@@ -118,8 +118,14 @@ vim.keymap.set('n', 'M', '%', opts)
 vim.keymap.set({ 'n', 'v' }, '<A-S-k>', '<Cmd>copy-1<CR>', opts)
 vim.keymap.set({ 'n', 'v' }, '<A-S-j>', '<Cmd>copy.<CR>', opts)
 
-vim.keymap.set({ 'n', 'v' }, '<Space>l', '$', opts)
-vim.keymap.set({ 'n', 'v' }, '<Space>h', '^', opts)
-
 vim.keymap.set('n', '<Space>o', 'o<Esc>', opts)
 vim.keymap.set('n', '<Space>O', 'O<Esc>', opts)
+
+-- Emacs
+vim.keymap.set('i', '<C-a>', '<Home>', opts)
+vim.keymap.set('i', '<C-e>', '<End>', opts)
+vim.keymap.set('i', '<C-b>', '<Left>', opts)
+vim.keymap.set('i', '<C-f>', '<Right>', opts)
+vim.keymap.set('i', '<M-b>', '<C-Left>', opts)
+vim.keymap.set('i', '<M-f>', '<C-Right>', opts)
+
