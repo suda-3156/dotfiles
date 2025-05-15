@@ -161,7 +161,8 @@
     "editor.defaultFormatter": "James-Yu.latex-workshop",
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    "files.autoSave": "off"
+    "files.autoSave": "off",
+    "editor.tabSize": 2
   },
 
   // ---------- copilot ----------
@@ -180,7 +181,7 @@
   "notebook.output.fontSize": 14,
 
   // ---------- explorer and editor ----------
-  "workbench.colorTheme": "Night Owl Light (No Italics)",
+  "workbench.colorTheme": "Ayu Light Bordered",
   "workbench.tree.indent": 15,
   "workbench.iconTheme": "material-icon-theme",
 
