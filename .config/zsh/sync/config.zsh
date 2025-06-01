@@ -15,6 +15,7 @@ setopt hist_expire_dups_first   # HISTFILEのサイズがHISTSIZEを超える場
 #################################  COMPLEMENT  #################################
 
 # enable completion
+autoload -Uz compinit; compinit
 autoload -Uz colors; colors
 
 # Tabで選択できるように
