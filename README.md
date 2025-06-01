@@ -52,6 +52,13 @@ git config --global user.email <Mail address>
 
 - ssh connection to github
 
+- git-secrets
+
+```sh 
+git secrets --install ~/.git-templates/git-secrets
+git config --global init.templatedir '~/.git-templates/git-secrets'
+```
+
 ### Ubuntu
 
 When installing on Ubuntu, you need to install Neovim manually because there are several ways to do so. See below.
