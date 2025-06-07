@@ -17,6 +17,7 @@
 !plugins.toml
 !*.lua
 !*.json
+lazy-lock.json
 !*.vim
 !.stylua.toml
 !.vimrc
