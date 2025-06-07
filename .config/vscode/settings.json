@@ -133,7 +133,9 @@
   },
   "[go]": {
     "editor.tabSize": 4,
-    "editor.detectIndentation": false
+    "editor.detectIndentation": false,
+    "editor.defaultFormatter": "golang.go",
+    "editor.formatOnSave": true
   },
   "makefile.configureOnOpen": true,
   "[javascript]": {
@@ -288,5 +290,6 @@
   "[swift]": {
     "editor.tabSize": 4
   },
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "git.openRepositoryInParentFolders": "always"
 }
