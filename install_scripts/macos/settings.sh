@@ -34,7 +34,9 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
 # Add dns servers to the network configuration
 # To check `networksetup` dns settings, run: `networksetup -getdnsservers "Wi-Fi"`
-networksetup -setdnsservers Wi-Fi 2001:4860:4860::8844 2001:4860:4860::8888 8.8.4.4 8.8.8.8
+# This setting may sometimes prevent desired connections,
+# such as failing to connect to certain servers or Wi-Fi networks.
+# networksetup -setdnsservers Wi-Fi 2001:4860:4860::8844 2001:4860:4860::8888 8.8.4.4 8.8.8.8
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
