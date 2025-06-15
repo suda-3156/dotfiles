@@ -7,6 +7,7 @@ bradlc.vscode-tailwindcss
 cocopon.iceberg-theme
 dbaeumer.vscode-eslint
 docker.docker
+donjayamanne.githistory
 dracula-theme.theme-dracula
 dsznajder.es7-react-js-snippets
 eamodio.gitlens
@@ -21,10 +22,14 @@ github.github-vscode-theme
 github.vscode-github-actions
 github.vscode-pull-request-github
 golang.go
+graphql.vscode-graphql
+graphql.vscode-graphql-syntax
 gruntfuggly.todo-tree
 hediet.vscode-drawio
 james-yu.latex-workshop
+jmaxwilson.vscode-povray
 kevinrose.vsc-python-indent
+llvm-vs-code-extensions.lldb-dap
 mhutchie.git-graph
 ms-azure-load-testing.microsoft-testing
 ms-azuretools.azure-dev
@@ -36,8 +41,8 @@ ms-azuretools.vscode-azureresourcegroups
 ms-azuretools.vscode-azurestaticwebapps
 ms-azuretools.vscode-azurestorage
 ms-azuretools.vscode-azurevirtualmachines
+ms-azuretools.vscode-containers
 ms-azuretools.vscode-cosmosdb
-ms-azuretools.vscode-docker
 ms-ceintl.vscode-language-pack-ja
 ms-dotnettools.vscode-dotnet-runtime
 ms-python.black-formatter
@@ -52,6 +57,7 @@ ms-vscode.cpptools-extension-pack
 ms-vscode.cpptools-themes
 ms-vscode.makefile-tools
 ms-vscode.vscode-node-azure-pack
+ms-windows-ai-studio.windows-ai-studio
 njpwerner.autodocstring
 octref.vetur
 pkief.material-icon-theme
@@ -63,9 +69,14 @@ rvest.vs-code-prettier-eslint
 sdras.night-owl
 sdras.vue-vscode-snippets
 shd101wyy.markdown-preview-enhanced
+sweetpad.sweetpad
+swiftlang.swift-vscode
 takumii.markdowntable
 tamasfe.even-better-toml
 teabyii.ayu
+teamsdevapp.vscode-ai-foundry
+vadimcn.vscode-lldb
+virtual-whirlwind.vscode-povray2
 visualstudioexptteam.intellicode-api-usage-examples
 visualstudioexptteam.vscodeintellicode
 vscjava.vscode-gradle
