@@ -183,7 +183,7 @@
   "notebook.output.fontSize": 14,
 
   // ---------- explorer and editor ----------
-  "workbench.colorTheme": "Night Owl Light (No Italics)",
+  "workbench.colorTheme": "Ayu Mirage Bordered",
   "workbench.tree.indent": 15,
   "workbench.iconTheme": "material-icon-theme",
 
