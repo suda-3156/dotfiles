@@ -131,13 +131,6 @@
     "editor.tabSize": 2,
     "editor.detectIndentation": false
   },
-  "[go]": {
-    "editor.tabSize": 4,
-    "editor.detectIndentation": false,
-    "editor.defaultFormatter": "golang.go",
-    "editor.formatOnSave": true
-  },
-  "makefile.configureOnOpen": true,
   "[javascript]": {
     "editor.tabSize": 2
   },
@@ -154,11 +147,21 @@
   },
   "python.analysis.typeCheckingMode": "basic",
   "isort.args": ["--profile", "black"],
+  "[go]": {
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
+    "editor.defaultFormatter": "golang.go",
+    "editor.formatOnSave": true
+  },
   "[yaml]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
     "editor.autoIndent": "advanced"
   },
+  "[graphql]": {
+    "editor.tabSize": 4
+  },
+  "makefile.configureOnOpen": true,
   "[tex]": {
     "editor.defaultFormatter": "James-Yu.latex-workshop",
     "editor.formatOnSave": true,
@@ -183,7 +186,7 @@
   "notebook.output.fontSize": 14,
 
   // ---------- explorer and editor ----------
-  "workbench.colorTheme": "Ayu Mirage Bordered",
+  "workbench.colorTheme": "GitHub Light Default",
   "workbench.tree.indent": 15,
   "workbench.iconTheme": "material-icon-theme",
 
@@ -291,5 +294,6 @@
     "editor.tabSize": 4
   },
   "workbench.startupEditor": "none",
-  "git.openRepositoryInParentFolders": "always"
+  "git.openRepositoryInParentFolders": "always",
+  "go.toolsManagement.autoUpdate": true
 }
