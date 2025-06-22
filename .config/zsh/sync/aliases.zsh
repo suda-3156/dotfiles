@@ -47,7 +47,7 @@ abbr -S -q t='tmux'
 abbr -S -q tt='tmux a -t'
 abbr -S -q tn='tmux new -s'
 abbr -S -q tl='tmux ls'
-abbr -S -q ta='tmux a -t'
+abbr -S -q ta='tmux a'
 
 abbr -S -q ghcr='gh repo create % --private --add-readme -c'
 abbr -S -q ghmrr='gh repo create % --private --push -s .'
