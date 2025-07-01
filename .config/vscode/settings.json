@@ -166,8 +166,15 @@
     "editor.defaultFormatter": "James-Yu.latex-workshop",
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    "files.autoSave": "off",
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "files.autoSave": "off"
+  },
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.tabSize": 2,
+    "files.autoSave": "off"
   },
 
   // ---------- copilot ----------
@@ -175,7 +182,9 @@
     "*": true,
     "plaintext": false,
     "markdown": false,
-    "scminput": false
+    "scminput": false,
+    "latex": false,
+    "tex": false
   },
 
   // ---------- terminal, preview ----------
