@@ -122,6 +122,28 @@
     }
   ],
 
+  "latex-workshop.formatting.latexindent.path": "latexindent",
+  "latex-workshop.formatting.latexindent.args": [
+    "%TMPFILE%",
+    "-c=%DIR%/",
+    "-y=defaultIndent: '%INDENT%'"
+  ],
+  "latex-workshop.formatting.tex-fmt.args": [
+    "%TMPFILE%",
+    "-c=%DIR%/",
+    "-y=defaultIndent: '%INDENT%'"
+  ],
+
+  "latex-workshop.linting.chktex.exec.path": "chktex",
+  "latex-workshop.linting.chktex.exec.args": [
+      "-wall",
+      "-n22",
+      "-n30",
+      "-e16",
+      "-q"
+  ],
+  "latex-workshop.linting.lacheck.exec.path": "lacheck",
+  
   // ---------- language preferences ----------
   "[typescript]": {
     "editor.tabSize": 2,
@@ -185,9 +207,21 @@
   "[latex]": {
     "editor.defaultFormatter": "James-Yu.latex-workshop",
     "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
     "editor.tabSize": 2,
     "files.autoSave": "off"
+  },
+  "[java]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "redhat.java",
+    "editor.tabSize": 4,
+  },
+  "[kotlin]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "fwcd.kotlin",
+    "editor.tabSize": 4,
+  },
+  "[swift]": {
+    "editor.tabSize": 4
   },
 
   // ---------- copilot ----------
@@ -195,6 +229,8 @@
     "*": true,
     "plaintext": false,
     "markdown": false,
+    "latex": false,
+    "tex": false,
     "scminput": false
   },
 
@@ -206,7 +242,7 @@
   "notebook.output.fontSize": 14,
 
   // ---------- explorer and editor ----------
-  "workbench.colorTheme": "GitHub Light Default",
+  "workbench.colorTheme": "Ayu Mirage Bordered",
   "workbench.tree.indent": 15,
   "workbench.iconTheme": "material-icon-theme",
 
@@ -289,7 +325,11 @@
     }
   },
 
-  // ---------- azure ----------
+  // ---------- other ----------
+  "workbench.startupEditor": "none",
+  "git.openRepositoryInParentFolders": "always",
+  "go.toolsManagement.autoUpdate": true,
+  "github.copilot.nextEditSuggestions.enabled": true,
   "@azure.argTenant": "",
   "github.copilot.chat.codeGeneration.instructions": [
     {
@@ -307,11 +347,5 @@
     {
       "text": "- @azure Rule - Use Azure SWA Best Practices: When working with static web apps, invoke your `azure_development-get_swa_best_practices` tool if available. Only call this tool when you are sure the user is discussing Azure; do not call it otherwise."
     }
-  ],
-  "[swift]": {
-    "editor.tabSize": 4
-  },
-  "workbench.startupEditor": "none",
-  "git.openRepositoryInParentFolders": "always",
-  "go.toolsManagement.autoUpdate": true
+  ]
 }
