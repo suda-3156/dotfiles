@@ -149,6 +149,9 @@
     "editor.tabSize": 2,
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
   },
   "typescript.updateImportsOnFileMove.enabled": "prompt",
   "[json]": {
@@ -161,12 +164,18 @@
     "editor.tabSize": 2,
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
   },
   "javascript.updateImportsOnFileMove.enabled": "never",
   "[typescriptreact]": {
     "editor.tabSize": 2,
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
   },
   "files.associations": {
     "*.css": "tailwindcss",
@@ -242,7 +251,7 @@
   "notebook.output.fontSize": 14,
 
   // ---------- explorer and editor ----------
-  "workbench.colorTheme": "GitHub Light Colorblind (Beta)",
+  "workbench.colorTheme": "Default Light Modern",
   "workbench.tree.indent": 15,
   "workbench.iconTheme": "material-icon-theme",
 
