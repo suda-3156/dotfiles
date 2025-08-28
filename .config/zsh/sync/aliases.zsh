@@ -52,6 +52,8 @@ abbr -S -q ta='tmux a'
 abbr -S -q ghcr='gh repo create % --private --add-readme -c'
 abbr -S -q ghmrr='gh repo create % --private --push -s .'
 
+abbr -S -q tf='terraform'
+
 abbr -S -q op='open .'
 
 function tp() {
