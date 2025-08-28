@@ -56,6 +56,8 @@ abbr -S -q tf='terraform'
 
 abbr -S -q op='open .'
 
+abbr -S -q tc='touch % && code $_'
+
 function tp() {
   if [[ -z "$1" ]]; then
     echo "Usage: tp <path/to/file>"
