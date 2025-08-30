@@ -162,8 +162,8 @@
     "editor.tabSize": 2,
     "editor.detectIndentation": false,
     "editor.formatOnSave": true,
-    // "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    // "editor.defaultFormatter": "biomejs.biome",
   },
   "[javascript]": {
     "editor.tabSize": 2,
@@ -192,7 +192,7 @@
   },
   "files.associations": {
     "*.css": "tailwindcss",
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
@@ -250,6 +250,11 @@
     "editor.formatOnSave": true,
     "editor.tabSize": 2
   },
+  "[markdown]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 
   // ---------- copilot ----------
   "github.copilot.enable": {
@@ -258,7 +263,8 @@
     "markdown": false,
     "latex": false,
     "tex": false,
-    "scminput": false
+    "scminput": false,
+    "env": false,
   },
 
   // ---------- terminal, preview ----------
@@ -269,7 +275,7 @@
   "notebook.output.fontSize": 14,
 
   // ---------- explorer and editor ----------
-  "workbench.colorTheme": "One Dark Pro Darker",
+  "workbench.colorTheme": "GitHub Light",
   "workbench.tree.indent": 15,
   "workbench.iconTheme": "material-icon-theme",
 
@@ -383,5 +389,6 @@
     {
       "text": "- @azure Rule - Summarize topic before taking action: When the user asks about Azure Functions, invoke the azure_development-summarize_topic tool once first to see if any existing custom mode could be a good fit to what user is asking."
     }
-  ]
+  ],
+  
 }

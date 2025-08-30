@@ -1,0 +1,19 @@
+[
+  {
+    "key": "ctrl+cmd+n",
+    "command": "explorer.newFile"
+  },
+  {
+    "key": "ctrl+cmd+c",
+    "command": "github.copilot.git.generateCommitMessage"
+  },
+  {
+    "key": "ctrl+cmd+b",
+    "command": "workbench.action.toggleSidebarVisibility",
+  },
+  {
+    "key": "cmd+k i",
+    "command": "inlineChat.start",
+    "when": "inlineChatHasProvider && !editorReadonly"
+  },
+]
