@@ -198,6 +198,8 @@
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true
   },
+  "python-envs.defaultEnvManager": "ms-python.python:system",
+  "python-envs.pythonProjects": [],
   "python.analysis.typeCheckingMode": "basic",
   "isort.args": ["--profile", "black"],
   "[go]": {
@@ -275,7 +277,7 @@
   "notebook.output.fontSize": 14,
 
   // ---------- explorer and editor ----------
-  "workbench.colorTheme": "GitHub Light",
+  "workbench.colorTheme": "Atom One Dark",
   "workbench.tree.indent": 15,
   "workbench.iconTheme": "material-icon-theme",
 
@@ -363,22 +365,23 @@
   "git.openRepositoryInParentFolders": "always",
   "go.toolsManagement.autoUpdate": true,
   "github.copilot.nextEditSuggestions.enabled": true,
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
   "@azure.argTenant": "",
   "github.copilot.chat.codeGeneration.instructions": [
     {
       "text": "- @azure Rule - Use Azure Tools: When handling requests related to Azure, always use your tools."
     },
     {
-      "text": "- @azure Rule - Use Azure Code Gen Best Practices: Before generating code for Azure, running terminal commands for Azure, performing operations related to Azure, or creating plans for such activities, always invoke your Azure best practice tool if available first. Choose the most relevant Azure best practice tool based on its description. Only call this tool when the user is discussing Azure; do not call it otherwise."
+      "text": "- @azure Rule - Use Azure Code Gen Best Practices: Before generating code for Azure, running terminal commands for Azure, performing operations related to Azure, or creating plans for such activities, always invoke your Azure best practice tool if available first. Invoke the `get_bestpractices` tool to collect recommendations. Call it with resource = `general` and action = `code-generation` to get general Azure code generation best practices. Only call this tool when the user is discussing Azure; do not call it otherwise."
     },
     {
-      "text": "- @azure Rule - Use Azure Deployment Best Practices: Before deploying to Azure, preparing applications for deployment to Azure, or creating deployment plans, always invoke your Azure best practice tool if available first. Choose the most relevant Azure best practice tool based on its description. Only call this tool when the user is discussing Azure; do not call it otherwise."
+      "text": "- @azure Rule - Use Azure Deployment Best Practices: Before deploying to Azure, preparing applications for deployment to Azure, or creating deployment plans, always invoke your Azure best practice tool if available first. Invoke the `get_bestpractices` tool to collect recommendations. Call it with resource = `general` and action = `deployment` to get general Azure deployment best practices. Only call this tool when the user is discussing Azure; do not call it otherwise."
     },
     {
-      "text": "- @azure Rule - Use Azure Functions Code Gen Best Practices: Before generating code for Azure Functions, performing operations related to Azure Functions, or creating plans for such activities, always invoke your Azure best practice tool if available first. Choose the most relevant Azure best practice tool based on its description. Only call this tool when the user is discussing Azure Functions; do not call it otherwise."
+      "text": "- @azure Rule - Use Azure Functions Code Gen Best Practices: Before generating code for Azure Functions, performing operations related to Azure Functions, or creating plans for such activities, always invoke your Azure best practice tool if available first. Invoke the `get_bestpractices` tool to collect recommendations. Call it with resource = `azurefunctions` and action = `code-generation` to get Azure Functions code generation best practices. Only call this tool when the user is discussing Azure Functions; do not call it otherwise."
     },
     {
-      "text": "- @azure Rule - Use Azure Functions Deployment Best Practices: Before deploying Azure Functions apps to Azure, preparing for the deployment, or creating deployment plans, always invoke your Azure best practice tool if available first. Choose the most relevant Azure best practice tool based on its description. Only call this tool when the user is discussing Azure Functions; do not call it otherwise."
+      "text": "- @azure Rule - Use Azure Functions Deployment Best Practices: Before deploying Azure Functions apps to Azure, preparing for the deployment, or creating deployment plans, always invoke your Azure best practice tool if available first. Invoke the `get_bestpractices` tool to collect recommendations. Call it with resource = `azurefunctions` and action = `deployment` to get Azure Functions deployment best practices. Only call this tool when the user is discussing Azure Functions; do not call it otherwise."
     },
     {
       "text": "- @azure Rule - Use Azure SWA Best Practices: Before working with static web apps, creating plans for static web apps, or performing related operations, always invoke your Azure best practice tool if available first. Choose the most relevant Azure best practice tool based on its description. Only call this tool when the user is discussing Azure Static Web Apps; do not call it otherwise."
@@ -390,5 +393,5 @@
       "text": "- @azure Rule - Summarize topic before taking action: When the user asks about Azure Functions, invoke the azure_development-summarize_topic tool once first to see if any existing custom mode could be a good fit to what user is asking."
     }
   ],
-  
+  "python.defaultInterpreterPath": "/Users/kyaka3/.local/share/mise/installs/python/3.13.7/bin/python",
 }
