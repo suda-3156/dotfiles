@@ -8,6 +8,7 @@ ABBR_REGULAR_ABBREVIATION_GLOB_PREFIXES+=(
   '*| '
   '*|| '
   '*; '
+  'notify'
 )
 
 abbr -S -q c='clear'
