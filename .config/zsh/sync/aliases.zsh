@@ -8,10 +8,11 @@ ABBR_REGULAR_ABBREVIATION_GLOB_PREFIXES+=(
   '*| '
   '*|| '
   '*; '
+  'notify'
 )
 
 abbr -S -q c='clear'
-abbr -S -q e='exit'
+abbr -S -q e='exit 0'
 abbr -S -q ll='ls -lh'
 abbr -S -q la='ls -lAh'
 abbr -S -q s='source'
@@ -76,3 +77,11 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias cp='cp -ir'
 
+# Reference: https://qiita.com/mura_tokagemodoki/items/bbf5b2966905f22783fa
+function notify() {
+  "$@" && (
+    osascript -e 'display notification "◯ Successfully executed: '"$*"'" with title "Execution Result" subtitle "ლ(╹◡╹ლ) "' && afplay /System/Library/Sounds/Glass.aiff
+  ) || (
+    osascript -e 'display notification "✖︎ Error occurred during execution: '"$*"'" with title "Execution Result" subtitle "(´∵｀)"' && afplay /System/Library/Sounds/Basso.aiff
+  )
+}

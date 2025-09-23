@@ -162,7 +162,7 @@
     "editor.tabSize": 2,
     "editor.detectIndentation": false,
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
     // "editor.defaultFormatter": "biomejs.biome",
   },
   "[javascript]": {
@@ -192,12 +192,14 @@
   },
   "files.associations": {
     "*.css": "tailwindcss",
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true
   },
+  "python-envs.defaultEnvManager": "ms-python.python:system",
+  "python-envs.pythonProjects": [],
   "python.analysis.typeCheckingMode": "basic",
   "isort.args": ["--profile", "black"],
   "[go]": {
@@ -211,12 +213,12 @@
     "editor.tabSize": 2,
     "editor.autoIndent": "advanced",
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[graphql]": {
     "editor.tabSize": 4,
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "makefile.configureOnOpen": true,
   "[tex]": {
@@ -235,12 +237,12 @@
   "[java]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "redhat.java",
-    "editor.tabSize": 4,
+    "editor.tabSize": 4
   },
   "[kotlin]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "fwcd.kotlin",
-    "editor.tabSize": 4,
+    "editor.tabSize": 4
   },
   "[swift]": {
     "editor.tabSize": 4
@@ -264,7 +266,7 @@
     "latex": false,
     "tex": false,
     "scminput": false,
-    "env": false,
+    "env": false
   },
 
   // ---------- terminal, preview ----------
@@ -275,7 +277,7 @@
   "notebook.output.fontSize": 14,
 
   // ---------- explorer and editor ----------
-  "workbench.colorTheme": "GitHub Light",
+  "workbench.colorTheme": "Atom One Dark",
   "workbench.tree.indent": 15,
   "workbench.iconTheme": "material-icon-theme",
 
@@ -363,32 +365,5 @@
   "git.openRepositoryInParentFolders": "always",
   "go.toolsManagement.autoUpdate": true,
   "github.copilot.nextEditSuggestions.enabled": true,
-  "@azure.argTenant": "",
-  "github.copilot.chat.codeGeneration.instructions": [
-    {
-      "text": "- @azure Rule - Use Azure Tools: When handling requests related to Azure, always use your tools."
-    },
-    {
-      "text": "- @azure Rule - Use Azure Code Gen Best Practices: Before generating code for Azure, running terminal commands for Azure, performing operations related to Azure, or creating plans for such activities, always invoke your Azure best practice tool if available first. Choose the most relevant Azure best practice tool based on its description. Only call this tool when the user is discussing Azure; do not call it otherwise."
-    },
-    {
-      "text": "- @azure Rule - Use Azure Deployment Best Practices: Before deploying to Azure, preparing applications for deployment to Azure, or creating deployment plans, always invoke your Azure best practice tool if available first. Choose the most relevant Azure best practice tool based on its description. Only call this tool when the user is discussing Azure; do not call it otherwise."
-    },
-    {
-      "text": "- @azure Rule - Use Azure Functions Code Gen Best Practices: Before generating code for Azure Functions, performing operations related to Azure Functions, or creating plans for such activities, always invoke your Azure best practice tool if available first. Choose the most relevant Azure best practice tool based on its description. Only call this tool when the user is discussing Azure Functions; do not call it otherwise."
-    },
-    {
-      "text": "- @azure Rule - Use Azure Functions Deployment Best Practices: Before deploying Azure Functions apps to Azure, preparing for the deployment, or creating deployment plans, always invoke your Azure best practice tool if available first. Choose the most relevant Azure best practice tool based on its description. Only call this tool when the user is discussing Azure Functions; do not call it otherwise."
-    },
-    {
-      "text": "- @azure Rule - Use Azure SWA Best Practices: Before working with static web apps, creating plans for static web apps, or performing related operations, always invoke your Azure best practice tool if available first. Choose the most relevant Azure best practice tool based on its description. Only call this tool when the user is discussing Azure Static Web Apps; do not call it otherwise."
-    },
-    {
-      "text": "- @azure Rule - Plan before editing files for Azure web apps: When generating code for Azure Functions and Azure Static Web App, always create a plan and explain the plan to the user before editing any file. Proceed with editing the files after getting consent from the user."
-    },
-    {
-      "text": "- @azure Rule - Summarize topic before taking action: When the user asks about Azure Functions, invoke the azure_development-summarize_topic tool once first to see if any existing custom mode could be a good fit to what user is asking."
-    }
-  ],
-  
+  "workbench.secondarySideBar.defaultVisibility": "hidden"
 }

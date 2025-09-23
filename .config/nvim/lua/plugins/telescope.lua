@@ -39,8 +39,9 @@ return {
       },
       pickers = {
         find_files = {
-          file_ignore_patterns = { 'node_modules', '.git', '.venv' },
+          file_ignore_patterns = { 'node_modules', '.git/objects', '.git/logs', '.git/index', '.venv' },
           hidden = true,
+          no_ignore = true,
         },
         buffers = {
           initial_mode = 'normal',
@@ -72,6 +73,7 @@ return {
       },
       git_files = {
         previewer = false,
+        git_command = {'git', 'ls-files', '--exclude-standard', '--cached', '--others', },
       },
     }
 
