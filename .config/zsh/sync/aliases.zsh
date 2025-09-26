@@ -85,3 +85,6 @@ function notify() {
     osascript -e 'display notification "✖︎ Error occurred during execution: '"$*"'" with title "Execution Result" subtitle "(´∵｀)"' && afplay /System/Library/Sounds/Basso.aiff
   )
 }
+
+abbr -S -q gccl='gcloud config configurations list'
+abbr -S -q gcca='gcloud config configurations activate'
