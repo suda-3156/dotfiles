@@ -277,7 +277,7 @@
   "notebook.output.fontSize": 14,
 
   // ---------- explorer and editor ----------
-  "workbench.colorTheme": "Atom One Dark",
+  "workbench.colorTheme": "Default Light Modern",
   "workbench.tree.indent": 15,
   "workbench.iconTheme": "material-icon-theme",
 

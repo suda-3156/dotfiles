@@ -24,5 +24,6 @@ else
     fi
 fi
 
+realtime_log "git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm"
 create_symlink "$PJ_ROOT_DIR/.config/tmux/.tmux.conf" "$HOME/.tmux.conf"
 log "INFO" "Tmux configuration set up successfully."
