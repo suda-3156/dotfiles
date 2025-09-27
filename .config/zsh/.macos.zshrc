@@ -15,5 +15,4 @@ zstyle ':notify:*' success-sound "default"
 zstyle ':notify:*' enable-on-ssh yes
 zstyle ':notify:*' error-title "Command failed (in #{time_elapsed} seconds)"
 zstyle ':notify:*' success-title "Command finished (in #{time_elapsed} seconds)"
-zstyle ':notify:*' activate-terminal yes
 
