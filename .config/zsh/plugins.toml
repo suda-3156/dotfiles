@@ -38,3 +38,7 @@ inline = 'eval "$(zoxide init --cmd cd zsh)"'
 
 [plugins.starship]
 inline = 'eval "$(starship init zsh)"'
+
+[plugins.zsh-notify]
+github = "marzocchi/zsh-notify"
+

@@ -78,13 +78,13 @@ alias rm='rm -i'
 alias cp='cp -ir'
 
 # Reference: https://qiita.com/mura_tokagemodoki/items/bbf5b2966905f22783fa
-function notify() {
-  "$@" && (
-    osascript -e 'display notification "◯ Successfully executed: '"$*"'" with title "Execution Result" subtitle "ლ(╹◡╹ლ) "' && afplay /System/Library/Sounds/Glass.aiff
-  ) || (
-    osascript -e 'display notification "✖︎ Error occurred during execution: '"$*"'" with title "Execution Result" subtitle "(´∵｀)"' && afplay /System/Library/Sounds/Basso.aiff
-  )
-}
+# function notify() {
+#   "$@" && (
+#     osascript -e 'display notification "◯ Successfully executed: '"$*"'" with title "Execution Result" subtitle "ლ(╹◡╹ლ) "' && afplay /System/Library/Sounds/Glass.aiff
+#   ) || (
+#     osascript -e 'display notification "✖︎ Error occurred during execution: '"$*"'" with title "Execution Result" subtitle "(´∵｀)"' && afplay /System/Library/Sounds/Basso.aiff
+#   )
+# }
 
 abbr -S -q gccl='gcloud config configurations list'
 abbr -S -q gcca='gcloud config configurations activate'
