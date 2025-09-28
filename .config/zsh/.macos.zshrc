@@ -14,6 +14,7 @@ zstyle ':notify:*' error-sound "Glass"
 zstyle ':notify:*' success-sound "default"
 zstyle ':notify:*' error-title "Command failed (in #{time_elapsed} seconds)"
 zstyle ':notify:*' success-title "Command finished (in #{time_elapsed} seconds)"
+zstyle ':notify:*' command-complete-timeout 10
 
 zstyle ':notify:*' enable-on-ssh yes
 zstyle ':notify:*' blacklist-regex 'find|git'
