@@ -88,3 +88,7 @@ alias cp='cp -ir'
 
 abbr -S -q gccl='gcloud config configurations list'
 abbr -S -q gcca='gcloud config configurations activate'
+abbr -S -q gcreauth='gcloud auth application-default login'
+
+abbr -S -q quitapp="osascript -e 'quit app \"%\"'"
+

@@ -39,7 +39,7 @@ return {
       },
       pickers = {
         find_files = {
-          file_ignore_patterns = { 'node_modules', '.git/objects', '.git/logs', '.git/index', '.venv' },
+          file_ignore_patterns = { 'node_modules', '.git/objects', '.git/logs', '.git/index', '.venv', '.next'},
           hidden = true,
           no_ignore = true,
         },
