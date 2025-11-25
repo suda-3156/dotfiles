@@ -198,6 +198,7 @@
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true
   },
+  "python.terminal.activateEnvironment": false,
   "python-envs.defaultEnvManager": "ms-python.python:system",
   "python-envs.pythonProjects": [],
   "python.analysis.typeCheckingMode": "basic",
@@ -370,7 +371,7 @@
   "github.copilot.nextEditSuggestions.enabled": true,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "githubPullRequests.pullBranch": "never",
-  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3.13",
+  "python.defaultInterpreterPath": "/Users/kyaka3/.local/share/mise/installs/python/3.13.9/bin/python",
   "terminal.integrated.allowedLinkSchemes": [
     "file",
     "http",
@@ -384,7 +385,7 @@
     "surveyPromptDate": "never",
     "surveyPromptIgnoredCount": 0
   },
-  "workbench.colorTheme": "Atom One Dark",
+  "workbench.colorTheme": "One Dark Pro Darker",
   "vsicons.dontShowNewVersionMessage": true,
   "chat.instructionsFilesLocations": {
     ".github/instructions": true,
