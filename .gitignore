@@ -26,6 +26,7 @@ lazy-lock.json
 !.profile
 !extensions
 !.github/**/*
+!.config/jj/config.toml
 
 # Black list
 *secret*

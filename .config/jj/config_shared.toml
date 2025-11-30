@@ -1,0 +1,10 @@
+#:schema https://jj-vcs.github.io/jj/latest/config-schema.json
+
+# Execute `install_scripts/macos/links.sh` or place this file at ~/.config/jj/conf.d/config_shared.toml
+# https://docs.jj-vcs.dev/v0.28.2/config/#ways-to-specify-jj-config-details
+# According to the docs above, `<PLATFORM_SPECIFIC>` refers to `$HOME/Library/Application Support` on macOS.
+# However, the default config path was `$HOME/.config/jj/config.toml` (confirmed via `jj config path --user`).
+# Therefore, place this file at `$HOME/.config/jj/conf.d/config_shared.toml` (it appears to be loaded correctly).
+[ui]
+default-command = "log"
+editor = "nvim" # default: pico

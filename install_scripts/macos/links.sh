@@ -56,4 +56,7 @@ mkdir -p "$HOME/.config/sheldon"
 create_symlink "$PJ_ROOT_DIR/.config/zsh/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
 create_symlink "$PJ_ROOT_DIR/.config/zsh/starship.toml" "$HOME/.config/starship.toml"
 
+# jj
+create_symlink "$PJ_ROOT_DIR/.config/jj/config_shared.toml" "$HOME/.config/jj/conf.d/config_shared.toml"
+
 log "INFO" "Symlink creation for macOS completed successfully."
