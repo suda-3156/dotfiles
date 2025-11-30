@@ -198,6 +198,7 @@
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true
   },
+  "python.terminal.activateEnvironment": false,
   "python-envs.defaultEnvManager": "ms-python.python:system",
   "python-envs.pythonProjects": [],
   "python.analysis.typeCheckingMode": "basic",
@@ -282,11 +283,7 @@
   "terminal.integrated.fontSize": 13,
   "markdown.preview.fontSize": 12,
   "notebook.output.fontSize": 14,
-
-  // ---------- explorer and editor ----------
-  "workbench.colorTheme": "Default Light Modern",
   "workbench.tree.indent": 15,
-  "workbench.iconTheme": "material-icon-theme",
 
   "explorer.fileNesting.patterns": {
     "*.ts": "${capture}.js",
@@ -374,7 +371,7 @@
   "github.copilot.nextEditSuggestions.enabled": true,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "githubPullRequests.pullBranch": "never",
-  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3.13",
+  "python.defaultInterpreterPath": "$HOME/.local/share/mise/installs/python/3.13.9/bin/python",
   "terminal.integrated.allowedLinkSchemes": [
     "file",
     "http",
@@ -385,7 +382,14 @@
     "docker-desktop"
   ],
   "azureTerraform.survey": {
-    "surveyPromptDate": "2025-10-31T00:08:10.490Z",
+    "surveyPromptDate": "never",
     "surveyPromptIgnoredCount": 0
-  }
+  },
+  "workbench.colorTheme": "Atom One Dark",
+  "vsicons.dontShowNewVersionMessage": true,
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    "$HOME/.aitk/instructions/": true
+  },
+  "chat.mcp.gallery.enabled": true
 }
