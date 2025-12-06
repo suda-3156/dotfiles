@@ -145,54 +145,21 @@
   "latex-workshop.linting.lacheck.exec.path": "lacheck",
   
   // ---------- language preferences ----------
-  "[typescript]": {
-    "editor.tabSize": 2,
-    "editor.formatOnSave": true,
-    // "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.defaultFormatter": "biomejs.biome",
-    "editor.codeActionsOnSave": {
-      // "source.organizeImports": "explicit",
-      "source.organizeImports.biome": "explicit",
-      "source.fixAll.biome": "explicit",
-      "quickfix.biome": "explicit"
-    }
-  },
-  "typescript.updateImportsOnFileMove.enabled": "prompt",
   "[json]": {
     "editor.tabSize": 2,
     "editor.detectIndentation": false,
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-    // "editor.defaultFormatter": "biomejs.biome",
   },
-  "[javascript]": {
+  "[typescript,typescriptreact,javascript,javascriptreact]": {
     "editor.tabSize": 2,
     "editor.formatOnSave": true,
-    // "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.defaultFormatter": "biomejs.biome",
     "editor.codeActionsOnSave": {
-      // "source.organizeImports": "explicit",
       "source.organizeImports.biome": "explicit",
       "source.fixAll.biome": "explicit",
       "quickfix.biome": "explicit"
     }
-  },
-  "javascript.updateImportsOnFileMove.enabled": "never",
-  "[typescriptreact]": {
-    "editor.tabSize": 2,
-    "editor.formatOnSave": true,
-    // "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.defaultFormatter": "biomejs.biome",
-    "editor.codeActionsOnSave": {
-      // "source.organizeImports": "explicit",
-      "source.organizeImports.biome": "explicit",
-      "source.fixAll.biome": "explicit",
-      "quickfix.biome": "explicit"
-    }
-  },
-  "files.associations": {
-    "*.css": "tailwindcss",
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
@@ -202,13 +169,13 @@
   "python-envs.defaultEnvManager": "ms-python.python:system",
   "python-envs.pythonProjects": [],
   "python.analysis.typeCheckingMode": "basic",
-  "isort.args": ["--profile", "black"],
   "[go]": {
     "editor.tabSize": 4,
     "editor.detectIndentation": false,
     "editor.defaultFormatter": "golang.go",
     "editor.formatOnSave": true
   },
+  "go.toolsManagement.autoUpdate": true,
   "[yaml]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
@@ -229,14 +196,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "makefile.configureOnOpen": true,
-  "[tex]": {
-    "editor.defaultFormatter": "James-Yu.latex-workshop",
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
-    "editor.tabSize": 2,
-    "files.autoSave": "off"
-  },
-  "[latex]": {
+  "[tex,latex]": {
     "editor.defaultFormatter": "James-Yu.latex-workshop",
     "editor.formatOnSave": true,
     "editor.tabSize": 2,
@@ -252,9 +212,6 @@
     "editor.defaultFormatter": "fwcd.kotlin",
     "editor.tabSize": 4
   },
-  "[swift]": {
-    "editor.tabSize": 4
-  },
   "[terraform]": {
     "editor.defaultFormatter": "hashicorp.terraform",
     "editor.formatOnSave": true,
@@ -268,13 +225,17 @@
 
   // ---------- copilot ----------
   "github.copilot.enable": {
-    "*": true,
-    "plaintext": false,
-    "markdown": false,
-    "latex": false,
-    "tex": false,
-    "scminput": false,
-    "env": false
+    "*": false,
+    "go": true,
+    "ts": true,
+    "tsx": true,
+    "js": true,
+    "jsx": true,
+    "py": true,
+    "java": true,
+    "kotlin": true,
+    "graphql": true,
+    "css": true,
   },
 
   // ---------- terminal, preview ----------
@@ -307,89 +268,14 @@
   "editor.wordWrap": "on",
 
   "files.autoSave": "afterDelay",
-  "eslint.codeActionsOnSave.rules": null,
-
-  // ---------- TODO ----------
-  "todo-tree.general.tags": [
-    "BUG",
-    "HACK",
-    "FIXME",
-    "TODO",
-    "XXX",
-    "[ ]",
-    "[x]",
-    "NOTE",
-    "MEMO"
-  ],
-  "todo-tree.highlights.customHighlight": {
-    "BUG": {
-      "icon": "bug"
-    },
-    "HACK": {
-      "icon": "tools",
-      "background": "#fcb826",
-      "foreground": "#ffffff"
-    },
-    "FIXME": {
-      "icon": "flame",
-      "background": "#ff4848",
-      "foreground": "#ffffff"
-    },
-    "XXX": {
-      "icon": "x",
-      "background": "#ff4848",
-      "foreground": "#ffffff"
-    },
-    "[ ]": {
-      "icon": "issue-draft",
-      "background": "#ee26fc",
-      "foreground": "#ffffff"
-    },
-    "[x]": {
-      "icon": "issue-closed",
-      "background": "#787878",
-      "foreground": "#ffffff"
-    },
-    "TODO": {
-      "background": "#f59842",
-      "foreground": "#ffffff"
-    },
-    "MEMO": {
-      "background": "#64d036",
-      "foreground": "#ffffff"
-    },
-    "NOTE": {
-      "background": "#f242f5",
-      "foreground": "#FFFFFF"
-    }
-  },
 
   // ---------- other ----------
   "workbench.startupEditor": "none",
-  "git.openRepositoryInParentFolders": "always",
-  "go.toolsManagement.autoUpdate": true,
   "github.copilot.nextEditSuggestions.enabled": true,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
-  "githubPullRequests.pullBranch": "never",
-  "python.defaultInterpreterPath": "$HOME/.local/share/mise/installs/python/3.13.9/bin/python",
-  "terminal.integrated.allowedLinkSchemes": [
-    "file",
-    "http",
-    "https",
-    "mailto",
-    "vscode",
-    "vscode-insiders",
-    "docker-desktop"
-  ],
-  "azureTerraform.survey": {
-    "surveyPromptDate": "never",
-    "surveyPromptIgnoredCount": 0
-  },
-  "workbench.colorTheme": "Atom One Dark",
-  "vsicons.dontShowNewVersionMessage": true,
-  "chat.instructionsFilesLocations": {
-    ".github/instructions": true,
-    "$HOME/.aitk/instructions/": true
-  },
-  "chat.mcp.gallery.enabled": true
+  "workbench.colorTheme": "GitHub Light Default",
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "bun.lock": "json5"
+  }
 }

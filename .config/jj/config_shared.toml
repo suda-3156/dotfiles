@@ -7,4 +7,4 @@
 # Therefore, place this file at `$HOME/.config/jj/conf.d/config_shared.toml` (it appears to be loaded correctly).
 [ui]
 default-command = "log"
-editor = "nvim" # default: pico
+editor = "vim" # default: pico
