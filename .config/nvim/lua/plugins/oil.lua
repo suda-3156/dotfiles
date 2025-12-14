@@ -1,8 +1,6 @@
 -- https://github.com/hendrikmi/dotfiles/blob/main/nvim/lua/plugins/oil.lua
 return {
   'stevearc/oil.nvim',
-  -- Optional dependencies
-  -- dependencies = { { 'echasnovski/mini.icons', opts = {} } },
   dependencies = { 'nvim-tree/nvim-web-devicons' }, -- use if you prefer nvim-web-devicons
   lazy = false,
   opts = {
