@@ -15,6 +15,21 @@ return {
 
   config = function()
     require("noice").setup({
+
+      -- https://github.com/folke/noice.nvim/issues/1097
+      routes = {
+        {
+          view = "notify",
+          filter = {
+            event = "msg_show",
+            kind = {
+              "shell_out",
+              "shell_err",
+            },
+          },
+        },
+      },
+
       -- you can enable a preset for easier configuration
       presets = {
         -- bottom_search = true, -- use a classic bottom cmdline for search
