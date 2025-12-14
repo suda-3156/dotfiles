@@ -1,24 +1,38 @@
 require 'core.options'
 require 'core.keymaps'
--- require 'core.snippets'
+require 'core.snippets'
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out,                            "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
+-- Install package manager
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  }
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Import color theme based on environment variable NVIM_THEME
+local default_color_scheme = 'nord'
+local env_var_nvim_theme = os.getenv 'NVIM_THEME' or default_color_scheme
+
+-- Define a table of theme modules
+local themes = {
+  ayu = 'plugins.colorthemes.ayu',
+  catppuccin = 'plugins.colorthemes.catppuccin',
+  gruvbox = 'plugins.colorthemes.gruvbox',
+  kanagawa = 'plugins.colorthemes.kanagawa',
+  nord = 'plugins.colorthemes.nord',
+  onedark = 'plugins.colorthemes.onedark',
+  zenbone = 'plugins.colorthemes.zenbone',
+}
+
 require('lazy').setup ({
+  require(themes[env_var_nvim_theme]),
   require 'plugins.neo-tree',
   require 'plugins.bufferline',
   require 'plugins.lualine',
@@ -33,7 +47,6 @@ require('lazy').setup ({
   require 'plugins.hlchunk',
   require 'plugins.noice',
   require 'plugins.close-buffers',
-  require 'plugins.colorthemes.nord',
   require 'plugins.surround',
   require 'plugins.barbecue',
   require 'plugins.diffview',
@@ -43,3 +56,25 @@ require('lazy').setup ({
   require 'plugins.dashboard',
 })
 
+-- Function to check if a file exists
+local function file_exists(file)
+  local f = io.open(file, 'r')
+  if f then
+    f:close()
+    return true
+  else
+    return false
+  end
+end
+
+-- Path to the session file
+local session_file = '.session.vim'
+
+-- Check if the session file exists in the current directory
+if file_exists(session_file) then
+  -- Source the session file
+  vim.cmd('source ' .. session_file)
+end
+
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et

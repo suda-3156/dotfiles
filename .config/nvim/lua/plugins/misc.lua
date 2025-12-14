@@ -1,9 +1,9 @@
 -- Standalone plugins with less than 10 lines of config go here
 return {
   {
-    -- tmux & split window navigation
-    'christoomey/vim-tmux-navigator',
-    event = 'VeryLazy'
+    -- autoclose tags
+    'windwp/nvim-ts-autotag',
+    lazy = true,
   },
   {
     -- detect tabstop and shiftwidth automatically
@@ -25,6 +25,7 @@ return {
     'folke/which-key.nvim',
     event = 'VeryLazy',
     opts = {
+      delay = 3000,
       win = {
         border = {
           { '┌', 'FloatBorder' },
@@ -42,6 +43,7 @@ return {
   {
     -- Autoclose parentheses, brackets, quotes, etc.
     'windwp/nvim-autopairs',
+    event = 'InsertEnter',
     config = true,
     opts = {},
   },
@@ -55,13 +57,8 @@ return {
   {
     -- high-performance color highlighter
     'norcalli/nvim-colorizer.lua',
-    event = 'VeryLazy',
     config = function()
       require('colorizer').setup()
     end,
-  },
-  {
-    'nvim-tree/nvim-web-devicons',
-    lazy = true,
   },
 }

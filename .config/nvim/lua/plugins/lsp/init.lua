@@ -1,17 +1,24 @@
 -- LSP Configuration & Plugins
 return {
   'neovim/nvim-lspconfig',
-  event = 'VeryLazy',
+  event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
-    -- Automatically install LSPs and related tools to stdpath for neovim
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
+    -- Automatically install LSPs and related tools to stdpath for Neovim
+    { 'mason-org/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+    -- mason-lspconfig:
+    -- - Bridges the gap between LSP config names (e.g. "lua_ls") and actual Mason package names (e.g. "lua-language-server").
+    -- - Used here only to allow specifying language servers by their LSP name (like "lua_ls") in `ensure_installed`.
+    -- - It does not auto-configure servers — we use vim.lsp.config() + vim.lsp.enable() explicitly for full control.
+    'mason-org/mason-lspconfig.nvim',
+    -- mason-tool-installer:
+    -- - Installs LSPs, linters, formatters, etc. by their Mason package name.
+    -- - We use it to ensure all desired tools are present.
+    -- - The `ensure_installed` list works with mason-lspconfig to resolve LSP names like "lua_ls".
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
     -- Useful status updates for LSP.
     {
       'j-hui/fidget.nvim',
-      tag = 'v1.4.0',
       opts = {
         progress = {
           display = {
@@ -25,6 +32,9 @@ return {
         },
       },
     },
+
+    -- Allows extra capabilities provided by nvim-cmp
+    'hrsh7th/cmp-nvim-lsp',
   },
 
   config = function()
@@ -41,37 +51,29 @@ return {
     -- Diagnostic settings
     diagnostics.setup()
 
-    -- LSP capabilities
+    -- LSP servers and clients are able to communicate to each other what features they support.
+    -- By default, Neovim doesn't support everything that is in the LSP specification.
+    -- When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
+    -- So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-    -- Mason setup
-    require('mason').setup()
-
-    -- Ensure the servers above are installed
+    -- Ensure the servers and tools above are installed
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
-      'stylua', -- Used to format lua code
+      'stylua', -- Used to format Lua code
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-    -- mason-lspconfig setup
-    require('mason-lspconfig').setup {
-      -- mason-lspconfig calls these handlers when setting up each LSP server
-      handlers = {
-        function(server_name) -- e.g. 'lua_ls', 'basedpyright', etc.
-          local server = servers[server_name] or {} -- Get server settings from servers.lua
-          -- Add capabilities to server settings
-          server.capabilities = vim.tbl_deep_extend(
-            'force',
-            {},
-            capabilities,
-            server.capabilities or {}
-          )
-          -- Setup the server with lspconfig
-          require('lspconfig')[server_name].setup(server)
-        end,
-      },
-    }
+    for server, cfg in pairs(servers) do
+      -- For each LSP server (cfg), we merge:
+      -- 1. A fresh empty table (to avoid mutating capabilities globally)
+      -- 2. Your capabilities object with Neovim + cmp features
+      -- 3. Any server-specific cfg.capabilities if defined in `servers`
+      cfg.capabilities = vim.tbl_deep_extend('force', {}, capabilities, cfg.capabilities or {})
+
+      vim.lsp.config(server, cfg)
+      vim.lsp.enable(server)
+    end
   end,
 }
