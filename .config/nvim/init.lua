@@ -36,6 +36,7 @@ require('lazy').setup ({
   require 'plugins.lsp',
   require 'plugins.autocompletion',
   require 'plugins.barbecue',
+  require 'plugins.bgf',
   require 'plugins.bufferline',
   require 'plugins.close-buffers',
   require 'plugins.comment',
