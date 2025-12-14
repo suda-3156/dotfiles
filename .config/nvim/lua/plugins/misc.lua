@@ -25,18 +25,18 @@ return {
     'folke/which-key.nvim',
     event = 'VeryLazy',
     opts = {
-      -- win = {
-      --   border = {
-      --     { '┌', 'FloatBorder' },
-      --     { '─', 'FloatBorder' },
-      --     { '┐', 'FloatBorder' },
-      --     { '│', 'FloatBorder' },
-      --     { '┘', 'FloatBorder' },
-      --     { '─', 'FloatBorder' },
-      --     { '└', 'FloatBorder' },
-      --     { '│', 'FloatBorder' },
-      --   },
-      -- },
+      win = {
+        border = {
+          { '┌', 'FloatBorder' },
+          { '─', 'FloatBorder' },
+          { '┐', 'FloatBorder' },
+          { '│', 'FloatBorder' },
+          { '┘', 'FloatBorder' },
+          { '─', 'FloatBorder' },
+          { '└', 'FloatBorder' },
+          { '│', 'FloatBorder' },
+        },
+      },
     },
   },
   {

@@ -1,25 +1,32 @@
 return {
   "petertriho/nvim-scrollbar",
-  event = "VeryLazy",
-  -- event = { "BufNewFile", "BufReadPre" },
+	event = {
+		"BufReadPre",
+		"BufNewFile",
+	},
   dependencies = {
     "kevinhwang91/nvim-hlslens",
     "lewis6991/gitsigns.nvim",
   },
   config = function()
-    -- local colors = require("nord").setup()
+    -- https://github.com/shaunsingh/nord.nvim/blob/master/lua/nord/named_colors.lua
+    local colors = require("nord.named_colors")
+    -- https://github.com/okm321/dotfiles/blob/main/nvim/lua/plugins/utility/nvim-scrollbar.lua
     require("scrollbar").setup({
-      -- handle = {
-      --     color = colors.bg_highlight,
-      -- },
-      -- marks = {
-      --     Search = { color = colors.orange },
-      --     Error = { color = colors.error },
-      --     Warn = { color = colors.warning },
-      --     Info = { color = colors.info },
-      --     Hint = { color = colors.hint },
-      --     Misc = { color = colors.purple },
-      -- }
+			excluded_filetypes = {
+				"neo-tree",
+				"dashboard",
+				"dropbar_menu",
+				"snacks_picker_print",
+				"snacks_picker_list",
+				"snacks_picker_preview",
+				"Glance",
+				"TelescopePrompt",
+				"AvanteInput",
+				"Avante",
+				"AvanteSelectedFiles",
+				"snacks_picker_input",
+			},
     })
   end,
 }

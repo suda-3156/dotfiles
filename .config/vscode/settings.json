@@ -226,6 +226,9 @@
   // ---------- copilot ----------
   "github.copilot.enable": {
     "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
     "go": true,
     "ts": true,
     "tsx": true,
@@ -236,12 +239,17 @@
     "kotlin": true,
     "graphql": true,
     "css": true,
+    "sh": true,
+    "python": true,
+    "yaml": true,
+    "lua": true
   },
 
   // ---------- terminal, preview ----------
   "terminal.integrated.gpuAcceleration": "off",
   "terminal.integrated.fontFamily": "Moralerspace Neon HWNF, monospace",
   "terminal.integrated.fontSize": 13,
+  "terminal.integrated.suggest.enabled": false,
   "markdown.preview.fontSize": 12,
   "notebook.output.fontSize": 14,
   "workbench.tree.indent": 15,
@@ -273,7 +281,7 @@
   "workbench.startupEditor": "none",
   "github.copilot.nextEditSuggestions.enabled": true,
   "workbench.secondarySideBar.defaultVisibility": "hidden",
-  "workbench.colorTheme": "GitHub Light Default",
+  "workbench.colorTheme": "One Dark Pro Mix",
   "files.associations": {
     "*.css": "tailwindcss",
     "bun.lock": "json5"
