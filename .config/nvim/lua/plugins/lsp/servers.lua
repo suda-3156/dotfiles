@@ -75,7 +75,6 @@ return {
   tailwindcss = {},
   cssls = {},
   graphql = {},
-  prettierd = {},
 
   -- misc
   jsonls = {},

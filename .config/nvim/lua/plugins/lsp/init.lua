@@ -61,17 +61,19 @@ return {
     -- Ensure the servers and tools above are installed
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
-      'stylua', -- Used to format Lua code
+      'stylua',
+      'prettierd',
     })
-    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+    require('mason-tool-installer').setup {
+      ensure_installed = ensure_installed,
+      auto_update = true,
+      run_on_start = true,
+    }
+    require('mason-lspconfig').setup({})
 
     for server, cfg in pairs(servers) do
-      -- For each LSP server (cfg), we merge:
-      -- 1. A fresh empty table (to avoid mutating capabilities globally)
-      -- 2. Your capabilities object with Neovim + cmp features
-      -- 3. Any server-specific cfg.capabilities if defined in `servers`
       cfg.capabilities = vim.tbl_deep_extend('force', {}, capabilities, cfg.capabilities or {})
-
+      
       vim.lsp.config(server, cfg)
       vim.lsp.enable(server)
     end
