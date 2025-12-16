@@ -1,6 +1,11 @@
 -- Standalone plugins with less than 10 lines of config go here
 return {
   {
+    -- tmux & split window navigation
+    'christoomey/vim-tmux-navigator',
+    event = 'VeryLazy'
+  },
+  {
     -- autoclose tags
     'windwp/nvim-ts-autotag',
     lazy = true,
