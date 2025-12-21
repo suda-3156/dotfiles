@@ -19,3 +19,6 @@ if [ "$TERM" = "linux" ]; then
   echo -en "\e]PE38E0F9"
   echo -en "\e]PFFFFFFF"
 fi
+
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
