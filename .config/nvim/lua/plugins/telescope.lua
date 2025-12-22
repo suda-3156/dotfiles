@@ -29,8 +29,8 @@ return {
         mappings = {
           i = {
             ['<C-k>'] = actions.move_selection_previous, -- move to prev result
-            ['<C-j>'] = actions.move_selection_next,     -- move to next result
-            ['<C-l>'] = actions.select_default,          -- open file
+            ['<C-j>'] = actions.move_selection_next, -- move to next result
+            ['<C-l>'] = actions.select_default, -- open file
           },
           n = {
             ['q'] = actions.close,
@@ -39,7 +39,7 @@ return {
       },
       pickers = {
         find_files = {
-          file_ignore_patterns = { 'node_modules', '.git', '.jj', '.venv', '.next'},
+          file_ignore_patterns = { 'node_modules', '%.git/', '%.jj/', '.venv', '.next' },
           hidden = true,
           no_ignore = true,
         },
@@ -73,7 +73,7 @@ return {
       },
       git_files = {
         previewer = false,
-        git_command = {'git', 'ls-files', '--exclude-standard', '--cached', '--others', },
+        git_command = { 'git', 'ls-files', '--exclude-standard', '--cached', '--others' },
       },
     }
 
