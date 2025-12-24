@@ -2,6 +2,10 @@
 
 For my own use.
 
+```sh
+./install.sh
+```
+
 ## Fonts
 
 - [Moralerspace](https://github.com/yuru7/moralerspace)
@@ -13,35 +17,14 @@ mv MoralerspaceHWNF_v1.1.0 ~/.fonts
 fc-cache -fv
 ```
 
-I prefer the `Terminus` font in console mode.
-
-```sh
-sudo dpkg-reconfigure console-setup
-```
-
-## Note
+## TODO
 
 These configurations need to be installed individually by executing each `setup.sh` script.
 
 - VSCode
 - Karabiner Elements
 
-## Homebrew
-
-I didn’t install these apps using Homebrew this time, but I will next time.
-
-- Raycast
-- Docker
-- VSCode
-- Obsidian
-- AppCleaner
-- KeyboardCleanTool
-- Discord
-- Postman
-- Firefox
-- Clipy
-
-## TODO
+### Git
 
 - git config
 
@@ -64,6 +47,8 @@ git config --global init.templatedir '~/.git-templates/git-secrets'
 When installing on Ubuntu, you need to install Neovim manually because there are several ways to do so. See below.
 
 [Neovim Install.md](https://github.com/neovim/neovim/blob/master/INSTALL.md#linux)
+
+### Starship
 
 If you're in console mode or haven't installed a Nerd Font, you can use the Plain Text Symbols preset with Starship:
 
