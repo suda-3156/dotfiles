@@ -70,15 +70,6 @@ function M.on_attach(event)
       buffer = event.buf,
       callback = vim.lsp.buf.clear_references,
     })
-
-    vim.api.nvim_create_autocmd('LspDetach', {
-      group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
-      callback = function(event2)
-        vim.lsp.buf.clear_references()
-        vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
-      end,
-    })
-
   end
 
   -- The following code creates a keymap to toggle inlay hints in your
