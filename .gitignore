@@ -27,6 +27,7 @@ lazy-lock.json
 !extensions
 !.github/**/*
 !.config/jj/config.toml
+!/bin/*
 
 # Black list
 *secret*

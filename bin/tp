@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+# Create a file with missing directories automatically created.
+
+if [[ -z "$1" ]]; then
+  echo "Usage: tp <path/to/file>"
+  exit 0
+fi
+
+filepath="$1"
+dirpath="${filepath:h}"
+
+mkdir -p "$dirpath" && touch $@
+

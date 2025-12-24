@@ -1,3 +1,3 @@
-# nvm
-export NVM_DIR="$HOME/.nvm"
+# custom scripts
+export PATH="$PATH:$HOME/dotfiles/bin"
 
