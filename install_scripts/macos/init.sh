@@ -40,10 +40,3 @@ else
     }
     log "INFO" "Brew installed successfully."
 fi
-
-log "INFO" "Installing Brew packages..."
-brew bundle --file="$PJ_ROOT_DIR/.config/brew/Brewfile" || {
-    log "ERROR" "Failed to install Brew packages."
-    exit 1
-}
-log "INFO" "Brew package installation completed successfully."

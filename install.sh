@@ -7,6 +7,8 @@ function setup_macOS() {
     echo "Setting up macOS..."
     source "$INSTALLER_DIR/macos/init.sh"
 
+    source "$(pwd)/brew/install.sh"
+
     source "$INSTALLER_DIR/macos/links.sh"
 
     echo "TODO: if you want, execute ininstall_scripts/macos/settings.sh manually"
