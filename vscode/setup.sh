@@ -2,7 +2,7 @@
 
 set -eu
 
-PJ_ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+PJ_ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 LINK_PATH="${HOME}/Library/Application Support/Code/User"
 
 # settings.json
@@ -23,12 +23,12 @@ if [[ ! -d "$LINK_PATH" ]]; then
     fi
 fi
 
-ln -s "$PJ_ROOT_DIR/.config/vscode/settings.json" "$LINK_PATH/settings.json"
+ln -s "$PJ_ROOT_DIR/vscode/settings.json" "$LINK_PATH/settings.json"
 
 if [[ $? -eq 0 ]]; then
-    echo "INFO: Successfully created symlink: $PJ_ROOT_DIR/.config/vscode/settings.json -> $LINK_PATH/settings.json"
+    echo "INFO: Successfully created symlink: $PJ_ROOT_DIR/vscode/settings.json -> $LINK_PATH/settings.json"
 else
-    echo "ERROR: Failed to create symlink: $PJ_ROOT_DIR/.config/vscode/settings.json -> $LINK_PATH/settings.json"
+    echo "ERROR: Failed to create symlink: $PJ_ROOT_DIR/vscode/settings.json -> $LINK_PATH/settings.json"
     exit 1
 fi
 
@@ -42,23 +42,22 @@ if [[ -e "$LINK_PATH/keybindings.json" || -L "$LINK_PATH/keybindings.json" ]]; t
     fi
 fi
 
-ln -s "$PJ_ROOT_DIR/.config/vscode/keybindings.json" "$LINK_PATH/keybindings.json"
+ln -s "$PJ_ROOT_DIR/vscode/keybindings.json" "$LINK_PATH/keybindings.json"
 
 if [[ $? -eq 0 ]]; then
-    echo "INFO: Successfully created symlink: $PJ_ROOT_DIR/.config/vscode/keybindings.json -> $LINK_PATH/keybindings.json"
+    echo "INFO: Successfully created symlink: $PJ_ROOT_DIR/vscode/keybindings.json -> $LINK_PATH/keybindings.json"
 else
-    echo "ERROR: Failed to create symlink: $PJ_ROOT_DIR/.config/vscode/keybindings.json -> $LINK_PATH/keybindings.json"
+    echo "ERROR: Failed to create symlink: $PJ_ROOT_DIR/vscode/keybindings.json -> $LINK_PATH/keybindings.json"
     exit 1
 fi
 
 # Install Extensions
 if [ "$(which "code")" != "" ]; then
   echo "INFO: Installing extensions to vscode..."
-  cat < "$PJ_ROOT_DIR/.config/vscode/extensions" | while read -r line
+  cat < "$PJ_ROOT_DIR/vscode/extensions" | while read -r line
   do
     code --install-extension "$line"
   done
 else
   echo "ERROR: Code command not found"
 fi
-
