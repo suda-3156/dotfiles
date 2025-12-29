@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+FIND_SEARCH_DEPTH=4
+
+set -e
+
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd -P)
+
+files=$(find -H "$DOTFILES_ROOT" -maxdepth $FIND_SEARCH_DEPTH -name 'after.sh' -not -path '*.git*')
+
+for src in $files; do
+  bash "$src"
+done

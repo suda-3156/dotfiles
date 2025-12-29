@@ -3,6 +3,10 @@
 For my own use.
 
 ```sh
+cd $HOME
+git clone https://github.com/suda-3156/dotfiles.git
+cd dotfiles
+chmod +x ./install.sh
 ./install.sh
 ```
 

@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+set -eu
+
+if [[ "$(uname)" != "Darwin" ]]; then
+  echo "karabiner/install.sh - This script must be run on macOS."
+  exit 0
+fi
+
+DOTFILES_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+LINK_PATH="$HOME/.config/karabiner/assets"
+TIMESTAMP=$(date +%Y%m%d%H%M%S)
+
+while :; do
+  printf "Install Karabiner Elements via Homebrew? (y/N): "
+  read -r ans
+  case "$ans" in
+  [yY])
+    echo "Installing..."
+    break
+    ;;
+  "" | [nN])
+    echo "Skipping installation."
+    return
+    ;;
+  *)
+    echo "Invalid choice: '$ans'. Please enter [y]es or [n]o."
+    ;;
+  esac
+done
+
+brew install --cask karabiner-elements
+
+if [[ -L "$LINK_PATH/complex_modifications" || -e "$LINK_PATH/complex_modifications" ]]; then
+  while :; do
+    printf "File already exists: %s\nChoose action - [o]verwrite, [b]ackup, or [s]kip: " "$LINK_PATH/complex_modifications"
+    read -r ans
+    case "$ans" in
+    [oO])
+      rm -rf "$LINK_PATH/complex_modifications"
+      break
+      ;;
+    [bB])
+      echo "Backed up: $LINK_PATH/complex_modifications -> complex_modifications.bak.$TIMESTAMP"
+      mv "$LINK_PATH/complex_modifications" "$LINK_PATH/complex_modifications.bak.$TIMESTAMP"
+      break
+      ;;
+    [sS])
+      return
+      ;;
+    "") ;;
+    *)
+      echo "Invalid option: $ans"
+      ;;
+    esac
+  done
+fi
+
+mkdir -p "$LINK_PATH"
+
+ln -s "$DOTFILES_ROOT/karabiner/complex_modifications" "$LINK_PATH/complex_modifications"

@@ -1,0 +1,98 @@
+#!/usr/bin/env bash
+
+FIND_SEARCH_DEPTH=4
+
+set -e
+
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd -P)
+TIMESTAMP=$(date +%Y%m%d%H%M%S)
+
+function create_symlink() {
+  local src=$1 dst=$2 global_opt=$3
+
+  local overwrite_opt=${global_opt:-"undefined"}
+
+  if [[ -L "$dst" || -e "$dst" ]]; then
+
+    if [[ "$(readlink "$dst")" == "$src" ]]; then
+      overwrite_opt="skip"
+    fi
+
+    if [[ "$overwrite_opt" == "undefined" ]]; then
+      while :; do
+        printf "File already exists: %s\nChoose action - [o]verwrite, [b]ackup, or [s]kip: " "$dst"
+        read -r ans
+        case "$ans" in
+        [oO])
+          overwrite_opt="overwrite"
+          break
+          ;;
+        [bB])
+          overwrite_opt="backup"
+          break
+          ;;
+        [sS])
+          overwrite_opt="skip"
+          break
+          ;;
+        "") ;;
+        *)
+          echo "Invalid option: $ans"
+          ;;
+        esac
+      done
+    fi
+  fi
+
+  if [[ "$overwrite_opt" == "skip" ]]; then
+    return
+  fi
+
+  if [[ "$overwrite_opt" == "backup" ]]; then
+    mv "$dst" "${dst}.bak.${TIMESTAMP}"
+    echo "Backed up: ${dst} -> ${dst}.bak.${TIMESTAMP}"
+  fi
+
+  if [[ "$overwrite_opt" == "overwrite" ]]; then
+    rm -rf "$dst"
+  fi
+
+  mkdir -p "$(dirname "$dst")"
+  ln -s "$src" "$dst"
+}
+
+function link() {
+  echo "Setting up symlinks..."
+
+  local global_opt=
+
+  printf "Set a global option for handling existing files:\n"
+  printf "  [O]verwrite all, [B]ackup all, [S]kip all, or press Enter to decide per file: "
+  read -r ans
+
+  case "$ans" in
+  [O])
+    global_opt="overwrite"
+    ;;
+  [B])
+    global_opt="backup"
+    ;;
+  [S])
+    global_opt="skip"
+    ;;
+  "") ;;
+  *)
+    echo "Invalid choice. You'll be prompted for each file."
+    ;;
+  esac
+
+  files=$(find -H "$DOTFILES_ROOT" -maxdepth $FIND_SEARCH_DEPTH -name '*.symlink' -not -path '*.git*')
+  for src in $files; do
+    left_trimed=${src#"${DOTFILES_ROOT}/"}
+    dst="$HOME/${left_trimed%.symlink}"
+    create_symlink "$src" "$dst" "$global_opt"
+  done
+}
+
+link

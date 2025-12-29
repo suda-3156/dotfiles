@@ -9,7 +9,7 @@
 
 ## Setup
 
-1. Install `Karabiner Elements` and set up the simple modifications above.
-2. Execute `setup.sh`.
-   - This will create a symbolic link to `$HOME/.config/karabiner/assets/complex_modifications` referencing `dotfiles/karabiner/complex_modifications`
-3. Open Karabiner Elements and enable them using 'Add predefined rules'.
+1. Install `Karabiner Elements` and configure the simple modifications above.
+2. Run `install.sh`.
+   - This creates a symbolic link from `$HOME/.config/karabiner/assets/complex_modifications` to `dotfiles/karabiner/complex_modifications`.
+3. Open Karabiner Elements and enable the rules via 'Add predefined rules'.

@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+
+set -eu
+
+function get_distribution() {
+  if [[ -e /etc/debian_version || -e /etc/debian_release ]]; then
+    if [[ -e /etc/lsb-release ]]; then
+      echo "ubuntu"
+    else
+      echo "debian"
+    fi
+    return
+  fi
+
+  if [[ -e /etc/fedora-release ]]; then
+    echo "fedora"
+    return
+  fi
+
+  if [[ -e /etc/redhat-release ]]; then
+    if [[ -e /etc/oracle-release ]]; then
+      echo "oracle"
+    else
+      echo "redhat"
+    fi
+    return
+  fi
+
+  if [[ -e /etc/arch-release ]]; then
+    echo "arch"
+    return
+  fi
+
+  echo "unknown"
+}
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  dist="macos"
+else
+  dist=$(get_distribution)
+fi
+
+DOTFILES_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+FIND_SEARCH_DEPTH=4
+
+# OS-specific installation
+echo "OS-specific installation"
+if [[ -f "$DOTFILES_ROOT/$dist/install" ]]; then
+  bash "$DOTFILES_ROOT/$dist/install"
+fi
+
+# Create symbolic links
+bash "$DOTFILES_ROOT/scripts/link"
+
+# Scripts with .$dist suffix
+echo "Run scripts with .$dist suffix"
+files=$(find -H "$DOTFILES_ROOT" -maxdepth "$FIND_SEARCH_DEPTH" -name "*.${dist}" -not -path '*.git*')
+for src in $files; do
+  bash "$src"
+done
+
+# Scripts with .common suffix
+echo "Run scripts with .common suffix"
+files=$(find -H "$DOTFILES_ROOT" -maxdepth "$FIND_SEARCH_DEPTH" -name "*.common" -not -path '*.git*')
+for src in $files; do
+  bash "$src"
+done
+
+# OS-agnostic installation
+# Run after script
+echo "Run after hook scripts"
+bash "$DOTFILES_ROOT/scripts/after"
+
+echo "Done"

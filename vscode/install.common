@@ -1,0 +1,165 @@
+#!/usr/bin/env bash
+
+set -eu
+
+DOTFILES_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+TIMESTAMP=$(date +%Y%m%d%H%M%S)
+skip=
+
+function install_vscode() {
+  if command -v code >/dev/null 2>&1; then
+    return
+  fi
+
+  if [[ "$(uname)" != "Darwin" ]]; then
+    printf "This VS Code install script doesn't support installation but via Homebrew.\nSkip VS Code installation?\n"
+    while :; do
+      printf "Choose action - [c]ontinue, or [s]kip: "
+      read -r ans
+      case "$ans" in
+      [cC])
+        return
+        ;;
+      [sS])
+        skip=true
+        return
+        ;;
+      "") ;;
+      *)
+        echo "Invalid option: $ans"
+        ;;
+      esac
+    done
+  fi
+
+  while :; do
+    printf "Install VS Code via Homebrew? (y/N): "
+    read -r ans
+    case "$ans" in
+    [yY])
+      echo "Installing..."
+      brew install --cask visual-studio-code
+      break
+      ;;
+    "" | [nN])
+      echo "Skipping installation."
+      return
+      ;;
+    *)
+      echo "Invalid choice: '$ans'. Please enter [y]es or [n]o."
+      ;;
+    esac
+  done
+}
+
+function create_copy() {
+  local src=$1 dst=$2
+
+  local overwrite_opt="undefined"
+
+  if [[ -L "$dst" || -e "$dst" ]]; then
+
+    if [[ "$(readlink "$dst")" == "$src" ]]; then
+      overwrite_opt="skip"
+    fi
+
+    if [[ "$overwrite_opt" == "undefined" ]]; then
+      while :; do
+        printf "File already exists: %s\nChoose action - [o]verwrite, [b]ackup, or [s]kip: " "$dst"
+        read -r ans
+        case "$ans" in
+        [oO])
+          overwrite_opt="overwrite"
+          break
+          ;;
+        [bB])
+          overwrite_opt="backup"
+          break
+          ;;
+        [sS])
+          overwrite_opt="skip"
+          break
+          ;;
+        "") ;;
+        *)
+          echo "Invalid option: $ans"
+          ;;
+        esac
+      done
+    fi
+  fi
+
+  if [[ "$overwrite_opt" == "skip" ]]; then
+    return
+  fi
+
+  if [[ "$overwrite_opt" == "backup" ]]; then
+    mv "$dst" "${dst}.bak.${TIMESTAMP}"
+    echo "Backed up: ${dst} -> ${dst}.bak.${TIMESTAMP}"
+  fi
+
+  if [[ "$overwrite_opt" == "overwrite" ]]; then
+    rm -rf "$dst"
+  fi
+
+  mkdir -p "$(dirname "$dst")"
+  cp "$src" "$dst"
+}
+
+install_vscode
+
+if [[ "$skip" == "true" ]]; then
+  exit 0
+fi
+
+printf "Choose or enter VS Code config directory.\n"
+printf "1: macOS - default config directory is: \$HOME/Library/Application Support/Code/User\n"
+printf "2: Linux - default config directory is: \$HOME/.config/Code/User\n"
+while :; do
+  printf "Enter 1, 2, or path to config directory: "
+  read -er path
+  case "$path" in
+  1)
+    config_dir="${HOME}/Library/Application Support/Code/User"
+    break
+    ;;
+  2)
+    config_dir="${HOME}/.config/Code/User"
+    break
+    ;;
+  "")
+    echo "Invalid option: $path"
+    ;;
+  *)
+    config_dir="$path"
+    echo "Config directory set to: $path"
+    break
+    ;;
+  esac
+done
+
+create_copy "$DOTFILES_ROOT/vscode/settings.json" "$config_dir/settings.json"
+create_copy "$DOTFILES_ROOT/vscode/keybindings.json" "$config_dir/keybindings.json"
+
+if command -v code >/dev/null 2>&1; then
+  # Install Extensions
+  while :; do
+    printf "Install extensions listed in vscode/extensions? (Y/n): "
+    read -r ans
+    case "$ans" in
+    "" | [yY])
+      echo "Installing extensions to VS Code..."
+      cat <"$DOTFILES_ROOT/vscode/extensions" | while read -r line; do
+        code --install-extension "$line"
+      done
+      ;;
+    [nN])
+      echo "Skipping VS Code extension installation."
+      ;;
+    *)
+      echo "Invalid choice: '$ans'. Please enter [y]es or [n]o."
+      return
+      ;;
+    esac
+  done
+fi

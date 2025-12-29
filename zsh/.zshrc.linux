@@ -1,0 +1,23 @@
+source "$HOME/.cargo/env"
+eval "$(sheldon source)"
+
+if [ "$TERM" = "linux" ]; then
+  echo -en "\e]P0000000"
+  echo -en "\e]P1CC1D2C"
+  echo -en "\e]P226A269"
+  echo -en "\e]P3A2734C"
+  echo -en "\e]P41867C2"
+  echo -en "\e]P5AA44AA"
+  echo -en "\e]P62AA1B3"
+  echo -en "\e]P7D0CFCC"
+  echo -en "\e]P8777777"
+  echo -en "\e]P9F66151"
+  echo -en "\e]PA33D17A"
+  echo -en "\e]PBE9AD0C"
+  echo -en "\e]PC2D85F1"
+  echo -en "\e]PDD16ADE"
+  echo -en "\e]PE38E0F9"
+  echo -en "\e]PFFFFFFF"
+fi
+
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"

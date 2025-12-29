@@ -4,10 +4,10 @@
 
 `brew install --cask visual-studio-code`
 
-## Setup
+## Set up
 
 1. (Optional) If needed, run the Command Palette command to install the 'code' command in your PATH.
-2. Run `setup.sh`.
+2. Run `install.sh`.
 
 - This script will:
   - Create symbolic links for:

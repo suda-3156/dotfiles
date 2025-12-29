@@ -3,36 +3,19 @@
 !*/
 
 !.gitignore
-!compose.yml
-!Dockerfile
-!install_ubuntu.sh
+!taskfile.yml
 
 !*.sh
-!.config/*
-!*_shared*
-
-!.tmux.conf
-!*.zsh*
-!starship.toml
-!plugins.toml
-!*.lua
-!*.json
-lazy-lock.json
-!*.vim
-!.stylua.toml
-!.vimrc
+!*.symlink
+!*.example
+!*.macos
+!*.ubuntu
 !Brewfile
-!*.md
-!.profile
-!extensions
-!.github/**/*
-!.config/jj/config.toml
-!/bin/*
+!install*
 
-# Black list
-*secret*
-*.env*
-*credential*
-*.pem
-*.key
-*local_*
+# zsh
+!*.zsh
+!*zshrc*
+
+# scripts
+!/scripts/*

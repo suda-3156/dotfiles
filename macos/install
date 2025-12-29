@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -eu
+
+if [[ "$(uname)" != "Darwin" ]]; then
+  echo "brew/install.sh - This script must be run on macOS."
+  exit 1
+fi
+
+DOTFILES_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+source "$DOTFILES_ROOT/macos/xcode.sh"
+source "$DOTFILES_ROOT/macos/defaults.sh"
+source "$DOTFILES_ROOT/macos/brew.sh"

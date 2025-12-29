@@ -3,7 +3,6 @@
   "latex-workshop.latex.outDir": "./out",
   "latex-workshop.latex.autoClean.run": "onBuilt",
   "latex-workshop.latex.autoBuild.run": "onSave",
-
   "latex-workshop.view.pdf.viewer": "tab",
 
   "latex-workshop.latex.recipes": [
@@ -11,7 +10,6 @@
       "name": "latexmk (lualatex)🧋",
       "tools": ["lualatexmk"]
     },
-
     {
       "name": "latexmk 🔃",
       "tools": ["latexmk"]
@@ -37,7 +35,6 @@
       "tools": ["tectonic"]
     }
   ],
-
   "latex-workshop.latex.tools": [
     {
       "name": "lualatexmk",
@@ -53,7 +50,6 @@
       ],
       "env": {}
     },
-
     {
       "name": "latexmk",
       "command": "latexmk",
@@ -143,109 +139,8 @@
       "-q"
   ],
   "latex-workshop.linting.lacheck.exec.path": "lacheck",
-  
-  // ---------- language preferences ----------
-  "[json]": {
-    "editor.tabSize": 2,
-    "editor.detectIndentation": false,
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript,typescriptreact,javascript,javascriptreact]": {
-    "editor.tabSize": 2,
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome",
-    "editor.codeActionsOnSave": {
-      "source.organizeImports.biome": "explicit",
-      "source.fixAll.biome": "explicit",
-      "quickfix.biome": "explicit"
-    }
-  },
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.formatOnSave": true
-  },
-  "python.terminal.activateEnvironment": false,
-  "python-envs.defaultEnvManager": "ms-python.python:system",
-  "python-envs.pythonProjects": [],
-  "python.analysis.typeCheckingMode": "basic",
-  "[go]": {
-    "editor.tabSize": 4,
-    "editor.detectIndentation": false,
-    "editor.defaultFormatter": "golang.go",
-    "editor.formatOnSave": true
-  },
-  "go.toolsManagement.autoUpdate": true,
-  "[yaml]": {
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2,
-    "editor.autoIndent": "advanced",
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[github-actions-workflow]": {
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2,
-    "editor.autoIndent": "advanced",
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[graphql]": {
-    "editor.tabSize": 4,
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "makefile.configureOnOpen": true,
-  "[tex,latex]": {
-    "editor.defaultFormatter": "James-Yu.latex-workshop",
-    "editor.formatOnSave": true,
-    "editor.tabSize": 2,
-    "files.autoSave": "off"
-  },
-  "[java]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "redhat.java",
-    "editor.tabSize": 4
-  },
-  "[kotlin]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "fwcd.kotlin",
-    "editor.tabSize": 4
-  },
-  "[terraform]": {
-    "editor.defaultFormatter": "hashicorp.terraform",
-    "editor.formatOnSave": true,
-    "editor.tabSize": 2
-  },
-  "[markdown]": {
-    "editor.tabSize": 2,
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
 
-  // ---------- copilot ----------
-  "github.copilot.enable": {
-    "*": false,
-    "plaintext": false,
-    "markdown": false,
-    "scminput": false,
-    "go": true,
-    "ts": true,
-    "tsx": true,
-    "js": true,
-    "jsx": true,
-    "py": true,
-    "java": true,
-    "kotlin": true,
-    "graphql": true,
-    "css": true,
-    "sh": true,
-    "python": true,
-    "yaml": true,
-    "lua": true
-  },
-
-  // ---------- terminal, preview ----------
+  // ---------- terminal, editor ----------
   "terminal.integrated.gpuAcceleration": "off",
   "terminal.integrated.fontFamily": "Moralerspace Neon HWNF, monospace",
   "terminal.integrated.fontSize": 13,
@@ -263,12 +158,9 @@
     "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml",
     "Pipfile": "Pipfile.lock, pyproject.toml, requirements.txt, .pylintrc"
   },
-  "explorer.confirmDelete": false,
   "explorer.fileNesting.enabled": false,
   "explorer.fileNesting.expand": true,
   "explorer.compactFolders": false,
-  "explorer.confirmDragAndDrop": false,
-  "explorer.confirmPasteNative": false,
 
   "editor.bracketPairColorization.enabled": true,
   "editor.fontFamily": "Moralerspace Neon HWNF, monospace",
@@ -276,12 +168,63 @@
   "editor.wordWrap": "on",
 
   "files.autoSave": "afterDelay",
+  "editor.formatOnSave": true,
+  "workbench.startupEditor": "none",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+
+  // ---------- language preferences ----------
+  "[typescript,typescriptreact,javascript,javascriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.analysis.typeCheckingMode": "basic",
+  "[go]": {
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
+    "editor.defaultFormatter": "golang.go"
+  },
+  "go.toolsManagement.autoUpdate": true,
+  "[terraform]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "hashicorp.terraform"
+  },
+  "[shellscript]": {
+    "editor.tabSize": 2
+  },
+  "[tex,latex]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+    "files.autoSave": "off"
+  },
+  "[json]": {
+    "editor.tabSize": 2
+  },
+  "[yaml,github-actions-workflow]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[graphql]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "makefile.configureOnOpen": true,
+
+  // ---------- copilot ----------
+  "github.copilot.enable": {
+    "*": false,
+    "python": true
+  },
 
   // ---------- other ----------
-  "workbench.startupEditor": "none",
-  "github.copilot.nextEditSuggestions.enabled": true,
-  "workbench.secondarySideBar.defaultVisibility": "hidden",
-  "workbench.colorTheme": "One Dark Pro Mix",
   "files.associations": {
     "*.css": "tailwindcss",
     "bun.lock": "json5"
