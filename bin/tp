@@ -8,7 +8,6 @@ if [[ -z "$1" ]]; then
 fi
 
 filepath="$1"
-dirpath="${filepath:h}"
+dirpath="$(dirname "$filepath")"
 
-mkdir -p "$dirpath" && touch $@
-
+mkdir -p "$dirpath" && touch "$@"

@@ -5,9 +5,8 @@
 
 if [[ -z "$1" ]]; then
   mkdir -p ~/Desktop/tmp
-  touch ~/Desktop/tmp/$(date +'%Y%m%d%H%M%S').txt && ${EDITOR:-vi} $_
+  touch ~/Desktop/tmp/"$(date +'%Y%m%d%H%M%S')".txt && ${EDITOR:-vi} "$_"
 else
   mkdir -p ~/Desktop/tmp
-  mv $1 ~/Desktop/tmp/
+  mv "$1" ~/Desktop/tmp/
 fi
-

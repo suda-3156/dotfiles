@@ -8,4 +8,21 @@
 #   https://github.com/yt-dlp/yt-dlp
 #
 
+if ! command -v yt-dlp > /dev/null 2>&1; then
+  printf "yt-dlp not found. Install yt-dlp via pip? (Y/n): "
+  read -r ans
+  case "$ans" in
+    "" | [yY])
+      pip install --no-deps -U yt-dlp
+      ;;
+    [nN])
+      exit 0
+      ;;
+    *)
+      echo "Unknown actions: $ans"
+      exit 0
+      ;;
+  esac
+fi
+
 cd ~/Desktop && yt-dlp -S "ext" "$1"
