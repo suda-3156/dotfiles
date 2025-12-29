@@ -4,10 +4,6 @@ brew "screen"
 brew "git"
 brew "vim"
 
-# GNU
-brew "make"
-brew "coreutils"
-
 # This dotfiles' deps
 brew "git-secrets"
 brew "jj"

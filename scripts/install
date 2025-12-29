@@ -54,7 +54,7 @@ bash "$DOTFILES_ROOT/scripts/link"
 
 # Scripts with .$dist suffix
 echo "Run scripts with .$dist suffix"
-files=$(find -H "$DOTFILES_ROOT" -maxdepth "$FIND_SEARCH_DEPTH" -name "*.${dist}" -not -path '*.git*')
+files=$(find -H "$DOTFILES_ROOT" -maxdepth "$FIND_SEARCH_DEPTH" -name "*.sh.${dist}" -not -path '*.git*')
 for src in $files; do
   bash "$src"
 done

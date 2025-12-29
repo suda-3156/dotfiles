@@ -59,7 +59,7 @@ if ! grep -F -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
 fi
 
 # Install packages in the Brewfile
-brew bundle --file="$DOTFILES_ROOT/brew/Brewfile"
+brew bundle --file="$DOTFILES_ROOT/macos/Brewfile"
 
 # Iterm2
 brew install --cask iterm2
@@ -76,8 +76,8 @@ brew install --cask mactex-no-gui
 
 # Apps
 brew install --cask gcloud-cli
-brew install --cask firefox
-brew install --cask google-chrome
+# brew install --cask firefox
+# brew install --cask google-chrome
 brew install --cask github-copilot-for-xcode
 brew install --cask obsidian
 brew install --cask appcleaner

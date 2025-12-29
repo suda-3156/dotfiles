@@ -155,10 +155,10 @@ if command -v code >/dev/null 2>&1; then
       ;;
     [nN])
       echo "Skipping VS Code extension installation."
+      exit 0
       ;;
     *)
       echo "Invalid choice: '$ans'. Please enter [y]es or [n]o."
-      return
       ;;
     esac
   done

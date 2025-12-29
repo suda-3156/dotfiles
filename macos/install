@@ -10,5 +10,4 @@ fi
 DOTFILES_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 source "$DOTFILES_ROOT/macos/xcode.sh"
-source "$DOTFILES_ROOT/macos/defaults.sh"
 source "$DOTFILES_ROOT/macos/brew.sh"

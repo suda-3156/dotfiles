@@ -17,11 +17,12 @@ while :; do
   case "$ans" in
   [yY])
     echo "Installing..."
+    brew install --cask karabiner-elements
     break
     ;;
   "" | [nN])
-    echo "Skipping installation."
-    return
+    echo "Skipping installation. Creating a symlink for karabiner-elements"
+    break
     ;;
   *)
     echo "Invalid choice: '$ans'. Please enter [y]es or [n]o."
@@ -29,7 +30,6 @@ while :; do
   esac
 done
 
-brew install --cask karabiner-elements
 
 if [[ -L "$LINK_PATH/complex_modifications" || -e "$LINK_PATH/complex_modifications" ]]; then
   while :; do
@@ -46,7 +46,7 @@ if [[ -L "$LINK_PATH/complex_modifications" || -e "$LINK_PATH/complex_modificati
       break
       ;;
     [sS])
-      return
+      exit 0
       ;;
     "") ;;
     *)
