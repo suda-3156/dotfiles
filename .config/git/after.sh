@@ -40,3 +40,8 @@ function git_config() {
 
 git config --global include.path "$HOME/.config/git/config_shared"
 git_config
+
+if command -v git-secrets > /dev/null 2>&1; then
+  git secrets --install ~/.git-templates/git-secrets
+  git config --global init.templatedir '~/.git-templates/git-secrets'
+fi

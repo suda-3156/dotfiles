@@ -4,6 +4,8 @@
 
 !.gitignore
 !taskfile.yml
+!README.md
+!Dockerfile
 
 !*.sh
 !*.symlink
@@ -13,9 +15,24 @@
 !Brewfile
 !install*
 
+# nvim
+!.config/nvim.symlink/**/*lua
+!.config/nvim.symlink/.stylua.toml
+
 # zsh
 !*.zsh
 !*zshrc*
 
 # scripts
 !/scripts/*
+
+# bin
+!/bin/*
+
+# karabiner
+!/karabiner/complex_modifications/*.json
+
+# vscode
+!/vscode/extensions
+!/vscode/keybindings.json
+!/vscode/settings.json

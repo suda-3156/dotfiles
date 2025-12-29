@@ -228,5 +228,6 @@
   "files.associations": {
     "*.css": "tailwindcss",
     "bun.lock": "json5"
-  }
+  },
+  "docker.extension.enableComposeLanguageServer": false
 }

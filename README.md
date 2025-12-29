@@ -6,8 +6,8 @@ For my own use.
 cd $HOME
 git clone https://github.com/suda-3156/dotfiles.git
 cd dotfiles
-chmod +x ./install.sh
-./install.sh
+chmod +x ./scripts/install
+./scripts/install
 ```
 
 ## Fonts
@@ -23,28 +23,8 @@ fc-cache -fv
 
 ## TODO
 
-These configurations need to be installed individually by executing each `setup.sh` script.
-
-- VSCode
-- Karabiner Elements
-
-### Git
-
-- git config
-
-```sh
-git config --global user.name <Username>
-git config --global user.email <Mail address> 
-```
-
 - ssh connection to github
-
-- git-secrets
-
-```sh 
-git secrets --install ~/.git-templates/git-secrets
-git config --global init.templatedir '~/.git-templates/git-secrets'
-```
+- `macos/defaults.sh`
 
 ### Ubuntu
 
