@@ -52,6 +52,6 @@ return {
   },
   config = function(_, opts)
     require('oil').setup(opts)
-    vim.keymap.set('n', '-', '<cmd>Oil<CR>', { noremap = true, silent = true })
+    vim.keymap.set('n', '<M-o>', '<cmd>Oil<CR>', { noremap = true, silent = true })
   end,
 }
