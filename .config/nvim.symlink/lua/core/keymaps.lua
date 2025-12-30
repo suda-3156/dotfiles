@@ -125,8 +125,8 @@ vim.keymap.set('n', 'o', function()
   vim.cmd 'normal! j'
 end, opts)
 
-vim.keymap.set('n', 'o', 'o', opts)
-vim.keymap.set('n', 'O', 'O', opts)
+vim.keymap.set('n', '<leader>o', 'o', opts)
+vim.keymap.set('n', '<leader>O', 'O', opts)
 
 -- emacs
 vim.keymap.set('i', '<c-a>', '<home>', opts)
