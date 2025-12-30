@@ -1,6 +1,6 @@
 -- Set leader key
-vim.g.mapleader = ','
-vim.g.maplocalleader = ','
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- For conciseness
 local opts = { noremap = true, silent = true }
@@ -28,7 +28,7 @@ vim.keymap.set('n', 'x', '"_x', opts)
 vim.keymap.set('n', '<C-d>', '<C-d>zz', opts)
 vim.keymap.set('n', '<C-u>', '<C-u>zz', opts)
 
--- Find and center /での検索時に真ん中に来るようにしている
+-- Find and center
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
@@ -56,27 +56,20 @@ vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', opts)
 vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts)
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
 
--- Tabs
--- 他のtab関連の設定は，close-buffers.lua
--- vim.keymap.set('n', '<leader>to', ':tabnew<CR>', opts) -- open new tab
--- vim.keymap.set('n', '<leader>tt', ':tabclose<CR>', opts) -- close current tab
--- vim.keymap.set('n', '<leader>tn', ':tabn<CR>', opts) --  go to next tab
--- vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts) --  go to previous tab
+-- Tabs. See also plugins/close-buffers.lua
+vim.keymap.set('n', '<leader>tn', ':tabn<CR>', opts) --  go to next tab
+vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts) --  go to previous tab
 
 -- Toggle line wrapping
 vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts)
-
--- Press jk fast to exit insert mode
--- vim.keymap.set('i', 'jk', '<ESC>', opts)
--- vim.keymap.set('i', 'kj', '<ESC>', opts)
 
 -- Stay in indent mode
 vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
 
--- Move text up and down Option keyで反応しない
+-- Move text up and down
 vim.keymap.set({ 'n', 'v' }, '<A-j>', ':m .+1<CR>==', opts)
-vim.keymap.set({ 'n' ,'v' }, '<A-k>', ':m .-2<CR>==', opts)
+vim.keymap.set({ 'n', 'v' }, '<A-k>', ':m .-2<CR>==', opts)
 
 -- Keep last yanked when pasting
 vim.keymap.set('v', 'p', '"_dP', opts)
@@ -115,17 +108,30 @@ vim.keymap.set('n', 'Y', 'y$', opts)
 vim.keymap.set('n', 'X', '"_D', opts)
 vim.keymap.set('n', 'U', '<C-r>', opts)
 vim.keymap.set('n', 'M', '%', opts)
-vim.keymap.set({ 'n', 'v' }, '<A-S-k>', '<Cmd>copy-1<CR>', opts)
-vim.keymap.set({ 'n', 'v' }, '<A-S-j>', '<Cmd>copy.<CR>', opts)
 
-vim.keymap.set('n', '<Space>o', 'o<Esc>', opts)
-vim.keymap.set('n', '<Space>O', 'O<Esc>', opts)
+-- Copy and paste current line or selected lines
+vim.keymap.set('n', '<A-S-k>', 'VyP', opts)
+vim.keymap.set('v', '<A-S-k>', 'yP', opts)
+vim.keymap.set('n', '<A-S-j>', 'Vyp', opts)
+vim.keymap.set('v', '<A-S-j>', 'yjp', opts)
 
--- Emacs
-vim.keymap.set('i', '<C-a>', '<Home>', opts)
-vim.keymap.set('i', '<C-e>', '<End>', opts)
-vim.keymap.set('i', '<C-b>', '<Left>', opts)
-vim.keymap.set('i', '<C-f>', '<Right>', opts)
-vim.keymap.set('i', '<M-b>', '<C-Left>', opts)
-vim.keymap.set('i', '<M-f>', '<C-Right>', opts)
+-- Override default o, O behavior to stay in normal mode and not to append comment signs
+vim.keymap.set('n', 'O', function()
+  vim.fn.append(vim.fn.line '.' - 1, '')
+  vim.cmd 'normal! k'
+end, opts)
+vim.keymap.set('n', 'o', function()
+  vim.fn.append(vim.fn.line '.', '')
+  vim.cmd 'normal! j'
+end, opts)
 
+vim.keymap.set('n', 'o', 'o', opts)
+vim.keymap.set('n', 'O', 'O', opts)
+
+-- emacs
+vim.keymap.set('i', '<c-a>', '<home>', opts)
+vim.keymap.set('i', '<c-e>', '<end>', opts)
+vim.keymap.set('i', '<c-b>', '<left>', opts)
+vim.keymap.set('i', '<c-f>', '<right>', opts)
+vim.keymap.set('i', '<m-b>', '<c-left>', opts)
+vim.keymap.set('i', '<m-f>', '<c-right>', opts)
