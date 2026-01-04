@@ -138,8 +138,8 @@ while :; do
   esac
 done
 
-create_copy "$DOTFILES_ROOT/vscode/settings.json" "$config_dir/settings.json"
-create_copy "$DOTFILES_ROOT/vscode/keybindings.json" "$config_dir/keybindings.json"
+create_copy "$DOTFILES_ROOT/vscode/settings.json5" "$config_dir/settings.json"
+create_copy "$DOTFILES_ROOT/vscode/keybindings.json5" "$config_dir/keybindings.json"
 
 if command -v code >/dev/null 2>&1; then
   # Install Extensions
@@ -148,10 +148,13 @@ if command -v code >/dev/null 2>&1; then
     read -r ans
     case "$ans" in
     "" | [yY])
-      echo "Installing extensions to VS Code..."
       cat <"$DOTFILES_ROOT/vscode/extensions" | while read -r line; do
+        if [[ "$line" == \#* || "$line" == "" ]]; then
+          continue
+        fi
         code --install-extension "$line"
       done
+      exit 0
       ;;
     [nN])
       echo "Skipping VS Code extension installation."

@@ -1,0 +1,237 @@
+{
+  // ---------- latex ----------
+
+  // "latex-workshop.latex.outDir": "./out",
+  // "latex-workshop.latex.autoClean.run": "onBuilt",
+  // "latex-workshop.latex.autoBuild.run": "onSave",
+  // "latex-workshop.view.pdf.viewer": "tab",
+  //
+  // "latex-workshop.latex.recipes": [
+  //   {
+  //     "name": "latexmk (lualatex)🧋",
+  //     "tools": ["lualatexmk"]
+  //   },
+  //   {
+  //     "name": "latexmk 🔃",
+  //     "tools": ["latexmk"]
+  //   },
+  //   {
+  //     "name": "latexmk (latexmkrc)",
+  //     "tools": ["latexmk_rconly"]
+  //   },
+  //   {
+  //     "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+  //     "tools": ["pdflatex", "bibtex", "pdflatex", "pdflatex"]
+  //   },
+  //   {
+  //     "name": "Compile Rnw files",
+  //     "tools": ["rnw2tex", "latexmk"]
+  //   },
+  //   {
+  //     "name": "Compile Jnw files",
+  //     "tools": ["jnw2tex", "latexmk"]
+  //   },
+  //   {
+  //     "name": "tectonic",
+  //     "tools": ["tectonic"]
+  //   }
+  // ],
+  // "latex-workshop.latex.tools": [
+  //   {
+  //     "name": "lualatexmk",
+  //     "command": "latexmk",
+  //     "args": [
+  //       "-synctex=1",
+  //       "-file-line-error",
+  //       "-interaction=nonstopmode",
+  //       "-halt-on-error",
+  //       "-lualatex",
+  //       "-outdir=%OUTDIR%",
+  //       "%DOC%"
+  //     ],
+  //     "env": {}
+  //   },
+  //   {
+  //     "name": "latexmk",
+  //     "command": "latexmk",
+  //     "args": [
+  //       "-synctex=1",
+  //       "-interaction=nonstopmode",
+  //       "-file-line-error",
+  //       "-pdf",
+  //       "-outdir=%OUTDIR%",
+  //       "%DOC%"
+  //     ],
+  //     "env": {}
+  //   },
+  //   {
+  //     "name": "latexmk_rconly",
+  //     "command": "latexmk",
+  //     "args": ["%DOC%"],
+  //     "env": {}
+  //   },
+  //   {
+  //     "name": "pdflatex",
+  //     "command": "pdflatex",
+  //     "args": [
+  //       "-synctex=1",
+  //       "-interaction=nonstopmode",
+  //       "-file-line-error",
+  //       "%DOC%"
+  //     ],
+  //     "env": {}
+  //   },
+  //   {
+  //     "name": "bibtex",
+  //     "command": "bibtex",
+  //     "args": ["%DOCFILE%"],
+  //     "env": {}
+  //   },
+  //   {
+  //     "name": "rnw2tex",
+  //     "command": "Rscript",
+  //     "args": [
+  //       "-e",
+  //       "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
+  //     ],
+  //     "env": {}
+  //   },
+  //   {
+  //     "name": "jnw2tex",
+  //     "command": "julia",
+  //     "args": ["-e", "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"],
+  //     "env": {}
+  //   },
+  //   {
+  //     "name": "jnw2texmintex",
+  //     "command": "julia",
+  //     "args": [
+  //       "-e",
+  //       "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
+  //     ],
+  //     "env": {}
+  //   },
+  //   {
+  //     "name": "tectonic",
+  //     "command": "tectonic",
+  //     "args": ["--synctex", "--keep-logs", "%DOC%.tex"],
+  //     "env": {}
+  //   }
+  // ],
+  //
+  // "latex-workshop.formatting.latexindent.path": "latexindent",
+  // "latex-workshop.formatting.latexindent.args": [
+  //   "%TMPFILE%",
+  //   "-c=%DIR%/",
+  //   "-y=defaultIndent: '%INDENT%'"
+  // ],
+  // "latex-workshop.formatting.tex-fmt.args": [
+  //   "%TMPFILE%",
+  //   "-c=%DIR%/",
+  //   "-y=defaultIndent: '%INDENT%'"
+  // ],
+  //
+  // "latex-workshop.linting.chktex.exec.path": "chktex",
+  // "latex-workshop.linting.chktex.exec.args": [
+  //     "-wall",
+  //     "-n22",
+  //     "-n30",
+  //     "-e16",
+  //     "-q"
+  // ],
+  // "latex-workshop.linting.lacheck.exec.path": "lacheck",
+
+  // ---------- terminal, editor ----------
+
+  // Reference: https://github.com/antfu/vscode-file-nesting-config
+  "explorer.fileNesting.expand": true,
+  "explorer.fileNesting.patterns": {
+    ".env": "*.env, .env.*, .envrc, env.d.ts",
+    ".gitignore": ".gitattributes, .gitmodules, .gitmessage, .lfsconfig, .mailmap, .git-blame*"
+  },
+
+  "explorer.compactFolders": false,
+
+  "editor.bracketPairColorization.enabled": true,
+  "files.autoSave": "afterDelay",
+  "editor.formatOnSave": true,
+  "workbench.startupEditor": "none",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "terminal.integrated.suggest.enabled": false,
+
+  // ---------- language preferences ----------
+
+  "[c,cpp]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+  },
+  "C_Cpp.intelliSenseEngine": "disabled",
+
+  "[go]": {
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
+    "editor.defaultFormatter": "golang.go"
+  },
+  "go.toolsManagement.autoUpdate": true,
+
+  "[graphql]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[json]": {
+    "editor.tabSize": 2
+  },
+
+  "[markdown]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.analysis.typeCheckingMode": "basic",
+
+  "[shellscript]": {
+    "editor.tabSize": 2
+  },
+
+  "[terraform]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "hashicorp.terraform"
+  },
+
+  "[tex,latex]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+    "files.autoSave": "off"
+  },
+
+  "[typescript,typescriptreact,javascript,javascriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+
+  "[yaml,github-actions-workflow]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // ---------- copilot ----------
+  "github.copilot.enable": {
+    "*": false,
+    "python": true
+  },
+
+  // ---------- other ----------
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "bun.lock": "json5"
+  },
+  "makefile.configureOnOpen": true,
+  "docker.extension.enableComposeLanguageServer": false
+
+}

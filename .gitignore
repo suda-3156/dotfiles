@@ -34,5 +34,6 @@
 
 # vscode
 !/vscode/extensions
-!/vscode/keybindings.json
-!/vscode/settings.json
+!/vscode/extensions.old
+!/vscode/keybindings.json5
+!/vscode/settings.json5

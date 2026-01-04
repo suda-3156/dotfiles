@@ -7,8 +7,4 @@
     "key": "ctrl+cmd+c",
     "command": "github.copilot.git.generateCommitMessage"
   },
-  {
-    "key": "ctrl+cmd+b",
-    "command": "workbench.action.toggleSidebarVisibility"
-  }
 ]
