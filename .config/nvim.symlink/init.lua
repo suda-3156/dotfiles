@@ -31,7 +31,7 @@ local themes = {
   zenbone = 'plugins.colorthemes.zenbone',
 }
 
-require('lazy').setup ({
+require('lazy').setup {
   require(themes[env_var_nvim_theme]),
   require 'plugins.lsp',
   require 'plugins.autocompletion',
@@ -56,7 +56,7 @@ require('lazy').setup ({
   require 'plugins.treesitter',
   require 'plugins.telescope',
   require 'plugins.trouble',
-})
+}
 
 -- Function to check if a file exists
 local function file_exists(file)

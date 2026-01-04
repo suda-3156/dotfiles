@@ -3,6 +3,7 @@ brew "openssh"
 brew "screen"
 brew "git"
 brew "vim"
+brew "llvm"
 
 # This dotfiles' deps
 brew "git-secrets"

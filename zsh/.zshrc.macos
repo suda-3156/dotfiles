@@ -18,3 +18,8 @@ export PATH="$PATH:$(brew --prefix diffutils)/libexec/gnubin"
 export PATH="$PATH:$(brew --prefix findutils)/libexec/gnubin"
 export PATH="$PATH:$(brew --prefix gzip)/libexec/gnubin"
 export PATH="$PATH:$(brew --prefix gawk)/libexec/gnubin"
+
+# LLVM
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"

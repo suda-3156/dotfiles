@@ -12,9 +12,6 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-vim.keymap.set('n', 'K', '10k', opts)
-vim.keymap.set('n', 'J', '10j', opts)
-
 -- clear highlights
 vim.keymap.set('n', '<Esc>', ':noh<CR>', opts)
 
