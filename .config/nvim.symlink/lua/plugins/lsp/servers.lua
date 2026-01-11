@@ -30,23 +30,6 @@ return {
   docker_compose_language_service = {},
 
   -- python
-  pylsp = {
-    settings = {
-      pylsp = {
-        plugins = {
-          pyflakes = { enabled = false },
-          pycodestyle = { enabled = false },
-          autopep8 = { enabled = false },
-          yapf = { enabled = false },
-          mccabe = { enabled = false },
-          pylsp_mypy = { enabled = false },
-          pylsp_black = { enabled = false },
-          pylsp_isort = { enabled = false },
-        },
-      },
-    },
-  },
-
   basedpyright = {
     -- Config options: https://github.com/DetachHead/basedpyright/blob/main/docs/settings.md
     settings = {
@@ -87,4 +70,3 @@ return {
   ltex = {},
   texlab = {},
 }
-
