@@ -41,6 +41,7 @@ require('lazy').setup {
   require 'plugins.close-buffers',
   require 'plugins.comment',
   require 'plugins.conform',
+  require 'plugins.copilot-chat',
   require 'plugins.dashboard',
   require 'plugins.dial',
   require 'plugins.diffview',
