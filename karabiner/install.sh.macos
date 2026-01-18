@@ -21,7 +21,8 @@ while :; do
     break
     ;;
   "" | [nN])
-    echo "Skipping installation. Creating a symlink for karabiner-elements"
+    echo "Skipping installation."
+    echo "Creating a symlink for karabiner-elements"
     break
     ;;
   *)
