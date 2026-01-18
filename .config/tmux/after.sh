@@ -8,4 +8,4 @@ fi
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-source ~/.tmux/plugins/tpm/bin/install_plugins
+bash "$HOME/.tmux/plugins/tpm/bin/install_plugins"
