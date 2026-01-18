@@ -41,11 +41,15 @@ function git_config() {
 git config --global include.path "$HOME/.config/git/config_shared"
 git_config
 
+if ! command -v git-secrets > /dev/null 2>&1; then
+  exit 0
+fi
+
 if [[ -e "$HOME/.git-templates/git-secrets" ]]; then
   exit 0
 fi
 
-if command -v git-secrets > /dev/null 2>&1; then
-  git secrets --install ~/.git-templates/git-secrets
-  git config --global init.templatedir "$HOME/.git-templates/git-secrets"
-fi
+git secrets --install ~/.git-templates/git-secrets
+git config --global init.templatedir "$HOME/.git-templates/git-secrets"
+
+git secrets --add --global "$(whoami)"

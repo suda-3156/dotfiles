@@ -6,6 +6,7 @@
 !taskfile.yml
 !README.md
 !Dockerfile
+!.gitallowed
 
 !*.sh
 !*.symlink
