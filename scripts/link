@@ -59,7 +59,7 @@ function create_symlink() {
   fi
 
   mkdir -p "$(dirname "$dst")"
-  ln -s "$src" "$dst"
+  ln -sv "$src" "$dst"
 }
 
 function link() {

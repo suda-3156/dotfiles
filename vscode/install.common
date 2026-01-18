@@ -144,10 +144,10 @@ create_copy "$DOTFILES_ROOT/vscode/keybindings.json5" "$config_dir/keybindings.j
 if command -v code >/dev/null 2>&1; then
   # Install Extensions
   while :; do
-    printf "Install extensions listed in vscode/extensions? (Y/n): "
+    printf "Install extensions listed in vscode/extensions? (y/N): "
     read -r ans
     case "$ans" in
-    "" | [yY])
+    [yY])
       cat <"$DOTFILES_ROOT/vscode/extensions" | while read -r line; do
         if [[ "$line" == \#* || "$line" == "" ]]; then
           continue
@@ -156,7 +156,7 @@ if command -v code >/dev/null 2>&1; then
       done
       exit 0
       ;;
-    [nN])
+    "" | [nN])
       echo "Skipping VS Code extension installation."
       exit 0
       ;;
