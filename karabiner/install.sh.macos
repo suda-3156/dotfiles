@@ -58,4 +58,4 @@ fi
 
 mkdir -p "$LINK_PATH"
 
-ln -s "$DOTFILES_ROOT/karabiner/complex_modifications" "$LINK_PATH/complex_modifications"
+ln -sv "$DOTFILES_ROOT/karabiner/complex_modifications" "$LINK_PATH/complex_modifications"

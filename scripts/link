@@ -8,8 +8,9 @@ cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 TIMESTAMP=$(date +%Y%m%d%H%M%S)
 
+# https://github.com/holman/dotfiles/blob/master/script/bootstrap
 function create_symlink() {
-  local src=$1 dst=$2 global_opt=$3
+  local src=$1 dst=$2
 
   local overwrite_opt=${global_opt:-"undefined"}
 
@@ -21,19 +22,35 @@ function create_symlink() {
 
     if [[ "$overwrite_opt" == "undefined" ]]; then
       while :; do
-        printf "File already exists: %s\nChoose action - [o]verwrite, [b]ackup, or [s]kip: " "$dst"
+        printf "File already exists: %s\n" "$dst"
+        printf " [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?: "
         read -r ans
         case "$ans" in
-        [oO])
+        o)
           overwrite_opt="overwrite"
           break
           ;;
-        [bB])
+        O)
+          overwrite_opt="overwrite"
+          global_opt="overwrite"
+          break
+          ;;
+        b)
           overwrite_opt="backup"
           break
           ;;
-        [sS])
+        B)
+          overwrite_opt="backup"
+          global_opt="backup"
+          break
+          ;;
+        s)
           overwrite_opt="skip"
+          break
+          ;;
+        S)
+          overwrite_opt="skip"
+          global_opt="skip"
           break
           ;;
         "") ;;
@@ -65,33 +82,13 @@ function create_symlink() {
 function link() {
   echo "Setting up symlinks..."
 
-  local global_opt=
-
-  printf "Set a global option for handling existing files:\n"
-  printf "  [O]verwrite all, [B]ackup all, [S]kip all, or press Enter to decide per file: "
-  read -r ans
-
-  case "$ans" in
-  [O])
-    global_opt="overwrite"
-    ;;
-  [B])
-    global_opt="backup"
-    ;;
-  [S])
-    global_opt="skip"
-    ;;
-  "") ;;
-  *)
-    echo "Invalid choice. You'll be prompted for each file."
-    ;;
-  esac
+  local global_opt=""
 
   files=$(find -H "$DOTFILES_ROOT" -maxdepth $FIND_SEARCH_DEPTH -name '*.symlink' -not -path '*.git*')
   for src in $files; do
-    left_trimed=${src#"${DOTFILES_ROOT}/"}
-    dst="$HOME/${left_trimed%.symlink}"
-    create_symlink "$src" "$dst" "$global_opt"
+    left_trimmed=${src#"${DOTFILES_ROOT}/"}
+    dst="$HOME/${left_trimmed%.symlink}"
+    create_symlink "$src" "$dst"
   done
 }
 
