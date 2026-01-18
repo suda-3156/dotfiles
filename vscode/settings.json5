@@ -1,145 +1,59 @@
 {
   // ---------- latex ----------
 
-  // "latex-workshop.latex.outDir": "./out",
-  // "latex-workshop.latex.autoClean.run": "onBuilt",
-  // "latex-workshop.latex.autoBuild.run": "onSave",
-  // "latex-workshop.view.pdf.viewer": "tab",
-  //
-  // "latex-workshop.latex.recipes": [
-  //   {
-  //     "name": "latexmk (lualatex)🧋",
-  //     "tools": ["lualatexmk"]
-  //   },
-  //   {
-  //     "name": "latexmk 🔃",
-  //     "tools": ["latexmk"]
-  //   },
-  //   {
-  //     "name": "latexmk (latexmkrc)",
-  //     "tools": ["latexmk_rconly"]
-  //   },
-  //   {
-  //     "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
-  //     "tools": ["pdflatex", "bibtex", "pdflatex", "pdflatex"]
-  //   },
-  //   {
-  //     "name": "Compile Rnw files",
-  //     "tools": ["rnw2tex", "latexmk"]
-  //   },
-  //   {
-  //     "name": "Compile Jnw files",
-  //     "tools": ["jnw2tex", "latexmk"]
-  //   },
-  //   {
-  //     "name": "tectonic",
-  //     "tools": ["tectonic"]
-  //   }
-  // ],
-  // "latex-workshop.latex.tools": [
-  //   {
-  //     "name": "lualatexmk",
-  //     "command": "latexmk",
-  //     "args": [
-  //       "-synctex=1",
-  //       "-file-line-error",
-  //       "-interaction=nonstopmode",
-  //       "-halt-on-error",
-  //       "-lualatex",
-  //       "-outdir=%OUTDIR%",
-  //       "%DOC%"
-  //     ],
-  //     "env": {}
-  //   },
-  //   {
-  //     "name": "latexmk",
-  //     "command": "latexmk",
-  //     "args": [
-  //       "-synctex=1",
-  //       "-interaction=nonstopmode",
-  //       "-file-line-error",
-  //       "-pdf",
-  //       "-outdir=%OUTDIR%",
-  //       "%DOC%"
-  //     ],
-  //     "env": {}
-  //   },
-  //   {
-  //     "name": "latexmk_rconly",
-  //     "command": "latexmk",
-  //     "args": ["%DOC%"],
-  //     "env": {}
-  //   },
-  //   {
-  //     "name": "pdflatex",
-  //     "command": "pdflatex",
-  //     "args": [
-  //       "-synctex=1",
-  //       "-interaction=nonstopmode",
-  //       "-file-line-error",
-  //       "%DOC%"
-  //     ],
-  //     "env": {}
-  //   },
-  //   {
-  //     "name": "bibtex",
-  //     "command": "bibtex",
-  //     "args": ["%DOCFILE%"],
-  //     "env": {}
-  //   },
-  //   {
-  //     "name": "rnw2tex",
-  //     "command": "Rscript",
-  //     "args": [
-  //       "-e",
-  //       "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
-  //     ],
-  //     "env": {}
-  //   },
-  //   {
-  //     "name": "jnw2tex",
-  //     "command": "julia",
-  //     "args": ["-e", "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"],
-  //     "env": {}
-  //   },
-  //   {
-  //     "name": "jnw2texmintex",
-  //     "command": "julia",
-  //     "args": [
-  //       "-e",
-  //       "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
-  //     ],
-  //     "env": {}
-  //   },
-  //   {
-  //     "name": "tectonic",
-  //     "command": "tectonic",
-  //     "args": ["--synctex", "--keep-logs", "%DOC%.tex"],
-  //     "env": {}
-  //   }
-  // ],
-  //
-  // "latex-workshop.formatting.latexindent.path": "latexindent",
-  // "latex-workshop.formatting.latexindent.args": [
-  //   "%TMPFILE%",
-  //   "-c=%DIR%/",
-  //   "-y=defaultIndent: '%INDENT%'"
-  // ],
-  // "latex-workshop.formatting.tex-fmt.args": [
-  //   "%TMPFILE%",
-  //   "-c=%DIR%/",
-  //   "-y=defaultIndent: '%INDENT%'"
-  // ],
-  //
-  // "latex-workshop.linting.chktex.exec.path": "chktex",
-  // "latex-workshop.linting.chktex.exec.args": [
-  //     "-wall",
-  //     "-n22",
-  //     "-n30",
-  //     "-e16",
-  //     "-q"
-  // ],
-  // "latex-workshop.linting.lacheck.exec.path": "lacheck",
+  "latex-workshop.latex.outDir": "./out",
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.view.pdf.viewer": "tab",
+
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk (lualatex)",
+      "tools": ["lualatexmk"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "lualatexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-file-line-error",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-lualatex",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    }
+  ],
+
+  // style
+  "[tex]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "James-Yu.latex-workshop"
+  },
+
+  // formatter
+  "latex-workshop.formatting.latex": "latexindent",
+    "latex-workshop.formatting.latexindent.path": "latexindent",
+  "latex-workshop.formatting.latexindent.args": [
+    "%TMPFILE%",
+    "-c=%DIR%/",
+    "-y=defaultIndent: '  '"
+  ],
+
+  // linter
+  "latex-workshop.linting.chktex.exec.path": "chktex",
+  "latex-workshop.linting.lacheck.exec.path": "lacheck",
+  "latex-workshop.linting.chktex.exec.args": [
+      "-wall",
+      "-n22",
+      "-n30",
+      "-e16",
+      "-q"
+  ],
 
   // ---------- terminal, editor ----------
 
@@ -200,12 +114,6 @@
   "[terraform]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "hashicorp.terraform"
-  },
-
-  "[tex,latex]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "James-Yu.latex-workshop",
-    "files.autoSave": "off"
   },
 
   "[typescript,typescriptreact,javascript,javascriptreact]": {
