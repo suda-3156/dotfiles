@@ -64,4 +64,3 @@ abbr -S -q gcreauth='gcloud auth application-default login'
 abbr -S -q quitapp="osascript -e 'quit app \"%\"'"
 
 abbr -S -q gai="git aicommit"
-

@@ -8,7 +8,7 @@ tasks:
   default:
     cmds:
       - task -l --sort none
-    slient: true
+    silent: true
 
   build:ubuntu:
     desc: "Build Docker image for Ubuntu"

@@ -1,3 +1,4 @@
+# shellcheck disable=all
 case "$(uname -s)" in
   Darwin)
     [ -f "$HOME/dotfiles/zsh/.zshrc.macos" ] && source "$HOME/dotfiles/zsh/.zshrc.macos"

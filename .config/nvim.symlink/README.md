@@ -1,6 +1,6 @@
-# nvim
+# Neovim
 
-- leader key: `,`
+- leader key: ` ` (Space)
 
 ## References
 

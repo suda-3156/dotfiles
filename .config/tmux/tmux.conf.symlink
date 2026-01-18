@@ -61,7 +61,7 @@ bind -T copy-mode-vi 'y' send-keys -X copy-pipe-and-cancel "pbcopy"
 
 # Paste yanked text with "Prefix + P" ("Prefix + p" goes to previous window)
 bind P paste-buffer
- 
+
 # Don't exit copy mode when dragging with mouse
 unbind -T copy-mode-vi MouseDragEnd1Pane
 
@@ -105,4 +105,3 @@ set -g @continuum-restore 'on'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
-
