@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #
+# spt - Snippet Picker Tool
 #
 
 FIND_SEARCH_DEPTH=4
@@ -9,16 +10,54 @@ if [ -z "$SNIPPETS_DIR" ]; then
   exit 1
 fi
 
+if [ -z "$EDITOR" ]; then
+  EDITOR="code"
+fi
+
+if [ "$1" = "open" ]; then
+  "$EDITOR" "$SNIPPETS_DIR"
+  exit 0
+fi
+
+# Blacklist patterns
+EXCLUDED_PATHS=(
+  '*.git*'
+  '*.venv*'
+  '*node_modules*'
+  '*__pycache__*'
+  '*.pytest_cache*'
+  '*dist*'
+  '*build*'
+  '*.ruff_cache*'
+)
+
+EXCLUDED_FILES=(
+  '.DS_Store'
+  'pnpm-lock.yaml'
+  'yarn.lock'
+  'uv.lock'
+  'package-lock.json'
+  '*.pyc'
+  'Thumbs.db'
+)
+
+# Build find command with exclusions
+find_args=()
+for pattern in "${EXCLUDED_PATHS[@]}"; do
+  find_args+=(-not -path "$pattern")
+done
+for pattern in "${EXCLUDED_FILES[@]}"; do
+  find_args+=(-not -name "$pattern")
+done
+
 files=$(
   find \
   -L "$SNIPPETS_DIR" \
   -mindepth 1 \
   -maxdepth $FIND_SEARCH_DEPTH \
   -type f \
-  -not -path '*.git*' \
-  -not -path '*.venv*' \
-  -not -path '*node_modules*' \
-  -not -name '.DS_Store'
+  "${find_args[@]}" \
+  | sort
 )
 
 relative_path=$(echo "$files" | sed "s|$SNIPPETS_DIR/||g" | fzf)
