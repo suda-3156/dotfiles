@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+#
+#
+
+FIND_SEARCH_DEPTH=4
+
+if [ -z "$SNIPPETS_DIR" ]; then
+  echo "Error: SNIPPETS_DIR is not set. Please set it in your environment variables."
+  exit 1
+fi
+
+files=$(
+  find \
+  -L "$SNIPPETS_DIR" \
+  -mindepth 1 \
+  -maxdepth $FIND_SEARCH_DEPTH \
+  -type f \
+  -not -path '*.git*' \
+  -not -path '*.venv*' \
+  -not -path '*node_modules*' \
+  -not -name '.DS_Store'
+)
+
+relative_path=$(echo "$files" | sed "s|$SNIPPETS_DIR/||g" | fzf)
+
+if [ -n "$relative_path" ]; then
+  cat "$SNIPPETS_DIR/$relative_path" | pbcopy
+  echo "Copied '$relative_path' to clipboard."
+fi
