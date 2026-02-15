@@ -7,23 +7,11 @@
 # youtube-dlp, which is awesome:
 #   https://github.com/yt-dlp/yt-dlp
 #
-
-if ! command -v yt-dlp >/dev/null 2>&1; then
-  printf "yt-dlp not found. Install yt-dlp via pip? (Y/n): "
-  read -r ans
-  case "$ans" in
-  "" | [yY])
-    pip install --no-deps -U yt-dlp
-    ;;
-  [nN])
-    exit 0
-    ;;
-  *)
-    echo "Unknown actions: $ans"
-    exit 0
-    ;;
-  esac
-fi
+# `pip install -U "yt-dlp[default]"` to install (See: https://github.com/yt-dlp/yt-dlp/wiki/Installation)
 
 mkdir -p ~/Desktop/yt
-cd ~/Desktop/yt && yt-dlp -S "ext" "$1"
+
+# cd ~/Desktop/yt && yt-dlp -S "ext" "$1" --embed-thumbnail # Videos can’t be played on QuickTime Player on Mac.
+# Solutions: https://www.reddit.com/r/youtubedl/comments/15vfdqs/ytdlp_mac_quicktime_player
+cd ~/Desktop/yt && yt-dlp -f "bv*[ext=mp4][vcodec^=avc]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b" "$1" --embed-thumbnail
+# cd ~/Desktop/yt && yt-dlp -S vcodec:h264,res,acodec:m4a --no-mtime "$1" --embed-thumbnail
