@@ -21,7 +21,7 @@ fi
 
 # Blacklist patterns
 EXCLUDED_PATHS=(
-  '*.git*'
+  '*.git/*'
   '*.venv*'
   '*node_modules*'
   '*__pycache__*'
@@ -52,12 +52,12 @@ done
 
 files=$(
   find \
-  -L "$SNIPPETS_DIR" \
-  -mindepth 1 \
-  -maxdepth $FIND_SEARCH_DEPTH \
-  -type f \
-  "${find_args[@]}" \
-  | sort
+    -L "$SNIPPETS_DIR" \
+    -mindepth 1 \
+    -maxdepth $FIND_SEARCH_DEPTH \
+    -type f \
+    "${find_args[@]}" |
+    sort
 )
 
 relative_path=$(echo "$files" | sed "s|$SNIPPETS_DIR/||g" | fzf)
