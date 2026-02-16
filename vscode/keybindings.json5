@@ -7,4 +7,17 @@
     "key": "ctrl+cmd+c",
     "command": "github.copilot.git.generateCommitMessage"
   },
+  {
+    "key": "ctrl+cmd+i",
+    "command": "cSpell.addIgnoreWordsToWorkspace"
+  },
+  {
+    "key": "ctrl+cmd+w",
+    "command": "cSpell.addWordToWorkspaceDictionary"
+  },
+  {
+    "key": "ctrl+cmd+u",
+    "command": "cSpell.addWordToUserDictionary"
+  }
 ]
+
