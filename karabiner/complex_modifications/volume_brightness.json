@@ -1,0 +1,159 @@
+{
+  "title": "volume + brightness",
+  "rules": [
+    {
+      "description": "fn + arrows => volume + brightness",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "up_arrow",
+            "modifiers": {
+              "mandatory": ["fn"]
+            }
+          },
+          "to": [
+            {
+              "consumer_key_code": "volume_increment"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "down_arrow",
+            "modifiers": {
+              "mandatory": ["fn"]
+            }
+          },
+          "to": [
+            {
+              "consumer_key_code": "volume_decrement"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "left_arrow",
+            "modifiers": {
+              "mandatory": ["fn"]
+            }
+          },
+          "to": [
+            {
+              "consumer_key_code": "display_brightness_decrement"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "right_arrow",
+            "modifiers": {
+              "mandatory": ["fn"]
+            }
+          },
+          "to": [
+            {
+              "consumer_key_code": "display_brightness_increment"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Hyper + f + hjkl => volume + brightness",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "name": "hyper_sublayer_f",
+              "type": "variable_if",
+              "value": 1
+            }
+          ],
+          "description": "Hyper + f + k => volume increment",
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "consumer_key_code": "volume_increment"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "name": "hyper_sublayer_f",
+              "type": "variable_if",
+              "value": 1
+            }
+          ],
+          "description": "Hyper + f + j => volume decrement",
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "consumer_key_code": "volume_decrement"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "name": "hyper_sublayer_f",
+              "type": "variable_if",
+              "value": 1
+            }
+          ],
+          "description": "Hyper + f + h => brightness decrement",
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "consumer_key_code": "display_brightness_decrement"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "conditions": [
+            {
+              "name": "hyper_sublayer_f",
+              "type": "variable_if",
+              "value": 1
+            }
+          ],
+          "description": "Hyper + f + l => brightness increment",
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "consumer_key_code": "display_brightness_increment"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}

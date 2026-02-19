@@ -60,3 +60,33 @@ fi
 mkdir -p "$LINK_PATH"
 
 ln -sv "$DOTFILES_ROOT/karabiner/complex_modifications" "$LINK_PATH/complex_modifications"
+
+CONFIG_FILE="$HOME/.config/karabiner/karabiner.json"
+if [[ -L "$CONFIG_FILE" || -e "$CONFIG_FILE" ]]; then
+  while :; do
+    printf "File already exists: %s\nChoose action - [o]verwrite, [b]ackup, or [s]kip: " "$CONFIG_FILE"
+    read -r ans
+    case "$ans" in
+    [oO])
+      rm -rf "$CONFIG_FILE"
+      break
+      ;;
+    [bB])
+      echo "Backed up: $CONFIG_FILE -> karabiner.json.bak.$TIMESTAMP"
+      mv "$CONFIG_FILE" "$CONFIG_FILE.bak.$TIMESTAMP"
+      break
+      ;;
+    [sS])
+      exit 0
+      ;;
+    "") ;;
+    *)
+      echo "Invalid option: $ans"
+      ;;
+    esac
+  done
+fi
+
+cp -v "$DOTFILES_ROOT/karabiner/karabiner.json.example" "$CONFIG_FILE"
+
+echo "Installation complete. Open Karabiner Elements to choose the complex modifications."

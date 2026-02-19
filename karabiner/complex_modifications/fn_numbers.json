@@ -1,8 +1,8 @@
 {
-  "title": "Number keys",
+  "title": "fn + wersdfxcv, space bar => Number keys",
   "rules": [
     {
-      "description": "fn + wersdfxcv => 1 ~ 0 / jkl => `-=",
+      "description": "fn + wersdfxcv, space bar => 1 ~ 0",
       "manipulators": [
         {
           "from": {
@@ -123,7 +123,12 @@
             }
           ],
           "type": "basic"
-        },
+        }
+      ]
+    },
+    {
+      "description": "fn + jkl => `-=",
+      "manipulators": [
         {
           "from": {
             "key_code": "j",
