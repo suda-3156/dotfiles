@@ -464,7 +464,7 @@
           },
           "to": [
             {
-              "key_code": "9",
+              "key_code": "0",
               "modifiers": ["left_shift"]
             }
           ],
@@ -493,7 +493,7 @@
               "value": 0
             }
           ],
-          "description": "hyper + ; => Ctrl + ;",
+          "description": "hyper + ; => escape",
           "from": {
             "key_code": "semicolon",
             "modifiers": {
@@ -502,8 +502,7 @@
           },
           "to": [
             {
-              "key_code": "semicolon",
-              "modifiers": ["left_control"]
+              "key_code": "escape"
             }
           ],
           "type": "basic"
