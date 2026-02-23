@@ -1,6 +1,6 @@
 # load script variables
 
-export EDITOR="code"
+export EDITOR="vim"
 
 # for bin/spt
 export SNIPPETS_DIR="$HOME/Dev/snippets"

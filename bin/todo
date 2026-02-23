@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#
+# Create `todo: <title>` directory.
+#
+
+title="$1"
+parent=${2:-.}
+
+path=
+
+if [ "$title" == "" ]; then
+  path="$parent/todo"
+  title="memo"
+else
+  path="$parent/todo: $title"
+fi
+
+mkdir -p "$path"
+
+touch "$path/.gitignore"
+echo "*" >"$path/.gitignore"
+
+touch "$path/$title.md"
