@@ -19,6 +19,7 @@ packages=(
   cmake
   libssl-dev
   pkg-config
+  direnv
 )
 for package in "${packages[@]}"; do
   if ! command -v "$package" >/dev/null 2>&1; then
@@ -84,3 +85,9 @@ git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 # echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.pub arch=amd64] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
 # sudo apt-get update
 # sudo apt-get install -y mise
+
+# go-task
+# if ! command -v task >/dev/null 2>&1; then
+#   curl -1sLf 'https://dl.cloudsmith.io/public/task/task/setup.deb.sh' | sudo -E bash
+#   apt install task
+# fi
