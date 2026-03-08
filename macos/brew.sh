@@ -52,7 +52,7 @@ brew install gzip
 # Add `$(brew --prefix gawk)/libexec/gnubin` to `$PATH`.
 brew install gawk
 
-# Use homebrew bash
+# Use latest version of bash
 brew install bash
 if ! grep -F -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
   echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells
@@ -68,8 +68,9 @@ brew install --cask iterm2
 # `brew install docker` to install CLI only
 brew install --cask docker-desktop
 
-# Clipy
-brew install --cask clipy
+# Clip board manager
+# brew install --cask clipy
+brew install maccy
 
 # Latex
 brew install --cask mactex-no-gui
@@ -78,11 +79,16 @@ brew install --cask mactex-no-gui
 brew install --cask gcloud-cli
 # brew install --cask firefox
 # brew install --cask google-chrome
-brew install --cask github-copilot-for-xcode
+# brew install --cask github-copilot-for-xcode
 brew install --cask obsidian
 brew install --cask appcleaner
 brew install --cask keyboardcleantool
 brew install --cask postman
+brew install --cask skim # A pdf viewr
+brew install --cask raycast
+# brew install --cask karabiner-elements # Install scripts are in the karabiner directory
+brew install --cask itsycal        # A calender app in the menu bar
+brew install --cask monitorcontrol # For third party monitors control
 
 # Remove outdated versions from the cellar.
 brew cleanup
