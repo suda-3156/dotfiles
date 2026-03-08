@@ -1,0 +1,23 @@
+font-family = "Moralerspace Neon HW"
+font-thicken = true
+font-thicken-strength = 128
+font-size = 12.8
+adjust-cell-height = 2
+
+theme = Monokai Pro Octagon
+background-blur = 15
+background-opacity = 0.90
+
+window-padding-x = 8
+window-padding-y = 8,0
+window-padding-balance = true
+
+macos-titlebar-style = hidden
+mouse-hide-while-typing = true
+macos-option-as-alt = left
+
+confirm-close-surface = false
+window-save-state = always
+
+shell-integration = "zsh"
+
