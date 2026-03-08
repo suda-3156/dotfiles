@@ -52,11 +52,13 @@ require('lazy').setup {
   require 'plugins.neo-tree',
   require 'plugins.noice',
   require 'plugins.oil',
+  require 'plugins.quicker',
   require 'plugins.scrollbar',
   require 'plugins.surround',
   require 'plugins.treesitter',
   require 'plugins.telescope',
   require 'plugins.trouble',
+  require 'plugins.ufo',
 }
 
 -- Function to check if a file exists
