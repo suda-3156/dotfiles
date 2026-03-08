@@ -35,9 +35,9 @@ local Monokai = {
       theme = 'monokai-pro',
     }
 
-    -- require('lualine').setup {
-    --   options = { theme = 'monokai-pro' },
-    -- }
+    require('lualine').setup {
+      options = { theme = 'monokai-pro' },
+    }
   end,
 }
 
