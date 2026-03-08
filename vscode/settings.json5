@@ -59,29 +59,6 @@
     "-q",
   ],
 
-  // ---------- terminal, editor ----------
-
-  // Reference: https://github.com/antfu/vscode-file-nesting-config
-  "explorer.fileNesting.enabled": true,
-  "explorer.fileNesting.expand": false,
-  "explorer.fileNesting.patterns": {
-    ".env": "*.env, .env.*, .envrc, env.d.ts",
-    ".gitignore": ".gitattributes, .gitmodules, .gitmessage, .lfsconfig, .mailmap, .git-blame*",
-  },
-
-  "explorer.compactFolders": false,
-
-  "editor.formatOnSave": true,
-  "editor.wordWrap": "on",
-  "editor.bracketPairColorization.enabled": true,
-
-  "files.autoSave": "afterDelay",
-
-  "terminal.integrated.suggest.enabled": false,
-
-  "workbench.startupEditor": "none",
-  "workbench.secondarySideBar.defaultVisibility": "hidden",
-
   // ---------- language preferences ----------
 
   "[c,cpp]": {
@@ -156,13 +133,53 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
+  // ---------- terminal, editor ----------
+
+  // Reference: https://github.com/antfu/vscode-file-nesting-config
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    ".env": "*.env, .env.*, .envrc, env.d.ts",
+    ".gitignore": ".gitattributes, .gitmodules, .gitmessage, .lfsconfig, .mailmap, .git-blame*",
+  },
+  "explorer.compactFolders": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+  "editor.bracketPairColorization.enabled": true,
+
+  "files.autoSave": "afterDelay",
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "bun.lock": "json5",
+  },
+
+  "terminal.integrated.suggest.enabled": false,
+
+  "workbench.startupEditor": "none",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+
+  "makefile.configureOnOpen": true,
+
+  // fonts  
+  // "editor.fontFamily": "Moralerspace Neon HW",
+  // "editor.fontSize": 12.8,
+  // "chat.fontFamily": "Moralerspace Neon HW",
+  // "chat.fontSize": 12.8,
+  // "editor.inlineSuggest.fontFamily": "Moralerspace Neon HW",
+  // "terminal.integrated.fontFamily": "Moralerspace Neon HW",
+  // "terminal.integrated.fontSize": 12.8,
+
   // ---------- copilot ----------
   "github.copilot.enable": {
     "*": false,
     python: true,
   },
+  "chat.useAgentSkills": true,
 
-  // ---------- extensions ----------
+  // ---------- Check spell ----------
   "cSpell.userWords": [
     "biomejs",
     "chktex",
@@ -189,12 +206,4 @@
     ".golangci.yaml",
     ".golangci.yml",
   ],
-
-  // ---------- other ----------
-  "files.associations": {
-    "*.css": "tailwindcss",
-    "bun.lock": "json5",
-  },
-
-  "makefile.configureOnOpen": true,
 }
