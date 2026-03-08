@@ -6,7 +6,6 @@ For my own use.
 cd $HOME
 git clone https://github.com/suda-3156/dotfiles.git
 cd dotfiles
-chmod +x ./scripts/install
 ./scripts/install
 ```
 
