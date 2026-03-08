@@ -2,7 +2,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- For conciseness
 local opts = { noremap = true, silent = true }
 
 -- Disable the spacebar key's default behavior in Normal and Visual modes
@@ -12,16 +11,13 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- clear highlights
+-- Clear highlights
 vim.keymap.set('n', '<Esc>', ':noh<CR>', opts)
 
--- save file
+-- Save file
 vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', opts)
 
--- quit file
-vim.keymap.set('n', '<C-q>', '<cmd> q <CR>', opts)
-
--- delete single character without copying into register
+-- Delete single character without copying into register
 vim.keymap.set('n', 'x', '"_x', opts)
 
 -- Vertical scroll and center
@@ -38,7 +34,7 @@ vim.keymap.set('n', '<Down>', ':resize +2<CR>', opts)
 vim.keymap.set('n', '<Left>', ':vertical resize -2<CR>', opts)
 vim.keymap.set('n', '<Right>', ':vertical resize +2<CR>', opts)
 
--- Buffers
+-- Buffers; See also plugins/close-buffers.lua
 vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts)
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts)
 vim.keymap.set('n', '<leader>x', ':Bdelete!<CR>', opts) -- close buffer
@@ -56,10 +52,6 @@ vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', opts)
 vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts)
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
 
--- Tabs. See also plugins/close-buffers.lua
-vim.keymap.set('n', '<leader>tn', ':tabn<CR>', opts) --  go to next tab
-vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts) --  go to previous tab
-
 -- Toggle line wrapping
 vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts)
 
@@ -75,11 +67,7 @@ vim.keymap.set({ 'n', 'v' }, '<A-k>', ':m .-2<CR>==', opts)
 vim.keymap.set('v', 'p', '"_dP', opts)
 
 -- Replace word under cursor
-vim.keymap.set('n', '<leader>j', '*``cgn', opts)
-
--- Explicitly yank to system clipboard (highlighted and entire row)
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
-vim.keymap.set('n', '<leader>Y', [["+Y]])
+vim.keymap.set('n', '<leader>c', '*``cgn', opts)
 
 -- Toggle diagnostics
 local diagnostics_active = true
@@ -104,16 +92,11 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('n', '<leader>ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>sl', ':source .session.vim<CR>', { noremap = true, silent = false })
 
-vim.keymap.set('n', 'Y', 'y$', opts)
-vim.keymap.set('n', 'X', '"_D', opts)
-vim.keymap.set('n', 'U', '<C-r>', opts)
-vim.keymap.set('n', 'M', '%', opts)
-
 -- Copy and paste current line or selected lines
 vim.keymap.set('n', '<A-S-k>', 'VyP', opts)
-vim.keymap.set('v', '<A-S-k>', 'yP', opts)
+vim.keymap.set('v', '<A-S-k>', 'yP`[V`]o', opts)
 vim.keymap.set('n', '<A-S-j>', 'Vyp', opts)
-vim.keymap.set('v', '<A-S-j>', 'yjp', opts)
+vim.keymap.set('v', '<A-S-j>', "y'>p`[V`]o", opts)
 
 -- Override default o, O behavior to stay in normal mode and not to append comment signs
 vim.keymap.set('n', 'O', function()
@@ -124,7 +107,7 @@ vim.keymap.set('n', 'o', function()
   vim.fn.append(vim.fn.line '.', '')
   vim.cmd 'normal! j'
 end, opts)
-
+-- defualt behavior
 vim.keymap.set('n', '<leader>o', 'o', opts)
 vim.keymap.set('n', '<leader>O', 'O', opts)
 
@@ -135,3 +118,9 @@ vim.keymap.set('i', '<c-b>', '<left>', opts)
 vim.keymap.set('i', '<c-f>', '<right>', opts)
 vim.keymap.set('i', '<m-b>', '<c-left>', opts)
 vim.keymap.set('i', '<m-f>', '<c-right>', opts)
+
+-- misc
+vim.keymap.set('n', 'Y', 'y$', opts)
+vim.keymap.set('n', 'X', '"_D', opts)
+vim.keymap.set('n', 'U', '<C-r>', opts)
+vim.keymap.set('n', 'M', '%', opts)
