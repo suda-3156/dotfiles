@@ -36,6 +36,5 @@ return {
     end
 
     vim.keymap.set('n', '<leader>bg', toggle_transparency, { noremap = true, silent = true })
-
   end,
 }
