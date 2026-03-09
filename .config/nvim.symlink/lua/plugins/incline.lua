@@ -10,17 +10,18 @@ return {
     local navic = require 'nvim-navic'
     local devicons = require 'nvim-web-devicons'
 
-    -- Monokai Pro Octagon palette (relevant subset)
+    local _palette = require('monokai-pro').get_palette 'octagon'
     local palette = {
-      mantle = '#1e1f2b',
-      muted  = '#696d77',
-      red    = '#ff657a',
-      orange = '#ff9b5e',
-      purple = '#a8a9e0',
+      bg       = _palette.dark1,
+      fg       = _palette.text,
+      active   = _palette.accent6,  -- purple
+      inactive = _palette.dimmed3,  -- muted grey
+      red      = _palette.accent1,  -- error
+      orange   = _palette.accent2,  -- modified marker
     }
 
-    local fg_active   = palette.purple
-    local fg_inactive = palette.muted
+    local fg_active   = palette.active
+    local fg_inactive = palette.inactive
 
     local diag_icons = { error = '󰅚 ', warn = '󰀪 ', hint = '󰌶 ', info = ' ' }
 
@@ -61,7 +62,7 @@ return {
       local hasError   = #vim.diagnostic.get(props.buf, { severity = vim.diagnostic.severity['ERROR'] }) > 0
       local isReadonly = vim.bo[props.buf].readonly
 
-      local fg_filename_active = hasError and palette.red or (isReadonly and palette.muted or fg_active)
+      local fg_filename_active = hasError and palette.red or (isReadonly and palette.inactive or fg_active)
       local fg_filename = props.focused and fg_filename_active or fg_inactive
 
       local res = {
@@ -106,7 +107,7 @@ return {
     require('incline').setup {
       highlight = {
         groups = {
-          InclineNormal   = { guibg = palette.mantle, guifg = fg_active },
+          InclineNormal   = { guibg = palette.bg, guifg = fg_active },
           InclineNormalNC = { guibg = 'none', guifg = fg_inactive },
         },
       },
