@@ -1,13 +1,9 @@
--- Fuzzy Finder (files, lsp, etc)
+-- From: https://github.com/hendrikmi/dotfiles/blob/main/nvim/lua/plugins/telescope.lua
 return {
   'nvim-telescope/telescope.nvim',
   event = 'VeryLazy',
-  branch = '0.1.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-    -- Only load if `make` is available. Make sure you have the system
-    -- requirements installed.
     {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
@@ -17,8 +13,7 @@ return {
     },
     'nvim-telescope/telescope-ui-select.nvim',
 
-    -- Useful for getting pretty icons, but requires a Nerd Font.
-    -- 'nvim-tree/nvim-web-devicons',
+    'nvim-tree/nvim-web-devicons',
   },
   config = function()
     local actions = require 'telescope.actions'

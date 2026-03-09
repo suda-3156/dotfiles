@@ -1,6 +1,5 @@
 local OneDark = {
   'navarasu/onedark.nvim',
-  version = 'v0.1.0', -- Pin to legacy version
   priority = 1000,
   config = function()
     require('onedark').setup {
@@ -10,7 +9,7 @@ local OneDark = {
       ending_tildes = true,
 
       -- lualine = {
-      --   transparent = false, -- lualine center bar transparency
+      --   transparent = false,
       -- },
     }
     require('onedark').load()
@@ -30,14 +29,7 @@ local Monokai = {
       inc_search = 'background',
     }
     vim.cmd.colorscheme 'monokai-pro'
-
-    require('barbecue').setup {
-      theme = 'monokai-pro',
-    }
-
-    require('lualine').setup {
-      options = { theme = 'monokai-pro' },
-    }
+    vim.opt.fillchars = { eob = ' ' }
   end,
 }
 

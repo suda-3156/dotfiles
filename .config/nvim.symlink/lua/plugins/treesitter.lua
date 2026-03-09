@@ -1,15 +1,11 @@
--- Highlight, edit, and navigate code
 return {
-  'nvim-treesitter/nvim-treesitter',
-  event = 'VeryLazy',
-  build = ':TSUpdate',
-  dependencies = {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-  },
-  config = function()
-    require('nvim-treesitter.configs').setup {
-      -- Add languages to be installed here that you want installed for treesitter
-      ensure_installed = {
+  {
+    'nvim-treesitter/nvim-treesitter',
+    lazy = false,
+    build = ':TSUpdate',
+    opts = {}, -- require('nvim-treesitter').setup()
+    config = function()
+      require('nvim-treesitter').install {
         'lua',
         'python',
         'javascript',
@@ -23,7 +19,6 @@ return {
         'toml',
         'json',
         'java',
-        'groovy',
         'go',
         'gitignore',
         'graphql',
@@ -36,72 +31,103 @@ return {
         'tsx',
         'css',
         'html',
-      },
+      }
 
-      -- Autoinstall languages that are not installed
-      auto_install = true,
+      -- Highlighting
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = { '<filetype>' },
+        callback = function()
+          vim.treesitter.start()
+        end,
+      })
 
-      highlight = { enable = true },
-      indent = { enable = true },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = '<c-space>',
-          node_incremental = '<c-space>',
-          scope_incremental = '<c-s>',
-          node_decremental = '<M-space>',
+      -- Register additional file extensions
+      vim.filetype.add { extension = { tf = 'terraform' } }
+      vim.filetype.add { extension = { tfvars = 'terraform' } }
+    end,
+  },
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    branch = 'main',
+    init = function()
+      -- Disable entire built-in ftplugin mappings to avoid conflicts.
+      -- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+      vim.g.no_plugin_maps = true
+    end,
+    opts = {
+      select = {
+        lookahead = true,
+        selection_modes = {
+          ['@parameter.outer'] = 'v',
+          ['@function.outer'] = 'V',
         },
+        include_surrounding_whitespace = false,
       },
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-          keymaps = {
-            -- You can use the capture groups defined in textobjects.scm
-            ['aa'] = '@parameter.outer',
-            ['ia'] = '@parameter.inner',
-            ['af'] = '@function.outer',
-            ['if'] = '@function.inner',
-            ['ac'] = '@class.outer',
-            ['ic'] = '@class.inner',
-          },
-        },
-        move = {
-          enable = true,
-          set_jumps = true, -- whether to set jumps in the jumplist
-          goto_next_start = {
-            [']m'] = '@function.outer',
-            [']]'] = '@class.outer',
-          },
-          goto_next_end = {
-            [']M'] = '@function.outer',
-            [']['] = '@class.outer',
-          },
-          goto_previous_start = {
-            ['[m'] = '@function.outer',
-            ['[['] = '@class.outer',
-          },
-          goto_previous_end = {
-            ['[M'] = '@function.outer',
-            ['[]'] = '@class.outer',
-          },
-        },
-        swap = {
-          enable = true,
-          swap_next = {
-            ['<leader>a'] = '@parameter.inner',
-          },
-          swap_previous = {
-            ['<leader>A'] = '@parameter.inner',
-          },
-        },
+    },
+    keys = {
+      {
+        'am',
+        function()
+          require('nvim-treesitter-textobjects.select').select_textobject('@function.outer', 'textobjects')
+        end,
+        mode = { 'x', 'o' },
+        desc = 'Select outer function',
       },
-    }
+      {
+        'im',
+        function()
+          require('nvim-treesitter-textobjects.select').select_textobject('@function.inner', 'textobjects')
+        end,
+        mode = { 'x', 'o' },
+        desc = 'Select inner function',
+      },
+      {
+        'ac',
+        function()
+          require('nvim-treesitter-textobjects.select').select_textobject('@class.outer', 'textobjects')
+        end,
+        mode = { 'x', 'o' },
+        desc = 'Select outer class',
+      },
+      {
+        'ic',
+        function()
+          require('nvim-treesitter-textobjects.select').select_textobject('@class.inner', 'textobjects')
+        end,
+        mode = { 'x', 'o' },
+        desc = 'Select inner class',
+      },
+      {
+        'as',
+        function()
+          require('nvim-treesitter-textobjects.select').select_textobject('@local.scope', 'locals')
+        end,
+        mode = { 'x', 'o' },
+        desc = 'Select scope',
+      },
+    },
+  },
+  {
+    'andymass/vim-matchup',
+    init = function()
+      -- modify your configuration vars here
+      vim.g.matchup_treesitter_stopline = 500
 
-    -- Register additional file extensions
-    vim.filetype.add { extension = { tf = 'terraform' } }
-    vim.filetype.add { extension = { tfvars = 'terraform' } }
-    vim.filetype.add { extension = { pipeline = 'groovy' } }
-    vim.filetype.add { extension = { multibranch = 'groovy' } }
-  end,
+      -- or call the setup function provided as a helper. It defines the
+      -- configuration vars for you
+      require('match-up').setup {
+        treesitter = {
+          stopline = 500,
+        },
+      }
+    end,
+    -- or use the `opts` mechanism built into `lazy.nvim`. It calls
+    -- `require('match-up').setup` under the hood
+    ---@type matchup.Config
+    opts = {
+      treesitter = {
+        stopline = 500,
+      },
+    },
+  },
 }

@@ -38,9 +38,9 @@ return {
   },
 
   config = function()
-    local servers = require('plugins.lsp.servers')
-    local keymaps = require('plugins.lsp.keymaps')
-    local diagnostics = require('plugins.lsp.diagnostics')
+    local servers = require 'plugins.lsp.servers'
+    local keymaps = require 'plugins.lsp.keymaps'
+    local diagnostics = require 'plugins.lsp.diagnostics'
 
     -- Set keymaps when LSP attaches
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -69,11 +69,11 @@ return {
       auto_update = true,
       run_on_start = true,
     }
-    require('mason-lspconfig').setup({})
+    require('mason-lspconfig').setup {}
 
     for server, cfg in pairs(servers) do
       cfg.capabilities = vim.tbl_deep_extend('force', {}, capabilities, cfg.capabilities or {})
-      
+
       vim.lsp.config(server, cfg)
       vim.lsp.enable(server)
     end
