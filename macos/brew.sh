@@ -64,6 +64,7 @@ brew bundle --file="$DOTFILES_ROOT/macos/Brewfile"
 # Terminal emulator
 # brew install --cask iterm2
 brew install --cask ghostty
+brew install --cask wezterm
 
 # Docker
 # `brew install docker` to install CLI only
@@ -85,11 +86,11 @@ brew install --cask obsidian
 brew install --cask appcleaner
 brew install --cask keyboardcleantool
 brew install --cask postman
-brew install --cask skim # A pdf viewr
-brew install --cask raycast
+brew install --cask skim    # A pdf viewr
+brew install --cask raycast # -> Alternative: karabiner-elements + Rectangle + Spotlight
 # brew install --cask karabiner-elements # Install scripts are in the karabiner directory
-brew install --cask itsycal        # A calender app in the menu bar
-brew install --cask monitorcontrol # For third party monitors control
+brew install --cask itsycal # A calender app in the menu bar
+# brew install --cask monitorcontrol # For third party monitors control
 
 # Remove outdated versions from the cellar.
 brew cleanup

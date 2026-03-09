@@ -12,15 +12,15 @@ return {
 
     local _palette = require('monokai-pro').get_palette 'octagon'
     local palette = {
-      bg       = _palette.dark1,
-      fg       = _palette.text,
-      active   = _palette.accent6,  -- purple
-      inactive = _palette.dimmed3,  -- muted grey
-      red      = _palette.accent1,  -- error
-      orange   = _palette.accent2,  -- modified marker
+      bg = _palette.dark1,
+      fg = _palette.text,
+      active = _palette.accent6, -- purple
+      inactive = _palette.dimmed3, -- muted grey
+      red = _palette.accent1, -- error
+      orange = _palette.accent2, -- modified marker
     }
 
-    local fg_active   = palette.active
+    local fg_active = palette.active
     local fg_inactive = palette.inactive
 
     local diag_icons = { error = '󰅚 ', warn = '󰀪 ', hint = '󰌶 ', info = ' ' }
@@ -59,7 +59,7 @@ return {
       local dirname, filename = get_dirname_and_filename(props.buf)
       local ft_icon, ft_color = devicons.get_icon_color(filename)
 
-      local hasError   = #vim.diagnostic.get(props.buf, { severity = vim.diagnostic.severity['ERROR'] }) > 0
+      local hasError = #vim.diagnostic.get(props.buf, { severity = vim.diagnostic.severity['ERROR'] }) > 0
       local isReadonly = vim.bo[props.buf].readonly
 
       local fg_filename_active = hasError and palette.red or (isReadonly and palette.inactive or fg_active)
@@ -107,14 +107,14 @@ return {
     require('incline').setup {
       highlight = {
         groups = {
-          InclineNormal   = { guibg = palette.bg, guifg = fg_active },
+          InclineNormal = { guibg = 'none', guifg = fg_active },
           InclineNormalNC = { guibg = 'none', guifg = fg_inactive },
         },
       },
       window = {
-        options  = { winblend = 0 },
+        options = { winblend = 0 },
         placement = { horizontal = 'right', vertical = 'bottom' },
-        margin  = { horizontal = 0, vertical = 0 },
+        margin = { horizontal = 0, vertical = 0 },
         padding = 2,
       },
       render = render,

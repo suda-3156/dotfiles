@@ -18,7 +18,7 @@ return {
       line_opacity = {
         copy = 0.4,
         delete = 0.4,
-        insert = 0.4,
+        insert = 0.5,
         visual = 0.4,
         -- change = 0.4,
         -- format = 0.4,
