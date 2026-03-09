@@ -1,5 +1,14 @@
 return {
   {
+    'tpope/vim-fugitive',
+    lazy = true,
+  },
+  {
+    -- GitHub integration for vim-fugitive
+    'tpope/vim-rhubarb',
+    lazy = true,
+  },
+  {
     'lwis6991/gitsigns.nvim',
     lazy = true,
     opts = {
@@ -71,5 +80,9 @@ return {
   {
     'sindrets/diffview.nvim',
     event = 'BufReadPost',
+
+    config = function()
+      vim.keymap.set('n', '<leader>df', ':DiffviewOpen<CR>', { noremap = true, silent = true })
+    end,
   },
 }

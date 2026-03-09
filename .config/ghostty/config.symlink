@@ -19,7 +19,3 @@ macos-option-as-alt = left
 confirm-close-surface = false
 window-save-state = always
 
-shell-integration = "zsh"
-
-command=/opt/homebrew/bin/tmux new-session -A -s main
-

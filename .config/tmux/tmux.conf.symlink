@@ -20,6 +20,12 @@ set -g allow-passthrough on     # Allow programs in the pane to bypass tmux (e.g
 # New window in same path
 bind c new-window -c "#{pane_current_path}"
 
+# Start windows and panes at 1, not 0
+set -g base-index 1
+set -g pane-base-index 1
+set-window-option -g pane-base-index 1
+set-option -g renumber-windows on
+
 # -------------------- key map --------------------
 
 # prefix key
@@ -64,12 +70,6 @@ bind P paste-buffer
 
 # Don't exit copy mode when dragging with mouse
 unbind -T copy-mode-vi MouseDragEnd1Pane
-
-# Start windows and panes at 1, not 0
-set -g base-index 1
-set -g pane-base-index 1
-set-window-option -g pane-base-index 1
-set-option -g renumber-windows on
 
 # -------------------- Status bar --------------------
 

@@ -3,7 +3,7 @@ return {
   version = '*', -- Use the latest version
   config = function()
     require('toggleterm').setup {
-      open_mapping = [[<C-\>]], -- mapping to toggle the terminal
+      open_mapping = [[<C-t>]], -- mapping to toggle the terminal
 
       -- Use with direction = 'horizontal' or 'vertical'
       -- size = 50,
