@@ -1,0 +1,45 @@
+#!/bin/zsh
+
+# Monokai Pro Octagon palette
+c_red="#ff657a"
+c_orange="#ff9b5e"
+c_green="#bad761"
+c_teal="#9cd1bb"
+c_purple="#c39ac9"
+c_muted="#696d77"
+c_dark="#1e1f2b"
+c_text="#eaf2f1"
+
+pane_path="${1:-.}"
+output=""
+
+# SSH segment (shown only when connected via SSH)
+if [[ -n "$SSH_TTY" ]]; then
+  output+="#[fg=${c_dark},bg=${c_teal}] 󰣀 SSH #[fg=${c_teal},bg=default]#[fg=${c_muted}]│ "
+fi
+
+# Git repo & branch segment
+if git_root=$(cd "$pane_path" && git rev-parse --show-toplevel 2>/dev/null); then
+  repo=$(basename "$git_root")
+  branch=$(cd "$pane_path" && git branch --show-current 2>/dev/null)
+  [[ -z "$branch" ]] && branch=$(cd "$pane_path" && git rev-parse --short HEAD 2>/dev/null)
+
+  # Red for protected branches, purple otherwise
+  if [[ "$branch" == "main" || "$branch" == "master" || "$branch" == "release" ]]; then
+    bc="${c_red}"
+  else
+    bc="${c_purple}"
+  fi
+
+  # Dirty working tree indicator
+  dirty=""
+  cd "$pane_path"
+  if ! git diff --quiet 2>/dev/null || ! git diff --cached --quiet 2>/dev/null; then
+    dirty=" #[fg=${c_orange}]●"
+  fi
+
+  output+="#[fg=${c_text}]  ${repo}#[fg=${c_muted}]  #[fg=${bc}] ${branch}${dirty}#[fg=default]"
+fi
+
+echo "$output"
+

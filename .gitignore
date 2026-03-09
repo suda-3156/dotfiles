@@ -16,6 +16,9 @@
 !Brewfile
 !install*
 
+# tmux
+!.config/tmux/tmux-statusline-left
+
 # nvim
 !.config/nvim.symlink/**/*lua
 !.config/nvim.symlink/.stylua.toml

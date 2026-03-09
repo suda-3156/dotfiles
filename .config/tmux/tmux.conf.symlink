@@ -1,6 +1,6 @@
 # tmux.conf
 
-########## Basic configuration ##########
+# -------------------- Basic configuration --------------------
 
 # use zsh as default
 set-option -g default-shell /bin/zsh
@@ -20,7 +20,7 @@ set -g allow-passthrough on     # Allow programs in the pane to bypass tmux (e.g
 # New window in same path
 bind c new-window -c "#{pane_current_path}"
 
-########## key map ##########
+# -------------------- key map --------------------
 
 # prefix key
 set -g prefix C-Space
@@ -37,7 +37,7 @@ bind - split-window -v -c "#{pane_current_path}"
 
 # Refresh tmux config with r
 unbind r
-bind r source-file ~/.config/tmux/tmux.conf
+bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
 
 # Use vim arrow keys to resize
 bind -r j resize-pane -D 5
@@ -48,13 +48,13 @@ bind -r h resize-pane -L 5
 # Use m key to maximize pane
 bind -r m resize-pane -Z
 
-########## vi mode ##########
+# -------------------- vi mode --------------------
 
 # Enable vi mode to allow vim movements
 set-window-option -g mode-keys vi
 
 # Start selecting text with "v"
-bind-key -T copy-mode-vi 'v' send -X begin-selection 
+bind-key -T copy-mode-vi 'v' send -X begin-selection
 
 # Copy text with "y"
 bind -T copy-mode-vi 'y' send-keys -X copy-pipe-and-cancel "pbcopy"
@@ -71,15 +71,17 @@ set -g pane-base-index 1
 set-window-option -g pane-base-index 1
 set-option -g renumber-windows on
 
-########## Status bar ##########
+# -------------------- Status bar --------------------
 
 set-option -g status-style bg=default
 
-set -g status-left-length 100
-set -g status-left " Session: #S, Window #I, Pane: #P"
+# Left: SSH indicator | repo name (branch)
+set -g status-left-length 150
+set -g status-left "#($HOME/dotfiles/.config/tmux/tmux-statusline-left '#{pane_current_path}') "
 
-set-option -g status-right-length 50
-set-option -g status-right "%Y-%m-%d %H:%M "
+# Right: session/window/pane info | datetime
+set-option -g status-right-length 100
+set-option -g status-right " Session: #S  W#I  P#P | %Y-%m-%d %H:%M "
 
 set -g window-status-format '#[fg=darkgray]#I:#(pwd="#{pane_current_path}"; echo ${pwd####*/})'
 set -g window-status-current-format '[#I:#(pwd="#{pane_current_path}"; echo ${pwd####*/})]'
@@ -88,7 +90,7 @@ set -g status-justify absolute-centre
 set -g status-position bottom
 set -g status-interval 1
 
-########## plugins ##########
+# -------------------- plugins --------------------
 
 # tpm plugin manager
 set -g @plugin 'tmux-plugins/tpm'
