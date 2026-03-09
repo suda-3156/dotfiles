@@ -1,3 +1,8 @@
+-- clear statusline
+vim.opt.laststatus = 0
+vim.opt.statusline = '─'
+vim.opt.fillchars:append { stl = '─', stlnc = '─' }
+
 vim.o.hlsearch = false -- Set highlight on search
 vim.wo.number = true -- Make line numbers default
 vim.o.mouse = 'a' -- Enable mouse mode
