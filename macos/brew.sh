@@ -61,8 +61,9 @@ fi
 # Install packages in the Brewfile
 brew bundle --file="$DOTFILES_ROOT/macos/Brewfile"
 
-# Iterm2
-brew install --cask iterm2
+# Terminal emulator
+# brew install --cask iterm2
+brew install --cask ghostty
 
 # Docker
 # `brew install docker` to install CLI only
