@@ -1,7 +1,6 @@
 return {
   'romgrk/barbar.nvim',
-  lazy = false,
-  -- event = { 'BufReadPre', 'BufNewFile' },
+  event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'lewis6991/gitsigns.nvim',
     'nvim-tree/nvim-web-devicons',
