@@ -34,14 +34,8 @@ vim.keymap.set('n', '<Down>', ':resize +2<CR>', opts)
 vim.keymap.set('n', '<Left>', ':vertical resize -2<CR>', opts)
 vim.keymap.set('n', '<Right>', ':vertical resize +2<CR>', opts)
 
--- Buffers; See also plugins/close-buffers.lua
-vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts)
-vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts)
-vim.keymap.set('n', '<leader>x', ':Bdelete!<CR>', opts) -- close buffer
-vim.keymap.set('n', '<leader>b', '<cmd> enew <CR>', opts) -- new buffer
-
 -- Window management
-vim.keymap.set('n', '<leader>|', '<C-w>v', opts) -- split window vertically
+vim.keymap.set('n', '<leader>\\', '<C-w>v', opts) -- split window vertically
 vim.keymap.set('n', '<leader>-', '<C-w>s', opts) -- split window horizontally
 vim.keymap.set('n', '<leader>se', '<C-w>=', opts) -- make split windows equal width & height
 vim.keymap.set('n', '<leader>xs', ':close<CR>', opts) -- close current split window
@@ -54,14 +48,12 @@ vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
 
 -- Toggle line wrapping
 vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts)
+-- VSCode's keymap
+vim.keymap.set('n', '<A-z>', '<cmd>set wrap!<CR>', opts)
 
 -- Stay in indent mode
 vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
-
--- Move text up and down
-vim.keymap.set({ 'n', 'v' }, '<A-j>', ':m .+1<CR>==', opts)
-vim.keymap.set({ 'n', 'v' }, '<A-k>', ':m .-2<CR>==', opts)
 
 -- Keep last yanked when pasting
 vim.keymap.set('v', 'p', '"_dP', opts)
@@ -92,6 +84,12 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('n', '<leader>ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>sl', ':source .session.vim<CR>', { noremap = true, silent = false })
 
+-- VSCode like kyemaps
+-- Move text up and down
+vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', opts)
+vim.keymap.set('n', '<A-k>', ':m .-2<CR>==', opts)
+vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", opts)
+vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", opts)
 -- Copy and paste current line or selected lines
 vim.keymap.set('n', '<A-S-k>', 'VyP', opts)
 vim.keymap.set('v', '<A-S-k>', 'yP`[V`]o', opts)
@@ -111,7 +109,7 @@ end, opts)
 vim.keymap.set('n', '<leader>o', 'o', opts)
 vim.keymap.set('n', '<leader>O', 'O', opts)
 
--- emacs
+-- Emacs like keymaps in Insert mode
 vim.keymap.set('i', '<c-a>', '<home>', opts)
 vim.keymap.set('i', '<c-e>', '<end>', opts)
 vim.keymap.set('i', '<c-b>', '<left>', opts)
@@ -120,7 +118,7 @@ vim.keymap.set('i', '<m-b>', '<c-left>', opts)
 vim.keymap.set('i', '<m-f>', '<c-right>', opts)
 
 -- misc
-vim.keymap.set('n', 'Y', 'y$', opts)
-vim.keymap.set('n', 'X', '"_D', opts)
-vim.keymap.set('n', 'U', '<C-r>', opts)
-vim.keymap.set('n', 'M', '%', opts)
+vim.keymap.set('n', 'Y', 'y$', opts) -- Y to yank the current line
+vim.keymap.set('n', 'X', '"_D', opts) -- X to delete the reset of the current line witout copying into register
+vim.keymap.set('n', 'U', '<C-r>', opts) -- U to redo
+vim.keymap.set('n', 'M', '%', opts) -- M to move as %

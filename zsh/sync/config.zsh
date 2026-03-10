@@ -69,14 +69,6 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
-# コマンドの真ん中あたりに移動する.
-function jump_to_middle() {
-  CURSOR=$((${#BUFFER} / 2))
-  zle redisplay
-}
-zle -N jump_to_middle
-bindkey "^j" jump_to_middle
-
 ## fzf
 function fzf-select-history() {
     BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER")
