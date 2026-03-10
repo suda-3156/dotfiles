@@ -1,5 +1,5 @@
 -- From: https://github.com/hendrikmi/dotfiles/blob/main/nvim/lua/plugins/telescope.lua
-return {
+local M = {
   'nvim-telescope/telescope.nvim',
   event = 'VeryLazy',
   dependencies = {
@@ -51,7 +51,7 @@ return {
         },
       },
       live_grep = {
-        file_ignore_patterns = { 'node_modules', '.git', '.venv' },
+        file_ignore_patterns = { 'node_modules', '.git', '.jj/', '.venv' },
         additional_args = function(_)
           return { '--hidden' }
         end,
@@ -110,4 +110,19 @@ return {
       })
     end, { desc = '[/] Fuzzily search in current buffer' })
   end,
+}
+
+return {
+  M,
+  {
+    'danielfalk/smart-open.nvim',
+    branch = '0.2.x',
+    config = function()
+      require('telescope').load_extension 'smart_open'
+    end,
+    dependencies = {
+      'kkharji/sqlite.lua',
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    },
+  },
 }

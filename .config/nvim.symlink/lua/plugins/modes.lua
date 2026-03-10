@@ -1,6 +1,6 @@
 return {
   'mvllow/modes.nvim',
-  event = { 'CursorMoved', 'CursorMovedI' },
+  event = 'BufReadPost',
   version = '*',
   config = function()
     local palette = require('monokai-pro').get_palette 'octagon'

@@ -2,3 +2,7 @@
 *~
 .Trashes
 .Trash-*
+
+# In my configuration, session.vim will be created at project root directory.
+# Ignore them.
+.session.vim

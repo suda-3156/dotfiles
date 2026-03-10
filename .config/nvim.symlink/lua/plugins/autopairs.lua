@@ -7,7 +7,7 @@ return {
   },
   {
     'windwp/nvim-ts-autotag',
-    lazy = true,
+    event = 'InsertEnter',
     -- Usage:
     -- Before        Input         After
     -- ------------------------------------
@@ -16,4 +16,3 @@ return {
     -- ------------------------------------
   },
 }
-

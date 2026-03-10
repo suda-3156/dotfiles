@@ -19,6 +19,8 @@ vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', opts)
 
 -- Delete single character without copying into register
 vim.keymap.set('n', 'x', '"_x', opts)
+-- Delete a line without copying into register
+vim.keymap.set('n', 'xx', '"_dd', opts)
 
 -- Vertical scroll and center
 vim.keymap.set('n', '<C-d>', '<C-d>zz', opts)
@@ -121,4 +123,3 @@ vim.keymap.set('i', '<m-f>', '<c-right>', opts)
 vim.keymap.set('n', 'Y', 'y$', opts) -- Y to yank the current line
 vim.keymap.set('n', 'X', '"_D', opts) -- X to delete the reset of the current line witout copying into register
 vim.keymap.set('n', 'U', '<C-r>', opts) -- U to redo
-vim.keymap.set('n', 'M', '%', opts) -- M to move as %
