@@ -64,14 +64,22 @@ return {
       end
     end
 
+    local function remove_matches()
+      for _, m in ipairs(vim.fn.getmatches()) do
+        if m.group == 'ExtraWhitespace' or m.group == 'TrailingWhitespace' then
+          vim.fn.matchdelete(m.id)
+        end
+      end
+    end
+
     add_matches()
     vim.api.nvim_create_autocmd('WinNew', { callback = add_matches })
-    vim.api.nvim_create_autocmd('TermOpen', {
+    vim.api.nvim_create_autocmd('TermOpen', { callback = remove_matches })
+    -- Re-opened terminal windows (e.g. toggleterm) won't fire TermOpen, so clean up on BufWinEnter too
+    vim.api.nvim_create_autocmd('BufWinEnter', {
       callback = function()
-        for _, m in ipairs(vim.fn.getmatches()) do
-          if m.group == 'ExtraWhitespace' or m.group == 'TrailingWhitespace' then
-            vim.fn.matchdelete(m.id)
-          end
+        if vim.bo.buftype == 'terminal' then
+          remove_matches()
         end
       end,
     })
