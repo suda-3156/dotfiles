@@ -23,6 +23,8 @@
 # nvim
 !.config/nvim.symlink/**/*lua
 !.config/nvim.symlink/.stylua.toml
+!.config/svim.symlink/**/*lua
+!.config/svim.symlink/.stylua.toml
 
 # zsh
 !*.zsh
