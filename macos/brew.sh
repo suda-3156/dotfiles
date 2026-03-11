@@ -38,20 +38,6 @@ done
 brew update
 brew upgrade
 
-# Install GNU core utilities (those that come with macOS are outdated).
-# Add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-brew install coreutils
-# Add `$(brew --prefix make)/libexec/gnubin` to `$PATH`.
-brew install make
-# Add `$(brew --prefix diffutils)/libexec/gnubin` to `$PATH`.
-brew install diffutils
-# Add `$(brew --prefix findutils)/libexec/gnubin` to `$PATH`.
-brew install findutils
-# Add `$(brew --prefix gzip)/libexec/gnubin` to `$PATH`.
-brew install gzip
-# Add `$(brew --prefix gawk)/libexec/gnubin` to `$PATH`.
-brew install gawk
-
 # Use latest version of bash
 brew install bash
 if ! grep -F -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
@@ -60,37 +46,6 @@ fi
 
 # Install packages in the Brewfile
 brew bundle --file="$DOTFILES_ROOT/macos/Brewfile"
-
-# Terminal emulator
-# brew install --cask iterm2
-brew install --cask ghostty
-brew install --cask wezterm
-
-# Docker
-# `brew install docker` to install CLI only
-brew install --cask docker-desktop
-
-# Clip board manager
-# brew install --cask clipy
-brew install maccy
-
-# Latex
-brew install --cask mactex-no-gui
-
-# Apps
-brew install --cask gcloud-cli
-# brew install --cask firefox
-# brew install --cask google-chrome
-# brew install --cask github-copilot-for-xcode
-brew install --cask obsidian
-brew install --cask appcleaner
-brew install --cask keyboardcleantool
-brew install --cask postman
-brew install --cask skim    # A pdf viewr
-brew install --cask raycast # -> Alternative: karabiner-elements + Rectangle + Spotlight
-# brew install --cask karabiner-elements # Install scripts are in the karabiner directory
-brew install --cask itsycal # A calender app in the menu bar
-# brew install --cask monitorcontrol # For third party monitors control
 
 # Remove outdated versions from the cellar.
 brew cleanup

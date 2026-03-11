@@ -1,48 +1,93 @@
+# dotfiles dependencies
+brew "git-secrets"
+brew "jj"
+brew "tmux"
+brew "sheldon"
+brew "zoxide"
+brew "starship"
+brew "terminal-notifier"
+# Neovim and its requirements
+brew "neovim"
+brew "luarocks"
+brew "fzf"
+brew "fd"
+brew "stylua"
+brew "ripgrep"
+brew "tree-sitter"
+brew "tree-sitter-cli"
+
 # Installed by default but outdated
 brew "openssh"
 brew "screen"
 brew "git"
 brew "vim"
 brew "llvm"
+# bash is also pre-installed on macOS, but using the Homebrew version requires additional setup.
+# It will be installed by brew.sh instead.
 
-# This dotfiles' deps
-brew "git-secrets"
-brew "jj"
-brew "fzf"
-brew "fd"
-brew "ripgrep"
-brew "tree-sitter"
-brew "neovim"
-brew "tmux"
-brew "sheldon"
-brew "zoxide"
-brew "starship"
-brew "terminal-notifier"
+# GNU
+# Add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+brew "coreutils"
+# Add `$(brew --prefix make)/libexec/gnubin` to `$PATH`.
+brew "make"
+# Add `$(brew --prefix diffutils)/libexec/gnubin` to `$PATH`.
+brew "diffutils"
+# Add `$(brew --prefix findutils)/libexec/gnubin` to `$PATH`.
+brew "findutils"
+# Add `$(brew --prefix gzip)/libexec/gnubin` to `$PATH`.
+brew "gzip"
+# Add `$(brew --prefix gawk)/libexec/gnubin` to `$PATH`.
+brew "gawk"
 
 # Useful binaries
 brew "bat"
-brew "direnv"
+brew "tree"
 brew "gh"
 brew "git-lfs"
-brew "tree"
+brew "git-filter-repo"
 
-# Mise
+# Other formulae (non-cask)
 brew "mise"
-
+brew "direnv"
+brew "shfmt" # Shell script formatter
+# brew "shellcheck" # Shell script linter
+# brew "tex-fmt" # Tex formatter
+# macOS VM
+# tap "cirruslabs/cli"
+# brew "cirruslabs/cli/tart"
+# brew "act" # Run GitHub Actions locally
 # Go
-tap "ariga/tap"
-tap "goreleaser/tap"
-tap "go-task/tap"
 brew "go"
-cask "goreleaser"
 brew "golangci-lint"
-brew "go-task/tap/go-task"
+tap "ariga/tap"
 brew "ariga/tap/atlas"
-
-# Terraform
+cask "goreleaser"
+tap "go-task/tap"
+brew "go-task/tap/go-task"
+# PaaS
 tap "hashicorp/tap"
 brew "hashicorp/tap/terraform"
-
-# k8s
 brew "kustomize"
 brew "skaffold"
+
+# Casks
+cask "ghostty"
+cask "wezterm"
+cask "docker-desktop"
+cask "maccy" # Clipboard manager
+
+# cask "appcleaner"
+# cask "copilot-cli"
+# cask "mactex-no-gui"
+# cask "gcloud-cli"
+# cask "gitify"
+# cask "github-copilot-for-xcode"
+# tap "goreleaser/tap"
+# cask "goreleaser/tap/goreleaser"
+# cask "itsycal"
+# cask "keyboardcleantool"
+# cask "obsidian"
+# cask "postman"
+# cask "raycast"
+# cask "skim"
+# cask "visual-studio-code"
