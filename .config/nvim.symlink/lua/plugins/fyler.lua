@@ -54,7 +54,7 @@ end
 
 return { -- Use oil.nvim as the main filer, and fyler.nvim to understand directory structure
   'A7Lavinraj/fyler.nvim',
-  dependencies = { 'mini-nvim/mini.icons' },
+  dependencies = { 'nvim-mini/mini.icons' },
   branch = 'stable',
   -- lazy = false, -- Necessary for `default_explorer` to work properly
   event = 'VeryLazy',
