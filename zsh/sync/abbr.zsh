@@ -15,7 +15,6 @@ abbr -S -q cl='clear'
 abbr -S -q e='exit 0'
 abbr -S -q ll='ls -lh'
 abbr -S -q la='ls -lAh'
-abbr -S -q s='source'
 
 abbr -S -q rd='rmdir'
 abbr -S -q md='mkdir -p %'
