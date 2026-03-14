@@ -8,9 +8,11 @@ local Monokai = {
     -- #A0A8B7
     -- #B0B0B0
     -- #C5C5C5
-    local bright_gray = "#A0A8B7"
+    -- local bright_gray = "#A0A8B7"
 
     local function apply_theme()
+      local palette = require("monokai-pro").get_palette("octagon")
+
       require("monokai-pro").setup({
         transparent_background = is_transparent,
         terminal_colors = true,
@@ -19,13 +21,15 @@ local Monokai = {
         inc_search = "background",
         override = function(c)
           return {
-            Comment = { fg = bright_gray, italic = false },
+            Comment = { fg = palette.dimmed1, italic = false },
           }
         end,
       })
 
       vim.cmd.colorscheme("monokai-pro")
-      vim.api.nvim_set_hl(0, "CursorLineNr", { fg = bright_gray, bold = true })
+      vim.api.nvim_set_hl(0, "CursorLineNr", { fg = palette.dimmed1, bold = true })
+      vim.api.nvim_set_hl(0, "NonText", { fg = palette.dimmed2 })
+      vim.api.nvim_set_hl(0, "SpecialKey", { fg = palette.dimmed2 })
     end
 
     apply_theme()
@@ -35,7 +39,7 @@ local Monokai = {
         return
       end
 
-      for _, group in ipairs({ "NormalFloat", "FloatBorder", "Normal", "NonText", "LineNr", "Folded", "EndOfBuffer" }) do
+      for _, group in ipairs({ "NormalFloat", "FloatBorder" }) do
         local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = group, link = false })
         if ok and hl then
           hl.bg = nil

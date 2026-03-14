@@ -27,6 +27,15 @@ vim.opt.fillchars:append({
   eob = " ",
 })
 
+vim.opt.listchars = {
+  -- tab = "»-", -- Using hlchunk.nvim
+  trail = "▫",
+  -- eol = "↲",
+  extends = "❯",
+  precedes = "❮",
+  nbsp = "%",
+}
+
 vim.opt.guicursor = {
   "n-v-c-sm:block",
   "i-ci-ve:ver25",
