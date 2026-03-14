@@ -2,10 +2,6 @@
 
 - leader key: Comma `,`
 
-## TODO
-
-- [ ] lsp
-
 ## References
 
 - [endrikmi/dotfiles](https://github.com/endrikmi/dotfiles)
