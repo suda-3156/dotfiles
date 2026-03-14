@@ -1,69 +1,81 @@
 # tmux.conf
+# $man 1 tmux
+# or https://deepwiki.com/tmux/tmux
 
 # -------------------- Basic configuration --------------------
 
 # use zsh as default
-set-option -g default-shell /bin/zsh
+set -g default-shell /bin/zsh
 
 set -g default-terminal "screen-256color"
 set -ga terminal-overrides ",*256col*:Tc"
 
 # General
-set -g set-clipboard on         # use system clipboard
-set -g detach-on-destroy off    # don't exit from tmux when closing a session
-set -g escape-time 0            # remove delay for exiting insert mode with ESC in Neovim
-set -g history-limit 1000000    # increase history size (from 2,000)
-set -g mouse on                 # enable mouse support
-set -g status-interval 3        # update the status bar every 3 seconds
-set -g allow-passthrough on     # Allow programs in the pane to bypass tmux (e.g. for image preview)
-
-# New window in same path
-bind c new-window -c "#{pane_current_path}"
-
-# Start windows and panes at 1, not 0
-set -g base-index 1
-set -g pane-base-index 1
-set-window-option -g pane-base-index 1
-set-option -g renumber-windows on
+set -g set-clipboard on       # use system clipboard
+set -g detach-on-destroy off  # don't exit from tmux when closing a session
+set -g history-limit 5000     # increase history size (from 2,000)
+set -g mouse on               # enable mouse support
+set -g status-interval 3      # update the status bar every 3 seconds
 
 # -------------------- key map --------------------
 
 # prefix key
-set -g prefix C-Space
+set -g prefix C-s
 unbind C-b
-bind-key C-Space send-prefix
+bind-key C-s send-prefix
 
-# Split horizontally in CWD with \
+# New window in same path
+bind -N "Create new window in same path" c new-window -c "#{pane_current_path}"
+
+# Split horizontally in CWD with '\'
 unbind %
-bind '\' split-window -h -c "#{pane_current_path}"
+bind -N "Split horizontally in CWD" '\' split-window -h -c "#{pane_current_path}"
+bind -N "Split horizontally in CWD" | split-window -h -c "#{pane_current_path}"
 
 # Split vertically in CWD with -
 unbind '"'
-bind - split-window -v -c "#{pane_current_path}"
+bind -N "Split vertically in CWD" - split-window -v -c "#{pane_current_path}"
 
 # Refresh tmux config with r
 unbind r
-bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
+bind -N "Reload tmux config" r { 
+  source-file ~/.config/tmux/tmux.conf ; \
+  display-message "Reloaded tmux config"
+}
 
 # Use vim arrow keys to resize
-bind -r j resize-pane -D 5
-bind -r k resize-pane -U 5
-bind -r l resize-pane -R 5
-bind -r h resize-pane -L 5
+# With option '-r', we can repeat it without prefix
+# set-option -g repeat-time 500
+bind -N "Resize pane downward" -r j resize-pane -D 5
+bind -N "Resize pane upward" -r k resize-pane -U 5
+bind -N "Resize pane to the right" -r l resize-pane -R 5
+bind -N "Resize pane to the left" -r h resize-pane -L 5
 
-# Use m key to maximize pane
-bind -r m resize-pane -Z
+# Go to next / previous window
+# With option '-n', we can use the key bind without prefix
+bind-key -n M-p previous-window
+bind-key -n M-n next-window
 
-# -------------------- vi mode --------------------
+# Open popup
+bind p popup -w80% -h80% -d '#{pane_current_path}'
+bind t popup -w80% -h80% -d '#{pane_current_path}' -E 'fzf | pbcopy'
+
+# -------------------- copy mode --------------------
+# Ref: https://eiji.page/blog/tmux-conf-copy-mode/
+# WINDOWS AND PANES of man 1 tmux
 
 # Enable vi mode to allow vim movements
-set-window-option -g mode-keys vi
+set-option -gw mode-keys vi
 
-# Start selecting text with "v"
-bind-key -T copy-mode-vi 'v' send -X begin-selection
+# -T copy-mode-vi to set key binds in copy mode
+# Start selecting text with "v" (default: Space)
+bind-key -N "Begin selection in copy mode" -T copy-mode-vi v { send-keys -X begin-selection }
+# Other vim like key binds to start selection
+bind-key -N "Toggle rectangle selection in copy mode" -T copy-mode-vi C-v { send-keys -X rectangle-toggle }
+bind-key -N "Begin line selection in copy mode" -T copy-mode-vi V { send-keys -X select-line }
 
-# Copy text with "y"
-bind -T copy-mode-vi 'y' send-keys -X copy-pipe-and-cancel "pbcopy"
+# Copy text with "y" (default: Enter)
+bind -T copy-mode-vi 'y' { send-keys -X copy-pipe }
 
 # Paste yanked text with "Prefix + P" ("Prefix + p" goes to previous window)
 bind P paste-buffer
@@ -72,6 +84,7 @@ bind P paste-buffer
 unbind -T copy-mode-vi MouseDragEnd1Pane
 
 # -------------------- Status bar --------------------
+# Ref: https://eiji.page/blog/tmux-status-line/
 
 set-option -g status-style bg=default
 
@@ -79,11 +92,20 @@ set-option -g status-style bg=default
 set -g status-left-length 150
 set -g status-left "#($HOME/dotfiles/.config/tmux/tmux-statusline-left '#{pane_current_path}') "
 
-# Right: session/window/pane info | datetime
+# Right: session/window/pane info | (if tmux in mode then pane_mode ) | datetime
 set-option -g status-right-length 100
-set-option -g status-right " Session: #S  W#I  P#P | %Y-%m-%d %H:%M "
+set-option -g status-right " Session: #S  W:#I  P:#P #{?pane_in_mode,| #{pane_mode} ,}| %Y-%m-%d %H:%M "
 
-set -g window-status-format '#[fg=darkgray]#I:#(pwd="#{pane_current_path}"; echo ${pwd####*/})'
+# Center: windows (background: gray, foreground: white), show bell if `printf "\a"` run in background
+set -g window-status-format '#[fg=darkgray]#I:#( \
+  pwd="#{pane_current_path}"; \
+  label=""; \
+  if [ "#{window_bell_flag}" = "1" ]; then \
+    label="󱅫 "; \
+  fi; \
+  echo $label${pwd###*/} \
+)'
+set-option -gw window-status-bell-style "none"
 set -g window-status-current-format '[#I:#(pwd="#{pane_current_path}"; echo ${pwd####*/})]'
 
 set -g status-justify absolute-centre
