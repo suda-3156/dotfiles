@@ -45,13 +45,13 @@ vim.keymap.set("n", "<A-S-j>", "Vyp", { desc = "Duplicate line below" })
 vim.keymap.set("x", "<A-S-j>", "y'>p`[v`]o", { desc = "Duplicate selection below" })
 
 -- Emacs-like insert mode navigation
-vim.keymap.set("i", "<C-a>", "<home>", { desc = "Move to line start" })
-vim.keymap.set("i", "<C-e>", "<end>", { desc = "Move to line end" })
-vim.keymap.set("i", "<C-b>", "<left>", { desc = "Move cursor left" })
-vim.keymap.set("i", "<C-f>", "<right>", { desc = "Move cursor right" })
-vim.keymap.set("i", "<M-b>", "<c-left>", { desc = "Move one word left" })
-vim.keymap.set("i", "<M-f>", "<c-right>", { desc = "Move one word right" })
-vim.keymap.set("i", "<C-d>", "<del>", { desc = "Delete character under cursor" })
+vim.keymap.set({ "i", "c" }, "<C-a>", "<home>", { desc = "Move to line start" })
+vim.keymap.set({ "i", "c" }, "<C-e>", "<end>", { desc = "Move to line end" })
+vim.keymap.set({ "i", "c" }, "<C-b>", "<left>", { desc = "Move cursor left" })
+vim.keymap.set({ "i", "c" }, "<C-f>", "<right>", { desc = "Move cursor right" })
+vim.keymap.set({ "i", "c" }, "<M-b>", "<c-left>", { desc = "Move one word left" })
+vim.keymap.set({ "i", "c" }, "<M-f>", "<c-right>", { desc = "Move one word right" })
+vim.keymap.set({ "i", "c" }, "<C-d>", "<del>", { desc = "Delete character under cursor" })
 
 -- Window management
 vim.keymap.set("n", "<leader>\\", "<c-w>v", { desc = "Split window vertically" })
