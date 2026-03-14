@@ -1,3 +1,7 @@
+# Refs:
+# official: https://ghostty.org/docs/config/reference
+# japanease: https://zenn.dev/rao_mth/articles/ghostty-config-reference
+
 font-family = "Moralerspace Neon HW"
 font-thicken = true
 font-thicken-strength = 128
@@ -26,3 +30,5 @@ shell-integration = zsh
 # notify-on-command-finish-action = bell
 # notify-on-command-finish-after = 10s
 
+clipboard-read = allow
+clipboard-write = allow
