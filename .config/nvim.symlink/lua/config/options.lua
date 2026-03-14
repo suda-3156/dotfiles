@@ -22,12 +22,6 @@ vim.opt.termguicolors = true
 vim.opt.conceallevel = 0
 
 vim.opt.list = true
-vim.opt.listchars = {
-  tab = "▸▹┊",
-  trail = "▫",
-  extends = "❯",
-  precedes = "❮",
-}
 
 vim.opt.fillchars:append({
   eob = " ",
@@ -71,12 +65,6 @@ vim.opt.virtualedit = "block"
 vim.opt.backspace = { "indent", "eol", "start", "nostop" }
 vim.opt.completeopt = "menuone,noselect"
 vim.opt.iskeyword:append("-")
-vim.opt.matchpairs:append({
-  "（:）",
-  "「:」",
-  "『:』",
-  "【:】",
-})
 
 vim.opt.formatoptions:append("M")
 vim.opt.formatoptions:remove({ "c", "r", "o" })
@@ -91,7 +79,6 @@ vim.opt.shortmess:append("c")
 -- Window
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.diffopt:append({ "vertical", "algorithm:histogram" })
 
 -- File, sysmtem and backup
 vim.opt.fileencoding = "utf-8"
@@ -125,21 +112,3 @@ vim.filetype.add({
   },
 })
 vim.treesitter.language.register("markdown", { "mdx" })
-
--- Neovimのメッセージ（エラー等）を英語表記にする（検索して解決しやすくするため）
-vim.cmd([[
-language messages en_US.UTF-8
-]])
-
--- From: https://zenn.dev/botamotch/articles/4ef893e0d4cd40
-vim.cmd([[
-if executable('fcitx5')
-  let g:fcitx_state = 1
-  augroup fcitx_savestate
-    autocmd!
-    autocmd InsertLeave * let g:fcitx_state = str2nr(system('fcitx5-remote'))
-    autocmd InsertLeave * call system('fcitx5-remote -c')
-    autocmd InsertEnter * call system(g:fcitx_state == 1 ? 'fcitx5-remote -c': 'fcitx5-remote -o')
-  augroup END
-endif
-]])
