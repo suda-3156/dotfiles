@@ -28,7 +28,7 @@ apply = ["defer"]
 github = "olets/zsh-abbr"
 
 [plugins.dotfiles-sync]
-local = "~/dotfiles/zsh/sync"
+local = "~/dotfiles/zsh"
 use = ["*.zsh"]
 apply = ['source']
 
