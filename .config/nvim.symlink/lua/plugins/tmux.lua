@@ -1,5 +1,0 @@
-return {
-  -- tmux & split window navigation
-  'christoomey/vim-tmux-navigator',
-  event = 'VeryLazy',
-}
