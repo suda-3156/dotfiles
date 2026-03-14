@@ -5,6 +5,7 @@
 !.gitignore
 !taskfile.yml
 !README.md
+!docs/*.md
 !TODO.md
 !Dockerfile
 !.gitallowed

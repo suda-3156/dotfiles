@@ -3,7 +3,6 @@
 - [ ] Raycast configuration
 - [ ] `*.symlink.*`
 - [ ] refactor this repo
-- [ ] Fix unknown mode of tmux or starship
 - [ ] Fix wezterm color theme
 - [ ] `.vimrc`
 - [ ] zsh-notify
