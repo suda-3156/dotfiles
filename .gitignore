@@ -19,8 +19,7 @@
 # nvim
 !.config/nvim.symlink/**/*lua
 !.config/nvim.symlink/.stylua.toml
-!.config/svim.symlink/**/*lua
-!.config/svim.symlink/.stylua.toml
+!.config/nvim.symlink/lazy-lock.json
 
 # wezterm
 !.config/wezterm.symlink/**/*.lua
