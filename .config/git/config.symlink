@@ -1,3 +1,7 @@
+[init]
+  defaultBranch = main
+	templatedir = ~/.config/git/templates/git-secrets
+
 [core]
   editor = vim
   pager = less
@@ -25,11 +29,8 @@
 [commit]
   verbose = true
 
-[init]
-  defaultBranch = main
-
 [pull]
-  rebase = true
+	ff = only
 
 [diff]
   algorithm = histogram
@@ -59,7 +60,15 @@
 	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
 	patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
 	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
-  patterns = private_key
-  patterns = private_key_id
 	allowed = AKIAIOSFODNN7EXAMPLE
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[include]
+  path = config.local
+

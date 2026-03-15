@@ -2,54 +2,91 @@
 
 set -eu
 
-function git_config() {
-  local skip=false
-
+function confirm() {
+  local message="$1"
   while :; do
-    printf "Set up Git author info? (Y/n): "
-    read -r ans
+    printf "%s (Y/n): " "$message"
+    # Add || true to avoid exiting with Ctrl+D
+    read -r ans || true
 
     case "$ans" in
     "" | [yY])
-      break
+      return 0
       ;;
     [nN])
-      echo "Skipping Git config setup"
-      skip=true
-      break
+      return 1
       ;;
     *)
       echo "Invalid choice: '$ans'. Please enter [y]es or [n]o."
       ;;
     esac
   done
+}
 
-  if [[ "$skip" == "true" ]]; then
+CONFIG_FILE="$HOME/.config/git/config.local"
+
+function init_config_file() {
+  mkdir -p "$(dirname "$CONFIG_FILE")"
+  touch "$CONFIG_FILE"
+}
+
+function config() {
+  if ! confirm "Set up Git author info?"; then
+    echo "Skipping Git config setup"
     return 0
   fi
 
-  printf "Git username:\n"
-  read -r git_username
-  git config set --global user.name "$git_username"
+  init_config_file
 
+  local git_username=""
+  while [[ -z "$git_username" ]]; do
+    printf "Git username:\n"
+    read -r git_username || true
+  done
 
-  printf "Git email:\n"
-  read -r git_email
-  git config set --global user.email "$git_email"
+  local git_email=""
+  while [[ -z "$git_email" ]]; do
+    printf "Git email:\n"
+    read -r git_email || true
+  done
+
+  git config -f "$CONFIG_FILE" user.name "$git_username"
+  git config -f "$CONFIG_FILE" user.email "$git_email"
+
+  echo "Git config setup completed."
 }
 
-git config --global include.path "$HOME/.config/git/config_shared"
-git_config
+function add_username_to_secrets() {
+  init_config_file
+  local username
+  username="$(whoami)"
 
-if ! command -v git-secrets > /dev/null 2>&1; then
+  git config -f "$CONFIG_FILE" --unset-all secrets.patterns >/dev/null 2>&1 || true
+
+  git config -f "$CONFIG_FILE" --add secrets.patterns "$username"
+  git config -f "$CONFIG_FILE" --add secrets.patterns "/Users/"
+}
+
+function secrets() {
+  if ! confirm "Set up git-secrets?"; then
+    echo "Skipping git-secrets setup"
+    return 0
+  fi
+
+  local template_dir="$HOME/.config/git/templates/git-secrets"
+  mkdir -p "$template_dir"
+  git secrets --install "$template_dir"
+  git config --global init.templatedir "$template_dir"
+
+  add_username_to_secrets
+
+  echo "git-secrets setup completed."
+}
+
+config
+
+if ! command -v git-secrets >/dev/null 2>&1; then
   exit 0
 fi
 
-if [[ -e "$HOME/.git-templates/git-secrets" ]]; then
-  exit 0
-fi
-
-git secrets --install ~/.git-templates/git-secrets
-git config --global init.templatedir "$HOME/.git-templates/git-secrets"
-
-git secrets --add --global "$(whoami)"
+secrets
