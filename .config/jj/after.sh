@@ -2,50 +2,64 @@
 
 set -eu
 
-cd "$(dirname "$0")/../.."
-DOTFILES_ROOT=$(pwd -P)
-
-function jj_config() {
-  local skip=false
-
+function confirm() {
+  local message="$1"
   while :; do
-    printf "Set up Git author info for JJ? (Y/n): "
-    read -r ans
+    printf "%s (Y/n): " "$message"
+    # Add || true to avoid exiting with Ctrl+D
+    read -r ans || true
 
     case "$ans" in
     "" | [yY])
-      break
+      return 0
       ;;
     [nN])
-      echo "Skipping JJ config setup"
-      skip=true
-      break
+      return 1
       ;;
     *)
       echo "Invalid choice: '$ans'. Please enter [y]es or [n]o."
       ;;
     esac
   done
+}
 
-  if [[ "$skip" == "true" ]]; then
+CONFIG_FILE="$HOME/.config/jj/local.toml"
+
+function init_config_file() {
+  mkdir -p "$(dirname "$CONFIG_FILE")"
+  touch "$CONFIG_FILE"
+}
+
+function config() {
+  if ! confirm "Set up Git author info for JJ?"; then
+    echo "Skipping JJ config setup"
     return 0
   fi
 
-  if ! [[ -L "$HOME/.config/jj/config.toml" || -e "$HOME/.config/jj/config.toml" ]]; then
-    cp "$DOTFILES_ROOT/.config/jj/config.toml.example" "$HOME/.config/jj/config.toml"
-  fi
+  init_config_file
 
-  printf "JJ username:\n"
-  read -er git_username
+  local git_username=""
+  while [[ -z "$git_username" ]]; do
+    printf "Git username (Select local.toml as the destination for writing):\n"
+    read -r git_username || true
+  done
+
   jj config set --user user.name "$git_username"
 
-  printf "JJ email:\n"
-  read -er git_email
+  local git_email=""
+  while [[ -z "$git_email" ]]; do
+    printf "Git email (Select local.toml as the destination for writing):\n"
+    read -r git_email || true
+  done
+
   jj config set --user user.email "$git_email"
+
+  echo "JJ config setup completed."
 }
 
 if ! command -v jj >/dev/null 2>&1; then
   echo "jj not installed. Skip jj configuration."
   exit 0
 fi
-jj_config
+
+config

@@ -3,6 +3,9 @@
 
 export EDITOR="vim"
 
+# make jj to load not only ~/.config/jj/config.toml but also ~/.config/jj/*.toml
+export JJ_CONFIG="$HOME/.config/jj"
+
 # for bin/spt
 export SNIPPETS_DIR="$HOME/Dev/snippets"
 

@@ -1,0 +1,6 @@
+#:schema https://jj-vcs.github.io/jj/latest/config-schema.json
+
+[ui]
+default-command = "log"
+editor = "vim" # default: pico
+diff-editor = ":builtin"
