@@ -1,8 +1,0 @@
-case "$(uname -s)" in
-  Darwin)
-    [ -f "$HOME/dotfiles/zsh/.zshrc.macos" ] && source "$HOME/dotfiles/zsh/.zshrc.macos"
-    ;;
-  Linux)
-    [ -f "$HOME/dotfiles/zsh/.zshrc.linux" ] && source "$HOME/dotfiles/zsh/.zshrc.linux"
-    ;;
-esac

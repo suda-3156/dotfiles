@@ -1,4 +1,4 @@
-# `sheldon` configuration file
+# sheldon
 
 shell = "zsh"
 
@@ -12,6 +12,9 @@ apply = ["source"]
 PATH = 'export PATH="$PATH:{{ dir }}"'
 defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
 apply = ["defer"]
@@ -20,23 +23,32 @@ apply = ["defer"]
 github = "zsh-users/zsh-syntax-highlighting"
 apply = ["defer"]
 
-[plugins.zsh-completions]
-github = "zsh-users/zsh-completions"
+[plugins.docker-zsh-completion]
+github = "greymd/docker-zsh-completion"
 apply = ["defer"]
 
 [plugins.zsh-abbr]
 github = "olets/zsh-abbr"
-
-[plugins.dotfiles-sync]
-local = "~/dotfiles/zsh"
-use = ["*.zsh"]
-apply = ['source']
 
 [plugins.zoxide]
 inline = 'eval "$(zoxide init --cmd cd zsh)"'
 
 [plugins.starship]
 inline = 'eval "$(starship init zsh)"'
+
+[plugins.mise]
+inline = 'eval "$(mise activate zsh)"'
+
+[plugins.task]
+inline = 'eval "$(task --completion zsh)"'
+
+[plugins.direnv]
+inline = 'eval "$(direnv hook zsh)"'
+
+[plugins.config]
+local = "~/dotfiles/.config/zsh/"
+use = ["*.zsh"]
+apply = ['source']
 
 [plugins.zsh-notify]
 github = "suda-3156/zsh-notify"

@@ -1,12 +1,3 @@
-# Alias
-
-alias ls='ls --color=always'
-alias mv='mv -i'
-alias rm='rm -i'
-alias cp='cp -ir'
-
-# Abbreviation
-
 # Cursor placement for abbr
 ABBR_SET_EXPANSION_CURSOR=1
 
@@ -87,3 +78,4 @@ abbr -S -q gcal='gcloud auth application-default login'
 abbr -S -q cop='copilot'
 
 abbr -S -q quit="osascript -e 'quit app \"%\"'"
+

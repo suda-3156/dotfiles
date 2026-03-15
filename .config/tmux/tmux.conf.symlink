@@ -20,9 +20,9 @@ set -g status-interval 3      # update the status bar every 3 seconds
 # -------------------- key map --------------------
 
 # prefix key
-set -g prefix C-s
+set -g prefix C-Space
 unbind C-b
-bind-key C-s send-prefix
+bind-key C-Space send-prefix
 
 # New window in same path
 bind -N "Create new window in same path" c new-window -c "#{pane_current_path}"
@@ -114,6 +114,8 @@ set -g status-interval 1
 
 # -------------------- plugins --------------------
 
+set-environment -g TMUX_PLUGIN_MANAGER_PATH '~/.local/share/tmux/plugins'
+
 # tpm plugin manager
 set -g @plugin 'tmux-plugins/tpm'
 
@@ -127,5 +129,12 @@ set -g @plugin 'tmux-plugins/tmux-sensible' # A set of tmux options that should 
 set -g @resurrect-capture-pane-contents 'off'
 set -g @continuum-restore 'on'
 
-# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-run '~/.tmux/plugins/tpm/tpm'
+# Initialize TMUX plugin manager (keep these lines at the very bottom of tmux.conf)
+# If tpm not installed, clone & install it.
+if "test ! -d ~/.local/share/tmux/plugins/tpm" \
+   "run ' \
+      git clone https://github.com/tmux-plugins/tpm ~/.local/share/tmux/plugins/tpm && \
+      ~/.local/share/tmux/plugins/tpm/bin/install_plugins \
+   '"
+# Actual initialization
+run '~/.local/share/tmux/plugins/tpm/tpm'

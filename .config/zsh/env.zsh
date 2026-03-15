@@ -1,4 +1,5 @@
-# Custom env variables and PATH
+# load .zshenv
+[ -f "${HOME}/.zshenv" ] && source "${HOME}/.zshenv"
 
 export EDITOR="vim"
 
@@ -29,6 +30,10 @@ Darwin)
 	export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 	export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 	export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+
+  # move gsutils config
+  export BOTO_CONFIG="${XDG_CONFIG_HOME}/gcloud/boto"
+
 	;;
 Linux)
 	# nvim with appimage
