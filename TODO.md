@@ -2,17 +2,20 @@
 
 - [ ] Raycast configuration
 - [ ] `*.symlink.*`
-- [ ] refactor this repo
 - [ ] Fix wezterm color theme
 - [ ] `.vimrc`
 - [ ] zsh-notify
-- [ ] Refactor nvim
-    - [ ] Use snacks.picker instead of telescope
-        - [ ] Replace dashboard, (git?), neoscroll, terminal, zen-mode, and hlchunk with snacks
-    - [ ] Support striketrhough (Is the cause tmux?)
-    - [ ] emacs like keybinds in terminal
-    - [ ] nvim-lint
-    - [ ] lsp
+- [ ] karabiner.ts and fix install script
+- [ ] fix vscode install script
+- [ ] mac config?
+    - [ ] [macup](https://github.com/lra/mackup)
+    - [ ] [mas-cli](https://github.com/mas-cli/mas)
+- [ ] jj diff/conflict
+- [ ] jj hook
+- [ ] bash_profile -- ref --> bashrc (define xdg env vars)
+- [ ] lazygit
+- [ ] lazydocker
+- [ ] git-dash, octo.nvim
 
 ```
 -- From: https://github.com/okm321/dotfiles/blob/main/nvim/lua/plugins/lsp/mason-lspconfig.lua
