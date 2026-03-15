@@ -1,7 +1,9 @@
 # VSCode
 
+🚧 **WIP** 🚧
+
 ```sh
-./vscode/install.common
+./vscode/install.sh
 ```
 
 - (Optional) If needed, run the Command Palette command to install the 'code' command in your PATH.

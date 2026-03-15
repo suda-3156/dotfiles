@@ -3,18 +3,13 @@
 !*/
 
 !.gitignore
-!taskfile.yml
-!README.md
-!docs/*.md
-!TODO.md
-!Dockerfile
 !.gitallowed
+!README.md
+!TODO.md
 
 !*.sh
 !*.symlink
 !*.example
-!*.macos
-!*.ubuntu
 !Brewfile
 !install*
 
@@ -28,7 +23,7 @@
 !.config/svim.symlink/.stylua.toml
 
 # zsh
-!*.zsh
+!.config/zsh/*.zsh
 !*zshrc*
 
 # scripts
@@ -38,10 +33,10 @@
 !/bin/*
 
 # karabiner
-!/karabiner/complex_modifications/*.json
+!/extras/karabiner/complex_modifications/*.json
 
 # vscode
-!/vscode/extensions
-!/vscode/extensions.old
-!/vscode/keybindings.json5
-!/vscode/settings.json5
+!/extras/vscode/extensions
+!/extras/vscode/extensions.old
+!/extras/vscode/keybindings.json5
+!/extras/vscode/settings.json5

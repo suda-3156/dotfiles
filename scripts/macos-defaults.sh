@@ -3,12 +3,12 @@
 set -eu
 
 if [[ "$(uname)" != "Darwin" ]]; then
-  echo "macos/settings.sh - This script must be run on macOS."
+  echo "macos-defaults.sh - This script must be run on macOS."
   exit 1
 fi
 
 while :; do
-  printf "macos/settings.sh - This script includes settings that cannot be modified through the GUI. Are you sure you want to continue? (y/N): "
+  printf "macos-defaults.sh - This script includes settings that cannot be modified through the GUI. Are you sure you want to continue? (y/N): "
   read -r ans
   case "$ans" in
   [yY])

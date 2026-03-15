@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
 
-FIND_SEARCH_DEPTH=4
+# This script creates symbolic links for files ending with `.symlink`,
+# then runs all `after.sh` scripts in this repository.
 
-set -e
+set -eu
 
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
+FIND_SEARCH_DEPTH=4
 TIMESTAMP=$(date +%Y%m%d%H%M%S)
+
+function print() {
+  printf "\033[0;35m$*\033[0m"
+}
 
 # https://github.com/holman/dotfiles/blob/master/script/bootstrap
 function create_symlink() {
@@ -92,4 +98,16 @@ function link() {
   done
 }
 
+# Create symbolic links
+print "Create symbolic links\n"
 link
+
+# Run after script
+print "Run after hook scripts\n"
+
+files=$(find -H "$DOTFILES_ROOT" -maxdepth $FIND_SEARCH_DEPTH -name 'after.sh' -not -path '*.git*')
+for src in $files; do
+  bash "$src"
+done
+
+print "Done\n"

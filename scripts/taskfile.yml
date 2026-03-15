@@ -17,7 +17,7 @@ tasks:
         timestamp=$(date +'%Y%m%d-%H%M%S')
         echo "timestamp: ${timestamp}"
         mkdir -p {{ .LOG_DIR }}
-        docker build -t {{ .UBUNTU_IMAGE }} . --progress=plain |& tee {{ .LOG_DIR }}/docker-build-${timestamp}.log
+        docker build -t {{ .UBUNTU_IMAGE }} .. -f Dockerfile --progress=plain |& tee {{ .LOG_DIR }}/docker-build-${timestamp}.log
 
   run:ubuntu:
     desc: "Run Docker container for Ubuntu"

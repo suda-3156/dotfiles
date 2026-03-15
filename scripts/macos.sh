@@ -1,16 +1,19 @@
 #!/usr/bin/env bash
 
-# Reference: https://github.com/mathiasbynens/dotfiles/blob/main/brew.sh
-
 set -eu
 
 if [[ "$(uname)" != "Darwin" ]]; then
-  echo "macos/brew.sh - This script must be run on macOS."
+  echo "macos.sh - This script must be run on macOS."
   exit 1
 fi
 
 BREW_PREFIX=$(brew --prefix)
 DOTFILES_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+if ! xcode-select -p &>/dev/null; then
+  echo "Installing Xcode."
+  xcode-select --install
+fi
 
 if ! command -v brew &>/dev/null; then
   echo "Installing Homebrew"
@@ -45,7 +48,7 @@ if ! grep -F -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
 fi
 
 # Install packages in the Brewfile
-brew bundle --file="$DOTFILES_ROOT/macos/Brewfile"
+brew bundle --file="$DOTFILES_ROOT/scripts/Brewfile"
 
 # Remove outdated versions from the cellar.
 brew cleanup
