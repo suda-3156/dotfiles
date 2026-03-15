@@ -2,13 +2,13 @@
 
 set -eu
 
-sudo DEBIAN_FRONTEND=noninteractive apt-get update
-sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
-
 if ! command -v apt >/dev/null 2>&1; then
   echo "apt.sh - This script requires apt as package manager"
   exit 1
 fi
+
+sudo DEBIAN_FRONTEND=noninteractive apt-get update
+sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
 
 # Install Git
 if ! command -v git >/dev/null 2>&1; then
