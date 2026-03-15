@@ -22,6 +22,9 @@
 !.config/svim.symlink/**/*lua
 !.config/svim.symlink/.stylua.toml
 
+# wezterm
+!.config/wezterm.symlink/**/*.lua
+
 # zsh
 !.config/zsh/*.zsh
 !*zshrc*
