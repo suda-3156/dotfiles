@@ -31,8 +31,7 @@ return {
       },
     },
 
-    -- From: https://github.com/LazyVim/LazyVim/discussions/3734#discussioncomment-9984800
-    -- or: kickstart.nvim
+    -- From: https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua#L683-L696
     -- format_on_save = function(bufnr)
     --   -- Disable "format_on_save lsp_fallback" for languages that don't
     --   -- have a well standardized coding style. You can add additional
@@ -47,6 +46,7 @@ return {
     --     }
     --   end
     -- end,
+
     format_on_save = {
       timeout_ms = 500,
       lsp_format = "fallback",

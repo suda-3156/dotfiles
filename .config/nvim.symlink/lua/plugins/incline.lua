@@ -14,10 +14,10 @@ return {
     local palette = {
       bg = _palette.dark1,
       fg = _palette.text,
-      active = _palette.accent6, -- purple
+      active = _palette.accent6,   -- purple
       inactive = _palette.dimmed3, -- muted grey
-      red = _palette.accent1, -- error
-      orange = _palette.accent2, -- modified marker
+      red = _palette.accent1,      -- error
+      orange = _palette.accent2,   -- modified marker
     }
 
     local fg_active = palette.active
@@ -94,7 +94,7 @@ return {
       if props.focused then
         for _, item in ipairs(navic.get_data(props.buf) or {}) do
           table.insert(res, {
-            { " > ", guifg = fg_inactive },
+            { " > ",     guifg = fg_inactive },
             { item.icon, group = "NavicIcons" .. item.type },
             { item.name, group = "NavicText" },
           })

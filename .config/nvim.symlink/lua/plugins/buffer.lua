@@ -11,11 +11,11 @@ return {
   end,
   keys = {
     { "<leader>cab", "<Cmd>BufferCloseAllButCurrent<CR>", desc = "[C]ose [A]ll [B]uffers except for Current" },
-    { "<leader>cbr", "<Cmd>BufferCloseBuffersRight<CR>", desc = "[C]ose [B]uffers to the [R]ight" },
-    { "<leader>cbl", "<Cmd>BufferCloseBuffersLeft<CR>", desc = "[C]ose [B]uffers to the [L]eft" },
-    { "<S-h>", "<cmd>BufferPrevious<cr>", desc = "Prev Buffer" },
-    { "<S-l>", "<cmd>BufferNext<cr>", desc = "Next Buffer" },
-    { "<leader>dd", "<cmd>BufferClose<cr>", desc = "Close Buffer" },
+    { "<leader>cbr", "<Cmd>BufferCloseBuffersRight<CR>",  desc = "[C]ose [B]uffers to the [R]ight" },
+    { "<leader>cbl", "<Cmd>BufferCloseBuffersLeft<CR>",   desc = "[C]ose [B]uffers to the [L]eft" },
+    { "<S-h>",       "<cmd>BufferPrevious<cr>",           desc = "Prev Buffer" },
+    { "<S-l>",       "<cmd>BufferNext<cr>",               desc = "Next Buffer" },
+    { "<leader>dd",  "<cmd>BufferClose<cr>",              desc = "Close Buffer" },
   },
 
   config = function()

@@ -28,7 +28,7 @@ vim.opt.fillchars:append({
 })
 
 vim.opt.listchars = {
-  -- tab = "»-", -- Using hlchunk.nvim
+  tab = "  ",
   trail = "▫",
   -- eol = "↲",
   extends = "❯",

@@ -1,13 +1,13 @@
 local function show_help()
   local keymaps = {
-    { key = "<CR>", desc = "Open file / directory" },
+    { key = "<CR>",      desc = "Open file / directory" },
     { key = "q / <C-c>", desc = "Close view" },
-    { key = "-", desc = "Go to parent directory" },
-    { key = "gr", desc = "Go to cwd" },
-    { key = "gn", desc = "Go to node" },
-    { key = "zc", desc = "Collapse node" },
-    { key = "zM", desc = "Collapse all" },
-    { key = "g?", desc = "Show this help" },
+    { key = "-",         desc = "Go to parent directory" },
+    { key = "gr",        desc = "Go to cwd" },
+    { key = "gn",        desc = "Go to node" },
+    { key = "zc",        desc = "Collapse node" },
+    { key = "zM",        desc = "Collapse all" },
+    { key = "g?",        desc = "Show this help" },
   }
 
   local max_key_len = 0
