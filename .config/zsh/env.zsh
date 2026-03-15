@@ -7,7 +7,7 @@ export EDITOR="vim"
 export JJ_CONFIG="$HOME/.config/jj"
 
 # for bin/spt
-export SNIPPETS_DIR="$HOME/Dev/snippets"
+export SNIPPETS_DIR="$HOME/projects/snippets"
 
 # custom scripts
 export PATH="$PATH:$HOME/dotfiles/bin"
