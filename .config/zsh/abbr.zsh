@@ -38,7 +38,7 @@ abbr -S -q co='code .'
 
 abbr -S -q g='git'
 abbr -S -q gr='cd $(git rev-parse --show-toplevel)'
-abbr -S -q gs='git status'
+abbr -S -q gst='git status'
 abbr -S -q gsw='git switch'
 abbr -S -q gl='git log'
 abbr -S -q gll='git log --oneline'
