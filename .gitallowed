@@ -1,2 +1,3 @@
+.config/git/after.sh
 .config/git/config_shared
 .config/git/config_shared.symlink
