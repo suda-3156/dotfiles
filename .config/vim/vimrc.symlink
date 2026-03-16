@@ -1,0 +1,28 @@
+syntax on
+
+" Wrap gitcommit file types at the appropriate length
+filetype indent plugin on
+
+" Delete single character without copying into register
+nnoremap x "_x
+
+" Keep last yanked when pasting
+vnoremap p "_dP
+
+" Yank to system clipboard
+nnoremap y "+y
+vnoremap y "+y
+nnoremap Y "+Y
+
+" Vertical scroll and center
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Find and center
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Stay in indent mode
+vnoremap < <gv
+vnoremap > >gv
+
