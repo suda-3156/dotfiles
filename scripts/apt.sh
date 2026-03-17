@@ -73,9 +73,6 @@ fi
 
 cargo install ripgrep
 
-# TODO
-# install nvim
-
 # Install tmux
 if ! command -v tmux >/dev/null 2>&1; then
   sudo DEBIAN_FRONTEND=noninteractive apt-get install -y tmux
@@ -85,14 +82,20 @@ git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 
 # Install mise
 # Ref: https://mise.jdx.dev/getting-started.html
-# sudo install -dm 755 /etc/apt/keyrings
-# curl -fSs https://mise.jdx.dev/gpg-key.pub | sudo tee /etc/apt/keyrings/mise-archive-keyring.pub 1> /dev/null
-# echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.pub arch=amd64] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
-# sudo apt-get update
-# sudo apt-get install -y mise
+if ! command -v mise >/dev/null 2>&1; then
+  sudo install -dm 755 /etc/apt/keyrings
+  curl -fSs https://mise.jdx.dev/gpg-key.pub | sudo tee /etc/apt/keyrings/mise-archive-keyring.asc 1>/dev/null
+  echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.asc] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
+  sudo apt update -y
+  sudo apt install -y mise
+fi
 
-# go-task
-# if ! command -v task >/dev/null 2>&1; then
-#   curl -1sLf 'https://dl.cloudsmith.io/public/task/task/setup.deb.sh' | sudo -E bash
-#   apt install task
-# fi
+# Install go-task
+# Ref: https://taskfile.dev/docs/installation
+if ! command -v task >/dev/null 2>&1; then
+  curl -1sLf 'https://dl.cloudsmith.io/public/task/task/setup.deb.sh' | sudo -E bash
+  apt install task
+fi
+
+# TODO: Install nvim
+echo "Install nvim manually: https://github.com/neovim/neovim/blob/master/INSTALL.md"
