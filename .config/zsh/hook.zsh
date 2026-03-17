@@ -1,9 +1,5 @@
-chpwd() {
-	ls_abbrev
-}
-
 # From: https://gist.github.com/yonchu/3935922
-ls_abbrev() {
+function run_ls() {
 	if [[ ! -r $PWD ]]; then
 		return
 	fi
@@ -48,3 +44,20 @@ ls_abbrev() {
 		echo "$ls_result"
 	fi
 }
+
+function show_exit_code() {
+  local exit_code=$?
+
+  if [[ exit_code -ne 0 ]]; then
+    print -P "%F{red}%BExit code: $exit_code%b%f"
+  fi
+}
+
+# Set hooks
+autoload -Uz add-zsh-hook
+# add-zsh-hook zshaddhistory <function>
+# add-zsh-hook preexec <function>
+# Input command runs here
+add-zsh-hook chpwd run_ls
+add-zsh-hook precmd show_exit_code
+# add-zsh-hook periodic <function>
