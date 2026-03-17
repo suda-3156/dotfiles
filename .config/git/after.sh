@@ -35,7 +35,7 @@ function confirm() {
       return 1
       ;;
     *)
-      print "Invalid choice: '$ans'. Please enter [y]es or [n]o."
+      print "Invalid choice: '$ans'. Please enter [y]es or [n]o.\n"
       ;;
     esac
   done

@@ -5,7 +5,7 @@ set -eu
 function print() {
   local fmt="$1"
   shift
-  printf "\033[0;33mjj/after.sh: \033[0m$fmt" "$@"
+  printf "\033[0;33m jj/after.sh: \033[0m$fmt" "$@"
 }
 
 function is_username_set() {
@@ -35,7 +35,7 @@ function confirm() {
       return 1
       ;;
     *)
-      print "Invalid choice: '$ans'. Please enter [y]es or [n]o."
+      print "Invalid choice: '$ans'. Please enter [y]es or [n]o.\n"
       ;;
     esac
   done
