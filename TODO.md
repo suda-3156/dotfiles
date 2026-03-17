@@ -12,7 +12,6 @@
     - [ ] [mas-cli](https://github.com/mas-cli/mas)
 - [ ] jj diff/conflict
 - [ ] jj hook
-- [ ] bash_profile -- ref --> bashrc (define xdg env vars)
 - [ ] lazygit
 - [ ] lazydocker
 - [ ] git-dash, octo.nvim
