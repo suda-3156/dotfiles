@@ -4,6 +4,7 @@ format = """
 $username\
 $hostname\
 $directory\
+$jobs\
 $git_branch\
 $git_state\
 $git_status\
@@ -27,10 +28,8 @@ style = "bright-black"
 read_only = " 󰌾"
 style = "blue"
 
-[character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+[jobs]
+style = 'blue'
 
 [git_branch]
 format = "[$branch]($style)"
@@ -69,6 +68,11 @@ disabled = true
 symbol = "󱇶 "
 style = "#4285F4"
 disabled = true
+
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
 
 [os.symbols]
 Alpaquita = " "
