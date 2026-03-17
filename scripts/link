@@ -11,73 +11,80 @@ FIND_SEARCH_DEPTH=4
 TIMESTAMP=$(date +%Y%m%d%H%M%S)
 
 function print() {
-  printf "\033[0;35m$*\033[0m"
+  local fmt="$1"
+  shift
+  printf "\033[0;35mscripts/link: \033[0m$fmt" "$@"
 }
 
-# https://github.com/holman/dotfiles/blob/master/script/bootstrap
 function create_symlink() {
   local src=$1 dst=$2
+  local opt="undefined"
 
-  local overwrite_opt=${global_opt:-"undefined"}
-
-  if [[ -L "$dst" || -e "$dst" ]]; then
-
-    if [[ "$(readlink "$dst")" == "$src" ]]; then
-      overwrite_opt="skip"
-    fi
-
-    if [[ "$overwrite_opt" == "undefined" ]]; then
-      while :; do
-        printf "File already exists: %s\n" "$dst"
-        printf " [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?: "
-        read -r ans
-        case "$ans" in
-        o)
-          overwrite_opt="overwrite"
-          break
-          ;;
-        O)
-          overwrite_opt="overwrite"
-          global_opt="overwrite"
-          break
-          ;;
-        b)
-          overwrite_opt="backup"
-          break
-          ;;
-        B)
-          overwrite_opt="backup"
-          global_opt="backup"
-          break
-          ;;
-        s)
-          overwrite_opt="skip"
-          break
-          ;;
-        S)
-          overwrite_opt="skip"
-          global_opt="skip"
-          break
-          ;;
-        "") ;;
-        *)
-          echo "Invalid option: $ans"
-          ;;
-        esac
-      done
-    fi
+  if [[ -L "$dst" || -e "$dst" ]] && [[ "$(readlink "$dst")" == "$src" ]]; then
+    opt="skip"
   fi
 
-  if [[ "$overwrite_opt" == "skip" ]]; then
+  if [[ -L "$dst" || -e "$dst" ]] && [[ "$opt" == "undefined" ]]; then
+    while :; do
+      print "File already exists: %s\n" "$dst"
+      print " [s]kip, [o]verwrite, [b]ackup?: "
+      # Add '|| true' to avoid exiting with Ctrl+D
+      read -r ans || true
+      case "$ans" in
+      oO)
+        opt="overwrite"
+        break
+        ;;
+      bB)
+        opt="backup"
+        break
+        ;;
+      sS)
+        opt="skip"
+        break
+        ;;
+      "") ;;
+      *)
+        echo "Invalid option: $ans"
+        ;;
+      esac
+    done
+  fi
+
+  if [[ "$opt" == "undefined" ]]; then
+    # Some after.sh require that symbolic links are properly created.
+    opt="create"
+    # while :; do
+    #   print "Create link to \"%s\"? (Y/n)" "$dst"
+    #   # Add '|| true' to avoid exiting with Ctrl+D
+    #   read -r ans || true
+    #
+    #   case "$ans" in
+    #   "" | [yY])
+    #     opt="create"
+    #     break
+    #     ;;
+    #   [nN])
+    #     opt="skip"
+    #     break
+    #     ;;
+    #   *)
+    #     print "Invalid choice: '$ans'. Please enter [y]es or [n]o.\n"
+    #     ;;
+    #   esac
+    # done
+  fi
+
+  if [[ "$opt" == "skip" ]]; then
     return
   fi
 
-  if [[ "$overwrite_opt" == "backup" ]]; then
+  if [[ "$opt" == "backup" ]]; then
     mv "$dst" "${dst}.bak.${TIMESTAMP}"
-    echo "Backed up: ${dst} -> ${dst}.bak.${TIMESTAMP}"
+    print "Backed up: ${dst} -> ${dst}.bak.${TIMESTAMP}"
   fi
 
-  if [[ "$overwrite_opt" == "overwrite" ]]; then
+  if [[ "$opt" == "overwrite" ]]; then
     rm -rf "$dst"
   fi
 
@@ -85,22 +92,17 @@ function create_symlink() {
   ln -sv "$src" "$dst"
 }
 
-function link() {
-  echo "Setting up symlinks..."
-
-  local global_opt=""
-
-  files=$(find -H "$DOTFILES_ROOT" -maxdepth $FIND_SEARCH_DEPTH -name '*.symlink' -not -path '*.git*')
-  for src in $files; do
-    left_trimmed=${src#"${DOTFILES_ROOT}/"}
-    dst="$HOME/${left_trimmed%.symlink}"
-    create_symlink "$src" "$dst"
-  done
-}
-
 # Create symbolic links
 print "Create symbolic links\n"
-link
+
+files=$(find -H "$DOTFILES_ROOT" -maxdepth $FIND_SEARCH_DEPTH -name '*.symlink' -not -path '*.git*')
+for src in $files; do
+  left_trimmed=${src#"${DOTFILES_ROOT}/"}
+  dst="$HOME/${left_trimmed%.symlink}"
+  create_symlink "$src" "$dst"
+done
+
+print "Symbolic created (or already set).\n"
 
 # Run after script
 print "Run after hook scripts\n"
@@ -110,4 +112,5 @@ for src in $files; do
   bash "$src"
 done
 
+print "After scritps ran\n"
 print "Done\n"
