@@ -1,6 +1,7 @@
 [tools]
 bun = "latest"
 deno = "latest"
+lua-language-server = "latest"
 node = "lts"
 python = "3.13"
 
