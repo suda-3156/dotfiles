@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 #
 # Create a directory on Desktop and move files into it.
-#
 
 if [[ -z "$1" ]]; then
   mkdir -p ~/Desktop/tmp

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 #
 # spt - Snippet Picker Tool
-#
 
 FIND_SEARCH_DEPTH=4
 

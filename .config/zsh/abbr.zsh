@@ -11,15 +11,15 @@ ABBR_REGULAR_ABBREVIATION_GLOB_PREFIXES+=(
 	'notify'
 )
 
-abbr -S -q cl='clear'
-abbr -S -q e='exit 0'
+abbr -S -q c='clear'
+abbr -S -q q='exit 0' # e is for $EDITOR
 abbr -S -q ls="ls -F"
 abbr -S -q ll='ls -Flh'
 abbr -S -q la='ls -FlAh'
 
 abbr -S -q rd='rmdir'
 abbr -S -q md='mkdir -p %'
-abbr -S -q mkdc='mkdir % && cd $_'
+abbr -S -q mc='mkdir % && cd $_'
 abbr -S -q te='touch % && $EDITOR $_'
 
 abbr -S -q help='man %'
@@ -30,11 +30,8 @@ abbr -S -q ...='cd ../../'
 abbr -S -q ....='cd ../../../'
 abbr -S -q .....='cd ../../../../'
 
-abbr -S -q dk='docker'
-abbr -S -q dcom='docker compose'
-
-abbr -S -q v='nvim'
-abbr -S -q co='code .'
+abbr -S -q d='docker'
+abbr -S -q dco='docker compose'
 
 abbr -S -q g='git'
 abbr -S -q gr='cd $(git rev-parse --show-toplevel)'
@@ -50,6 +47,7 @@ abbr -S -q gcm='git commit -m "%'
 abbr -S -q gul='git pull'
 abbr -S -q gush='git push'
 
+abbr -S -q j='jj'
 abbr -S -q jl='jj log'
 abbr -S -q js='jj st'
 abbr -S -q jd='jj desc'
@@ -62,20 +60,18 @@ abbr -S -q jsp='jj split'
 abbr -S -q t='tmux'
 abbr -S -q tl='tmux ls'
 abbr -S -q ta='tmux a'
-abbr -S -q tt='tmux a -t'
-abbr -S -q tn='tmux new -s'
 
 abbr -S -q gcr='gh repo create % --private -s .'
 
 abbr -S -q tf='terraform'
 
-abbr -S -q op='open .'
+abbr -S -q o='open .'
 
 abbr -S -q gccl='gcloud config configurations list'
 abbr -S -q gcca='gcloud config configurations activate'
 abbr -S -q gcal='gcloud auth application-default login'
 
-abbr -S -q cop='copilot'
+abbr -S -q co='copilot'
 
 abbr -S -q quit="osascript -e 'quit app \"%\"'"
 

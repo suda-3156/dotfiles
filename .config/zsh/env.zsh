@@ -1,7 +1,7 @@
 # load .zshenv
 [ -f "${HOME}/.zshenv" ] && source "${HOME}/.zshenv"
 
-export EDITOR="vim"
+export EDITOR="nvim"
 
 # make jj to load not only ~/.config/jj/config.toml but also ~/.config/jj/*.toml
 export JJ_CONFIG="$HOME/.config/jj"
