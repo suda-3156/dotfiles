@@ -12,10 +12,12 @@ ABBR_REGULAR_ABBREVIATION_GLOB_PREFIXES+=(
 )
 
 abbr -S -q c='clear'
-abbr -S -q q='exit 0' # e is for $EDITOR
+abbr -S -q e='exit 0'
 abbr -S -q ls="ls -F"
 abbr -S -q ll='ls -Flh'
 abbr -S -q la='ls -FlAh'
+
+abbr -S -q v='nvim'
 
 abbr -S -q rd='rmdir'
 abbr -S -q md='mkdir -p %'
