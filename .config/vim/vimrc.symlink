@@ -9,10 +9,8 @@ nnoremap x "_x
 " Keep last yanked when pasting
 vnoremap p "_dP
 
-" Yank to system clipboard
-nnoremap y "+y
-vnoremap y "+y
-nnoremap Y "+Y
+" Use system clipboard
+set clipboard=unnamedplus
 
 " Vertical scroll and center
 nnoremap <C-d> <C-d>zz
