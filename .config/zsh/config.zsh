@@ -1,6 +1,3 @@
-# emacs mode
-bindkey -e
-
 autoload -Uz colors
 colors
 
