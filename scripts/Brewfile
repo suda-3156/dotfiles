@@ -11,7 +11,6 @@ brew "neovim"
 brew "luarocks"
 brew "fzf"
 brew "fd"
-brew "stylua"
 brew "ripgrep"
 brew "tree-sitter"
 brew "tree-sitter-cli"
@@ -49,8 +48,6 @@ brew "git-filter-repo"
 # Other formulae (non-cask)
 brew "mise"
 brew "direnv"
-brew "shfmt" # Shell script formatter
-# brew "shellcheck" # Shell script linter
 # brew "tex-fmt" # Tex formatter
 # macOS VM
 # tap "cirruslabs/cli"

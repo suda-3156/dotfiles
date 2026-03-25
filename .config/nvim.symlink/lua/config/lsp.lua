@@ -1,26 +1,38 @@
 -- From: https://zenn.dev/ras96/articles/4d9d9493d29c06
 --       kickstart.nvim
+-- List of lsp: https://github.com/neovim/nvim-lspconfig/tree/master/lsp
 vim.lsp.enable({
   -- Go
   "gopls",
+  "golangci_lint_ls",
 
   -- JavaScript
+  "ts_ls",
   "biome",
   "denols",
   "tailwindcss",
-  "vtsls",
+  "cssls",
+  "css_variables",
 
   -- Python
   "pyright",
+  "ruff",
 
   -- JSON (JSON Schema)
   "jsonls",
-  "jsonnet_ls",
   "tombi", -- toml
   "yamlls",
 
   -- Lua
   "lua_ls",
+
+  -- Others
+  "bash_ls",
+  "docker_compose_language_service",
+  "dockerls",
+  "sqls",
+  "terraformls",
+  "typos_lsp",
 })
 
 -- :h lsp-defaults
@@ -31,7 +43,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local buf = args.buf
     local navic = require("nvim-navic")
 
-    -- unset_defaults(args)
+    -- Global Defaults
+    -- n   | grn: rename
+    -- n,x | gra: code action
+    -- n   | grr: references
+    -- n   | gri: implementation
+    -- n   | grt: type_definition
+    -- n   | gO : document_symbol
+    -- n   | C-S: signature_help
+
+    -- Buffer-local Defaults
+    -- omnifunc: i_C-X_C-O
+    -- tagfunc:
+    -- formatexpr:
+    -- K: Hover document
 
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = buf, desc = "[G]oto [d]efinition" })
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = buf, desc = "[G]oto [D]eclaration" })
