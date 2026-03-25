@@ -2,10 +2,6 @@
 return {
   "https://github.com/rmagatti/auto-session",
   lazy = false,
-
-  ---enables autocomplete for opts
-  ---@module "auto-session"
-  ---@type AutoSession.Config
   config = function()
     local app_name = vim.env.NVIM_APPNAME or "nvim"
 

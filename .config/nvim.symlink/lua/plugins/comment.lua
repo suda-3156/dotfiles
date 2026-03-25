@@ -1,4 +1,6 @@
-local box = {
+local p = {}
+
+p[#p + 1] = {
   "https://github.com/LudoPinelli/comment-box.nvim",
   event = "VeryLazy",
   keys = {
@@ -9,7 +11,7 @@ local box = {
   },
 }
 
-local todo = {
+p[#p + 1] = {
   "https://github.com/folke/todo-comments.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   event = { "BufReadPost", "BufNewFile" },
@@ -19,7 +21,4 @@ local todo = {
   opts = { signs = false },
 }
 
-return {
-  box,
-  todo,
-}
+return p

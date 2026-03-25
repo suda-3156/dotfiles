@@ -3,7 +3,64 @@ return {
   "https://github.com/kylechui/nvim-surround",
   version = "*",
   event = "VeryLazy",
-  opts = {},
+  opts = {
+    surrounds = {
+      -- Replace open and close brackets behaviours with each other
+      -- By default open brackets are inserted with spaces and closed brackets are inserted without spaces
+      ["{"] = {
+        add = function()
+          return { { "{" }, { "}" } }
+        end,
+      },
+      ["}"] = {
+        add = function()
+          return { { "{ " }, { " }" } }
+        end,
+      },
+      ["["] = {
+        add = function()
+          return { { "[" }, { "]" } }
+        end,
+      },
+      ["]"] = {
+        add = function()
+          return { { "[ " }, { " ]" } }
+        end,
+      },
+      ["<"] = {
+        add = function()
+          return { { "<" }, { ">" } }
+        end,
+      },
+      [">"] = {
+        add = function()
+          return { { "< " }, { " >" } }
+        end,
+      },
+      ["("] = {
+        add = function()
+          return { { "(" }, { ")" } }
+        end,
+      },
+      [")"] = {
+        add = function()
+          return { { "( " }, { " )" } }
+        end,
+      },
+    },
+    aliases = {
+      ["a"] = "<",
+      ["A"] = ">",
+      ["b"] = "(",
+      ["B"] = ")",
+      ["m"] = "{",
+      ["M"] = "}",
+      ["r"] = "[",
+      ["R"] = "]",
+      ["q"] = { '"', "'", "`" },
+      ["s"] = { "{", "[", "(", "<", '"', "'", "`" },
+    },
+  },
 }
 
 --     Old text                    Command         New text
