@@ -1,6 +1,6 @@
 -- From: https://zenn.dev/ras96/articles/4d9d9493d29c06
 --       kickstart.nvim
--- List of lsp: https://github.com/neovim/nvim-lspconfig/tree/master/lsp
+-- List of lsp: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 vim.lsp.enable({
   -- Go
   "gopls",
@@ -27,7 +27,7 @@ vim.lsp.enable({
   "lua_ls",
 
   -- Others
-  "bash_ls",
+  "bashls",
   "docker_compose_language_service",
   "dockerls",
   "sqls",

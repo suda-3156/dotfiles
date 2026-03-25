@@ -16,17 +16,13 @@ return {
       objc = { "clang_format" },
       objcpp = { "clang_format" },
       python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
-      javascript = { { "biome", "prettierd" } },
-      typescript = { { "biome", "prettierd" } },
-      javascriptreact = { { "biome", "prettierd" } },
-      typescriptreact = { { "biome", "prettierd" } },
-      json = { { "biome", "prettierd" } },
-      jsonc = { { "biome", "prettierd" } },
-      graphql = { { "biome", "prettierd" } },
-
-      -- Examples:
-      -- python = { "isort", "black" }, -- Sequential execution
-      -- javascript = { { "prettierd", "prettier" } }, -- Execute the found one from left
+      javascript = { "biome", "prettierd", stop_after_first = true },
+      typescript = { "biome", "prettierd", stop_after_first = true },
+      javascriptreact = { "biome", "prettierd", stop_after_first = true },
+      typescriptreact = { "biome", "prettierd", stop_after_first = true },
+      json = { "biome", "prettierd", stop_after_first = true },
+      jsonc = { "biome", "prettierd", stop_after_first = true },
+      graphql = { "biome", "prettierd", stop_after_first = true },
     },
 
     formatters = {

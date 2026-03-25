@@ -114,10 +114,3 @@ vim.opt.sessionoptions = {
   "localoptions",
 }
 vim.opt.runtimepath:remove("/usr/share/vim/vimfiles")
-
-vim.filetype.add({
-  extension = {
-    mdx = "mdx",
-  },
-})
-vim.treesitter.language.register("markdown", { "mdx" })
