@@ -91,7 +91,7 @@ return {
       }
 
       -- Navic breadcrumbs appended after filename (focused only)
-      if props.focused then
+      if props.focused and navic.is_available(props.buf) then
         for _, item in ipairs(navic.get_data(props.buf) or {}) do
           table.insert(res, {
             { " > ",     guifg = fg_inactive },

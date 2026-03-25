@@ -58,6 +58,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- formatexpr:
     -- K: Hover document
 
+    -- spellchecker:ignore-next-line
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = buf, desc = "[G]oto [d]efinition" })
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = buf, desc = "[G]oto [D]eclaration" })
     vim.keymap.set("n", "grn", vim.lsp.buf.rename, { buffer = buf, desc = "[R]e[N]ame" })
@@ -102,6 +103,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
       end, { desc = "[T]oggle Inlay [H]ints" })
     end
 
-    navic.attach(client, buf)
+    if client and client:supports_method("textDocument/documentSymbol") then
+      navic.attach(client, buf)
+    end
   end,
 })
