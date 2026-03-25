@@ -7,7 +7,7 @@ vim.lsp.enable({
   "golangci_lint_ls",
 
   -- JavaScript
-  "ts_ls",
+  "vtsls",
   "biome",
   "denols",
   "tailwindcss",
