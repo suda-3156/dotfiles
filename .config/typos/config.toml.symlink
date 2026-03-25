@@ -1,3 +1,5 @@
+# vim: filetype=toml:
+
 [default]
 # https://github.com/crate-ci/typos/blob/master/docs/reference.md#example-configurations
 extend-ignore-re = [

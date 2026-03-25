@@ -1,3 +1,4 @@
+# vim: filetype=toml:
 #:schema https://jj-vcs.github.io/jj/latest/config-schema.json
 
 [ui]

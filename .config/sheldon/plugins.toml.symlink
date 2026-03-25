@@ -1,3 +1,4 @@
+# vim: filetype=toml:
 # sheldon
 
 shell = "zsh"
