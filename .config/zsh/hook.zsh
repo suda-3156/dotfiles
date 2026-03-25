@@ -23,11 +23,11 @@ function run_ls() {
 	esac
 
   local num="$(command ls -1 -A | wc -l | tr -d ' ')"
-  local show_all=false
+  local show_all=1
 
   if [ "$num" -gt 20 ]; then
     opt_ls+=('-C')
-    show_all=true
+    show_all=0
   fi
 
   # Remove lines only with color codes by sed
@@ -35,10 +35,10 @@ function run_ls() {
 
 	local ls_lines=$(echo "$ls_result" | wc -l | tr -d ' ')
 
-	if [ $ls_lines -gt 10 -a ! show_all ]; then
-		echo "$ls_result" | head -n 5
+	if [ $ls_lines -gt 10 -a $show_all -eq 0 ]; then
+		echo "$ls_result" | head -n 3
 		echo '...'
-		echo "$ls_result" | tail -n 5
+		echo "$ls_result" | tail -n 3
 		echo "$(command ls -1 -A | wc -l | tr -d ' ') files"
 	else
 		echo "$ls_result"
