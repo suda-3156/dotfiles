@@ -3,6 +3,7 @@ bun = "latest"
 deno = "latest"
 lua-language-server = "latest"
 node = "lts"
+"npm:@fsouza/prettierd" = "latest"
 python = "3.13"
 
 [env]
