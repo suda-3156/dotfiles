@@ -19,6 +19,8 @@ return {
       terminal_mappings = true,
       start_in_insert = true,
       close_on_exit = true, -- close the terminal window when the process exits
+
+      -- TODO: Hide zero-width-space `<200b>` in terminal
     })
   end,
 }

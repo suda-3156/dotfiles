@@ -1,5 +1,5 @@
 ---@type LazyPluginSpec
-local Monokai = {
+return {
   "https://github.com/loctvl842/monokai-pro.nvim",
   lazy = false,
   priority = 1000,
@@ -59,5 +59,3 @@ local Monokai = {
     end, { desc = "[T]oggle Transparent [B]ackground" })
   end,
 }
-
-return Monokai

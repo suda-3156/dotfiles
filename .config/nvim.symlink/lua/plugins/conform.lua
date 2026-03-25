@@ -9,13 +9,20 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       sh = { "shfmt" },
+      zsh = { "shfmt" },
       go = { "gofmt", "goimports" },
       c = { "clang_format" },
       cpp = { "clang_format" },
       objc = { "clang_format" },
       objcpp = { "clang_format" },
       python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
-      -- javascript = { { "prettierd", "prettier" } },
+      javascript = { { "biome", "prettierd" } },
+      typescript = { { "biome", "prettierd" } },
+      javascriptreact = { { "biome", "prettierd" } },
+      typescriptreact = { { "biome", "prettierd" } },
+      json = { { "biome", "prettierd" } },
+      jsonc = { { "biome", "prettierd" } },
+      graphql = { { "biome", "prettierd" } },
 
       -- Examples:
       -- python = { "isort", "black" }, -- Sequential execution
@@ -32,24 +39,24 @@ return {
     },
 
     -- From: https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua#L683-L696
-    -- format_on_save = function(bufnr)
-    --   -- Disable "format_on_save lsp_fallback" for languages that don't
-    --   -- have a well standardized coding style. You can add additional
-    --   -- languages here or re-enable it for the disabled ones.
-    --   local disable_filetypes = { c = true, cpp = true }
-    --   if disable_filetypes[vim.bo[bufnr].filetype] then
-    --     return nil
-    --   else
-    --     return {
-    --       timeout_ms = 500,
-    --       lsp_format = "fallback",
-    --     }
-    --   end
-    -- end,
+    format_on_save = function(bufnr)
+      -- Disable "format_on_save lsp_fallback" for languages that don't
+      -- have a well standardized coding style. You can add additional
+      -- languages here or re-enable it for the disabled ones.
+      local disable_filetypes = { c = true, cpp = true }
+      if disable_filetypes[vim.bo[bufnr].filetype] then
+        return nil
+      else
+        return {
+          timeout_ms = 500,
+          lsp_format = "fallback",
+        }
+      end
+    end,
 
-    format_on_save = {
-      timeout_ms = 500,
-      lsp_format = "fallback",
-    },
+    -- format_on_save = {
+    --   timeout_ms = 500,
+    --   lsp_format = "fallback",
+    -- },
   },
 }
