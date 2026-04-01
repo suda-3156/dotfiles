@@ -10,12 +10,17 @@ return {
       lua = { "stylua" },
       sh = { "shfmt" },
       zsh = { "shfmt" },
-      go = { "gofmt", "goimports" },
+      go = { "goimports", "gofmt" },
       c = { "clang_format" },
       cpp = { "clang_format" },
-      objc = { "clang_format" },
-      objcpp = { "clang_format" },
-      python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+      tex = { "tex-fmt" },
+      python = function(bufnr)
+        if require("conform").get_formatter_info("ruff_format", bufnr).available then
+          return { "ruff_fix", "ruff_format", "ruff_organize_imports" }
+        else
+          return { "isort", "black" }
+        end
+      end,
       javascript = { "biome", "prettierd", stop_after_first = true },
       typescript = { "biome", "prettierd", stop_after_first = true },
       javascriptreact = { "biome", "prettierd", stop_after_first = true },
@@ -23,11 +28,13 @@ return {
       json = { "biome", "prettierd", stop_after_first = true },
       jsonc = { "biome", "prettierd", stop_after_first = true },
       graphql = { "biome", "prettierd", stop_after_first = true },
+      -- Run formatters on filetypes that don't have other formatters configured.
+      ["_"] = { "trim_whitespace" },
     },
 
     formatters = {
       clang_format = {
-        prepend_args = { "--style=file", "--fallback-style=LLVM" },
+        prepend_args = { "--style=file", "--fallback-style=Google" },
       },
       shfmt = {
         prepend_args = { "-i", "4" },
@@ -41,7 +48,10 @@ return {
       -- languages here or re-enable it for the disabled ones.
       local disable_filetypes = { c = true, cpp = true }
       if disable_filetypes[vim.bo[bufnr].filetype] then
-        return nil
+        return {
+          timeout_ms = 500,
+          lsp_format = "never",
+        }
       else
         return {
           timeout_ms = 500,

@@ -26,12 +26,20 @@ vim.lsp.enable({
   -- Lua
   "lua_ls",
 
-  -- Others
-  "bashls",
+  -- C
+  "clangd",
+
+  -- Docker
   "docker_compose_language_service",
   "dockerls",
-  "sqls",
+
+  -- Terraform
   "terraformls",
+
+  -- Others
+  "bashls",
+  "sqls",
+  "tinymist",
   "typos_lsp",
 })
 

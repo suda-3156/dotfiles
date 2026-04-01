@@ -2,7 +2,9 @@
 
 [tools]
 bun = "latest"
+"cargo:tex-fmt" = "latest"
 deno = "latest"
+"github:Myriad-Dreamin/tinymist" = "latest"
 "github:tekumara/typos-lsp" = "latest"
 "go:github.com/nametake/golangci-lint-langserver" = "latest"
 "go:github.com/sqls-server/sqls" = "latest"
@@ -23,6 +25,7 @@ node = "lts"
 "pipx:ruff" = "latest"
 "pipx:tombi" = "latest"
 python = "3.13"
+rust = "latest"
 shellcheck = "latest"
 shfmt = "latest"
 stylua = "latest"
