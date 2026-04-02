@@ -10,19 +10,16 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 2
-vim.opt.cursorline = false
 
+-- Hide status line
 vim.opt.laststatus = 0
+
+-- Sign column and fold column
 vim.opt.signcolumn = "yes"
-vim.opt.foldcolumn = "0"
-vim.opt.showtabline = 2
-vim.opt.pumheight = 10
-
-vim.opt.termguicolors = true
-vim.opt.conceallevel = 0
-
-vim.opt.list = true
-
+vim.o.foldcolumn = "1"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.o.foldlevel = 99
+vim.o.foldtext = ""
 vim.opt.fillchars:append({
   eob = " ",
   fold = " ",
@@ -31,11 +28,13 @@ vim.opt.fillchars:append({
   foldinner = " ",
   foldclose = "",
 })
-vim.o.foldcolumn = "1"
-vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.o.foldlevel = 99
-vim.o.foldtext = ""
 
+vim.opt.showtabline = 2 -- Show tab bar even when there is single tab page
+vim.opt.termguicolors = true
+vim.opt.conceallevel = 0 -- :h 'conceallevel'
+
+-- Make invisible chars visible
+vim.opt.list = true
 vim.opt.listchars = {
   -- eol = "↲",
   -- tab = ">-",
@@ -50,11 +49,15 @@ vim.opt.listchars = {
   nbsp = "%",
 }
 
+-- Cursors in modes -- :h 'guicursor'
 vim.opt.guicursor = {
   "n-v-c-sm:block",
   "i-ci-ve:ver25",
   "r-cr-o:hor20",
+  "t:ver25-blinkon1000-blinkoff500-TermCursor",
 }
+vim.opt.showmatch = true
+vim.opt.matchtime = 1
 
 -- Indent, empty line and break line
 vim.opt.expandtab = true
@@ -76,24 +79,20 @@ vim.opt.smartcase = true
 vim.opt.incsearch = true
 vim.opt.wrapscan = true
 vim.opt.hlsearch = true
-vim.opt.inccommand = "split"
 
 -- Edit
 vim.opt.clipboard:append("unnamedplus,unnamed")
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 3
 vim.o.softtabstop = 2
 vim.opt.mouse = "a"
 vim.opt.whichwrap = "b,s,h,l,<,>,[,],~"
 vim.opt.virtualedit = "block"
 vim.opt.backspace = { "indent", "eol", "start", "nostop" }
-vim.opt.completeopt = "menuone,noselect"
 
 vim.opt.ambiwidth = "single"
 vim.opt.visualbell = false
-vim.opt.ttyfast = true
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
-vim.opt.shortmess:append("c")
 
 -- Window
 vim.opt.splitbelow = true
@@ -109,7 +108,6 @@ vim.opt.autoread = true
 vim.opt.confirm = true
 vim.opt.hidden = true
 vim.opt.history = 10000
-vim.opt.spelllang = { "en", "cjk" }
 
 vim.opt.modeline = true
 vim.opt.modelines = 3
@@ -120,7 +118,6 @@ vim.opt.sessionoptions = {
   "tabpages",
   "winsize",
   "winpos",
-  "terminal",
   "localoptions",
 }
 vim.opt.runtimepath:remove("/usr/share/vim/vimfiles")
