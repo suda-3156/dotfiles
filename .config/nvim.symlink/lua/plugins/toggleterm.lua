@@ -17,16 +17,5 @@ return {
       start_in_insert = true,
       close_on_exit = true, -- close the terminal window when the process exits
     })
-
-    -- Hide zero width spaces in terminal
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = {
-        "toggleterm",
-      },
-      callback = function()
-        vim.cmd([[syntax match CustomConcealZWS /\%u200b/ conceal]])
-        vim.opt_local.conceallevel = 2
-      end,
-    })
   end,
 }
