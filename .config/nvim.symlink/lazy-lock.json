@@ -1,5 +1,6 @@
 {
   "aerial.nvim": { "branch": "master", "commit": "645d108a5242ec7b378cbe643eb6d04d4223f034" },
+  "applescript.vim": { "branch": "master", "commit": "00840b4059c7884120913907f4778092edb006f7" },
   "auto-session": { "branch": "main", "commit": "62437532b38495551410b3f377bcf4aaac574ebe" },
   "barbar.nvim": { "branch": "master", "commit": "539d73def39c9172b4d4d769f14090e08f37b29d" },
   "blink.cmp": { "branch": "main", "commit": "451168851e8e2466bc97ee3e026c3dcb9141ce07" },
@@ -13,6 +14,7 @@
   "fyler.nvim": { "branch": "stable", "commit": "bb8b9f30c652c948d35211958b0deec3496bcc08" },
   "gitsigns.nvim": { "branch": "main", "commit": "0f00d07c2c3106ba6abd594ac1c17f211141b7b5" },
   "go.nvim": { "branch": "master", "commit": "dbb4a0183a2ce54a3d6757a68e7b4ad98c08235e" },
+  "guihua.lua": { "branch": "master", "commit": "c4f1b5ee1a66dbcef0b2c5ee26e42b9757684f61" },
   "hlchunk.nvim": { "branch": "main", "commit": "3bc2bd7aef28fbed6643534a0fdd0f19966544bc" },
   "incline.nvim": { "branch": "main", "commit": "8b54c59bcb23366645ae10edca6edfb9d3a0853e" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
