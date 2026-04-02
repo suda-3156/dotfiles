@@ -28,11 +28,16 @@ vim.opt.fillchars:append({
 })
 
 vim.opt.listchars = {
-  tab = "  ",
-  trail = "▫",
   -- eol = "↲",
+  -- tab = ">-",
+  -- space = "c",
+  -- multispace = "c",
+  -- lead = "c",
+  -- leadmultispace = "c",
+  trail = "▫",
   extends = "❯",
   precedes = "❮",
+  -- conceal = "c",
   nbsp = "%",
 }
 
@@ -73,10 +78,6 @@ vim.opt.whichwrap = "b,s,h,l,<,>,[,],~"
 vim.opt.virtualedit = "block"
 vim.opt.backspace = { "indent", "eol", "start", "nostop" }
 vim.opt.completeopt = "menuone,noselect"
-vim.opt.iskeyword:append("-")
-
-vim.opt.formatoptions:append("M")
-vim.opt.formatoptions:remove({ "c", "r", "o" })
 
 vim.opt.ambiwidth = "single"
 vim.opt.visualbell = false
