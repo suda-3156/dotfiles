@@ -44,6 +44,7 @@ vim.lsp.enable({
 })
 
 -- :h lsp-defaults
+-- See also: lua/plugins/telescope.lua
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp-attach", {}),
   callback = function(args)

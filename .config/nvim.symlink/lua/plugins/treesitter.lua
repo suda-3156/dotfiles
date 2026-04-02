@@ -23,6 +23,7 @@ return {
         "dockerfile",
         "toml",
         "json",
+        "json5",
         "go",
         "gitignore",
         "graphql",
