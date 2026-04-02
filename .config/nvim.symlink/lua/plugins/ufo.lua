@@ -7,19 +7,18 @@ return {
   },
   config = function()
     -- Show states of lines; expandable, foldable, or deps maybe
-    -- vim.o.foldcolumn = '1'
-    vim.o.foldlevel = 100 -- Expand all in initial state
+    vim.o.foldcolumn = "1"
+    vim.o.foldlevel = 99
     vim.o.foldlevelstart = 99
     vim.o.foldenable = true
-    -- "foldinner" is not supported by my nvim version, so hide foldcolumn above
-    -- vim.opt.fillchars = {
-    --   eob = ' ',
-    --   fold = ' ',
-    --   foldopen = '',
-    --   foldsep = ' ',
-    --   foldinner = ' ',
-    --   foldclose = '',
-    -- }
+    vim.opt.fillchars = {
+      eob = " ",
+      fold = " ",
+      foldopen = "",
+      foldsep = " ",
+      foldinner = " ",
+      foldclose = "",
+    }
     vim.keymap.set("n", "zp", require("ufo").peekFoldedLinesUnderCursor)
 
     vim.api.nvim_create_autocmd("FileType", {
