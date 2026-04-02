@@ -4,14 +4,9 @@
 shell = "zsh"
 
 [plugins]
-
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 apply = ["source"]
-
-[templates]
-PATH = 'export PATH="$PATH:{{ dir }}"'
-defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
 
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
@@ -49,7 +44,11 @@ inline = 'eval "$(direnv hook zsh)"'
 [plugins.config]
 local = "~/dotfiles/.config/zsh/"
 use = ["*.zsh"]
-apply = ['source']
+apply = ["source"]
 
 [plugins.zsh-notify]
 github = "suda-3156/zsh-notify"
+
+[templates]
+PATH = 'export PATH="$PATH:{{ dir }}"'
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"

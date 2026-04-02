@@ -27,6 +27,7 @@ return {
       typescriptreact = { "biome", "prettierd", stop_after_first = true },
       json = { "biome", "prettierd", stop_after_first = true },
       jsonc = { "biome", "prettierd", stop_after_first = true },
+      toml = { "tombi" },
       graphql = { "biome", "prettierd", stop_after_first = true },
       -- Run formatters on filetypes that don't have other formatters configured.
       ["_"] = { "trim_whitespace" },

@@ -1,6 +1,6 @@
 # vim: filetype=toml:
 
-"$schema" = 'https://starship.rs/config-schema.json'
+"$schema" = "https://starship.rs/config-schema.json"
 
 palette = "custom"
 
