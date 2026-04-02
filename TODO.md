@@ -1,9 +1,7 @@
 # TODO
 
 - [ ] Raycast configuration
-- [ ] `*.symlink.*`
 - [ ] Fix wezterm color theme
-- [ ] `.vimrc`
 - [ ] zsh-notify
 - [ ] karabiner.ts and fix install script
 - [ ] fix vscode install script
