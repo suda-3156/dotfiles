@@ -6,7 +6,7 @@ return {
     local palette = require("monokai-pro").get_palette("octagon")
     require("modes").setup({
       colors = {
-        copy = palette.accent3,   -- yellow
+        copy = palette.accent3, -- yellow
         delete = palette.accent1, -- red/pink
         insert = palette.accent5, -- cyan
         visual = palette.accent6, -- purple
@@ -19,7 +19,7 @@ return {
         copy = 0.3,
         delete = 0.3,
         insert = 0.3,
-        visual = 0.3,
+        visual = 0.4,
         change = 0.3,
         format = 0.3,
         replace = 0.3,

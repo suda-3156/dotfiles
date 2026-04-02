@@ -1,49 +1,35 @@
 return {
   "https://github.com/folke/flash.nvim",
   event = "VeryLazy",
-
-  ---@type Flash.Config
-  opts = {},
   keys = {
     {
-      '"',
+      "`",
       mode = { "n", "x", "o" },
       function()
         require("flash").jump()
       end,
       desc = "Flash",
     },
-    {
-      "S",
-      mode = { "n", "x", "o" },
-      function()
-        require("flash").treesitter()
-      end,
-      desc = "Flash Treesitter",
-    },
-    -- {
-    --   "r",
-    --   mode = "o",
-    --   function()
-    --     require("flash").remote()
-    --   end,
-    --   desc = "Remote Flash",
-    -- },
-    -- {
-    --   "R",
-    --   mode = { "o", "x" },
-    --   function()
-    --     require("flash").treesitter_search()
-    --   end,
-    --   desc = "Treesitter Search",
-    -- },
-    -- {
-    --   "<c-s>",
-    --   mode = { "c" },
-    --   function()
-    --     require("flash").toggle()
-    --   end,
-    --   desc = "Toggle Flash Search",
-    -- },
   },
+  config = function()
+    vim.api.nvim_set_hl(0, "FlashLabel", { underline = true, bold = true, fg = "Orange", ctermfg = "Red" })
+    vim.api.nvim_set_hl(
+      0,
+      "FlashCurrent",
+      { bold = true, fg = "Black", bg = "Orange", ctermfg = "Black", ctermbg = "Red" }
+    )
+
+    require("flash").setup({
+      labels = "asdfghjklqwertyuiopvnm",
+      label = {
+        reuse = "all",
+      },
+      modes = {
+        char = {
+          -- Alter ',' to '~' since using ',' as the leader key
+          keys = { "f", "F", "t", "T", ";", [","] = "~" },
+        },
+      },
+    })
+  end,
 }
