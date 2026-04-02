@@ -38,7 +38,7 @@ return {
         prepend_args = { "--style=file", "--fallback-style=Google" },
       },
       shfmt = {
-        prepend_args = { "-i", "4" },
+        prepend_args = { "-i", "4", "--space-redirects", "--binary-next-line" },
       },
     },
 

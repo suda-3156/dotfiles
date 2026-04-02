@@ -3,12 +3,12 @@ ABBR_SET_EXPANSION_CURSOR=1
 
 # Enable abbr after pipe and so on
 ABBR_REGULAR_ABBREVIATION_GLOB_PREFIXES+=(
-	'*& '
-	'*&& '
-	'*| '
-	'*|| '
-	'*; '
-	'notify'
+    '*& '
+    '*&& '
+    '*| '
+    '*|| '
+    '*; '
+    'notify'
 )
 
 abbr -S -q c='clear'
@@ -76,4 +76,3 @@ abbr -S -q gcal='gcloud auth application-default login'
 abbr -S -q co='copilot'
 
 abbr -S -q quit="osascript -e 'quit app \"%\"'"
-
