@@ -2,6 +2,20 @@
 
 "$schema" = 'https://starship.rs/config-schema.json'
 
+palette = "custom"
+
+# https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+[palettes.custom]
+blue = "38"
+yellow = "220"
+orange = "208"
+gray = "244"
+cyan = "87"
+pink = "218"
+purple = "141"
+red = "203"
+green = "120"
+
 format = """
 $username\
 $hostname\
@@ -24,21 +38,21 @@ style_user = "yellow"
 [hostname]
 ssh_only = true
 format = "[$hostname]($style) "
-style = "bright-black"
+style = "gray"
 
 [directory]
 read_only = " 󰌾"
 style = "blue"
 
 [jobs]
-style = "blue"
+style = "green"
 
 [git_branch]
 format = "[$branch]($style)"
-style = "bright-black"
+style = "gray"
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](pink) ($ahead_behind$stashed)]($style)"
 style = "cyan"
 conflicted = "\u0000"
 untracked = "\u0000"
@@ -50,7 +64,7 @@ stashed = "≡"
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
+style = "gray"
 
 [cmd_duration]
 format = "[$duration]($style) "
@@ -58,7 +72,7 @@ style = "yellow"
 
 [python]
 format = "[$virtualenv]($style) "
-style = "bright-black"
+style = "gray"
 
 [character]
 success_symbol = "[❯](purple)"
