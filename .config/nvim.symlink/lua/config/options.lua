@@ -38,11 +38,11 @@ vim.opt.list = true
 vim.opt.listchars = {
   -- eol = "↲",
   tab = "  ",
-  space = "·",
+  -- space = "·",
   -- multispace = "c",
   -- lead = "c",
   -- leadmultispace = "c",
-  -- trail = "·",
+  trail = "·",
   extends = "❯",
   precedes = "❮",
   -- conceal = "c",
@@ -59,7 +59,7 @@ vim.opt.showmatch = true
 vim.opt.matchtime = 1
 
 -- Indent, empty line and break line
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 vim.opt.shiftround = true
 vim.opt.smartindent = true
 vim.opt.autoindent = true
