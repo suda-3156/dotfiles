@@ -25,7 +25,16 @@ vim.opt.list = true
 
 vim.opt.fillchars:append({
   eob = " ",
+  fold = " ",
+  foldopen = "",
+  foldsep = " ",
+  foldinner = " ",
+  foldclose = "",
 })
+vim.o.foldcolumn = "1"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.o.foldlevel = 99
+vim.o.foldtext = ""
 
 vim.opt.listchars = {
   -- eol = "↲",
@@ -34,7 +43,7 @@ vim.opt.listchars = {
   -- multispace = "c",
   -- lead = "c",
   -- leadmultispace = "c",
-  trail = "▫",
+  trail = "·",
   extends = "❯",
   precedes = "❮",
   -- conceal = "c",
