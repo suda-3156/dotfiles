@@ -12,5 +12,6 @@
 - [ ] jj hook
 - [ ] lazygit
 - [ ] lazydocker
+- [ ] lazyjj
 - [ ] git-dash, octo.nvim
 
