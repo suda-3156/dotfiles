@@ -28,20 +28,6 @@ return {
         -- Auto session control dir, for control files, like alternating between two sessions with session-lens
         control_dir = "/tmp/" .. app_name .. "/auto_session/",
       },
-
-      post_restore_cmds = {
-        -- Re-fire BufReadPost for all loaded buffers so treesitter (and other
-        -- plugins that attach on that event) can re-attach after session restore.
-        function()
-          vim.schedule(function()
-            for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-              if vim.api.nvim_buf_is_loaded(buf) and vim.api.nvim_buf_get_name(buf) ~= "" then
-                vim.api.nvim_exec_autocmds("BufReadPost", { buffer = buf })
-              end
-            end
-          end)
-        end,
-      },
     })
   end,
 }
