@@ -15,6 +15,7 @@ local function abbr(lhs, rhs, opts)
 end
 
 abbr("qw", "wq", { desc = "Fix typo" })
+abbr("H", "h", { desc = "Fix typo" })
 abbr("lup", "lua =", { desc = "Lua print" })
 
 vim.api.nvim_create_user_command("Restart", function()
