@@ -111,12 +111,15 @@ vim.opt.history = 10000
 vim.opt.modeline = true
 vim.opt.modelines = 3
 vim.opt.sessionoptions = {
+  "blank",
   "buffers",
+  "curdir",
   "folds",
   "help",
   "tabpages",
   "winsize",
   "winpos",
+  "terminal",
   "localoptions",
 }
 vim.opt.runtimepath:remove("/usr/share/vim/vimfiles")
