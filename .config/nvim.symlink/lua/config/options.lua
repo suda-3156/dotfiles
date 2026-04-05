@@ -18,6 +18,7 @@ vim.opt.laststatus = 0
 vim.opt.signcolumn = "yes"
 vim.o.foldcolumn = "1"
 vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.o.foldmethod = "expr"
 vim.o.foldlevel = 99
 vim.o.foldtext = ""
 vim.opt.fillchars:append({
