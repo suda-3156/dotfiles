@@ -8,3 +8,9 @@ end
 
 abbrev_excmd("qw", "wq", { desc = "fix typo" })
 abbrev_excmd("lup", "lua =", { desc = "lua print" })
+
+vim.api.nvim_create_user_command("Restart", function()
+  vim.cmd("AutoSession save")
+  vim.cmd.restart()
+end, { desc = "Restart current Neovim session" })
+abbrev_excmd("rst", "Restart", { desc = "save session and restart" })
