@@ -47,7 +47,8 @@ use = ["*.zsh"]
 apply = ["source"]
 
 [plugins.zsh-notify]
-github = "suda-3156/zsh-notify"
+# github = "suda-3156/zsh-notify"
+local = "~/Projects/zsh-notify"
 
 [templates]
 PATH = 'export PATH="$PATH:{{ dir }}"'
