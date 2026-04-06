@@ -110,7 +110,6 @@ vim.opt.hidden = true
 vim.opt.history = 10000
 
 vim.opt.modeline = true
-vim.opt.modelines = 3
 vim.opt.sessionoptions = {
   "blank",
   "buffers",

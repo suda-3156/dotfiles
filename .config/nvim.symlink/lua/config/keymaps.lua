@@ -25,7 +25,9 @@ vim.keymap.set("n", "<C-c>", "ciw", { desc = "Change inner word" })
 vim.keymap.set("x", "<", "<gv", { desc = "Indent left and keep selection" })
 vim.keymap.set("x", ">", ">gv", { desc = "Indent right and keep selection" })
 vim.keymap.set("x", "p", '"_dP', { desc = "Paste without overwriting unnamed register" })
-vim.keymap.set("n", "U", "<c-r>", { desc = "Redo" })
+vim.keymap.set("n", "U", function()
+  vim.notify("Use <C-R> for redo")
+end, { desc = "Redo: under correction" })
 
 -- Scrolling and search centering
 vim.keymap.set("n", "<C-d>", "<c-d>zz", { desc = "Scroll down and center cursor" })
