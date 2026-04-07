@@ -2,91 +2,78 @@
 
 set -eu
 
+function print() {
+    local fmt="$1"
+    shift
+    printf "\033[0;36m karabiner: \033[0m$fmt" "$@"
+}
+
 if [[ "$(uname)" != "Darwin" ]]; then
-  echo "karabiner/install.sh - This script must be run on macOS."
-  exit 0
+    print "karabiner/install.sh - This script must be run on macOS."
+    exit 0
 fi
 
-DOTFILES_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-LINK_PATH="$HOME/.config/karabiner/assets"
+DOTFILES_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 TIMESTAMP=$(date +%Y%m%d%H%M%S)
+CONFIG_FILE="$HOME/.config/karabiner/karabiner.json"
 
 while :; do
-  printf "Install Karabiner Elements via Homebrew? (y/N): "
-  read -r ans
-  case "$ans" in
-  [yY])
-    echo "Installing..."
-    brew install --cask karabiner-elements
-    break
-    ;;
-  "" | [nN])
-    echo "Skipping installation."
-    echo "Creating a symlink for karabiner-elements"
-    break
-    ;;
-  *)
-    echo "Invalid choice: '$ans'. Please enter [y]es or [n]o."
-    ;;
-  esac
+    print "Install Karabiner Elements via Homebrew? (y/N): "
+    read -r ans
+    case "$ans" in
+    [yY])
+        print "Installing...\n"
+        brew install --cask karabiner-elements
+        break
+        ;;
+    "" | [nN])
+        print "Skipping installation.\n"
+        break
+        ;;
+    *)
+        print "Invalid choice: '$ans'. Please enter [y]es or [n]o.\n"
+        ;;
+    esac
 done
 
-
-if [[ -L "$LINK_PATH/complex_modifications" || -e "$LINK_PATH/complex_modifications" ]]; then
-  while :; do
-    printf "File already exists: %s\nChoose action - [o]verwrite, [b]ackup, or [s]kip: " "$LINK_PATH/complex_modifications"
-    read -r ans
-    case "$ans" in
-    [oO])
-      rm -rf "$LINK_PATH/complex_modifications"
-      break
-      ;;
-    [bB])
-      echo "Backed up: $LINK_PATH/complex_modifications -> complex_modifications.bak.$TIMESTAMP"
-      mv "$LINK_PATH/complex_modifications" "$LINK_PATH/complex_modifications.bak.$TIMESTAMP"
-      break
-      ;;
-    [sS])
-      exit 0
-      ;;
-    "") ;;
-    *)
-      echo "Invalid option: $ans"
-      ;;
-    esac
-  done
+if ! command -v deno > /dev/null 2>&1; then
+    print "Deno not installed. Following configuration requires deno. Skip.\n"
+    exit 0
 fi
 
-mkdir -p "$LINK_PATH"
+print "Currently, setting up the configuration requires several steps.\n"
+print "First, open Karabiner-Elements and select the ANSI keyboard.\n"
+print "Next, run 'deno run build' to update karabiner.json.\n"
+print "Finally, reopen Karabiner-Elements and configure the settings for each device.\n"
 
-ln -sv "$DOTFILES_ROOT/karabiner/complex_modifications" "$LINK_PATH/complex_modifications"
+exit 0
 
-CONFIG_FILE="$HOME/.config/karabiner/karabiner.json"
-if [[ -L "$CONFIG_FILE" || -e "$CONFIG_FILE" ]]; then
-  while :; do
-    printf "File already exists: %s\nChoose action - [o]verwrite, [b]ackup, or [s]kip: " "$CONFIG_FILE"
-    read -r ans
-    case "$ans" in
-    [oO])
-      rm -rf "$CONFIG_FILE"
-      break
-      ;;
-    [bB])
-      echo "Backed up: $CONFIG_FILE -> karabiner.json.bak.$TIMESTAMP"
-      mv "$CONFIG_FILE" "$CONFIG_FILE.bak.$TIMESTAMP"
-      break
-      ;;
-    [sS])
-      exit 0
-      ;;
-    "") ;;
-    *)
-      echo "Invalid option: $ans"
-      ;;
-    esac
-  done
-fi
-
-cp -v "$DOTFILES_ROOT/karabiner/karabiner.json.example" "$CONFIG_FILE"
-
-echo "Installation complete. Open Karabiner Elements to choose the complex modifications."
+# if [[ -L "$CONFIG_FILE" || -e "$CONFIG_FILE" ]]; then
+#     while :; do
+#         printf "File already exists: %s\nChoose action - [o]verwrite,\n [b]ackup, or [s]kip: " "$CONFIG_FILE"
+#         read -r ans
+#         case "$ans" in
+#         [oO])
+#             rm -rf "$CONFIG_FILE"
+#             break
+#             ;;
+#         [bB])
+#             print "Backed up: $CONFIG_FILE -> karabiner.json.bak.$TIMESTAMP\n"
+#             mv "$CONFIG_FILE" "$CONFIG_FILE.bak.$TIMESTAMP"
+#             break
+#             ;;
+#         [sS])
+#             exit 0
+#             ;;
+#         "") ;;
+#         *)
+#             print "Invalid option: $ans\n"
+#             ;;
+#         esac
+#     done
+# fi
+#
+# cd "$DOTFILES_ROOT/extras/karabiner"
+# deno run build
+#
+# print "Karabiner config setup completed.\n"

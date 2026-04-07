@@ -1,17 +1,10 @@
 # Karabiner Elements
 
-🚧 **WIP** 🚧
-
 [Karabiner Elements](https://karabiner-elements.pqrs.org/)
+[karabiner.ts](https://github.com/evan-liu/karabiner.ts)
 
-## Simple modifications
+## Credits
 
-- `right_command` -> `fn`
-- Disable `right_option`
+[ryoppippi/dotfiles](https://github.com/ryoppippi/dotfiles/tree/main/karabiner)
+[kawarimidoll/dotfiles](https://github.com/kawarimidoll/dotfiles/tree/master/karabiner)
 
-## Setup
-
-1. Install `Karabiner Elements` and configure the simple modifications above.
-2. Run `install.sh`.
-   - This creates a symbolic link from `$HOME/.config/karabiner/assets/complex_modifications` to `dotfiles/karabiner/complex_modifications`.
-3. Open Karabiner Elements and enable the rules via 'Add predefined rules'.
