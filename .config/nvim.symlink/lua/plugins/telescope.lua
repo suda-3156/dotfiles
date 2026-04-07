@@ -31,14 +31,27 @@ return {
             ["<Esc>"] = actions.close,
           },
           i = {
+            ["<Esc>"] = actions.close,
             ["<C-n>"] = actions.move_selection_next,
             ["<C-p>"] = actions.move_selection_previous,
           },
+        },
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--no-ignore",
+          "--hidden",
         },
         path_display = { "absolute" },
         color_devicons = true,
         layout_config = {
           width = 0.75,
+          height = 0.75,
         },
         file_ignore_patterns = {
           "%.git/",
@@ -57,25 +70,15 @@ return {
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
         buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
       },
+      pickers = {
+        find_files = { hidden = true, no_ignore = true },
+      },
       extensions = {
         fzf = {
           fuzzy = false,
           override_generic_sorter = true,
           override_file_sorter = true,
           case_mode = "smart_case",
-        },
-        frecency = {
-          show_scores = true,
-          show_unindexed = true,
-          ignore_patterns = {
-            "*.git/*",
-            "*.jj/*",
-            "*.venv/*",
-            "*.cache/*",
-            "*.next/*",
-            "node_modules/*",
-            "build/*",
-          },
         },
         live_grep_args = {
           auto_quoting = true,
@@ -93,7 +96,6 @@ return {
     })
 
     -- Enable telescope extensions, if installed
-    pcall(require("telescope").load_extension, "frecency")
     pcall(require("telescope").load_extension, "fzf")
     pcall(require("telescope").load_extension, "live_grep_args")
     pcall(require("telescope").load_extension, "ui-select")

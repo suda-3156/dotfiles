@@ -65,6 +65,26 @@ return {
         augend.constant.alias.Bool,
         augend.constant.alias.alpha,
         augend.constant.alias.Alpha,
+        augend.constant.new({
+          elements = { "on", "off" },
+          word = true,
+          cyclic = true,
+        }),
+        augend.constant.new({
+          elements = { "yes", "no" },
+          word = true,
+          cyclic = true,
+        }),
+        augend.constant.new({
+          elements = { "and", "or" },
+          word = true,
+          cyclic = true,
+        }),
+        augend.constant.new({
+          elements = { "&&", "||" },
+          word = false,
+          cyclic = true,
+        }),
         augend.semver.alias.semver,
         augend.paren.alias.lua_str_literal,
 
