@@ -122,6 +122,7 @@ return {
   },
   { -- Show git status in oil directory listings
     "https://github.com/refractalize/oil-git-status.nvim",
+    ft = { "oil" },
     dependencies = {
       "https://github.com/stevearc/oil.nvim",
     },
