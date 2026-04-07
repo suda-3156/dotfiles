@@ -24,8 +24,7 @@ config = {
 		top = 8,
 		bottom = 0,
 	},
-	-- macos_window_background_blur = 25,
-	macos_window_background_blur = 3,
+	macos_window_background_blur = 25,
 
 	automatically_reload_config = true,
 	enable_tab_bar = false,

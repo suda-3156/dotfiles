@@ -125,6 +125,8 @@ return {
     dependencies = {
       "https://github.com/stevearc/oil.nvim",
     },
-    opts = {},
+    opts = {
+      show_ignored = true,
+    },
   },
 }

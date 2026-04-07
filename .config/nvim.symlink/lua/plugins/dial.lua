@@ -86,7 +86,6 @@ return {
           cyclic = true,
         }),
         augend.semver.alias.semver,
-        augend.paren.alias.lua_str_literal,
 
         augend.case.new({
           types = {
