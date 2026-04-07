@@ -35,7 +35,9 @@
 !/bin/*
 
 # karabiner
-!/extras/karabiner/complex_modifications/*.json
+!/extras/karabiner/**/*.ts
+!/extras/karabiner/deno.jsonc
+!/extras/karabiner/deno.lock
 
 # vscode
 !/extras/vscode/extensions
