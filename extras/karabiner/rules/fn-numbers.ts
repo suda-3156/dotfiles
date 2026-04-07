@@ -1,118 +1,38 @@
-import type { Rule } from "karabiner_ts";
+import * as k from "karabiner_ts";
 
-export const fnNumbersRules: Rule[] = [
-  {
-    description: "fn + wersdfxcv, space bar => 1 ~ 0",
-    manipulators: [
-      {
-        from: {
-          key_code: "w",
-          modifiers: { mandatory: ["fn"], optional: ["shift"] },
-        },
-        to: [{ key_code: "1" }],
-        type: "basic",
-      },
-      {
-        from: {
-          key_code: "e",
-          modifiers: { mandatory: ["fn"], optional: ["shift"] },
-        },
-        to: [{ key_code: "2" }],
-        type: "basic",
-      },
-      {
-        from: {
-          key_code: "r",
-          modifiers: { mandatory: ["fn"], optional: ["shift"] },
-        },
-        to: [{ key_code: "3" }],
-        type: "basic",
-      },
-      {
-        from: {
-          key_code: "s",
-          modifiers: { mandatory: ["fn"], optional: ["shift"] },
-        },
-        to: [{ key_code: "4" }],
-        type: "basic",
-      },
-      {
-        from: {
-          key_code: "d",
-          modifiers: { mandatory: ["fn"], optional: ["shift"] },
-        },
-        to: [{ key_code: "5" }],
-        type: "basic",
-      },
-      {
-        from: {
-          key_code: "f",
-          modifiers: { mandatory: ["fn"], optional: ["shift"] },
-        },
-        to: [{ key_code: "6" }],
-        type: "basic",
-      },
-      {
-        from: {
-          key_code: "x",
-          modifiers: { mandatory: ["fn"], optional: ["shift"] },
-        },
-        to: [{ key_code: "7" }],
-        type: "basic",
-      },
-      {
-        from: {
-          key_code: "c",
-          modifiers: { mandatory: ["fn"], optional: ["shift"] },
-        },
-        to: [{ key_code: "8" }],
-        type: "basic",
-      },
-      {
-        from: {
-          key_code: "v",
-          modifiers: { mandatory: ["fn"], optional: ["shift"] },
-        },
-        to: [{ key_code: "9" }],
-        type: "basic",
-      },
-      {
-        from: {
-          key_code: "spacebar",
-          modifiers: { mandatory: ["fn"], optional: ["shift"] },
-        },
-        to: [{ key_code: "0" }],
-        type: "basic",
-      },
-    ],
-  },
-  {
-    description: "fn + jkl => `-=",
-    manipulators: [
-      {
-        from: {
-          key_code: "j",
-          modifiers: { mandatory: ["fn"], optional: ["shift"] },
-        },
-        to: [{ key_code: "grave_accent_and_tilde" }],
-        type: "basic",
-      },
-      {
-        from: {
-          key_code: "k",
-          modifiers: { mandatory: ["fn"], optional: ["shift"] },
-        },
-        to: [{ key_code: "hyphen" }],
-        type: "basic",
-      },
-      {
-        from: {
-          key_code: "l",
-          modifiers: { mandatory: ["fn"], optional: ["shift"] },
-        },
-        to: [{ key_code: "equal_sign" }],
-        type: "basic",
-      },
-    ],
-  },
+export const fnNumbersRules = [
+  k
+    .rule("fn + wersdfxcv, space bar => 1 ~ 0")
+    .manipulators([
+      k.map("w", "fn").to("1"),
+      k.map("e", "fn").to("2"),
+      k.map("r", "fn").to("3"),
+      k.map("s", "fn").to("4"),
+      k.map("d", "fn").to("5"),
+      k.map("f", "fn").to("6"),
+      k.map("x", "fn").to("7"),
+      k.map("c", "fn").to("8"),
+      k.map("v", "fn").to("9"),
+      k.map("spacebar", "fn").to("0"),
+      k.map("w", "fn", "shift").to("1", "shift"),
+      k.map("e", "fn", "shift").to("2", "shift"),
+      k.map("r", "fn", "shift").to("3", "shift"),
+      k.map("s", "fn", "shift").to("4", "shift"),
+      k.map("d", "fn", "shift").to("5", "shift"),
+      k.map("f", "fn", "shift").to("6", "shift"),
+      k.map("x", "fn", "shift").to("7", "shift"),
+      k.map("c", "fn", "shift").to("8", "shift"),
+      k.map("v", "fn", "shift").to("9", "shift"),
+      k.map("spacebar", "fn", "shift").to("0", "shift"),
+    ]),
+  k
+    .rule("fn + jkl => `-=")
+    .manipulators([
+      k.map("j", "fn").to("grave_accent_and_tilde"),
+      k.map("k", "fn").to("hyphen"),
+      k.map("l", "fn").to("equal_sign"),
+      k.map("j", "fn", "shift").to("grave_accent_and_tilde", "shift"),
+      k.map("k", "fn", "shift").to("hyphen", "shift"),
+      k.map("l", "fn", "shift").to("equal_sign", "shift"),
+    ]),
 ];

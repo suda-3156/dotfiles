@@ -1,199 +1,23 @@
 import * as k from "karabiner_ts";
 
-export const capsTabHyperRules: k.Rule[] = [
-  {
-    description: "Remap Caps Lock to Ctrl when held, Esc when tapped",
-    manipulators: [
-      {
-        from: {
-          key_code: "caps_lock",
-          modifiers: { optional: ["any"] },
-        },
-        to: [{ key_code: "left_control", lazy: true }],
-        to_if_alone: [{ key_code: "escape" }],
-        type: "basic",
-      },
-    ],
-  },
-  {
-    description: "Remap Tab to Hyper key when held, Tab when tapped",
-    manipulators: [
-      {
-        from: { key_code: "tab" },
-        to: [
-          { key_code: "left_shift" },
-          { set_variable: { name: "hyper", value: 1 } },
-        ],
-        to_after_key_up: [
-          { set_variable: { name: "hyper", value: 0 } },
-        ],
-        to_if_alone: [{ key_code: "tab" }],
-        type: "basic",
-      },
-    ],
-  },
-  {
-    description: "Hyper Key sublayer w",
-    manipulators: [
-      {
-        conditions: [
-          { name: "hyper", type: "variable_if", value: 1 },
-          { name: "hyper_sublayer_e", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_f", type: "variable_if", value: 0 },
-        ],
-        description: "Toggle Hyper sublayer w",
-        from: { key_code: "w", modifiers: { optional: ["any"] } },
-        to: [{ set_variable: { name: "hyper_sublayer_w", value: 1 } }],
-        to_after_key_up: [
-          { set_variable: { name: "hyper_sublayer_w", value: 0 } },
-        ],
-        type: "basic",
-      },
-    ],
-  },
-  {
-    description: "Hyper Key sublayer e",
-    manipulators: [
-      {
-        conditions: [
-          { name: "hyper", type: "variable_if", value: 1 },
-          { name: "hyper_sublayer_w", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_f", type: "variable_if", value: 0 },
-        ],
-        description: "Toggle Hyper sublayer e",
-        from: { key_code: "e", modifiers: { optional: ["any"] } },
-        to: [{ set_variable: { name: "hyper_sublayer_e", value: 1 } }],
-        to_after_key_up: [
-          { set_variable: { name: "hyper_sublayer_e", value: 0 } },
-        ],
-        type: "basic",
-      },
-    ],
-  },
-  {
-    description: "Hyper Key sublayer f",
-    manipulators: [
-      {
-        conditions: [
-          { name: "hyper", type: "variable_if", value: 1 },
-          { name: "hyper_sublayer_e", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_w", type: "variable_if", value: 0 },
-        ],
-        description: "Toggle Hyper sublayer f",
-        from: { key_code: "f", modifiers: { optional: ["any"] } },
-        to: [{ set_variable: { name: "hyper_sublayer_f", value: 1 } }],
-        to_after_key_up: [
-          { set_variable: { name: "hyper_sublayer_f", value: 0 } },
-        ],
-        type: "basic",
-      },
-    ],
-  },
-  {
-    description: "Hyper Key base layer (Tab held down alone)",
-    manipulators: [
-      {
-        conditions: [
-          { name: "hyper", type: "variable_if", value: 1 },
-          { name: "hyper_sublayer_w", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_e", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_f", type: "variable_if", value: 0 },
-        ],
-        description: "Up arrow",
-        from: { key_code: "k", modifiers: { optional: ["any"] } },
-        to: [{ key_code: "up_arrow" }],
-        type: "basic",
-      },
-      {
-        conditions: [
-          { name: "hyper", type: "variable_if", value: 1 },
-          { name: "hyper_sublayer_w", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_e", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_f", type: "variable_if", value: 0 },
-        ],
-        description: "Down arrow",
-        from: { key_code: "j", modifiers: { optional: ["any"] } },
-        to: [{ key_code: "down_arrow" }],
-        type: "basic",
-      },
-      {
-        conditions: [
-          { name: "hyper", type: "variable_if", value: 1 },
-          { name: "hyper_sublayer_w", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_e", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_f", type: "variable_if", value: 0 },
-        ],
-        description: "Right arrow",
-        from: { key_code: "l", modifiers: { optional: ["any"] } },
-        to: [{ key_code: "right_arrow" }],
-        type: "basic",
-      },
-      {
-        conditions: [
-          { name: "hyper", type: "variable_if", value: 1 },
-          { name: "hyper_sublayer_w", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_e", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_f", type: "variable_if", value: 0 },
-        ],
-        description: "Left arrow",
-        from: { key_code: "h", modifiers: { optional: ["any"] } },
-        to: [{ key_code: "left_arrow" }],
-        type: "basic",
-      },
-      {
-        conditions: [
-          { name: "hyper", type: "variable_if", value: 1 },
-          { name: "hyper_sublayer_w", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_e", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_f", type: "variable_if", value: 0 },
-        ],
-        description: "Backspace",
-        from: {
-          key_code: "spacebar",
-          modifiers: { optional: ["any"] },
-        },
-        to: [{ key_code: "delete_or_backspace" }],
-        type: "basic",
-      },
-      {
-        conditions: [
-          { name: "hyper", type: "variable_if", value: 1 },
-          { name: "hyper_sublayer_w", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_e", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_f", type: "variable_if", value: 0 },
-        ],
-        description: "(",
-        from: { key_code: "u", modifiers: { optional: ["any"] } },
-        to: [{ key_code: "9", modifiers: ["left_shift"] }],
-        type: "basic",
-      },
-      {
-        conditions: [
-          { name: "hyper", type: "variable_if", value: 1 },
-          { name: "hyper_sublayer_w", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_e", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_f", type: "variable_if", value: 0 },
-        ],
-        description: ")",
-        from: { key_code: "i", modifiers: { optional: ["any"] } },
-        to: [{ key_code: "0", modifiers: ["left_shift"] }],
-        type: "basic",
-      },
-      {
-        conditions: [
-          { name: "hyper", type: "variable_if", value: 1 },
-          { name: "hyper_sublayer_w", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_e", type: "variable_if", value: 0 },
-          { name: "hyper_sublayer_f", type: "variable_if", value: 0 },
-        ],
-        description: "hyper + ; => escape",
-        from: {
-          key_code: "semicolon",
-          modifiers: { optional: ["any"] },
-        },
-        to: [{ key_code: "escape" }],
-        type: "basic",
-      },
-    ],
-  },
+export const capsTabHyperRules = [
+  k
+    .rule("Remap Caps Lock to Ctrl when held, Esc when tapped")
+    .manipulators([
+      k
+        .map("caps_lock")
+        .toIfAlone("escape")
+        .to({ key_code: "left_control", lazy: true }),
+    ]),
+  k
+    .layer("tab", "hyper")
+    .manipulators([
+      k.map("k").to("up_arrow"),
+      k.map("j").to("down_arrow"),
+      k.map("l").to("right_arrow"),
+      k.map("h").to("left_arrow"),
+      k.map("spacebar").to("delete_or_backspace"),
+      k.map("d").to("delete_or_backspace"),
+      k.map("semicolon").to("escape"),
+    ]),
 ];

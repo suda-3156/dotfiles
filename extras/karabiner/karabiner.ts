@@ -1,11 +1,12 @@
 // From: https://github.com/kawarimidoll/dotfiles/blob/master/karabiner/karabiner.ts
 import * as k from "karabiner_ts";
-import { volumeBrightnessRules } from "./rules/volume-brightness.ts";
 import { fnNumbersRules } from "./rules/fn-numbers.ts";
-import { hyperNumbersRules } from "./rules/hyper-numbers.ts";
+import { holdCmdQRules } from "./rules/hold-cmd-q.ts";
+import { volumeBrightnessRules } from "./rules/volume-brightness.ts";
 import { capsTabHyperRules } from "./rules/caps-tab-hyper.ts";
-import { type ExtendedProfile } from "./type.ts";
+import { imkitRules } from "./rules/imkit.ts";
 import {
+  type ExtendedProfile,
   APPLE_INTERNAL_KEYBOARD,
   applySimpleModifications,
   KEYCHRON_K7_PRO,
@@ -17,14 +18,15 @@ const PROFILE_NAME = "Default profile";
 // Write complex modifications
 k.writeToProfile(PROFILE_NAME, [
   ...volumeBrightnessRules,
+  ...holdCmdQRules,
   ...fnNumbersRules,
-  ...hyperNumbersRules,
   ...capsTabHyperRules,
+  ...imkitRules,
 ]);
 
 // Write global settings
 k.writeToGlobal({
-  show_in_menu_bar: true,
+  show_in_menu_bar: false,
 });
 
 // Read and update config with simple modifications and some parameters
