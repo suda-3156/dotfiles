@@ -14,6 +14,10 @@ vim.g.maplocalleader = "\\"
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, desc = "Move up by display line when no count" })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, desc = "Move down by display line when no count" })
+vim.keymap.set("n", "<leader>l", function()
+  vim.wo.wrap = not vim.wo.wrap
+  vim.notify("Wrap: " .. (vim.wo.wrap and "ON" or "OFF"))
+end, { desc = "Toggle line wrap" })
 
 -- Editing helpers
 vim.keymap.set("n", "p", "p`]", { desc = "Paste and move to pasted end" })

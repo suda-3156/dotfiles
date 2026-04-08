@@ -8,8 +8,8 @@ import { imkitRules } from "./rules/imkit.ts";
 import {
   type ExtendedProfile,
   APPLE_INTERNAL_KEYBOARD,
-  applySimpleModifications,
   KEYCHRON_K7_PRO,
+  applySimpleModifications,
   rightCmdToFn,
 } from "./simple-modifications.ts";
 

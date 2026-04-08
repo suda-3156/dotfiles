@@ -129,6 +129,22 @@ return {
     -- stylua: ignore end
     -- spellchecker:on
 
+    vim.keymap.set("n", "<leader>sd", function()
+      builtin.find_files({
+        cwd = vim.fn.expand("~/dotfiles"),
+      })
+    end, { desc = "Search dotfiles" })
+    vim.keymap.set("n", "<leader>od", function()
+      builtin.find_files({
+        cwd = vim.fn.expand("~/Documents/Notes/daily"),
+      })
+    end, { desc = "Obsidian daily vault" })
+    vim.keymap.set("n", "<leader>om", function()
+      builtin.find_files({
+        cwd = vim.fn.expand("~/Documents/Notes/main"),
+      })
+    end, { desc = "Obsidian main vault" })
+
     -- autocmd LSP Attach
     -- See also: lua/config/lsp.lua
     vim.api.nvim_create_autocmd("LspAttach", {
