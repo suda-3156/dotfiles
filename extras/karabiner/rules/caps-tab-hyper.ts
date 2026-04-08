@@ -1,14 +1,12 @@
 import * as k from "karabiner_ts";
 
 export const capsTabHyperRules = [
-  k
-    .rule("Remap Caps Lock to Ctrl when held, Esc when tapped")
-    .manipulators([
-      k
-        .map("caps_lock")
-        .toIfAlone("escape")
-        .to({ key_code: "left_control", lazy: true }),
-    ]),
+  k.rule("Remap Caps Lock to Ctrl when held, Esc when tapped").manipulators([
+    k
+      .map({ key_code: "caps_lock", modifiers: { optional: ["any"] } })
+      .toIfAlone("escape")
+      .to({ key_code: "left_control", lazy: true }),
+  ]),
   k
     .layer("tab", "hyper")
     .manipulators([
