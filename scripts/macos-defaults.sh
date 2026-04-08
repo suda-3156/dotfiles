@@ -3,26 +3,26 @@
 set -eu
 
 if [[ "$(uname)" != "Darwin" ]]; then
-  echo "macos-defaults.sh - This script must be run on macOS."
-  exit 1
+    echo "macos-defaults.sh - This script must be run on macOS."
+    exit 1
 fi
 
 while :; do
-  printf "macos-defaults.sh - This script includes settings that cannot be modified through the GUI. Are you sure you want to continue? (y/N): "
-  read -r ans
-  case "$ans" in
-  [yY])
-    echo "Continue."
-    break
-    ;;
-  "" | [nN])
-    echo "Skip."
-    return
-    ;;
-  *)
-    echo "Invalid choice: '$ans'. Please enter [y]es or [n]o."
-    ;;
-  esac
+    printf "macos-defaults.sh - This script includes settings that cannot be modified through the GUI. Are you sure you want to continue? (y/N): "
+    read -r ans
+    case "$ans" in
+    [yY])
+        echo "Continue."
+        break
+        ;;
+    "" | [nN])
+        echo "Skip."
+        return
+        ;;
+    *)
+        echo "Invalid choice: '$ans'. Please enter [y]es or [n]o."
+        ;;
+    esac
 done
 
 ### macOS settings
@@ -71,11 +71,16 @@ defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 # Display date, day, and time in the menu bar
 defaults write com.apple.menuextra.clock DateFormat -string 'EEE d MMM HH:mm'
 
+# Gaps between icons
+defaults -currentHost write -globalDomain NSStatusItemSpacing -int 12
+# Inner paddings: it's said that the minimum value is 6.
+defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 8
+
 # Hide the Time Machine and Volume icons from the menu bar
 for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-  defaults write "${domain}" dontAutoLoad -array \
-    "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-    "/System/Library/CoreServices/Menu Extras/Volume.menu"
+    defaults write "${domain}" dontAutoLoad -array \
+        "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
+        "/System/Library/CoreServices/Menu Extras/Volume.menu"
 done
 
 ### Dock settings
@@ -106,13 +111,17 @@ defaults write com.apple.dock largesize -int 100
 # 11: Launchpad
 # 12: Notification Center
 
-# Bottom left screen corner → Launchpad
-defaults write com.apple.dock wvous-bl-corner -int 11
+# Bottom left screen corner → Mission Control
+defaults write com.apple.dock wvous-bl-corner -int 2
 defaults write com.apple.dock wvous-bl-modifier -int 0
 
 # Bottom right screen corner → Show application windows
 defaults write com.apple.dock wvous-br-corner -int 3
 defaults write com.apple.dock wvous-br-modifier -int 0
+
+# Top right screen corner → Notification Center
+defaults write com.apple.dock wvous-tr-corner -int 12
+defaults write com.apple.dock wvous-tr-modifier -int 0
 
 ### Finder settings
 
@@ -147,64 +156,64 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 
 ### Input settings
 
-# Disable live conversion
-defaults write com.apple.inputmethod.Kotoeri JIMPrefLiveConversionKey -bool false
-
-# Tap to click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-
-# Enable three finger drag
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true &&
-  defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
-
-# Trackpad speed
-defaults write -g com.apple.trackpad.scaling 3
-
-# Mouse speed
-defaults write -g com.apple.mouse.scaling 0.5
-
-# Decrease keyboard initial delay
-defaults write -g InitialKeyRepeat -int 15
-
-# Decrease keyboard repeat rate
-defaults write -g KeyRepeat -int 7
-
-# Use the Fn key as a standard function key
-defaults write -g com.apple.keyboard.fnState -bool true
-
-# Disable automatic capitalization as it’s annoying when typing code
-defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
-
-# Disable smart dashes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-
-# Disable automatic period substitution as it’s annoying when typing code
-defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
-
-# Disable smart quotes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
-# Disable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-
-# Show language menu in the top right corner of the boot screen
-sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
+# # Disable live conversion
+# defaults write com.apple.inputmethod.Kotoeri JIMPrefLiveConversionKey -bool false
+#
+# # Tap to click
+# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+# defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+# defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+#
+# # Enable three finger drag
+# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true \
+#     && defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+#
+# # Trackpad speed
+# defaults write -g com.apple.trackpad.scaling 3
+#
+# # Mouse speed
+# defaults write -g com.apple.mouse.scaling 0.5
+#
+# # Decrease keyboard initial delay
+# defaults write -g InitialKeyRepeat -int 15
+#
+# # Decrease keyboard repeat rate
+# defaults write -g KeyRepeat -int 7
+#
+# # Use the Fn key as a standard function key
+# defaults write -g com.apple.keyboard.fnState -bool true
+#
+# # Disable automatic capitalization as it’s annoying when typing code
+# defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+#
+# # Disable smart dashes as they’re annoying when typing code
+# defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+#
+# # Disable automatic period substitution as it’s annoying when typing code
+# defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+#
+# # Disable smart quotes as they’re annoying when typing code
+# defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+#
+# # Disable auto-correct
+# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+#
+# # Show language menu in the top right corner of the boot screen
+# sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
 
 ### Energy saving
 
-# Enable lid wakeup
-sudo pmset -a lidwake 1
-
-# Restart automatically on power loss
-sudo pmset -a autorestart 1
-
-# Sleep the display after 5 minutes
-sudo pmset -a displaysleep 5
-
-# Set machine sleep to 5 minutes on battery
-sudo pmset -b sleep 5
+# # Enable lid wakeup
+# sudo pmset -a lidwake 1
+#
+# # Restart automatically on power loss
+# sudo pmset -a autorestart 1
+#
+# # Sleep the display after 5 minutes
+# sudo pmset -a displaysleep 5
+#
+# # Set machine sleep to 5 minutes on battery
+# sudo pmset -b sleep 5
 
 ### Screen settings
 
@@ -245,14 +254,14 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 ### Sound settings
 
 # Increase sound quality for Bluetooth headphones/headsets
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+# defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
 echo "To ensure that all changes take effect, restart your Mac."
 
 for app in "Dock" \
-  "Finder" \
-  "SystemUIServer" \
-  "Photos" \
-  "Safari"; do
-  killall "${app}" &>/dev/null
+    "Finder" \
+    "SystemUIServer" \
+    "Photos" \
+    "Safari"; do
+    killall "${app}" &> /dev/null
 done
