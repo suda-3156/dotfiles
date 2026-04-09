@@ -1,4 +1,13 @@
-return {
+local p = {}
+
+-- applescript
+p[#p + 1] = {
+  "https://github.com/vim-scripts/applescript.vim",
+  ft = { "applescript" },
+}
+
+-- golang
+p[#p + 1] = {
   "https://github.com/ray-x/go.nvim",
   dependencies = { -- optional packages
     "ray-x/guihua.lua",
@@ -24,3 +33,5 @@ return {
     run_in_floaterm = false,
   },
 }
+
+return p

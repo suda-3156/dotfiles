@@ -15,7 +15,7 @@
 - [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
 - [atusy/dotfiles](https://github.com/atusy/dotfiles)
 - [willelz/nvim-lua-guide-ja](https://github.com/willelz/nvim-lua-guide-ja)
-- [naqa/dotfiles](https://github.com/naqa/dotfiles)
+- [monaqa/dotfiles](https://github.com/monaqa/dotfiles)
 - [dam9000/kickstart-modular.nvim](https://github.com/dam9000/kickstart-modular.nvim)
 - [SnaxVim/SnaxVim](https://github.com/SnaxVim/SnaxVim)
 - [folke/lazy.nvim](https://github.com/folke/lazy.nvim)

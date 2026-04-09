@@ -1,7 +1,9 @@
+local p = {}
+
 -- From: https://cmp.saghen.dev/installation
 -- Refs: https://eiji.page/blog/neovim-blink-cmp-intro/
 ---@type LazyPluginSpec
-return {
+p[#p + 1] = {
   "https://github.com/saghen/blink.cmp",
   version = "1.*", -- to download pre-built binaries
   event = { "InsertEnter", "CmdLineEnter" },
@@ -59,3 +61,31 @@ return {
   },
   opts_extend = { "source.default" },
 }
+
+-- From: https://eiji.page/blog/neovim-luasnip-intro/
+---@type LazyPluginSpec
+p[#p + 1] = {
+  "L3MON4D3/LuaSnip",
+  event = { "InsertEnter" },
+  version = "v2.*",
+  dependencies = { "rafamadriz/friendly-snippets" },
+  build = "make install_jsregexp",
+  config = function()
+    require("luasnip.loaders.from_vscode").load({
+      override_priority = 1000,
+    })
+
+    require("luasnip.loaders.from_lua").load({
+      paths = { "~/dotfiles/.config/nvim.symlink/snippet" },
+      override_priority = 2000,
+    })
+
+    require("luasnip").filetype_extend("typescript", { "javascript" })
+
+    vim.api.nvim_create_user_command("EditSnippet", ':lua require("luasnip.loaders").edit_snippet_files()', {})
+    vim.keymap.set("n", "<leader>es", "<cmd>EditSnippet<cr>", { desc = "Edit Snippet" })
+    vim.keymap.set("n", "<leader>is", ":lua require'luasnip'.log.open()", { desc = "Info Snippet" })
+  end,
+}
+
+return p
