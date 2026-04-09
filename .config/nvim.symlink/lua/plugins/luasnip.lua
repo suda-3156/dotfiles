@@ -17,7 +17,9 @@ return {
     })
 
     require("luasnip").filetype_extend("typescript", { "javascript" })
+
     vim.api.nvim_create_user_command("EditSnippet", ':lua require("luasnip.loaders").edit_snippet_files()', {})
     vim.keymap.set("n", "<leader>es", "<cmd>EditSnippet<cr>", { desc = "Edit Snippet" })
+    vim.keymap.set("n", "<leader>is", ":lua require'luasnip'.log.open()", { desc = "Info Snippet" })
   end,
 }
