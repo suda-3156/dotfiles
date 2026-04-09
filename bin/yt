@@ -14,7 +14,7 @@ YT_DLP_DIR="$HOME/Desktop/dl"
 mkdir -p "$YT_DLP_DIR"
 
 if [ "$1" = "--music" ] || [ "$1" = "-m" ]; then
-    cd "$YT_DLP_DIR" && yt-dlp -x --audio-format mp3 "$2"
+    cd "$YT_DLP_DIR" && yt-dlp -x --audio-format mp3 "$2" --embed-thumbnail --add-metadata
     exit 0
 fi
 
