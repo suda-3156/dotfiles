@@ -9,9 +9,16 @@
 #
 # `pip install -U "yt-dlp[default]"` to install (See: https://github.com/yt-dlp/yt-dlp/wiki/Installation)
 
-mkdir -p ~/Desktop/yt
+YT_DLP_DIR="$HOME/Desktop/dl"
+
+mkdir -p "$YT_DLP_DIR"
+
+if [ "$1" = "--music" ] || [ "$1" = "-m" ]; then
+    cd "$YT_DLP_DIR" && yt-dlp -x --audio-format mp3 "$2"
+    exit 0
+fi
 
 # cd ~/Desktop/yt && yt-dlp -S "ext" "$1" --embed-thumbnail # Videos can’t be played on QuickTime Player on Mac.
 # Solutions: https://www.reddit.com/r/youtubedl/comments/15vfdqs/ytdlp_mac_quicktime_player
-cd ~/Desktop/yt && yt-dlp -f "bv*[ext=mp4][vcodec^=avc]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b" "$1" --embed-thumbnail
+cd "$YT_DLP_DIR" && yt-dlp -f "bv*[ext=mp4][vcodec^=avc]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b" "$1" --embed-thumbnail
 # cd ~/Desktop/yt && yt-dlp -S vcodec:h264,res,acodec:m4a --no-mtime "$1" --embed-thumbnail
