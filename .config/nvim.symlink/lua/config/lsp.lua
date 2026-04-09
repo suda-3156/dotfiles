@@ -15,7 +15,7 @@ vim.lsp.enable({
   "css_variables",
 
   -- Python
-  "pyright",
+  "basedpyright",
   "ruff",
 
   -- JSON (JSON Schema)
