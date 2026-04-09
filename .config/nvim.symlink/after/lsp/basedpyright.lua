@@ -3,7 +3,7 @@ return {
   settings = {
     basedpyright = {
       analysis = {
-        typeCheckingMode = "standard",
+        -- typeCheckingMode = "standard",
         diagnosticMode = "workspace",
         autoImportCompletions = true,
       },

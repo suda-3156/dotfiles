@@ -1,5 +1,6 @@
 return {
   "https://github.com/rachartier/tiny-inline-diagnostic.nvim",
+  enabled = false,
   event = "LspAttach",
   priority = 1000,
   config = function()
@@ -7,6 +8,6 @@ return {
       preset = "simple",
       transparent_bg = true,
     })
-    vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
+    vim.diagnostic.config({ virtual_text = true }) -- Disable Neovim's default virtual text diagnostics
   end,
 }

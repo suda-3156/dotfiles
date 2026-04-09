@@ -8,6 +8,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "nofile", -- scratch buffer
     "terminal", -- terminal buffer
     "prompt", -- prompt-buffer
+    "gitsigns-blame", -- gitsigns blame view
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false

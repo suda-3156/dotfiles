@@ -17,7 +17,8 @@ end
 abbr("qw", "wq", { desc = "Fix typo" })
 abbr("H", "h", { desc = "Fix typo" })
 abbr("lup", "lua =", { desc = "Lua print" })
-abbr("lspinfo", "checkhealth vim.lsp", { desc = "LspInfo" })
+abbr("LspInfo", "checkhealth vim.lsp", { desc = "LspInfo" })
+abbr("ft", "lua = vim.bo.filetype", { desc = "Current buffer filetype" })
 
 vim.api.nvim_create_user_command("Restart", function()
   vim.cmd("AutoSession save")

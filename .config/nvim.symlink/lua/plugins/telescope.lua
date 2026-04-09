@@ -129,11 +129,11 @@ return {
     -- stylua: ignore end
     -- spellchecker:on
 
-    vim.keymap.set("n", "<leader>sd", function()
+    vim.keymap.set("n", "<leader>sc", function()
       builtin.find_files({
         cwd = vim.fn.expand("~/dotfiles"),
       })
-    end, { desc = "Search dotfiles" })
+    end, { desc = "Search dotfiles (config)" })
     vim.keymap.set("n", "<leader>od", function()
       builtin.find_files({
         cwd = vim.fn.expand("~/Documents/Notes/daily"),
