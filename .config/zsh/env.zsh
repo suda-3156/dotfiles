@@ -6,11 +6,12 @@ export EDITOR="nvim"
 # make jj to load not only ~/.config/jj/config.toml but also ~/.config/jj/*.toml
 export JJ_CONFIG="$HOME/.config/jj"
 
-# for bin/spt
-export SNIPPETS_DIR="$HOME/projects/snippets"
-
 # custom scripts
 export PATH="$PATH:$HOME/dotfiles/bin"
+
+# for bin/*
+export SNIPPETS_DIR="$HOME/projects/snippets"
+export OBSIDIAN_DAILY_VAULT_PATH="$HOME/Documents/Notes/daily"
 
 # os specific
 case "$(uname -s)" in

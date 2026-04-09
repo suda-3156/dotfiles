@@ -85,3 +85,9 @@ end, { desc = "Resize window to the right" })
 vim.keymap.set("n", "<Left>", function()
   window.resize(0, "left", 4)
 end, { desc = "Resize window to the left" })
+
+-- Obsidian
+local obsidian = myp.obsidian
+vim.keymap.set("n", "<space>d", function()
+  obsidian.open_daily()
+end, { desc = "Open obsidian daily note" })
