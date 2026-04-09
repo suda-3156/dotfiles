@@ -22,3 +22,6 @@
 - [ ] optimize telescope configs
 - [ ] submode
 
+- [ ] fix modes
+- [ ] improve markdown render
+    - [ ] extract colors from theme

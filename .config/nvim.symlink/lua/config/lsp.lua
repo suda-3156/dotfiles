@@ -71,7 +71,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = buf, desc = "[G]oto [d]efinition" })
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = buf, desc = "[G]oto [D]eclaration" })
     vim.keymap.set("n", "grn", vim.lsp.buf.rename, { buffer = buf, desc = "[R]e[N]ame" })
-    vim.keymap.set({ "n", "x" }, "gA", vim.lsp.buf.code_action, { buffer = buf, desc = "[G]oto Code [A]ction" })
+    -- use tiny-code-action
+    -- vim.keymap.set({ "n", "x" }, "gA", vim.lsp.buf.code_action, { buffer = buf, desc = "[G]oto Code [A]ction" })
     vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { buffer = buf, desc = "[G]oto [I]mplementation" })
 
     -- The following two autocommands are used to highlight references of the
