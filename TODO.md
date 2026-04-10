@@ -25,3 +25,4 @@
 - [ ] fix modes
 - [ ] improve markdown render
     - [ ] extract colors from theme
+- [ ] standardize style of desc

@@ -40,11 +40,11 @@ vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result and center cursor
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result and center cursor" })
 
 -- VSCode-like editing motions
-vim.keymap.set("n", "<A-z>", "<cmd>set wrap!<cr>", { desc = "Toggle line wrap" })
-vim.keymap.set("n", "<A-j>", ":m .+1<cr>==", { desc = "Move current line down" })
-vim.keymap.set("n", "<A-k>", ":m .-2<cr>==", { desc = "Move current line up" })
-vim.keymap.set("x", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move selected lines down" })
-vim.keymap.set("x", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move selected lines up" })
+-- vim.keymap.set("n", "<A-z>", "<cmd>set wrap!<cr>", { desc = "Toggle line wrap" })
+vim.keymap.set("n", "<A-j>", ":m .+1<cr>==", { silent = true, desc = "Move current line down" })
+vim.keymap.set("n", "<A-k>", ":m .-2<cr>==", { silent = true, desc = "Move current line up" })
+vim.keymap.set("x", "<A-j>", ":m '>+1<cr>gv=gv", { silent = true, desc = "Move selected lines down" })
+vim.keymap.set("x", "<A-k>", ":m '<-2<cr>gv=gv", { silent = true, desc = "Move selected lines up" })
 vim.keymap.set("n", "<A-S-k>", "VyP", { desc = "Duplicate line above" })
 vim.keymap.set("x", "<A-S-k>", "yP`[V`]o", { desc = "Duplicate selection above" })
 vim.keymap.set("n", "<A-S-j>", "Vyp", { desc = "Duplicate line below" })
@@ -88,6 +88,6 @@ end, { desc = "Resize window to the left" })
 
 -- Obsidian
 local obsidian = myp.obsidian
-vim.keymap.set("n", "<space>d", function()
+vim.keymap.set("n", "<leader>od", function()
   obsidian.open_daily()
 end, { desc = "Open obsidian daily note" })

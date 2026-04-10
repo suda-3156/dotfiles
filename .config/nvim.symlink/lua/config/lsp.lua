@@ -26,6 +26,9 @@ vim.lsp.enable({
   -- Lua
   "lua_ls",
 
+  -- Rust
+  "rust_analyzer",
+
   -- C
   "clangd",
 

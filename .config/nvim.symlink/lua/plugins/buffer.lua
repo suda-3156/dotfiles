@@ -62,8 +62,7 @@ return {
     end, { desc = "Close All Buffers except Visible" })
 
     -- Reload buffers
-    vim.keymap.set("n", "<leader>r", "<cmd>e<cr>", { desc = "Reload current buffer" })
-    vim.keymap.set("n", "<leader>R", "<cmd>bufdo e<cr>", { desc = "Reload all buffers" })
+    vim.keymap.set("n", "<leader>rr", "<cmd>e<cr>", { desc = "Reload current buffer" })
 
     -- Transparent tab line
     local function fix_tabfill()

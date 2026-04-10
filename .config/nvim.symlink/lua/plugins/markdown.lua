@@ -7,7 +7,7 @@ return {
     "https://github.com/nvim-tree/nvim-web-devicons",
   },
   keys = {
-    { "<leader>tm", "<cmd>RenderMarkdown toggle<cr>", { desc = "[T]oggle [M]arkdown view" } },
+    { "<leader>tm", "<cmd>RenderMarkdown toggle<cr>", desc = "[T]oggle [M]arkdown view" },
   },
   opts = {
     heading = {

@@ -52,10 +52,10 @@ return {
 
     apply_custom_transparency()
 
-    vim.keymap.set("n", "<leader>tb", function()
+    vim.keymap.set("n", "<leader>tt", function()
       is_transparent = not is_transparent
       apply_theme()
       print("Transparency: " .. tostring(is_transparent))
-    end, { desc = "[T]oggle Transparent [B]ackground" })
+    end, { desc = "[T]oggle Background [T]ransparency" })
   end,
 }

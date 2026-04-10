@@ -2,8 +2,8 @@
 return {
   "https://github.com/stevearc/overseer.nvim",
   keys = {
-    { "<space>r", "<CMD>OverseerRun<CR>" },
-    { "<space>o", "<CMD>OverseerToggle<CR>" },
+    { "<leader>r", "<CMD>OverseerRun<CR>", desc = "Overseer Run" },
+    { "<leader>to", "<CMD>OverseerToggle<CR>", desc = "Toggle Overseer" },
   },
   config = function()
     require("overseer").setup({

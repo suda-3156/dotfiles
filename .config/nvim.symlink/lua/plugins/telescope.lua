@@ -134,16 +134,16 @@ return {
         cwd = vim.fn.expand("~/dotfiles"),
       })
     end, { desc = "Search dotfiles (config)" })
-    vim.keymap.set("n", "<leader>od", function()
+    vim.keymap.set("n", "<leader>so", function()
       builtin.find_files({
         cwd = vim.fn.expand("~/Documents/Notes/daily"),
       })
-    end, { desc = "Obsidian daily vault" })
-    vim.keymap.set("n", "<leader>om", function()
+    end, { desc = "Search Obsidian daily vault" })
+    vim.keymap.set("n", "<leader>sm", function()
       builtin.find_files({
         cwd = vim.fn.expand("~/Documents/Notes/main"),
       })
-    end, { desc = "Obsidian main vault" })
+    end, { desc = "Search Obsidian main vault" })
 
     -- autocmd LSP Attach
     -- See also: lua/config/lsp.lua

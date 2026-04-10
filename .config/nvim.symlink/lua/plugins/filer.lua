@@ -232,7 +232,7 @@ p[#p + 1] = {
       end,
     })
 
-    vim.keymap.set("n", "<space>e", function()
+    vim.keymap.set("n", "<leader>f", function()
       fyler.open({ kind = "float" })
     end, { desc = "Open Fyler view" })
   end,
@@ -313,7 +313,7 @@ p[#p + 1] = {
         --   ["zX"] = "actions.tree_sync_folds",
       },
     })
-    vim.keymap.set("n", "<space>a", "<cmd>AerialToggle!<CR>")
+    vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
   end,
 }
 
