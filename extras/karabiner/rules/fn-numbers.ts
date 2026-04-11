@@ -1,30 +1,69 @@
 import * as k from "karabiner_ts";
 
 export const fnNumbersRules = [
-  k
-    .rule("fn + wersdfxcv, space bar => 1 ~ 0")
-    .manipulators([
-      k.map("w", "fn").to("1"),
-      k.map("e", "fn").to("2"),
-      k.map("r", "fn").to("3"),
-      k.map("s", "fn").to("4"),
-      k.map("d", "fn").to("5"),
-      k.map("f", "fn").to("6"),
-      k.map("x", "fn").to("7"),
-      k.map("c", "fn").to("8"),
-      k.map("v", "fn").to("9"),
-      k.map("spacebar", "fn").to("0"),
-      k.map("w", "fn", "shift").to("1", "shift"),
-      k.map("e", "fn", "shift").to("2", "shift"),
-      k.map("r", "fn", "shift").to("3", "shift"),
-      k.map("s", "fn", "shift").to("4", "shift"),
-      k.map("d", "fn", "shift").to("5", "shift"),
-      k.map("f", "fn", "shift").to("6", "shift"),
-      k.map("x", "fn", "shift").to("7", "shift"),
-      k.map("c", "fn", "shift").to("8", "shift"),
-      k.map("v", "fn", "shift").to("9", "shift"),
-      k.map("spacebar", "fn", "shift").to("0", "shift"),
-    ]),
+  k.rule("fn + wersdfxcv, space bar => 1 ~ 0").manipulators([
+    k
+      .map({
+        key_code: "w",
+        modifiers: { mandatory: ["fn"], optional: ["shift"] },
+      })
+      .to("1"),
+    k
+      .map({
+        key_code: "e",
+        modifiers: { mandatory: ["fn"], optional: ["shift"] },
+      })
+      .to("2"),
+    k
+      .map({
+        key_code: "r",
+        modifiers: { mandatory: ["fn"], optional: ["shift"] },
+      })
+      .to("3"),
+    k
+      .map({
+        key_code: "s",
+        modifiers: { mandatory: ["fn"], optional: ["shift"] },
+      })
+      .to("4"),
+    k
+      .map({
+        key_code: "d",
+        modifiers: { mandatory: ["fn"], optional: ["shift"] },
+      })
+      .to("5"),
+    k
+      .map({
+        key_code: "f",
+        modifiers: { mandatory: ["fn"], optional: ["shift"] },
+      })
+      .to("6"),
+    k
+      .map({
+        key_code: "x",
+        modifiers: { mandatory: ["fn"], optional: ["shift"] },
+      })
+      .to("7"),
+    k
+      .map({
+        key_code: "c",
+        modifiers: { mandatory: ["fn"], optional: ["shift"] },
+      })
+      .to("8"),
+    k
+      .map({
+        key_code: "v",
+        modifiers: { mandatory: ["fn"], optional: ["shift"] },
+      })
+      .to("9"),
+    k
+      .map({
+        key_code: "spacebar",
+        modifiers: { mandatory: ["fn"], optional: ["shift"] },
+      })
+      .to("0"),
+  ]),
+
   k
     .rule("fn + jkl => `-=")
     .manipulators([

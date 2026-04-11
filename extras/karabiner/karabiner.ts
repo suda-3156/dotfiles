@@ -1,11 +1,12 @@
 // From: https://github.com/kawarimidoll/dotfiles/blob/master/karabiner/karabiner.ts
 import * as k from "karabiner_ts";
+
 import { fnNumbersRules } from "./rules/fn-numbers.ts";
-import { holdCmdQRules } from "./rules/hold-cmd-q.ts";
 import { volumeBrightnessRules } from "./rules/volume-brightness.ts";
 import { capsTabHyperRules } from "./rules/caps-tab-hyper.ts";
 import { imkitRules } from "./rules/imkit.ts";
-import { appRules } from "./rules/app.ts";
+import { applicationRules } from "./rules/application.ts";
+
 import {
   type ExtendedProfile,
   APPLE_INTERNAL_KEYBOARD,
@@ -19,11 +20,10 @@ const PROFILE_NAME = "Default profile";
 // Write complex modifications
 k.writeToProfile(PROFILE_NAME, [
   ...volumeBrightnessRules,
-  ...holdCmdQRules,
   ...fnNumbersRules,
   ...capsTabHyperRules,
   ...imkitRules,
-  ...appRules,
+  ...applicationRules,
 ]);
 
 // Write global settings
