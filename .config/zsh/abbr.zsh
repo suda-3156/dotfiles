@@ -76,3 +76,4 @@ abbr -S -q gcal='gcloud auth application-default login'
 abbr -S -q co='copilot'
 
 abbr -S -q quit="osascript -e 'quit app \"%\"'"
+abbr -S -q appid="osascript -e 'id of app \"%\"'"
