@@ -5,6 +5,7 @@ import { holdCmdQRules } from "./rules/hold-cmd-q.ts";
 import { volumeBrightnessRules } from "./rules/volume-brightness.ts";
 import { capsTabHyperRules } from "./rules/caps-tab-hyper.ts";
 import { imkitRules } from "./rules/imkit.ts";
+import { appRules } from "./rules/app.ts";
 import {
   type ExtendedProfile,
   APPLE_INTERNAL_KEYBOARD,
@@ -22,6 +23,7 @@ k.writeToProfile(PROFILE_NAME, [
   ...fnNumbersRules,
   ...capsTabHyperRules,
   ...imkitRules,
+  ...appRules,
 ]);
 
 // Write global settings

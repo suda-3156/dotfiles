@@ -1,5 +1,6 @@
 import * as k from "karabiner_ts";
 
+// From: https://ryoppippi.com/blog/2024-10-19
 export const imkitRules = [
   k.rule("Tap CMD to toggle Kana/Eisuu").manipulators([
     k
