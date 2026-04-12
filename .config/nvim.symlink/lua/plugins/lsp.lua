@@ -1,7 +1,6 @@
 local p = {}
 
 -- From: kickstart.nvim
----@type LazyPluginSpec
 p[#p + 1] = {
   "https://github.com/neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },

@@ -13,7 +13,6 @@ local header = {
   [[                                   ]],
 }
 
----@type LazyPluginSpec
 return {
   "https://github.com/nvimdev/dashboard-nvim",
   event = "VimEnter",

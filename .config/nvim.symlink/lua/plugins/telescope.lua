@@ -1,6 +1,5 @@
 -- From: https://github.com/nvim-lua/kickstart.nvim
 --       https://github.com/ayamir/nvimdots
----@type LazyPluginSpec
 return {
   "https://github.com/nvim-telescope/telescope.nvim",
   event = "VimEnter",
@@ -99,18 +98,18 @@ return {
 
     -- spellchecker:off
     -- stylua: ignore start
-    vim.keymap.set("n", "<leader>sc",  builtin.git_commits,  { desc = "[S]earch Git [C]ommits" })
-    vim.keymap.set("n", "<leader>scf", builtin.git_bcommits, { desc = "[S]earch Git [C]ommits for current [F]ile" })
-    vim.keymap.set("n", "<leader>sb",  builtin.git_branches, { desc = "[S]earch Git [B]ranches" })
+    vim.keymap.set("n", "<leader>sc",  builtin.git_commits,  { desc = "Search Git Commits" })
+    vim.keymap.set("n", "<leader>scf", builtin.git_bcommits, { desc = "Search Git Commits for current File" })
+    vim.keymap.set("n", "<leader>sb",  builtin.git_branches, { desc = "Search Git Branches" })
     vim.keymap.set('n', '<leader>sF',  function()
       builtin.find_files({ no_ignore = true, hidden = true })
     end, { desc = 'Search All Files' })
     vim.keymap.set('n', '<leader>sf',  builtin.find_files, { desc = 'Search Files (filtered)' })
-    vim.keymap.set("n", "<leader>sh",  builtin.help_tags,    { desc = "[S]earch [H]elp" })
-    vim.keymap.set("n", "<leader>sg",  builtin.live_grep,    { desc = "[S]earch by [G]rep" })
-    vim.keymap.set("n", "<leader>sd",  builtin.diagnostics,  { desc = "[S]earch [D]iagnostics" })
-    vim.keymap.set("n", "<leader>sr",  builtin.resume,       { desc = "[S]earch [R]resume" })
-    vim.keymap.set("n", "<leader>s.",  builtin.oldfiles,     { desc = '[S]earch Recent Files ("." for repeat)' })
+    vim.keymap.set("n", "<leader>sh",  builtin.help_tags,    { desc = "Search Help" })
+    vim.keymap.set("n", "<leader>sg",  builtin.live_grep,    { desc = "Search by Grep" })
+    vim.keymap.set("n", "<leader>sd",  builtin.diagnostics,  { desc = "Search Diagnostics" })
+    vim.keymap.set("n", "<leader>sr",  builtin.resume,       { desc = "Search Rresume" })
+    vim.keymap.set("n", "<leader>s.",  builtin.oldfiles,     { desc = 'Search Recent Files ("." for repeat)' })
     -- stylua: ignore end
     -- spellchecker:on
 
@@ -139,7 +138,7 @@ return {
 
         -- Find references for the word under your cursor.
         -- spellchecker:ignore-next-line
-        vim.keymap.set("n", "gR", builtin.lsp_references, { buffer = buf, desc = "[G]oto [R]eferences" })
+        vim.keymap.set("n", "gR", builtin.lsp_references, { buffer = buf, desc = "Goto References" })
 
         -- Fuzzy find all the symbols in your current document.
         -- Symbols are things like variables, functions, types, etc.
@@ -157,7 +156,7 @@ return {
         -- Jump to the type of the word under your cursor.
         -- Useful when you're not sure what type a variable is and you want to see
         -- the definition of its *type*, not where it was *defined*.
-        vim.keymap.set("n", "gt", builtin.lsp_type_definitions, { buffer = buf, desc = "[G]oto [T]ype Definition" })
+        vim.keymap.set("n", "gt", builtin.lsp_type_definitions, { buffer = buf, desc = "Goto Type Definition" })
       end,
     })
   end,

@@ -1,4 +1,3 @@
----@type LazyPluginSpec
 return {
   "https://github.com/romgrk/barbar.nvim",
   event = { "BufReadPre", "BufNewFile" },
@@ -15,8 +14,8 @@ return {
     { "<leader>d",  "<cmd>BufferClose<cr>",               desc = "Close Buffer" },
     { "<S-h>",       "<cmd>BufferPrevious<cr>",           desc = "Prev Buffer" },
     { "<S-l>",       "<cmd>BufferNext<cr>",               desc = "Next Buffer" },
-    { "<leader>cbr", "<Cmd>BufferCloseBuffersRight<CR>",  desc = "[C]ose [B]uffers to the [R]ight" },
-    { "<leader>cbl", "<Cmd>BufferCloseBuffersLeft<CR>",   desc = "[C]ose [B]uffers to the [L]eft" },
+    { "<leader>cbr", "<Cmd>BufferCloseBuffersRight<CR>",  desc = "Cose Buffers to the Right" },
+    { "<leader>cbl", "<Cmd>BufferCloseBuffersLeft<CR>",   desc = "Cose Buffers to the Left" },
   },
   -- stylua: ignore end
   -- spellchecker:on
@@ -63,13 +62,5 @@ return {
 
     -- Reload buffers
     vim.keymap.set("n", "<leader>rr", "<cmd>e<cr>", { desc = "Reload current buffer" })
-
-    -- Transparent tab line
-    local function fix_tabfill()
-      vim.api.nvim_set_hl(0, "BufferTabpageFill", { bg = "NONE" })
-      vim.api.nvim_set_hl(0, "TabLineFill", { bg = "NONE" })
-    end
-    vim.api.nvim_create_autocmd("ColorScheme", { callback = fix_tabfill })
-    fix_tabfill()
   end,
 }

@@ -27,32 +27,32 @@ p[#p + 1] = {
     end
 
     -- Actions
-    map("n", "<leader>gs", gitsigns.stage_hunk, { desc = "[G]it [S]tage hunk" }) --spellchecker:disable-line
-    map("n", "<leader>gr", gitsigns.reset_hunk, { desc = "[G]it [R]eset hunk" })
+    map("n", "<leader>gs", gitsigns.stage_hunk, { desc = "Git Stage hunk" })
+    map("n", "<leader>gr", gitsigns.reset_hunk, { desc = "Git Reset hunk" })
 
     map("x", "<leader>gs", function()
       gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("x") })
-    end, { desc = "[G]it [S]tage hunk" }) --spellchecker:disable-line
+    end, { desc = "Git Stage hunk" })
 
     map("x", "<leader>gr", function()
       gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("x") })
-    end, { desc = "[G]it [R]eset hunk" })
+    end, { desc = "Git Reset hunk" })
 
-    map("n", "<leader>gb", gitsigns.blame, { desc = "[G]it [B]lame" })
-    map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "[T]oggle current line [B]lame" })
+    map("n", "<leader>gb", gitsigns.blame, { desc = "Git Blame" })
+    map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "Toggle current line Blame" })
 
-    map("n", "<leader>gS", gitsigns.stage_buffer, { desc = "[G]it [S]tage buffer" }) --spellchecker:disable-line
-    map("n", "<leader>gR", gitsigns.reset_buffer, { desc = "[G]it [R]eset buffer" })
-    map("n", "<leader>gp", gitsigns.preview_hunk, { desc = "[G]it [P]review hunk" })
-    map("n", "<leader>gi", gitsigns.preview_hunk_inline, { desc = "[G]it preview hunk [I]nline" })
+    map("n", "<leader>gS", gitsigns.stage_buffer, { desc = "Git Stage buffer" })
+    map("n", "<leader>gR", gitsigns.reset_buffer, { desc = "Git Reset buffer" })
+    map("n", "<leader>gp", gitsigns.preview_hunk, { desc = "Git Preview hunk" })
+    map("n", "<leader>gi", gitsigns.preview_hunk_inline, { desc = "Git preview hunk Inline" })
 
     map("n", "<leader>gq", function()
       gitsigns.setqflist("all")
     end, { desc = "Set qflist to unstaged changes" })
 
     -- Toggles
-    map("n", "<leader>gtb", gitsigns.toggle_current_line_blame, { desc = "[G]it [T]oggle line [b]lame" })
-    map("n", "<leader>gtw", gitsigns.toggle_word_diff, { desc = "[G]it [T]oggle [W]ord diff" })
+    map("n", "<leader>gtb", gitsigns.toggle_current_line_blame, { desc = "Git Toggle line blame" })
+    map("n", "<leader>gtw", gitsigns.toggle_word_diff, { desc = "Git Toggle Word diff" })
 
     -- Text object
     map({ "o", "x" }, "ih", gitsigns.select_hunk)
@@ -63,9 +63,9 @@ p[#p + 1] = {
   "https://github.com/sindrets/diffview.nvim",
   cmd = { "DiffviewOpen", "DiffviewFileHistory" },
   config = function()
-    vim.keymap.set("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { desc = "[G]it [D]iff" })
-    vim.keymap.set("n", "<leader>gf", "<cmd>DiffviewFileHistory %<cr>", { desc = "[G]it current [F]ile history" })
-    vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory<cr>", { desc = "[G]it branch [H]istory" })
+    vim.keymap.set("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { desc = "Git Diff" })
+    vim.keymap.set("n", "<leader>gf", "<cmd>DiffviewFileHistory %<cr>", { desc = "Git current File history" })
+    vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory<cr>", { desc = "Git branch History" })
 
     local close = { "n", "qq", "<cmd>tabclose<cr>", { desc = "Exit Diffview" } }
     require("diffview").setup({

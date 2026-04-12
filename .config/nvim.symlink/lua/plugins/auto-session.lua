@@ -1,4 +1,3 @@
----@type LazyPluginSpec
 return {
   "https://github.com/rmagatti/auto-session",
   lazy = false,

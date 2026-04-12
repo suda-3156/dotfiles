@@ -23,9 +23,7 @@ p[#p + 1] = {
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   opts = {},
   keys = {
-    { "<leader>tt", "<cmd>TSJToggle<cr>", desc = "[T]reeSJ [T]oggle" },
-    { "<leader>tj", "<cmd>TSJJoin<cr>", desc = "[T]reeSJ [J]oin" },
-    { "<leader>ts", "<cmd>TSJSplit<cr>", desc = "[T]reeSJ [S]plit" },
+    { "<leader>tt", "<cmd>TSJToggle<cr>", desc = "TreeSJ Toggle" },
   },
 }
 
@@ -111,7 +109,6 @@ p[#p + 1] = {
 p[#p + 1] = {
   "https://github.com/andymass/vim-matchup",
   event = "BufReadPost",
-  ---@type matchup.Config
   init = function()
     vim.g.matchup_matchparen_offscreen = { method = "popup" }
   end,

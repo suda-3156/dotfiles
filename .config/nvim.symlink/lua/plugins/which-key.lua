@@ -1,4 +1,3 @@
----@type LazyPluginSpec
 return {
   "https://github.com/folke/which-key.nvim",
   event = "VeryLazy",
@@ -11,7 +10,7 @@ return {
       function()
         require("which-key").show({ global = true })
       end,
-      desc = "Show [W]hich [K]ey",
+      desc = "Show Which Key",
     },
   },
 }

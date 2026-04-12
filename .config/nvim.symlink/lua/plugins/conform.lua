@@ -1,7 +1,6 @@
 -- Refs: https://eiji.page/blog/neovim-conform-nvim/
 --       https://zenn.dev/ras96/scraps/758a0d88654ac7
 --       https://github.com/LazyVim/LazyVim/discussions/3734#discussioncomment-9984800
----@type LazyPluginSpec
 return {
   "https://github.com/stevearc/conform.nvim",
   event = { "InsertEnter", "CmdLineEnter" },

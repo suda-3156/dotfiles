@@ -1,4 +1,3 @@
----@type LazyPluginSpec
 return {
   "https://github.com/akinsho/toggleterm.nvim",
   version = "*", -- Use the latest version

@@ -1,5 +1,4 @@
 return {
-  ---@type LazyPluginSpec
   "https://github.com/shellRaining/hlchunk.nvim",
   event = { "BufReadPost", "BufNewFile" },
   opts = {
