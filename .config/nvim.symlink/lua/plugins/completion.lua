@@ -2,7 +2,6 @@ local p = {}
 
 -- From: https://cmp.saghen.dev/installation
 -- Refs: https://eiji.page/blog/neovim-blink-cmp-intro/
----@type LazyPluginSpec
 p[#p + 1] = {
   "https://github.com/saghen/blink.cmp",
   version = "1.*", -- to download pre-built binaries
@@ -63,7 +62,6 @@ p[#p + 1] = {
 }
 
 -- From: https://eiji.page/blog/neovim-luasnip-intro/
----@type LazyPluginSpec
 p[#p + 1] = {
   "L3MON4D3/LuaSnip",
   event = { "InsertEnter" },
@@ -76,7 +74,7 @@ p[#p + 1] = {
     })
 
     require("luasnip.loaders.from_lua").load({
-      paths = { "~/dotfiles/.config/nvim.symlink/snippet" },
+      paths = { "~/dotfiles/.config/nvim.symlink/snippets" },
       override_priority = 2000,
     })
 
