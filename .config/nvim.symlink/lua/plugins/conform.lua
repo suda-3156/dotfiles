@@ -11,7 +11,7 @@ return {
       sh = { "shfmt" },
       zsh = { "shfmt" },
       go = { "goimports", "gofmt" },
-      rust = { "rust-analyzer" },
+      rust = { "rustfmt" },
       c = { "clang_format" },
       cpp = { "clang_format" },
       tex = { "tex-fmt" },
