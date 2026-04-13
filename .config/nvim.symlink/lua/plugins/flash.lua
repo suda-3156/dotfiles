@@ -21,7 +21,17 @@ return {
     },
   },
   config = function()
-    vim.api.nvim_set_hl(0, "FlashLabel", { underline = true, bold = true, fg = "Orange", ctermfg = "Red" })
+    -- FlashBackdrop     Comment      backdrop
+    -- FlashMatch        Search       search matches
+    -- FlashCurrent      IncSearch    current match
+    -- FlashLabel        Substitute   jump label
+    -- FlashPrompt       MsgArea      prompt
+    -- FlashPromptIcon   Special      prompt icon
+    -- FlashCursor       Cursor       cursor
+
+    vim.api.nvim_set_hl(0, "FlashLabel", { underline = true, bold = false, fg = "Orange", ctermfg = "Red" })
+    vim.api.nvim_set_hl(0, "FlashMatch", { underline = false, bold = true, fg = "Orange", ctermfg = "Red" })
+    vim.api.nvim_set_hl(0, "FlashLabel", { underline = true, bold = false, fg = "Orange", ctermfg = "Red" })
     vim.api.nvim_set_hl(
       0,
       "FlashCurrent",
@@ -29,7 +39,7 @@ return {
     )
 
     require("flash").setup({
-      labels = "asdfghjklqwertyuiopvnm",
+      labels = "asdfghjklqwertyuiopzxcvbnm",
       label = {
         reuse = "all",
       },

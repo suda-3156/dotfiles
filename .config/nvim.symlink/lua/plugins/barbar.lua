@@ -62,5 +62,13 @@ return {
 
     -- Reload buffers
     vim.keymap.set("n", "<leader>rr", "<cmd>e<cr>", { desc = "Reload current buffer" })
+
+    -- Highlights
+    local function highlight()
+      vim.api.nvim_set_hl(0, "BufferTabpageFill", { bg = "NONE" })
+      vim.api.nvim_set_hl(0, "TabLineFill", { bg = "NONE" })
+    end
+    vim.api.nvim_create_autocmd("ColorScheme", { callback = highlight })
+    highlight()
   end,
 }
