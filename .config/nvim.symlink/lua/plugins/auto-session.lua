@@ -4,6 +4,19 @@ return {
   config = function()
     local app_name = vim.env.NVIM_APPNAME or "nvim"
 
+    vim.opt.sessionoptions = {
+      "blank",
+      "buffers",
+      "curdir",
+      "folds",
+      "help",
+      "tabpages",
+      "winsize",
+      "winpos",
+      "terminal",
+      "localoptions",
+    }
+
     require("auto-session").setup({
       suppressed_dirs = { "~/", "~/Downloads", "/", "~/Documents/*" },
       bypass_save_filetypes = { "alpha", "dashboard", "snacks_dashboard" },

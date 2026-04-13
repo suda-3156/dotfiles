@@ -59,11 +59,19 @@ vim.opt.guicursor = {
 vim.opt.showmatch = true
 vim.opt.matchtime = 1
 
+vim.api.nvim_set_hl(0, "MatchParen", {
+  bg = "#44475a",
+  underline = true,
+})
+vim.g.matchparen_disable_cursor_hl = 1
+
 -- Indent, empty line and break line
 vim.opt.expandtab = true
 vim.opt.shiftround = true
 vim.opt.smartindent = true
 vim.opt.autoindent = true
+
+vim.opt.modeline = true
 
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
@@ -108,18 +116,3 @@ vim.opt.autoread = true
 vim.opt.confirm = true
 vim.opt.hidden = true
 vim.opt.history = 10000
-
-vim.opt.modeline = true
-vim.opt.sessionoptions = {
-  "blank",
-  "buffers",
-  "curdir",
-  "folds",
-  "help",
-  "tabpages",
-  "winsize",
-  "winpos",
-  "terminal",
-  "localoptions",
-}
-vim.opt.runtimepath:remove("/usr/share/vim/vimfiles")
