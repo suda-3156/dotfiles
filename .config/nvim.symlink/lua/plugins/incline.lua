@@ -10,14 +10,13 @@ return {
     local navic = require("nvim-navic")
     local devicons = require("nvim-web-devicons")
 
-    local _palette = require("monokai-pro").get_palette("octagon")
     local palette = {
-      bg = _palette.dark1,
-      fg = _palette.text,
-      active = _palette.accent6,   -- purple
-      inactive = _palette.dimmed3, -- muted grey
-      red = _palette.accent1,      -- error
-      orange = _palette.accent2,   -- modified marker
+      bg = "NONE",
+      fg = "#c0caf5",
+      active = "#bb9af7",
+      inactive = "#717782",
+      red = "#f7768e",
+      orange = "#ff9e64",
     }
 
     local fg_active = palette.active
@@ -94,7 +93,7 @@ return {
       if props.focused and navic.is_available(props.buf) then
         for _, item in ipairs(navic.get_data(props.buf) or {}) do
           table.insert(res, {
-            { " > ",     guifg = fg_inactive },
+            { " > ", guifg = fg_inactive },
             { item.icon, group = "NavicIcons" .. item.type },
             { item.name, group = "NavicText" },
           })
