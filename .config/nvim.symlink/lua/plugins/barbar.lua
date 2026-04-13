@@ -8,22 +8,33 @@ return {
   init = function()
     vim.g.barbar_auto_setup = false
   end,
-  -- spellchecker:off
   -- stylua: ignore start
   keys = {
-    { "<leader>d",  "<cmd>BufferClose<cr>",               desc = "Close Buffer" },
+    -- { "<leader>d",  "<cmd>BufferClose<cr>",               desc = "Close Buffer" },
     { "<S-h>",       "<cmd>BufferPrevious<cr>",           desc = "Prev Buffer" },
     { "<S-l>",       "<cmd>BufferNext<cr>",               desc = "Next Buffer" },
-    { "<leader>cbr", "<Cmd>BufferCloseBuffersRight<CR>",  desc = "Cose Buffers to the Right" },
-    { "<leader>cbl", "<Cmd>BufferCloseBuffersLeft<CR>",   desc = "Cose Buffers to the Left" },
+    { "<leader>cbr", "<Cmd>BufferCloseBuffersRight<CR>",  desc = "Close Buffers to the Right" },
+    { "<leader>cbl", "<Cmd>BufferCloseBuffersLeft<CR>",   desc = "Close Buffers to the Left" },
   },
   -- stylua: ignore end
-  -- spellchecker:on
 
   config = function()
     require("barbar").setup({
       auto_hide = 0,
     })
+
+    -- When deleting a buffer, modes.nvim detect "d" key and judge it's in delete mode.
+    -- Addressing this issue.
+    vim.keymap.set("n", "<leader>d", function()
+      local bufnr = vim.api.nvim_get_current_buf()
+
+      -- Neovimのイベントループが落ち着く（安全な状態になる）のを待ってから削除
+      vim.schedule(function()
+        vim.cmd("bd " .. bufnr)
+        -- 念のため、モード変更イベントを強制発火させて色を確実に戻す
+        vim.api.nvim_exec_autocmds("ModeChanged", { pattern = "*:*", modeline = false })
+      end)
+    end, { desc = "Close buffer (Fix modes.nvim stuck)" })
 
     -- Close all buffers except those visible in windows
     local function close_all_but_visible()

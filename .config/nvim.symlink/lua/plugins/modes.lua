@@ -3,17 +3,16 @@ return {
   event = "BufReadPre",
   version = "*",
   config = function()
-    local palette = require("monokai-pro").get_palette("octagon")
     require("modes").setup({
       colors = {
-        copy = palette.accent3, -- yellow
-        delete = palette.accent1, -- red/pink
-        insert = palette.accent5, -- cyan
-        visual = palette.accent6, -- purple
-        change = palette.accent1, -- red/pink
-        format = palette.accent2, -- orange
-        replace = palette.dimmed4,
-        select = palette.accent6, -- purple
+        copy = "#E5C07B",
+        delete = "#E06C75",
+        insert = "#98C379",
+        visual = "#C678DD",
+        change = "#D19A66",
+        format = "#56B6C2",
+        replace = "#BE5046",
+        select = "#61AFEF",
       },
       line_opacity = {
         copy = 0.3,
