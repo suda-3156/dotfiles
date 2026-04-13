@@ -1,5 +1,120 @@
 local p = {}
 
+-- Gitignore detection
+-- cache: dir -> { [name]=true } or { __all_ignored=true }
+-- __all_ignored=true means the directory itself is inside an ignored parent
+local git_ignored_cache = {}
+
+local function fetch_ignored_async(dir, on_done)
+  vim.system(
+    { "git", "ls-files", "--ignored", "--exclude-standard", "--others", "--directory" },
+    { cwd = dir, text = true },
+    function(result)
+      local ignored = {}
+      if result.code == 0 then
+        for line in vim.gsplit(result.stdout, "\n", { plain = true, trimempty = true }) do
+          ignored[line:gsub("/$", "")] = true
+        end
+      end
+      on_done(ignored)
+    end
+  )
+end
+
+local function get_ignored(dir)
+  if git_ignored_cache[dir] ~= nil then
+    return git_ignored_cache[dir]
+  end
+
+  -- Walk up to check if this dir is inside an ignored parent
+  local dir_no_slash = dir:gsub("/$", "")
+  local parent_no_slash = vim.fn.fnamemodify(dir_no_slash, ":h")
+  local basename = vim.fn.fnamemodify(dir_no_slash, ":t")
+  local parent = parent_no_slash .. "/"
+
+  if parent_no_slash ~= dir_no_slash then
+    local parent_ignored = get_ignored(parent)
+    if parent_ignored.__all_ignored or parent_ignored[basename] then
+      git_ignored_cache[dir] = { __all_ignored = true }
+      return git_ignored_cache[dir]
+    end
+  end
+
+  -- Directory itself is not ignored — fetch synchronously for first render
+  local result = vim
+    .system({ "git", "ls-files", "--ignored", "--exclude-standard", "--others", "--directory" }, { cwd = dir, text = true })
+    :wait()
+  local ignored = {}
+  if result.code == 0 then
+    for line in vim.gsplit(result.stdout, "\n", { plain = true, trimempty = true }) do
+      ignored[line:gsub("/$", "")] = true
+    end
+  end
+  git_ignored_cache[dir] = ignored
+  return git_ignored_cache[dir]
+end
+
+-- Stale-while-revalidate: return cache immediately, async refresh in background.
+-- If result differs from cache, update and reload the buffer.
+local function revalidate(dir, bufnr)
+  -- __all_ignored dirs are determined by parent — no need to revalidate
+  local cached = git_ignored_cache[dir]
+  if cached and cached.__all_ignored then
+    return
+  end
+
+  fetch_ignored_async(dir, function(new_ignored)
+    local old = git_ignored_cache[dir] or {}
+    local changed = false
+    for k in pairs(new_ignored) do
+      if not old[k] then
+        changed = true
+        break
+      end
+    end
+    if not changed then
+      for k in pairs(old) do
+        if k ~= "__all_ignored" and not new_ignored[k] then
+          changed = true
+          break
+        end
+      end
+    end
+
+    if changed then
+      git_ignored_cache[dir] = new_ignored
+      vim.schedule(function()
+        if vim.api.nvim_buf_is_valid(bufnr) and vim.bo[bufnr].filetype == "oil" then
+          vim.api.nvim_buf_call(bufnr, function()
+            vim.cmd("e")
+          end)
+        end
+      end)
+    end
+  end)
+end
+
+local function reload_oil_buffers()
+  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.bo[bufnr].filetype == "oil" and vim.api.nvim_buf_is_loaded(bufnr) then
+      vim.api.nvim_buf_call(bufnr, function()
+        vim.cmd("e")
+      end)
+    end
+  end
+end
+
+local function revalidate_current()
+  local bufnr = vim.api.nvim_get_current_buf()
+  if vim.bo[bufnr].filetype ~= "oil" then
+    return
+  end
+  local dir = require("oil").get_current_dir(bufnr)
+  if dir then
+    revalidate(dir, bufnr)
+  end
+end
+
 -- Oil (Main filer)
 p[#p + 1] = {
   "https://github.com/stevearc/oil.nvim",
@@ -36,6 +151,14 @@ p[#p + 1] = {
         is_always_hidden = function(name, _)
           return name == ".." or name == ".git" or name == ".jj"
         end,
+        is_hidden_file = function(name, bufnr)
+          local dir = require("oil").get_current_dir(bufnr)
+          if dir == nil then
+            return false
+          end
+          local ignored = get_ignored(dir)
+          return ignored.__all_ignored == true or ignored[name] == true
+        end,
       },
       win_options = {
         signcolumn = "yes:2", -- oil-git-status.nvim requires this config
@@ -52,8 +175,8 @@ p[#p + 1] = {
       },
     })
 
-    -- for background transparency
-    local function fix_oil_hl()
+    -- Highlights
+    local function highlight()
       for _, group in ipairs({ "OilDir", "OilDirIcon" }) do
         local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = group, link = false })
         if ok and hl then
@@ -61,9 +184,12 @@ p[#p + 1] = {
           vim.api.nvim_set_hl(0, group, hl)
         end
       end
+      -- Gitignored files/dirs appear dimmed (same as Comment)
+      vim.api.nvim_set_hl(0, "OilFileHidden", { link = "Comment" })
+      vim.api.nvim_set_hl(0, "OilDirHidden", { link = "Comment" })
     end
-    vim.api.nvim_create_autocmd("ColorScheme", { callback = fix_oil_hl })
-    fix_oil_hl()
+    vim.api.nvim_create_autocmd("ColorScheme", { callback = highlight })
+    highlight()
 
     -- Open files using relative path
     -- From: https://github.com/stevearc/oil.nvim/issues/234
@@ -76,17 +202,47 @@ p[#p + 1] = {
       end,
     })
 
+    -- Invalidate cache after file operations or .gitignore changes
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "OilMutationComplete",
+      callback = function()
+        git_ignored_cache = {}
+      end,
+    })
+    vim.api.nvim_create_autocmd("BufWritePost", {
+      pattern = { "*.gitignore", ".git/info/exclude" },
+      callback = function()
+        git_ignored_cache = {}
+        reload_oil_buffers()
+      end,
+    })
+
+    -- Stale-while-revalidate: on enter and on cursor idle
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "OilEnter",
+      callback = revalidate_current,
+    })
+    vim.api.nvim_create_autocmd("CursorHold", {
+      pattern = "oil://*",
+      callback = revalidate_current,
+    })
+
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "oil",
+      callback = function()
+        vim.opt_local.updatetime = 2000
+      end,
+    })
+
+    -- Oil window helpers
     local function is_oil_buffer(bufnr)
       if not vim.api.nvim_buf_is_valid(bufnr) then
         return false
       end
-
       if vim.bo[bufnr].filetype == "oil" then
         return true
       end
-
-      local name = vim.api.nvim_buf_get_name(bufnr)
-      return name:match("^oil://") ~= nil
+      return vim.api.nvim_buf_get_name(bufnr):match("^oil://") ~= nil
     end
 
     local function find_oil_window()
@@ -101,7 +257,7 @@ p[#p + 1] = {
       return nil
     end
 
-    -- open oil floating window once (open_float create new window even when the current buffer is oil)
+    -- Open oil floating window once (open_float creates new window even when oil is already open)
     ---@param path? string
     local function open_once(path)
       local oil_win = find_oil_window()
@@ -109,17 +265,15 @@ p[#p + 1] = {
         vim.api.nvim_set_current_win(oil_win)
         return
       end
-
       require("oil").open_float(path)
     end
 
     vim.keymap.set("n", "<M-o>", function()
       open_once()
     end, { desc = "Open Oil in current buffer's directory" })
-
     vim.keymap.set("n", "<leader>oo", function()
       open_once(".")
-    end, { desc = "[O]pen [O]il in current directory" })
+    end, { desc = "Open Oil in current directory" })
   end,
 }
 
@@ -130,7 +284,7 @@ p[#p + 1] = { -- Show git status in oil directory listings
     "https://github.com/stevearc/oil.nvim",
   },
   opts = {
-    show_ignored = true,
+    show_ignored = false,
   },
 }
 
