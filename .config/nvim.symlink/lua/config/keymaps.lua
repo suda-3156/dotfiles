@@ -2,8 +2,6 @@
 -- :h keymaps -- overview of keymap settings
 -- :h map-modes -- modes which set to the first arg
 
-local myp = require("suda-3156")
-
 -- Set comma as leader key
 -- We will be unable to go back in find / till motion (f, t, F, T).
 -- So we can install: flash.nvim, mini.jump, or other similar plugins
@@ -72,7 +70,7 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Go to lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Go to upper window" })
 
 -- Window resizing
-local window = myp.window
+local window = require("utils.window")
 vim.keymap.set("n", "<Up>", function()
   window.resize(0, "up", 2)
 end, { desc = "Resize window upward" })
@@ -87,7 +85,12 @@ vim.keymap.set("n", "<Left>", function()
 end, { desc = "Resize window to the left" })
 
 -- Obsidian
-local obsidian = myp.obsidian
+local obsidian = require("utils.obsidian")
 vim.keymap.set("n", "<leader>od", function()
   obsidian.open_daily()
 end, { desc = "Open obsidian daily note" })
+
+-- Ref: https://zenn.dev/vim_jp/articles/29d021fff07e60
+vim.keymap.set("n", "qq", "qq", { desc = "start recording" })
+vim.keymap.set("n", "qo", "<cmd>only<cr>", { desc = "only" })
+vim.keymap.set("n", "qc", "<cmd>close<cr>", { desc = "close" })

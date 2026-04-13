@@ -39,7 +39,7 @@ p[#p + 1] = {
         break_line = {
           enabled = true,
           -- Number of characters before inserting a line break
-          after = 50,
+          after = 100,
         },
         format = function(diag)
           if diag.code == nil then
