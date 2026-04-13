@@ -1,4 +1,12 @@
-return {
+local p = {}
+
+p[#p + 1] = {
+  -- tmux & split window navigation
+  "https://github.com/christoomey/vim-tmux-navigator",
+  event = "VeryLazy",
+}
+
+p[#p + 1] = {
   "https://github.com/akinsho/toggleterm.nvim",
   version = "*", -- Use the latest version
   event = "VeryLazy",
@@ -18,3 +26,5 @@ return {
     })
   end,
 }
+
+return p
