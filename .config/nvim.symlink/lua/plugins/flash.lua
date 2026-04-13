@@ -29,14 +29,9 @@ return {
     -- FlashPromptIcon   Special      prompt icon
     -- FlashCursor       Cursor       cursor
 
-    vim.api.nvim_set_hl(0, "FlashLabel", { underline = true, bold = false, fg = "Orange", ctermfg = "Red" })
-    vim.api.nvim_set_hl(0, "FlashMatch", { underline = false, bold = true, fg = "Orange", ctermfg = "Red" })
-    vim.api.nvim_set_hl(0, "FlashLabel", { underline = true, bold = false, fg = "Orange", ctermfg = "Red" })
-    vim.api.nvim_set_hl(
-      0,
-      "FlashCurrent",
-      { bold = true, fg = "Black", bg = "Orange", ctermfg = "Black", ctermbg = "Red" }
-    )
+    vim.api.nvim_set_hl(0, "FlashLabel", { link = "WarningMsg" })
+    vim.api.nvim_set_hl(0, "FlashMatch", { link = "Cursor" })
+    vim.api.nvim_set_hl(0, "FlashCurrent", { link = "CurSearch" })
 
     require("flash").setup({
       labels = "asdfghjklqwertyuiopzxcvbnm",

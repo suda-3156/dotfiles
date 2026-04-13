@@ -23,7 +23,7 @@ p[#p + 1] = {
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   opts = {},
   keys = {
-    { "<leader>tt", "<cmd>TSJToggle<cr>", desc = "TreeSJ Toggle" },
+    { "<leader>ts", "<cmd>TSJToggle<cr>", desc = "TreeSJ Toggle" },
   },
 }
 

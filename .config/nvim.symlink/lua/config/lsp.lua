@@ -71,12 +71,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- K: Hover document
 
     -- spellchecker:ignore-next-line
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = buf, desc = "[G]oto [d]efinition" })
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = buf, desc = "[G]oto [D]eclaration" })
-    vim.keymap.set("n", "grn", vim.lsp.buf.rename, { buffer = buf, desc = "[R]e[N]ame" })
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = buf, desc = "Goto definition" })
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = buf, desc = "Goto Declaration" })
+    vim.keymap.set("n", "grn", vim.lsp.buf.rename, { buffer = buf, desc = "ReName" })
     -- use tiny-code-action
     -- vim.keymap.set({ "n", "x" }, "gA", vim.lsp.buf.code_action, { buffer = buf, desc = "[G]oto Code [A]ction" })
-    vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { buffer = buf, desc = "[G]oto [I]mplementation" })
+    vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { buffer = buf, desc = "Goto Implementation" })
+    vim.keymap.set("n", "gA", vim.lsp.buf.code_action, { buffer = buf, desc = "Goto Code Action" })
 
     -- The following two autocommands are used to highlight references of the
     -- word under your cursor when your cursor rests there for a little while.
