@@ -1,6 +1,5 @@
 return {
   "https://github.com/folke/flash.nvim",
-  event = "VeryLazy",
   keys = {
     {
       "`",

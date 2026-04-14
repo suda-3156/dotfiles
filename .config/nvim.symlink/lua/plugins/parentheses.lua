@@ -21,10 +21,10 @@ p[#p + 1] = {
 p[#p + 1] = {
   "https://github.com/Wansmer/treesj",
   dependencies = { "nvim-treesitter/nvim-treesitter" },
-  opts = {},
   keys = {
     { "<leader>ts", "<cmd>TSJToggle<cr>", desc = "TreeSJ Toggle" },
   },
+  opts = {},
 }
 
 -- p[#p + 1] = {
@@ -45,7 +45,7 @@ p[#p + 1] = {
 p[#p + 1] = {
   "https://github.com/kylechui/nvim-surround",
   version = "*",
-  event = "VeryLazy",
+  event = { "BufReadPost", "BufNewFile" },
   opts = {
     surrounds = {
       -- Replace open and close brackets behaviours with each other
@@ -108,7 +108,7 @@ p[#p + 1] = {
 
 p[#p + 1] = {
   "https://github.com/andymass/vim-matchup",
-  event = "BufReadPost",
+  event = { "BufReadPost", "BufNewFile" },
   init = function()
     vim.g.matchup_matchparen_offscreen = { method = "popup" }
   end,

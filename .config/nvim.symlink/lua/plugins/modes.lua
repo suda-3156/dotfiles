@@ -1,6 +1,6 @@
 return {
   "https://github.com/mvllow/modes.nvim",
-  event = "BufReadPre",
+  event = { "BufReadPre", "BufNewFile" },
   version = "*",
   config = function()
     require("modes").setup({

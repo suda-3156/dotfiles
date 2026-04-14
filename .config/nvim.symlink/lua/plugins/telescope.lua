@@ -96,7 +96,6 @@ return {
     pcall(require("telescope").load_extension, "live_grep_args")
     pcall(require("telescope").load_extension, "ui-select")
 
-    -- spellchecker:off
     -- stylua: ignore start
     vim.keymap.set("n", "<leader>sc",  builtin.git_commits,  { desc = "Search Git Commits" })
     vim.keymap.set("n", "<leader>scf", builtin.git_bcommits, { desc = "Search Git Commits for current File" })
@@ -111,7 +110,6 @@ return {
     vim.keymap.set("n", "<leader>sr",  builtin.resume,       { desc = "Search Rresume" })
     vim.keymap.set("n", "<leader>s.",  builtin.oldfiles,     { desc = 'Search Recent Files ("." for repeat)' })
     -- stylua: ignore end
-    -- spellchecker:on
 
     vim.keymap.set("n", "<leader>sc", function()
       builtin.find_files({
@@ -137,7 +135,6 @@ return {
         local buf = event.buf
 
         -- Find references for the word under your cursor.
-        -- spellchecker:ignore-next-line
         vim.keymap.set("n", "gR", builtin.lsp_references, { buffer = buf, desc = "Goto References" })
 
         -- Fuzzy find all the symbols in your current document.

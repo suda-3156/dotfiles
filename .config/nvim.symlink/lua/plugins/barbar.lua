@@ -8,15 +8,12 @@ return {
   init = function()
     vim.g.barbar_auto_setup = false
   end,
-  -- stylua: ignore start
   keys = {
-    -- { "<leader>d",  "<cmd>BufferClose<cr>",               desc = "Close Buffer" },
-    { "<S-h>",       "<cmd>BufferPrevious<cr>",           desc = "Prev Buffer" },
-    { "<S-l>",       "<cmd>BufferNext<cr>",               desc = "Next Buffer" },
-    { "<leader>cbr", "<Cmd>BufferCloseBuffersRight<CR>",  desc = "Close Buffers to the Right" },
-    { "<leader>cbl", "<Cmd>BufferCloseBuffersLeft<CR>",   desc = "Close Buffers to the Left" },
+    { "<S-h>", "<cmd>BufferPrevious<cr>", mode = { "n" }, desc = "Prev Buffer" },
+    { "<S-l>", "<cmd>BufferNext<cr>", mode = { "n" }, desc = "Next Buffer" },
+    { "<leader>cbr", "<Cmd>BufferCloseBuffersRight<CR>", mode = { "n" }, desc = "Close Buffers to the Right" },
+    { "<leader>cbl", "<Cmd>BufferCloseBuffersLeft<CR>", mode = { "n" }, desc = "Close Buffers to the Left" },
   },
-  -- stylua: ignore end
 
   config = function()
     require("barbar").setup({

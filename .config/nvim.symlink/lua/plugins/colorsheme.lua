@@ -13,6 +13,7 @@ local function apply_custom_transparency()
     local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = group, link = false })
     if ok and hl then
       hl.bg = nil
+      ---@diagnostic disable-next-line: param-type-mismatch
       vim.api.nvim_set_hl(0, group, hl)
     end
   end

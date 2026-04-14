@@ -44,7 +44,7 @@ p[#p + 1] = {
     "https://github.com/nvim-tree/nvim-web-devicons",
   },
   keys = {
-    { "<leader>tm", "<cmd>RenderMarkdown toggle<cr>", desc = "Toggle Markdown view" },
+    { "<leader>tm", "<cmd>RenderMarkdown toggle<cr>", mode = { "n" }, desc = "Toggle Markdown view" },
   },
   opts = {
     heading = {

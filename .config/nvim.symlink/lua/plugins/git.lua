@@ -2,72 +2,129 @@ local p = {}
 
 p[#p + 1] = {
   "https://github.com/tpope/vim-fugitive",
-  lazy = true,
+  event = { "BufReadPost", "BufNewFile" },
 }
 
 p[#p + 1] = {
   -- GitHub integration for vim-fugitive
   "https://github.com/tpope/vim-rhubarb",
-  lazy = true,
+  event = { "BufReadPost", "BufNewFile" },
 }
 
 p[#p + 1] = {
   "https://github.com/lewis6991/gitsigns.nvim",
-  lazy = true,
-  config = function()
-    require("gitsigns").setup({
-      current_line_blame = true,
-    })
-
-    local gitsigns = require("gitsigns")
-
-    local function map(mode, l, r, opts)
-      opts = opts or {}
-      vim.keymap.set(mode, l, r, opts)
-    end
-
-    -- Actions
-    map("n", "<leader>gs", gitsigns.stage_hunk, { desc = "Git Stage hunk" })
-    map("n", "<leader>gr", gitsigns.reset_hunk, { desc = "Git Reset hunk" })
-
-    map("x", "<leader>gs", function()
-      gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("x") })
-    end, { desc = "Git Stage hunk" })
-
-    map("x", "<leader>gr", function()
-      gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("x") })
-    end, { desc = "Git Reset hunk" })
-
-    map("n", "<leader>gb", gitsigns.blame, { desc = "Git Blame" })
-    map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "Toggle current line Blame" })
-
-    map("n", "<leader>gS", gitsigns.stage_buffer, { desc = "Git Stage buffer" })
-    map("n", "<leader>gR", gitsigns.reset_buffer, { desc = "Git Reset buffer" })
-    map("n", "<leader>gp", gitsigns.preview_hunk, { desc = "Git Preview hunk" })
-    map("n", "<leader>gi", gitsigns.preview_hunk_inline, { desc = "Git preview hunk Inline" })
-
-    map("n", "<leader>gq", function()
-      gitsigns.setqflist("all")
-    end, { desc = "Set qflist to unstaged changes" })
-
-    -- Toggles
-    map("n", "<leader>gtb", gitsigns.toggle_current_line_blame, { desc = "Git Toggle line blame" })
-    map("n", "<leader>gtw", gitsigns.toggle_word_diff, { desc = "Git Toggle Word diff" })
-
-    -- Text object
-    map({ "o", "x" }, "ih", gitsigns.select_hunk)
-  end,
+  event = { "BufReadPost", "BufNewFile" },
+  opts = {
+    current_line_blame = true,
+  },
+  keys = {
+    {
+      "<leader>gs",
+      function()
+        require("gitsigns").stage_hunk()
+      end,
+      mode = { "n" },
+      desc = "Git Stage hunk",
+    },
+    {
+      "<leader>gr",
+      function()
+        require("gitsigns").reset_hunk()
+      end,
+      mode = { "n", "x" },
+      desc = "Git Reset hunk",
+    },
+    {
+      "<leader>gb",
+      function()
+        require("gitsigns").blame()
+      end,
+      mode = { "n" },
+      desc = "Git Blame",
+    },
+    {
+      "<leader>tb",
+      function()
+        require("gitsigns").toggle_current_line_blame()
+      end,
+      mode = { "n" },
+      desc = "Toggle current line Blame",
+    },
+    {
+      mode = { "n" },
+      "<leader>gS",
+      function()
+        require("gitsigns").stage_buffer()
+      end,
+      desc = "Git Stage buffer",
+    },
+    {
+      mode = { "n" },
+      "<leader>gR",
+      function()
+        require("gitsigns").reset_buffer()
+      end,
+      desc = "Git Reset buffer",
+    },
+    {
+      mode = { "n" },
+      "<leader>gp",
+      function()
+        require("gitsigns").preview_hunk()
+      end,
+      desc = "Git Preview hunk",
+    },
+    {
+      mode = { "n" },
+      "<leader>gi",
+      function()
+        require("gitsigns").preview_hunk_inline()
+      end,
+      desc = "Git preview hunk Inline",
+    },
+    {
+      mode = { "n" },
+      "<leader>gtb",
+      function()
+        require("gitsigns").toggle_current_line_blame()
+      end,
+      desc = "Git Toggle line blame",
+    },
+    {
+      mode = { "n" },
+      "<leader>gtw",
+      function()
+        require("gitsigns").toggle_word_diff()
+      end,
+      desc = "Git Toggle Word diff",
+    },
+    {
+      mode = { "o", "x" },
+      "ih",
+      function()
+        require("gitsigns").select_hunk()
+      end,
+    },
+    {
+      "<leader>gq",
+      function()
+        require("gitsigns").setqflist("all")
+      end,
+      mode = { "n" },
+      desc = "Set qflist to unstaged changes",
+    },
+  },
 }
 
 p[#p + 1] = {
   "https://github.com/sindrets/diffview.nvim",
-  cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+  keys = {
+    { "<leader>gd", "<cmd>DiffviewOpen<cr>", mode = { "n" }, desc = "Git Diff" },
+    { "<leader>gf", "<cmd>DiffviewFileHistory %<cr>", mode = { "n" }, desc = "Git current File history" },
+    { "<leader>gh", "<cmd>DiffviewFileHistory<cr>", mode = { "n" }, desc = "Git branch History" },
+  },
   config = function()
-    vim.keymap.set("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { desc = "Git Diff" })
-    vim.keymap.set("n", "<leader>gf", "<cmd>DiffviewFileHistory %<cr>", { desc = "Git current File history" })
-    vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory<cr>", { desc = "Git branch History" })
-
-    local close = { "n", "qq", "<cmd>tabclose<cr>", { desc = "Exit Diffview" } }
+    local close = { "n", "qc", "<cmd>tabclose<cr>", { desc = "Exit Diffview" } }
     require("diffview").setup({
       keymaps = {
         view = { close },

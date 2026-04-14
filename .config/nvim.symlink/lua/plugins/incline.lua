@@ -1,6 +1,6 @@
 return {
   "https://github.com/b0o/incline.nvim",
-  event = "BufReadPost",
+  event = { "BufReadPost", "BufNewFile" },
   dependencies = {
     "https://github.com/SmiteshP/nvim-navic",
     "https://github.com/nvim-tree/nvim-web-devicons",

@@ -5,8 +5,8 @@
 -- Set comma as leader key
 -- We will be unable to go back in find / till motion (f, t, F, T).
 -- So we can install: flash.nvim, mini.jump, or other similar plugins
-vim.g.mapleader = ","
-vim.g.maplocalleader = "\\"
+-- vim.g.mapleader = ","
+-- vim.g.maplocalleader = "\\"
 
 -- Search and wrapped line navigation
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })

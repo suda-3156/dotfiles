@@ -347,7 +347,8 @@ p[#p + 1] = {
   "A7Lavinraj/fyler.nvim",
   dependencies = { "nvim-mini/mini.icons" },
   branch = "stable",
-  lazy = false, -- Necessary for `default_explorer` to work properly
+  -- lazy = false, -- Necessary for `default_explorer` to work properly
+  event = "VeryLazy",
   opts = {
     views = {
       finder = {
@@ -395,10 +396,17 @@ p[#p + 1] = {
 -- :h aerial
 p[#p + 1] = {
   "https://github.com/stevearc/aerial.nvim",
-  event = "VeryLazy",
   dependencies = {
     "https://github.com/nvim-treesitter/nvim-treesitter",
     "https://github.com/nvim-tree/nvim-web-devicons",
+  },
+  keys = {
+    {
+      "<leader>a",
+      "<cmd>AerialToggle!<cr>",
+      mode = { "n" },
+      desc = "Toggle Aerial",
+    },
   },
   config = function()
     require("aerial").setup({
@@ -467,7 +475,6 @@ p[#p + 1] = {
         --   ["zX"] = "actions.tree_sync_folds",
       },
     })
-    vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
   end,
 }
 

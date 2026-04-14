@@ -1,6 +1,6 @@
 return {
   "https://github.com/karb94/neoscroll.nvim",
-  event = "BufReadPost",
+  event = { "BufReadPost", "BufNewFile" },
   opts = {
     stop_eof = false, -- If set true, stop at <EOF> when scrolling downwards
     -- Keys to be mapped to their corresponding default scrolling animation

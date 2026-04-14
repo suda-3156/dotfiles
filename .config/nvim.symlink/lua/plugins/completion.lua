@@ -7,8 +7,6 @@ p[#p + 1] = {
   version = "1.*", -- to download pre-built binaries
   event = { "InsertEnter", "CmdLineEnter" },
 
-  ---@module 'blink.cmp'
-  ---@type blink.cmp.Config
   opts = {
     keymap = {
       preset = "default",

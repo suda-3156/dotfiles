@@ -1,6 +1,5 @@
 return {
   "monaqa/dial.nvim",
-  event = { "BufReadPre", "BufNewFile" },
   keys = {
     {
       "+",
