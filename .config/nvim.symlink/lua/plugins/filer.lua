@@ -129,8 +129,15 @@ p[#p + 1] = {
         ["g?"] = { "actions.show_help", mode = "n" },
         ["<CR>"] = "actions.select",
         ["<C-s>"] = { "actions.select", opts = { vertical = true } },
-        ["<C-h>"] = false, -- { 'actions.select', opts = { horizontal = true } },
-        ["<C-t>"] = false, -- { 'actions.select', opts = { tab = true } },
+        ["<C-h>"] = { "actions.select", opts = { horizontal = true } },
+        ["<C-t>"] = {
+          "actions.select",
+          opts = {
+            handle_buffer_callback = function(buf_id)
+              vim.fn.bufload(buf_id)
+            end,
+          },
+        },
         ["<C-p>"] = "actions.preview",
         ["q"] = { "actions.close", mode = "n" },
         ["<C-l>"] = "actions.refresh",
