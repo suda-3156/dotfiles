@@ -1,3 +1,6 @@
+-- Set comma as leader key
+-- We will be unable to go back in find / till motion (f, t, F, T).
+-- So we can install: flash.nvim, mini.jump, or other similar plugins
 vim.g.mapleader = ","
 vim.g.maplocalleader = "\\"
 

@@ -2,16 +2,15 @@
 -- :h keymaps -- overview of keymap settings
 -- :h map-modes -- modes which set to the first arg
 
--- Set comma as leader key
--- We will be unable to go back in find / till motion (f, t, F, T).
--- So we can install: flash.nvim, mini.jump, or other similar plugins
--- vim.g.mapleader = ","
--- vim.g.maplocalleader = "\\"
+local submode = require("utils.submode")
 
 -- Search and wrapped line navigation
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, desc = "Move up by display line when no count" })
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, desc = "Move down by display line when no count" })
+
+local jk_mode = submode.create_submode("jk_mode")
+jk_mode.set("g", "j", "gj")
+jk_mode.set("g", "k", "gk")
+
 vim.keymap.set("n", "<leader>tl", function()
   vim.wo.wrap = not vim.wo.wrap
   vim.notify("Wrap: " .. (vim.wo.wrap and "ON" or "OFF"))
@@ -71,20 +70,21 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Go to upper window" })
 
 -- Window resizing
 local window = require("utils.window")
-vim.keymap.set("n", "<Up>", function()
+local win_mode = submode.create_submode("win-mode", { "n" })
+win_mode.set("<c-w>", "+", function()
   window.resize(0, "up", 2)
-end, { desc = "Resize window upward" })
-vim.keymap.set("n", "<Down>", function()
+end)
+win_mode.set("<c-w>", "-", function()
   window.resize(0, "down", 2)
-end, { desc = "Resize window downward" })
-vim.keymap.set("n", "<Right>", function()
-  window.resize(0, "right", 4)
-end, { desc = "Resize window to the right" })
-vim.keymap.set("n", "<Left>", function()
-  window.resize(0, "left", 4)
-end, { desc = "Resize window to the left" })
+end)
+win_mode.set("<c-w>", "<", function()
+  window.resize(0, "left", 2)
+end)
+win_mode.set("<c-w>", ">", function()
+  window.resize(0, "right", 2)
+end)
 
--- Obsidian
+-- obsidian
 local obsidian = require("utils.obsidian")
 vim.keymap.set("n", "<leader>od", function()
   obsidian.open_daily()
