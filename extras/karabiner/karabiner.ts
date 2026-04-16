@@ -1,26 +1,20 @@
 // From: https://github.com/kawarimidoll/dotfiles/blob/master/karabiner/karabiner.ts
 import * as k from "karabiner_ts";
 
-import { fnNumbersRules } from "./rules/fn-numbers.ts";
+import { rCmdNumberRules } from "./rules/rcmd-numbers.ts";
 import { volumeBrightnessRules } from "./rules/volume-brightness.ts";
 import { capsTabHyperRules } from "./rules/caps-tab-hyper.ts";
 import { imkitRules } from "./rules/imkit.ts";
 import { applicationRules } from "./rules/application.ts";
 
-import {
-  type ExtendedProfile,
-  APPLE_INTERNAL_KEYBOARD,
-  KEYCHRON_K7_PRO,
-  applySimpleModifications,
-  rightCmdToFn,
-} from "./simple-modifications.ts";
+import { type ExtendedProfile } from "./simple-modifications.ts";
 
 const PROFILE_NAME = "Default profile";
 
 // Write complex modifications
 k.writeToProfile(PROFILE_NAME, [
   ...volumeBrightnessRules,
-  ...fnNumbersRules,
+  ...rCmdNumberRules,
   ...capsTabHyperRules,
   ...imkitRules,
   ...applicationRules,
@@ -73,8 +67,8 @@ profile.virtual_hid_keyboard = {
 };
 
 // Apply simple modifications to devices
-applySimpleModifications(profile, APPLE_INTERNAL_KEYBOARD, rightCmdToFn);
-applySimpleModifications(profile, KEYCHRON_K7_PRO, rightCmdToFn);
+// applySimpleModifications(profile, APPLE_INTERNAL_KEYBOARD, rightCmdToFn);
+// applySimpleModifications(profile, KEYCHRON_K7_PRO, rightCmdToFn);
 
 // Write back to file
 const json = JSON.stringify(config, null, 2);

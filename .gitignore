@@ -38,6 +38,7 @@
 !/extras/karabiner/**/*.ts
 !/extras/karabiner/deno.jsonc
 !/extras/karabiner/deno.lock
+!/extras/karabiner/script/*
 
 # vscode
 !/extras/vscode/extensions
