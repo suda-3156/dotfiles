@@ -25,5 +25,22 @@ return {
         select = 0.3,
       },
     })
+
+    vim.api.nvim_set_hl(0, "RecordingCursor", { bg = "#FF5F00", fg = "#000000" })
+    local guicursor_orig = nil
+    vim.api.nvim_create_autocmd("RecordingEnter", {
+      callback = function()
+        guicursor_orig = vim.o.guicursor
+        vim.o.guicursor = "a:block-RecordingCursor"
+      end,
+    })
+    vim.api.nvim_create_autocmd("RecordingLeave", {
+      callback = function()
+        if guicursor_orig then
+          vim.o.guicursor = guicursor_orig
+          guicursor_orig = nil
+        end
+      end,
+    })
   end,
 }
