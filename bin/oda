@@ -22,34 +22,10 @@ from pathlib import Path
 from typing import NoReturn
 
 SCRIPT_NAME = "oda"
+HIDE_APP_DELAY = 0.5
 
-APPLESCRIPT_HIDE_APP = """\
-tell application "System Events"
-  if not (exists process "{app}") then return
-end tell
+APPLESCRIPT_HIDE_APP = 'tell application "System Events" to set visible of application process "{app}" to false'
 
-try
-  tell application "{app}" to hide
-end try
-
-delay 0.05
-
-try
-  tell application "System Events"
-    tell process "{app}"
-      if visible then
-        set visible to false
-      end if
-    end tell
-  end tell
-on error
-  try
-    tell application "{app}" to activate
-    delay 0.05
-    tell application "System Events" to keystroke "w" using command down
-  end try
-end try
-"""
 
 # This script should not generate __pycache__ dir
 sys.dont_write_bytecode = True
@@ -132,8 +108,7 @@ def find_note(vault_path: Path, date_str: str) -> Path | None:
 def hide_obsidian() -> None:
     try:
         subprocess.run(
-            ["osascript"],
-            input=APPLESCRIPT_HIDE_APP.format(app="Obsidian"),
+            ["osascript", "-e", APPLESCRIPT_HIDE_APP.format(app="Obsidian")],
             text=True,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
@@ -183,10 +158,12 @@ def main() -> None:
 
     if args.print_path_only:
         print(final_note_path)
-        return
 
+    time.sleep(HIDE_APP_DELAY)
     hide_obsidian()
-    exec_nvim(final_note_path)
+
+    if not args.print_path_only:
+        exec_nvim(final_note_path)
 
 
 if __name__ == "__main__":

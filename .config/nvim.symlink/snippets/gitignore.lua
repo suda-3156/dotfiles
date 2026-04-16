@@ -41,4 +41,15 @@ __pycache__/
   )
 )
 
+snpt[#snpt + 1] = s(
+  { trig = "lab", name = ".gitignore for jupyter lab" },
+  fmt(
+    [[
+.venv/
+.ipynb_checkpoints/
+]],
+    {}
+  )
+)
+
 return snpt

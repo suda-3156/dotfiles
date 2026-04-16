@@ -97,8 +97,7 @@ return {
     pcall(require("telescope").load_extension, "ui-select")
 
     -- stylua: ignore start
-    vim.keymap.set("n", "<leader>sc",  builtin.git_commits,  { desc = "Search Git Commits" })
-    vim.keymap.set("n", "<leader>scf", builtin.git_bcommits, { desc = "Search Git Commits for current File" })
+    vim.keymap.set("n", "<leader>sG", builtin.git_bcommits, { desc = "Search Git Commits for current File" })
     vim.keymap.set("n", "<leader>sb",  builtin.git_branches, { desc = "Search Git Branches" })
     vim.keymap.set('n', '<leader>sF',  function()
       builtin.find_files({ no_ignore = true, hidden = true })
