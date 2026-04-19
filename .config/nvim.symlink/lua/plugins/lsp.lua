@@ -124,6 +124,7 @@ p[#p + 1] = {
 
 p[#p + 1] = {
   "ray-x/lsp_signature.nvim",
+  enabled = false,
   event = "InsertEnter",
   opts = {},
 }

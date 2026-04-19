@@ -7,7 +7,7 @@ import { capsTabHyperRules } from "./rules/caps-tab-hyper.ts";
 import { imkitRules } from "./rules/imkit.ts";
 import { applicationRules } from "./rules/application.ts";
 
-import { type ExtendedProfile } from "./simple-modifications.ts";
+import { type ExtendedProfile } from "./types.ts";
 
 const PROFILE_NAME = "Default profile";
 
@@ -65,10 +65,6 @@ profile.virtual_hid_keyboard = {
   indicate_sticky_modifier_keys_state: true,
   keyboard_type_v2: "ansi",
 };
-
-// Apply simple modifications to devices
-// applySimpleModifications(profile, APPLE_INTERNAL_KEYBOARD, rightCmdToFn);
-// applySimpleModifications(profile, KEYCHRON_K7_PRO, rightCmdToFn);
 
 // Write back to file
 const json = JSON.stringify(config, null, 2);
