@@ -12,3 +12,5 @@ require("config.filetype")
 require("config.keymaps")
 require("config.lsp")
 require("config.options")
+
+require("utils.alarm").setup({ keys = "asdfhjkl;", count = 10, modes = { "n" } })
