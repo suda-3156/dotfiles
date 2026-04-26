@@ -58,6 +58,7 @@ abbr -S -q jdf='jj diff'
 abbr -S -q jb='jj bookmark set'
 abbr -S -q jss='jj squash'
 abbr -S -q jsp='jj split'
+abbr -S -q "jj wip"="jj desc -m \"wip\" -r 'mutable() & description(exact:\"\") & ~empty()'"
 
 abbr -S -q t='tmux'
 abbr -S -q tl='tmux ls'
