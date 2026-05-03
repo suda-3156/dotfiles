@@ -13,6 +13,7 @@ vim.lsp.enable({
   "tailwindcss",
   "cssls",
   "css_variables",
+  "svelte",
 
   -- Python
   "basedpyright",

@@ -35,6 +35,7 @@ return {
       "tsx",
       "css",
       "html",
+      "svelte",
     }
     require("nvim-treesitter").install(parsers)
 
