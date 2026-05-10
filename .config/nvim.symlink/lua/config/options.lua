@@ -90,7 +90,6 @@ vim.opt.hlsearch = true
 
 -- Edit
 vim.opt.clipboard:append("unnamedplus,unnamed")
-vim.opt.scrolloff = 3
 vim.o.softtabstop = 2
 vim.opt.mouse = "a"
 vim.opt.whichwrap = "b,s,h,l,<,>,[,],~"

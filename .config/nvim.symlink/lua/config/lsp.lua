@@ -11,6 +11,7 @@ vim.lsp.enable({
   "biome",
   "denols",
   "tailwindcss",
+  "unocss",
   "cssls",
   "css_variables",
   "svelte",

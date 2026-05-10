@@ -23,6 +23,8 @@ local/
 # binary
 *.bin
 *.out
+out/
+build/
 ]],
     {}
   )

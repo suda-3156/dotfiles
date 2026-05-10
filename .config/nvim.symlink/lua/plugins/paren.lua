@@ -16,6 +16,15 @@ p[#p + 1] = {
   -- <div           >              <div></div>
   -- <div></div>    ciwspan<esc>   <span></span>
   -- ------------------------------------
+  config = function()
+    local autotag = require("nvim-ts-autotag")
+
+    autotag.setup({
+      aliases = {
+        ["svelte"] = "html",
+      },
+    })
+  end,
 }
 
 p[#p + 1] = {
