@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import NoReturn
 
 SCRIPT_NAME = "oda"
-HIDE_APP_DELAY = 0.5
+HIDE_APP_DELAY = 0.8
 
 APPLESCRIPT_HIDE_APP = 'tell application "System Events" to set visible of application process "{app}" to false'
 
