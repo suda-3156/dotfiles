@@ -265,19 +265,29 @@ p[#p + 1] = {
     end
 
     -- Open oil floating window once (open_float creates new window even when oil is already open)
+    -- and close the oil window if currently opened
     ---@param path? string
     local function open_once(path)
       local oil_win = find_oil_window()
+      local cur_win = vim.api.nvim_get_current_win()
+
+      if oil_win and oil_win == cur_win then
+        require("oil").close()
+        return
+      end
+
       if oil_win then
+        vim.notify("oil_win:" .. oil_win)
         vim.api.nvim_set_current_win(oil_win)
         return
       end
+
       require("oil").open_float(path)
     end
 
     vim.keymap.set("n", "<M-o>", function()
       open_once()
-    end, { desc = "Open Oil in current buffer's directory" })
+    end, { desc = "Toggle Oil in current buffer's directory" })
     vim.keymap.set("n", "<leader>oo", function()
       open_once(".")
     end, { desc = "Open Oil in current directory" })
