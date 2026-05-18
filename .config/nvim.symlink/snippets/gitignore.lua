@@ -54,4 +54,44 @@ snpt[#snpt + 1] = s(
   )
 )
 
+snpt[#snpt + 1] = s(
+  { trig = "tf", name = ".gitignore for terraform" },
+  fmt(
+    [[
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+crash.log
+crash.*.log
+.terraform.tfstate.lock.info
+.terraformrc
+terraform.rc
+]],
+    {}
+  )
+)
+
+snpt[#snpt + 1] = s(
+  { trig = "rust", name = ".gitignore for rust" },
+  fmt(
+    [[
+# ruse
+debug
+target
+**/*.rs.bk
+*.pdb
+**/mutants.out*/
+rustc-ice-*.txt
+]],
+    {}
+  )
+)
+
 return snpt
