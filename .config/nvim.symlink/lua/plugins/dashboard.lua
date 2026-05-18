@@ -16,6 +16,7 @@ local header = {
 return {
   "https://github.com/nvimdev/dashboard-nvim",
   event = "VimEnter",
+  enabled = false,
   opts = {
     theme = "hyper", --  theme is doom and hyper default is hyper
     config = {

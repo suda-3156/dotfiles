@@ -1,5 +1,6 @@
 return {
   "https://github.com/romgrk/barbar.nvim",
+  enabled = false, -- Generate bunch of new buffers when moving file via oil
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "lewis6991/gitsigns.nvim",

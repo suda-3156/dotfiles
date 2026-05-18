@@ -9,7 +9,7 @@ return {
       lua = { "stylua" },
       sh = { "shfmt" },
       zsh = { "shfmt" },
-      go = { "goimports", "gofmt" },
+      go = { "gofmt" },
       rust = { "rustfmt" },
       c = { "clang_format" },
       cpp = { "clang_format" },
@@ -21,8 +21,8 @@ return {
           return { "isort", "black" }
         end
       end,
-      javascript = { "biome", "prettierd", stop_after_first = true },
-      typescript = { "biome", "prettierd", stop_after_first = true },
+      javascript = { "prettierd", stop_after_first = true },
+      typescript = { "prettierd", stop_after_first = true },
       javascriptreact = { "biome", "prettierd", stop_after_first = true },
       typescriptreact = { "biome", "prettierd", stop_after_first = true },
       json = { "biome", "prettierd", stop_after_first = true },
@@ -32,7 +32,7 @@ return {
       css = { "prettierd" },
       graphql = { "biome", "prettierd", stop_after_first = true },
       -- Run formatters on filetypes that don't have other formatters configured.
-      ["_"] = { "trim_whitespace" },
+      -- ["_"] = { "trim_whitespace" },
     },
 
     formatters = {
