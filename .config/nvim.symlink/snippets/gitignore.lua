@@ -18,7 +18,7 @@ snpt[#snpt + 1] = s(
 
 # work
 .local.*
-local/
+.local/
 
 # binary
 *.bin
