@@ -70,9 +70,9 @@ abbr -S -q tf='terraform'
 
 abbr -S -q o='open .'
 
-abbr -S -q gccl='gcloud config configurations list'
-abbr -S -q gcca='gcloud config configurations activate'
-abbr -S -q gcal='gcloud auth application-default login'
+abbr -S -q gd='gcloud'
+abbr -S -q "gcloud list"='gcloud config configurations list'
+abbr -S -q "gcloud login"='gcloud auth application-default login'
 
 abbr -S -q co='copilot'
 abbr -S -q cl='claude'
