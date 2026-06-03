@@ -1,3 +1,4 @@
+-- vim: set foldmethod=marker foldlevel=0:
 local ls = require("luasnip")
 local s = ls.snippet
 local i = ls.insert_node
@@ -5,6 +6,7 @@ local fmt = require("luasnip.extras.fmt").fmt
 
 local snpt = {}
 
+--{{{ jlreq preamble
 snpt[#snpt + 1] = s(
   { trig = "jlreq", name = "Preamble for jlreq" },
   fmt(
@@ -323,55 +325,9 @@ snpt[#snpt + 1] = s(
     { delimiters = "<>" }
   )
 )
+--}}}
 
-snpt[#snpt + 1] = s(
-  { trig = "main", name = "Main file" },
-  fmt(
-    [=[
-\documentclass[
-  paper=a4paper,
-  jlreq_notes,
-]{jlreq}
-
-% \documentclass[
-%   % aspectratio=169,
-% ]{beamer}
-
-\input{preamble.tex}
-
-\title{harisenbon}
-\author{ramen}
-\date{\today}
-
-\begin{document}
-
-\maketitle
-
-\pagenumbering{roman}
-\tableofcontents
-\clearpage
-\pagenumbering{arabic}
-
-\subfile{script/sections/0_introduction}
-
-\subfile{script/sections/1_upper_half_plane}
-
-\subfile{script/sections/2_gauss_bonnet}
-
-\clearpage
-
-\bibliography{reference}
-% https://mathlandscape.com/latex-bibstyles/#toc2
-\bibliographystyle{junsrt}
-\nocite{*}
-
-\end{document}
-]=],
-    {},
-    { delimiters = "<>" }
-  )
-)
-
+--{{{ beamer preamble
 snpt[#snpt + 1] = s(
   { trig = "beamer", name = "Preamble for beamer" },
   fmt(
@@ -573,6 +529,69 @@ snpt[#snpt + 1] = s(
 ]=],
     {},
     { delimiters = "<>" }
+  )
+)
+-- }}}
+
+--{{{ main tex file
+snpt[#snpt + 1] = s(
+  { trig = "main", name = "Main file" },
+  fmt(
+    [=[
+\documentclass[
+  paper=a4paper,
+  jlreq_notes,
+]{jlreq}
+
+% \documentclass[
+%   % aspectratio=169,
+% ]{beamer}
+
+\input{preamble.tex}
+
+\title{harisenbon}
+\author{ramen}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+\subfile{script/sections/0_introduction}
+
+\subfile{script/sections/1_upper_half_plane}
+
+\subfile{script/sections/2_gauss_bonnet}
+
+\clearpage
+
+\bibliography{reference}
+% https://mathlandscape.com/latex-bibstyles/#toc2
+\bibliographystyle{junsrt}
+\nocite{*}
+
+\end{document}
+]=],
+    {},
+    { delimiters = "<>" }
+  )
+)
+--}}}
+
+snpt[#snpt + 1] = s(
+  { trig = "codeblock", name = "codeblock" },
+  fmt(
+    [[
+\begin{{lstlisting}}[language={lang}]
+  {cursor}
+\end{{lstlisting}}
+]],
+    { cursor = i(0), lang = i(1) }
   )
 )
 
