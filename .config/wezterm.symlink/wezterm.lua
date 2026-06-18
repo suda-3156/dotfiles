@@ -7,7 +7,8 @@ config = {
 	font_size = 12.8,
 	line_height = 1.11,
 
-	color_scheme = "Molokai (Gogh)",
+	-- color_scheme = "Molokai (Gogh)",
+	color_scheme = "Catppuccin Mocha",
 	background = {
 		{
 			source = {
