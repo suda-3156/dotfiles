@@ -42,5 +42,7 @@ Darwin)
 Linux)
     # nvim with appimage
     export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+    # claude code native installation
+    export PATH="$HOME/.local/bin:$PATH"
     ;;
 esac
