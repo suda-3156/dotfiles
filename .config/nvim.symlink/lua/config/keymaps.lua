@@ -91,6 +91,6 @@ vim.keymap.set("n", "<leader>od", function()
 end, { desc = "Open obsidian daily note" })
 
 -- Ref: https://zenn.dev/vim_jp/articles/29d021fff07e60
-vim.keymap.set("n", "qq", "qq", { desc = "start recording" })
+vim.keymap.set("n", "qQ", "qq", { desc = "start recording" })
 vim.keymap.set("n", "qo", "<cmd>only<cr>", { desc = "only" })
 vim.keymap.set("n", "qc", "<cmd>close<cr>", { desc = "close" })

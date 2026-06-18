@@ -50,4 +50,23 @@ if __name__ == "__main__":
   )
 )
 
+snpt[#snpt + 1] = s(
+  { trig = "alg", name = "algorithm basic input" },
+  fmt(
+    [[
+import sys
+
+
+def main():
+    data = sys.stdin.read().split("\n")
+    {cursor}
+
+
+if __name__ == "__main__":
+    main()
+]],
+    { cursor = i(0) }
+  )
+)
+
 return snpt
