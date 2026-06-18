@@ -25,6 +25,9 @@ packages=(
     libssl-dev
     pkg-config
     direnv
+    clang
+    libclang-dev
+    fd
 )
 for package in "${packages[@]}"; do
     if ! command -v "$package" > /dev/null 2>&1; then
@@ -50,12 +53,19 @@ packages=(
     sheldon
     starship
     zoxide
+    tree-sitter-cli
 )
 for package in "${packages[@]}"; do
     if ! command -v "$package" > /dev/null 2>&1; then
         cargo install "$package"
     fi
 done
+
+# jj
+# https://docs.jj-vcs.dev/latest/install-and-setup/#linux
+if ! command -v "jj" > /dev/null 2>&1; then
+    cargo install --locked --bin jj jj-cli
+fi
 
 # use zsh as default shell
 chsh -s "$(which zsh)"
