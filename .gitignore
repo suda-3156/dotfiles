@@ -24,6 +24,7 @@
 
 # wezterm
 !.config/wezterm.symlink/**/*.lua
+!.config/wezterm.symlink/**/*.toml
 
 # zsh
 !.config/zsh/*.zsh

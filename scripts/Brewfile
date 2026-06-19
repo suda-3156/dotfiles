@@ -55,7 +55,7 @@ brew "direnv"
 # brew "act" # Run GitHub Actions locally
 # Go
 brew "go"
-brew "golangci-lint"
+# brew "golangci-lint" # via mise
 tap "ariga/tap"
 brew "ariga/tap/atlas"
 cask "goreleaser"
