@@ -47,6 +47,13 @@ config = {
 	},
 	enable_scroll_bar = false,
 	adjust_window_size_when_changing_font_size = false,
+
+	send_composed_key_when_left_alt_is_pressed = false,
+	send_composed_key_when_right_alt_is_pressed = false,
+
+	keys = {
+		{ key = "Return", mods = "ALT", action = wezterm.action.SendString("\x1b\r") },
+	},
 }
 
 return config
