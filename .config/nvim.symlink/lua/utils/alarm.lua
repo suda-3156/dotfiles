@@ -5,16 +5,16 @@ local function play_sound()
   local sysname = vim.uv.os_uname().sysname
   if sysname == "Darwin" then
     vim.fn.jobstart({ "afplay", "/System/Library/Sounds/Basso.aiff" }, { detach = true })
-  elseif sysname == "Linux" then
-    local ok = vim.fn.jobstart(
-      { "paplay", "/usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga" },
-      { detach = true }
-    )
-    if ok <= 0 then
-      vim.fn.jobstart({ "aplay", "-q", "/usr/share/sounds/alsa/Front_Center.wav" }, { detach = true })
-    end
-  else
-    vim.notify("alarm!", vim.log.levels.WARN, { title = "alarm" })
+    -- elseif sysname == "Linux" then
+    --   local ok = vim.fn.jobstart(
+    --     { "paplay", "/usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga" },
+    --     { detach = true }
+    --   )
+    --   if ok <= 0 then
+    --     vim.fn.jobstart({ "aplay", "-q", "/usr/share/sounds/alsa/Front_Center.wav" }, { detach = true })
+    --   end
+    -- else
+    --   vim.notify("alarm!", vim.log.levels.WARN, { title = "alarm" })
   end
 end
 
