@@ -107,5 +107,20 @@ if ! command -v task > /dev/null 2>&1; then
     sudo apt install task
 fi
 
+# Install docker
+# Ref: https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script
+if ! command -v docker > /dev/null 2>&1; then
+    curl -fsSL https://get.docker.com | sudo sh
+    echo "Exec \"sudo usermod -aG docker \$User\" and re-login to run docker commands without sudo"
+fi
+
+# Install terraform
+# Ref: https://developer.hashicorp.com/terraform/install
+if ! command -v terraform > /dev/null 2>&1; then
+    wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+    sudo apt update && sudo apt install terraform
+fi
+
 # TODO: Install nvim
 echo "Install nvim manually: https://github.com/neovim/neovim/blob/master/INSTALL.md"
