@@ -424,6 +424,12 @@ p[#p + 1] = {
       mode = { "n" },
       desc = "Toggle Aerial",
     },
+    {
+      "<leader>A",
+      "<cmd>AerialToggle! right<cr>",
+      mode = { "n" },
+      desc = "toggle aerial",
+    },
   },
   config = function()
     require("aerial").setup({
@@ -434,27 +440,27 @@ p[#p + 1] = {
         "man",
       },
       layout = {
-        -- These control the width of the aerial window.
-        -- They can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+        -- these control the width of the aerial window.
+        -- they can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
         -- min_width and max_width can be a list of mixed types.
         -- max_width = {40, 0.2} means "the lesser of 40 columns or 20% of total"
         max_width = { 80, 0.2 },
         width = nil,
         min_width = 20,
 
-        -- Determines the default direction to open the aerial window. The 'prefer'
+        -- determines the default direction to open the aerial window. the 'prefer'
         -- options will open the window in the other direction *if* there is a
         -- different buffer in the way of the preferred direction
-        -- Enum: prefer_right, prefer_left, right, left, float
-        default_direction = "right",
+        -- enum: prefer_right, prefer_left, right, left, float
+        default_direction = "prefer_left",
 
-        -- When the symbols change, resize the aerial window (within min/max constraints) to fit
+        -- when the symbols change, resize the aerial window (within min/max constraints) to fit
         resize_to_content = false,
       },
 
-      -- Keymaps in aerial window. Can be any value that `vim.keymap.set` accepts OR a table of keymap
+      -- keymaps in aerial window. can be any value that `vim.keymap.set` accepts or a table of keymap
       -- options with a `callback` (e.g. { callback = function() ... end, desc = "", nowait = true })
-      -- Additionally, if it is a string that matches "actions.<name>",
+      -- additionally, if it is a string that matches "actions.<name>",
       -- it will use the mapping at require("aerial.actions").<name>
       -- Set to `false` to remove a keymap
       keymaps = {
